@@ -1,0 +1,14 @@
+Ejemplo login php:
+	-https://parzibyte.me/blog/2019/01/22/ejemplo-simple-login-php/
+
+HTML header image:
+	-http://kodhus.com/newsite/lesson-3-adding-header-image-navigation-section/
+
+HTML link button onclick:
+	-https://stackoverflow.com/questions/30427891/href-html-button-inside-php
+
+HTML registrarse:
+	-https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_signup_form
+
+HTML desenfocar una imagen:
+	-https://developer.mozilla.org/es/docs/Web/CSS/filter-function/blur
