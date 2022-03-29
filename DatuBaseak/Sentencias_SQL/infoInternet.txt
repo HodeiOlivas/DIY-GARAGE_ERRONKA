@@ -1,2 +1,6 @@
 Ejemplos de sentencias de MySQL:
 	-https://www.anerbarrena.com/mysql-sum-9919/
+
+Nested mysql query with double select statement (buscar en Reservas, por el nombre del Cliente)
+	-https://stackoverflow.com/questions/11540065/nested-mysql-query-with-double-select-statement
+
