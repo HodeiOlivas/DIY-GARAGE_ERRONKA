@@ -1,0 +1,2 @@
+Ejemplos de sentencias de MySQL:
+	-https://www.anerbarrena.com/mysql-sum-9919/
