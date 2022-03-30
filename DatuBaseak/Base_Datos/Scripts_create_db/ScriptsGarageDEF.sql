@@ -107,3 +107,26 @@ CREATE TABLE `Purchase` (
 -- Insertar registros en la tabla Product
 INSERT INTO purchase (cust_Username, id_Product, Date, Amount, Final_Cost) 
 VALUES ("user11", "CM11", "2021-09-27", 3, 90);
+
+
+
+
+
+--VALUES ("user11", "C0", "2002-03-30", "9:00", "11:00", SELECT DATEDIFF(MINUTE, @Starting_Hour, @Ending_Hour) / 60.0, 15.40);
+--select timediff("11:00:00", "09:00:00")
+
+--SELECT HOUR (timediff("11:00:00", "09:00:00"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
