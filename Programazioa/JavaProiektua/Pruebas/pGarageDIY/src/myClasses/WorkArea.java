@@ -9,6 +9,8 @@ package myClasses;
  *
  * @author AdriAlex
  */
-public class Model {
+public enum WorkArea {
+    
+    C1, C2, C3, C4
     
 }
