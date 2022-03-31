@@ -12,3 +12,20 @@ HTML registrarse:
 
 HTML desenfocar una imagen:
 	-https://developer.mozilla.org/es/docs/Web/CSS/filter-function/blur
+
+EJEMPLO LOGIN 1:
+	-https://www.javatpoint.com/php-mysql-login-system
+
+EJEMPLO LOGIN 2:
+	-https://www.c-sharpcorner.com/article/create-a-login-form-validation-using-php-and-wamp-xampp/
+
+PHP TABLA CON DATOS (DB):
+	-https://www.c-sharpcorner.com/UploadFile/d9da8a/display-data-with-html-table-in-php/
+
+OTROS:
+	-https://stackoverflow.com/questions/30427891/href-html-button-inside-php
+
+EJEMPLOS NAVIGATION BAR:
+	-https://freefrontend.com/css-off-canvas-menus/
+	-https://codepen.io/tutsplus/pen/jYJBEe
+

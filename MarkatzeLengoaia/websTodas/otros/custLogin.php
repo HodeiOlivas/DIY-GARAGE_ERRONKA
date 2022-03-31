@@ -5,9 +5,7 @@
 <style>
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: url('../websTodas/Imagenes/encabezadoTaller3.jpg');
-    background-repeat: no-repeat;
-    background-size: 100%; 
+    /*background: url('../websTodas/Imagenes/encabezadoTaller3.jpg');*/
     /* background-color: white; */
     
 }   
@@ -48,8 +46,6 @@ button:hover {
   /* 50%, 200px */
   width: auto;
   height: 500px;
-  background-image: url('../websTodas/Imagenes/encabezadoTaller2.jpg');
-  background-size: auto;
 }
 
 img.avatar {
@@ -85,8 +81,6 @@ span.psw {
     /* background-repeat: no-repeat; */
     /* background-image: url('../websTodas/Imagenes/encabezadoTaller2.jpg'); */
     padding: 25px;
-    background-repeat: no-repeat;
-    background-size: cover;
     
 }
 
@@ -104,7 +98,7 @@ span.psw {
   <!-- <div class="imgcontainer">
     <img src="../websTodas/Imagenes/encabezadoTaller2.jpg" class="imgcontainer">
   </div> -->
-  <img align="right" src="../websTodas/Imagenes/encabezadoTaller2.jpg" class="imgcontainer">
+  <!--<img align="right" src="../websTodas/Imagenes/encabezadoTaller2.jpg" class="imgcontainer"> -->
 
   <div class="container">
     <label for="uname"><b>Username</b></label>
