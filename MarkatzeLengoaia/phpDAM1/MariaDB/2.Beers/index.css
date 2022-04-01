@@ -1,0 +1,12 @@
+body a {
+    text-decoration: none;
+    color: brown;
+}
+
+#karratua {
+    border: 5px solid green;
+}
+
+.container {
+    margin-top: 200px;
+}

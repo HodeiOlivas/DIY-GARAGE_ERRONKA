@@ -29,7 +29,8 @@
           
         if($count == 1){  
             echo "<h1><center> Login successful </center></h1>";  
-            
+            // echo headerlocation:...()
+
             include("test_connect_db.php");
             $link2 = connectDataBase();
             // $emaitza = mysqli_query($link, "select * from customer");

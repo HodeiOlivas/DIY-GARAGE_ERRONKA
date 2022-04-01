@@ -1,0 +1,9 @@
+markatze + datu baseak:
+		
+MariaDB-ra sartzea behar du php fitxategiak.
+	Horretarako php fitxategi bat behar da funtzio batekin konektatzeko.
+	fitxategian aldatu ahala da usuario IP eta pasahitza
+
+
+misqli_query --> sql sententziak exekutatzeko
+myslqi_fetch_array --> zatitzen du erregistro bakoitza  
