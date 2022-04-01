@@ -72,7 +72,7 @@ CREATE TABLE `Reservation` (
 -- Insertar registros en la tabla Reservation
 INSERT INTO reservation (cust_Username, id_cabin, Date, 
 Starting_Hour, Ending_Hour, Amount_Hours, Total_Price) 
-VALUES ("user11", "C0", "2022-03-30", "9:00", "11:00", 2, 15.40);
+VALUES ("user11", "C0", "2022-03-30", "9:00", "11:00", HOUR (timediff(Ending_Hour, Starting_Hour)), 15.40);
 
 
 -- ################################################
@@ -119,11 +119,23 @@ VALUES ("user11", "CM11", "2021-09-27", 3, 90);
 
 
 
+--insertar nueva reserva -> calculando también el total price
+INSERT INTO reservation (cust_Username, id_cabin, Date, 
+Starting_Hour, Ending_Hour, Amount_Hours, Total_Price) 
+VALUES ("user11", "C0", "2022-03-30", "9:00", "11:00", HOUR (timediff(Ending_Hour, Starting_Hour)), 
+Amount_Hours * (SELECT cabin.Price_Hour from cabin where cabin.Cabin_ID="C0"));
+
+--c
+INSERT INTO reservation (cust_Username, id_cabin, Date, 
+Starting_Hour, Ending_Hour, Amount_Hours, Total_Price) 
+VALUES ("user11", "C0", "2022-03-30", "9:00", "15:00", HOUR (timediff(Ending_Hour, Starting_Hour)), 
+Amount_Hours * (SELECT cabin.Price_Hour from cabin INNER JOIN reservation ON cabin.Cabin_ID=reservation.id_cabin));
+
+--- sentencia/consulta sql que calcula el valor de la reserva
+SELECT (reservation.Amount_Hours * cabin.Price_Hour) as "total" from reservation INNER JOIN cabin ON reservation.id_cabin=cabin.Cabin_ID;
 
 
-
-
-
+--trigger casa
 
 
 
