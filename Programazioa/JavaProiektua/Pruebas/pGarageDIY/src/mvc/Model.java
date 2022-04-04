@@ -5,16 +5,18 @@
  */
 package mvc;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-import myClasses.Purchase;
+import myClasses.*;
 
 //import myClasses.*;
 
@@ -52,45 +54,57 @@ public class Model {
     }
     
     
-    public void customersAge() {
+    public String underAgeCustomers() {
         String sql = "SELECT * FROM customer ORDER BY customer.Birthday desc";  //añadir: limit X
+        ArrayList<Customer> underageCustomers = new ArrayList<>();
         
         try (Connection conn = connect();
              Statement stmt  = conn.createStatement();
              ResultSet rs    = stmt.executeQuery(sql)){
             
+            LocalDate fechaActual = LocalDate.now();
+            System.out.println("Fecha actual: " + fechaActual);
+                
+            LocalDate fechaLimite = fechaActual.minusYears(18);
+            System.out.println("Para ser mayor de edad: " + fechaLimite);
             
-            System.out.println("Clasified by Customer's birthday/age: ");
+            
+            System.out.println("\nUnderage customers: ");
             System.out.println("==========================================================================================================================");
-            System.out.printf("%-10s %20s %25s %20s %25s %20s %20s \n", "Username", "Name", "Surname", "Password", "Birthday", "Mail", "Phone Number");
+            System.out.printf("%-10s %10s %15s %15s %15s %-20s %20s \n", "Username", "Name", "Surname", "Password", "Birthday", "Mail", "Phone Number");
             System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+            
             while (rs.next()) {
-                /*System.out.println("\t" + rs.getInt("idClientes") +  "\t" + 
-                               rs.getString("Nombre") + "\t\t" +
-                               rs.getString("Apellido") + "\t\t" + 
-                               rs.getInt("Edad") + "\t" + rs.getString("Mail") + "\t\t" + rs.getInt("Telefono") + "\t");*/
-                System.out.printf("%-10s %-10s \n", 
+                
+                LocalDate fechaCustomer = LocalDate.parse(rs.getString("Birthday"));
+                
+                if (fechaCustomer.isAfter(fechaLimite)) {
+                    Customer underCustomer = new Customer(
+                            rs.getString("Username"), rs.getString("Name"), rs.getString("Surname"), rs.getString("Password"), 
+                            LocalDate.parse(rs.getString("Birthday")), rs.getString("Mail"), rs.getInt("Phone_Number"));
+                    
+                    underageCustomers.add(underCustomer);
+                                        
+                    System.out.printf("%-10s %10s %15s %15s %15s %-20s %20d \n", 
                         rs.getString("Username"),
-                        rs.getString("Birthday"));
-                /*
-                System.out.printf("%-10s %20s %25.2f %10s\n", 
-                        rs.getString("id_produktua"), 
-                        rs.getString("Izena"), 
-                        rs.getDouble("Prezioa"), 
-                        rs.getString("Deskribapena"));*/
+                        rs.getString("Name"),
+                        rs.getString("Surname"),
+                        rs.getString("Password"),
+                        rs.getString("Birthday"),
+                        rs.getString("Mail"),
+                        rs.getInt("Phone_Number"));
+                }
                 
             }
             System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
+            System.out.println(underageCustomers.toString());
+            System.out.println("");
             
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         
-    }
-    
-    
-    public void underAgeCustomers() {
-        
+        return underageCustomers.toString();
     }
     
     
@@ -99,7 +113,6 @@ public class Model {
         String sql = "SELECT * FROM purchase WHERE cust_Username = ?";  //añadir: limit X
         ArrayList<Purchase> comprasClienteDeseado = new ArrayList<>();
         
-        //PreparedStatement pstmt = null;
         ResultSet rs = null;
         
         try (Connection conn = connect();
@@ -140,43 +153,33 @@ public class Model {
     }
     
     
-    
-    
-    public void mostSoldProducts(String desiredProduct){
-        String sql = "SELECT count(DISTINCT id_Product) FROM purchase";  //añadir: limit X
-        ArrayList<Purchase> comprasClienteDeseado = new ArrayList<>();
+    public void mostSoldProducts(){
+        String sql = "SELECT Distinct(id_Product) as Catalogo, count(id_Product) as Recuento FROM purchase group by id_Product";
+        
+        ArrayList<String> compradosProd = new ArrayList<>();
+        ArrayList<Integer> cantProd = new ArrayList<>();
+               
         
         //PreparedStatement pstmt = null;
         //ResultSet rs = null;
         
         try (Connection conn = connect();
                 Statement stmt  = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)
+                ResultSet rs = stmt.executeQuery(sql);
                 ){
-            
-            //pstmt.setString(1, desiredProduct);
-            //rs = pstmt.executeQuery();
-            
-            System.out.println("Purchases of the desired Customer: ");
-            System.out.println("====================================================================================================================");
-            System.out.printf("%-10s %10s %20s %25s %20s %25s\n", "Purchase ID", "Username", "Product", "Date", "Amount", "Total");
-            System.out.println("--------------------------------------------------------------------------------------------------------------------");
-            
-            
+                        
             while (rs.next()) {
                 
-                int num;
-                num = rs.getInt(1);
-                System.out.println(num);
+                //compradosProd.add(rs.getString("Catalogo"));    
+                System.out.printf("%-10s %-10d \n",
+                        rs.getString("Catalogo"),
+                        rs.getInt("Recuento")
+                        );    
             }
-            System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
-            
-            rs.close();
             
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        
         
     } 
 }

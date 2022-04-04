@@ -18,20 +18,22 @@ public class ProgramMain {
         
         //inicio pruebas
         //ordenar los Customer por edad (descendente)
-        model.customersAge();
+        model.underAgeCustomers();
         
         //clientes menores de edad
         
         
         //ver compras cliente
-        model.purchasesOfDesiredCustomer("user22");
+        model.purchasesOfDesiredCustomer("user33");
         System.out.println("");
         
         
         //ver cabinas más reservadas
         
         //ver los productos más vendidos (ventas y ganancias)
-        model.mostSoldProducts("CM11");
+        System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
+        System.out.println("En cuantas compras aparece cada producto");
+        model.mostSoldProducts();
         
     }
 }

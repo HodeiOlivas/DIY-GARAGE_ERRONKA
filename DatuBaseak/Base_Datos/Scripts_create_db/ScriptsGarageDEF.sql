@@ -138,7 +138,11 @@ SELECT (reservation.Amount_Hours * cabin.Price_Hour) as "total" from reservation
 --trigger casa
 
 
-
+--TXOSTENAK--
+--Cuántas veces se ha vendido cada producto:
+String sql = "SELECT Distinct(id_Product) as Catalogo, count(id_Product) as Recuento FROM purchase group by id_Product";
+--Compras del cliente deseado:
+String sql = "SELECT * FROM purchase WHERE cust_Username = ?";
 
 
 

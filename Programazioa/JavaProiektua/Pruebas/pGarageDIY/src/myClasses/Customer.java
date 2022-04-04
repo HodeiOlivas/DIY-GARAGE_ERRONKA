@@ -97,8 +97,15 @@ public class Customer {
         this.phone_Number = phone_Number;
     }
     
+    public String toString() {
+        return "\nCustomer [username: " + this.getUsername() + ",name: " + this.getName() + 
+                ",password: " + this.getPassword() + ",birthday: " + this.getBirthday() + "]";
+    }
     
-    
+    public String toStringExtended() {
+        return "customer [username: " + this.getUsername() + ",name: " + this.getBirthday() + ",surname: " + this.getSurname() + 
+                ",password: " + this.getPassword() + ",birthday: " + this.getBirthday() + ",mail: " + this.getMail() + ", phone: " + this.getPhone_Number() + "]";
+    }
     
     
 }
