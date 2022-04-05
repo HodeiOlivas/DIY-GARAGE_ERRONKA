@@ -25,7 +25,7 @@
         <input type="text" name="name" class="formAlign" placeholder="enter name" required />
         <br><br>
         Surname:<br>
-        <input type="password" name="surname" class="formAlign" placeholder="enter surname"  required />
+        <input type="text" name="surname" class="formAlign" placeholder="enter surname"  required />
         <br><br>
         Password:<br>
         <input type="password" name="password" placeholder="enter your password" class="formAlign" required />

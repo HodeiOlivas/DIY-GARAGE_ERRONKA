@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Green Pasture 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20132402
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src='jquery-3.2.1.min.js' type='text/javascript'></script>
+
+	<!-- jQuery UI -->
+	<link href='jquery-ui.min.css' rel='stylesheet' type='text/css'>
+	<script src='jquery-ui.min.js' type='text/javascript'></script>
+
+	<!-- Language script -->
+	<script src='datepicker-hi.js' type='text/javascript'></script>
+
+
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Green Pasture by FCT</title>
+<link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Abel|Satisfy' rel='stylesheet' type='text/css' />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<!--[if IE 6]>
+<link href="default_ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+</head>
+<body>
+	Select Date : <input type='text' id='datepicker' ><br/>
+
+	<!-- Script -->
+	<script type='text/javascript' >
+		$( function() {
+	  
+		  // Initialize and change language to hindi
+		  $('#datepicker').datepicker($.datepicker.regional[ "" ] );
+	  
+		});
+
+		$(document).ready(function () {
+    		$('#mensaje_error').hide();  
+		});
+
+		function checkform(){
+			var f1 = document.getElementById('nireForm');
+			if(f1.pasahitza.value != f1.pasahitzaKonprobatu.value)
+			{
+				alert("Sarturiko pasahitzak ez dira berdinak! ");
+				f1.password.focus();
+				return false;
+			}
+			return true;
+			}
+		
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+	</script>
+	
+
+<div id="header-wrapper">
+	<div id="header">
+		<div id="logo">
+			<h1><a href="#">Green Pasture</a></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li id="topSide" class="current_page_item"><a href="#" accesskey="1" title="">Sartu zure datuak</a></li>
+				<li><a href="#" accesskey="2" title="">Our Clients</a></li>
+				<li><a href="#" accesskey="3" title="">About Us</a></li>
+				<li><a href="#" accesskey="4" title="">Careers</a></li>
+				<li><a href="#" accesskey="5" title="">Contact Us</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div id="banner">
+	<div class="img-border"> <a href="#"><img src="images/header-img.jpg" width="1120" height="500" alt="" /></a> </div>
+</div>
+
+
+
+<div id="wrapper">
+	<form id="nireForm" name="f1" action="" method="POST" style="display:table;">
+        <p>Name</p><br>
+        <input type="text" name="name" class="formAlign" placeholder="sartu izena" required pattern="[A-Za-z]+" required />
+        <br>
+        <p>Abizena:</p><br>
+        <input type="text" name="surname" class="formAlign" placeholder="sartu abizena" required pattern="[A-Za-z]+" required />
+        <br>
+        <p>Jaiotze data:</p><br>
+        <input id="datepicker" type="date" name="jaiotze_data" placeholder="sartu jaiotze data" class="formAlign" style="display: table-cell;" />
+        <br>
+		<p id="pasahitzaFirst">Pasahitza:</p><br>
+        <input type="password" name="pasahitza" placeholder="sartu pasahitza" class="formAlign" />
+        <br>
+		<p id="pasahitzaBerriz">Pasahitza konprobatu:</p><br>
+        <input type="password" name="pasahitzaKonprobatu" placeholder="berriro sartu pasahitza" class="formAlign" />
+        <br>
+		<p >Bidali botoia:</p><br>
+        <input type="submit" name="bidali" value="Bidali" onClick="checkform(), topFunction()"/>
+        <br>
+		<p>Garbitu:</p><br>
+        <input type="reset" name="garbitu" value="Garbitu" style="text-align: center;"/>
+        <br>
+        <input type="submit" value="Login" />
+    </form>
+	<br><br><br><br><br><br>
+<br><br><br><br><br><br>
+	
+</div>
+
+
+<div id="footer" class="container">
+	<p>Copyright (c) 2012 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org">FCT</a>. Photos by <a href="http://fotogrph.com/">Fotogrph</a>.</p>
+</div>
+</body>
+</html>

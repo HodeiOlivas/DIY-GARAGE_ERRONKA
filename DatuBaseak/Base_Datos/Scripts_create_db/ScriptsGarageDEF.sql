@@ -134,9 +134,18 @@ Amount_Hours * (SELECT cabin.Price_Hour from cabin INNER JOIN reservation ON cab
 --- sentencia/consulta sql que calcula el valor de la reserva
 SELECT (reservation.Amount_Hours * cabin.Price_Hour) as "total" from reservation INNER JOIN cabin ON reservation.id_cabin=cabin.Cabin_ID;
 
+--- insertar nueva reserva sin introducir un valor para el total Price
+INSERT INTO `reservation`(`cust_Username`, `id_cabin`, `Date`, `Starting_Hour`, `Ending_Hour`, `Amount_Hours`) 
+VALUES ('user22','C0','2022-04-05','10:00','12:00','HOUR (timediff(Ending_Hour, Starting_Hour))');
+
 
 --trigger casa
-
+CREATE TRIGGER after_Reservation_Insert
+BEFORE INSERT ON reservation 
+FOR EACH ROW
+SET reservation.Total_Price = (SELECT (reservation.Amount_Hours * cabin.Price_Hour) from reservation 
+                               INNER JOIN cabin 
+                               ON reservation.id_cabin=cabin.Cabin_ID);
 
 --TXOSTENAK--
 --Cuántas veces se ha vendido cada producto:
@@ -146,3 +155,5 @@ String sql = "SELECT * FROM purchase WHERE cust_Username = ?";
 
 
 
+---links info
+https://www.freecodecamp.org/espanol/news/declaracion-sql-update/

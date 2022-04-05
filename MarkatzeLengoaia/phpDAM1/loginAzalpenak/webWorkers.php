@@ -214,15 +214,10 @@
 
     <div>
         <?php
-        include("test_connect_db.php");
+        //include("test_connect_db.php");
         $link = connectDataBase();
         $emaitza = mysqli_query($link, "select * from customer");
-
-
-
         ?>
-
-
         <div class="container">
             <h2>Registered users</h2>
             <p>The .table-dark class adds a black background to the table:</p>
@@ -261,21 +256,19 @@
 
         <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
-
-
     </div>
     <br />
 
 
 
     <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-    <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
+    <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefixa.</p>
 
 
 
 
     <p>Image at the bottom (card-img-bottom):</p>
-    <div c </br>
+    <div >
         <br><br><br>
         <br><br><br>
         <br>
