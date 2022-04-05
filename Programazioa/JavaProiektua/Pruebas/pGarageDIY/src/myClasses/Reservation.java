@@ -111,6 +111,13 @@ public class Reservation {
     public void setTotal_Price(double total_Price) {
         this.total_Price = total_Price;
     }
+
+    @Override
+    public String toString() {
+        return "Reservation{" + "id_reservation=" + id_reservation + ", cust_username=" + cust_username + 
+                ", id_cabin=" + id_cabin + ", date=" + date + ", starting_Hour=" + starting_Hour + ", ending_Hour=" + ending_Hour + 
+                ", amount_Hours=" + amount_Hours + ", total_Price=" + total_Price + '}';
+    }
     
     
     

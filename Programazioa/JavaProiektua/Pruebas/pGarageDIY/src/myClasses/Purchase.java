@@ -40,6 +40,19 @@ public class Purchase {
         this.final_Cost = final_Cost;
     }
     
+    
+    public Purchase(String cust_Username, String id_product, LocalDate date, 
+            int amount) {
+        
+        this.id_Purchase = id_Pur++;
+        this.cust_Username = cust_Username;
+        this.id_Product = id_product;
+        this.date = date;
+        this.amount = amount;
+    }
+    
+    
+    
     /*
     public Purchase(String cust_Username, ArrayList id_ProductLista, LocalDate date, 
             int amount, double final_Cost) {
@@ -111,7 +124,13 @@ public class Purchase {
     }
     
     
-    
+    public String toStringForTextArea() {
+        return "\nUsername:  \t" + this.getUser_cust() + 
+                "\nProduct: \t" + this.getId_product() + 
+                "\nDate:  \t" + this.getDate() + 
+                "\nAmount:  \t" + this.getAmount() +
+                "\n--------------------------------------------------x--------------------------------------------------";
+    }
     
     
 }

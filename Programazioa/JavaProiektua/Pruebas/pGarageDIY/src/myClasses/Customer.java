@@ -98,8 +98,14 @@ public class Customer {
     }
     
     public String toString() {
-        return "\nCustomer [username: " + this.getUsername() + ",name: " + this.getName() + 
-                ",password: " + this.getPassword() + ",birthday: " + this.getBirthday() + "]";
+        return "\nUsername: \t" + this.getUsername() + 
+                "\nFull name:  \t" + this.getName() + " " + this.getSurname() + 
+                "\nBirthday:  \t" + this.getBirthday() + 
+                "\n--------------------------------------------------x--------------------------------------------------";
+        /*
+        -----------------------------------------------------------------------------------------------------
+        --------------------------------------------------x--------------------------------------------------
+        */
     }
     
     public String toStringExtended() {

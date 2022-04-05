@@ -80,6 +80,12 @@ public class Cabin {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "Cabin{" + "id_cabin=" + id_cabin + ", id_assistant=" + id_assistant + 
+                ", size=" + size + ", color=" + color + ", price_Hour=" + price_Hour + ", description=" + description + '}';
+    }
     
     
     

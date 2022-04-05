@@ -14,7 +14,11 @@ import java.util.Scanner;
 public class ProgramMain {
     public static void main(String[] args) {
         
+        View view = View.visualizarGUI();
+        
         Model model = new Model();
+        
+        Controller controller = new Controller(model, view);
         
         //inicio pruebas
         //ordenar los Customer por edad (descendente)
@@ -24,7 +28,7 @@ public class ProgramMain {
         
         
         //ver compras cliente
-        model.purchasesOfDesiredCustomer("user33");
+        model.purchasesOfDesiredCustomer("user22");
         System.out.println("");
         
         
@@ -34,6 +38,8 @@ public class ProgramMain {
         System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
         System.out.println("En cuantas compras aparece cada producto");
         model.mostSoldProducts();
+        
+        System.out.println("\n########################################\n");
         
     }
 }
