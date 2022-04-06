@@ -14,7 +14,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class DesiredPurchaseTableModela extends AbstractTableModel {
     
-    private final String[] columnsName = {"hola", "Cust. Username", "Product", "Date", "Amount", "Total"};
+    private final String[] columnsName = {"Purchase ID", "Cust. Username", "Product", "Date", "Amount", "Total"};
     private ArrayList<Purchase> purchasesOfDesiredCustomer = new ArrayList<>();
 
     public DesiredPurchaseTableModela(ArrayList<Purchase> datosEnArrayList) {

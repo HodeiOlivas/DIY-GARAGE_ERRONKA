@@ -46,13 +46,21 @@ public class Controller implements ActionListener {
 
         View.JButtonPrintTxosten.addActionListener(listener); //textual reports -> botón para ver/imprimir los datos
         View.JButtonReturnStart.addActionListener(listener);  //textual reports -> botón para volver al menú inicial
-        View.JButtonSaveInFile.addActionListener(listener);   //textual reports -> botón para guardar el contenido del text area en un fichero
+        View.JButtonSaveUsersFile.addActionListener(listener);   //textual reports -> botón para guardar el contenido del text area en un fichero
 
         View.JButtonViewGra.addActionListener(listener);  //graphical reports -> ver contenido (en gráficos) de los informes
         View.JButtonClean.addActionListener(listener);  //graphical reports -> limpiar contenido del textArea
         View.JButtonGoBack.addActionListener(listener);   //graphical report -> volcer al menú inicial
         
+        View.JButtonClear.addActionListener(listener);  //textual reports -> clear all the fields
+        
         View.JButtonReturnFromTable.addActionListener(listener);    //dialogTable -> button to return to Textual Reports' section
+        
+        View.JButtonSaveUsersFile.addActionListener(listener);  //download -> save all users
+        View.JButtonSaveCatalog.addActionListener(listener);    //download -> save catalog of products (all of them)
+        
+        View.JButtonLoginToSave.addActionListener(listener);    //download -> log in as a WORKER to continue (download data)
+        
 
     }
 
@@ -68,7 +76,7 @@ public class Controller implements ActionListener {
                 System.out.println("Wait... The Textual Report's section is loading. \n");
                 View.JFrameTextReports.setVisible(true);
                 View.JFrameTextReports.setTitle("Create a New Customer!");
-                View.JFrameTextReports.setSize(600, 400);
+                View.JFrameTextReports.setSize(900, 600);   //600,400
                 View.JFrameTextReports.setResizable(false);
 
                 break;
@@ -76,25 +84,27 @@ public class Controller implements ActionListener {
                 System.out.println("Wait... The Graphical Report's section is loading. \n");
                 View.JFrameGraphicalReports.setVisible(true);
                 View.JFrameGraphicalReports.setTitle("Create a New Customer!");
-                View.JFrameGraphicalReports.setSize(600, 356);
+                View.JFrameGraphicalReports.setSize(600, 356);  //600, 356
                 View.JFrameGraphicalReports.setResizable(false);
                 break;
 
             case "View Txostena":   //txosten textualak ikusi
                 JTextAreaTxostenak.setText("");
                 if (JComboBoxTxostenak.getSelectedIndex() == 0) {
-                    JTextAreaTxostenak.setText("Please, select a report to continue... ");
+                    JTextAreaTxostenak.setText("");
                     System.out.println("No report selected");
 
                 } else if (JComboBoxTxostenak.getSelectedIndex() == 1) {
-                    JTextAreaTxostenak.setText("Enter desired date on the right. ");
-                    //poner método de "today's occupation"
                     JTextFieldTodaysDate.setEditable(true);
                     JTextFieldTodaysDate.setEnabled(true);
+                    
+                    
+                    
                     System.out.println("Today's occupation report selected.");
-
+                    //JTextAreaTxostenak.setText("Searching the occupation of " + "'" + JTextFieldTodaysDate.getText() + "'" + ". ");
+                    
                 } else if (JComboBoxTxostenak.getSelectedIndex() == 2) {
-
+                                        
                     if (CheckboxViewOnTable.getState() == true) {
                         JDialogTextual.setSize(600, 600);
                         JDialogTextual.setVisible(true);
@@ -118,35 +128,37 @@ public class Controller implements ActionListener {
                     System.out.println("underage");
 
                 } else if (JComboBoxTxostenak.getSelectedIndex() == 3) {
-                    //JSpinnerCustomerId.setEnabled(true);
-                    JTextFieldUsernameUser.setEditable(true);
-                    JTextFieldUsernameUser.setEnabled(true);
+                    //ChoiceCustomer.setEnabled(false);
                     
                     if (CheckboxViewOnTable.getState() == true) {
                         JDialogTextual.setSize(900, 600);
                         JDialogTextual.setVisible(true);
                         view.JTableUnderage.setVisible(true);
                         
-                        view.JTableUnderage.setModel(new DesiredPurchaseTableModela(Model.purchasesOfDesiredCustomer(JTextFieldUsernameUser.getText())));
-                        //JTextFieldUsernameUser.setEditable(false);
-                        //JTextFieldUsernameUser.setEnabled(false);
+                        //view.JTableUnderage.setModel(new DesiredPurchaseTableModela(Model.purchasesOfDesiredCustomer(JTextFieldUsernameUser.getText())));
+                        view.JTableUnderage.setModel(new DesiredPurchaseTableModela(model.purchasesOfDesiredCustomer(ChoiceCustomer.getSelectedItem())));
+                        System.out.println(ChoiceCustomer.getSelectedItem());
+                        
                         
                         System.out.println("The requested data is being represented in a table. ");
                         
                     } else if (CheckboxViewOnTable.getState() == false) {
-                        for (int i = 0; i < model.purchasesOfDesiredCustomer(JTextFieldUsernameUser.getText()).size(); ++i) {
+                        /*for (int i = 0; i < model.purchasesOfDesiredCustomer(JTextFieldUsernameUser.getText()).size(); ++i) {
                             JTextAreaTxostenak.setText(JTextAreaTxostenak.getText() + model.purchasesOfDesiredCustomer(JTextFieldUsernameUser.getText()).get(i).toStringForTextArea());
+                        }*/
+                        
+                        for (int i = 0; i < model.purchasesOfDesiredCustomer(ChoiceCustomer.getSelectedItem()).size(); ++i) {
+                            JTextAreaTxostenak.setText(JTextAreaTxostenak.getText() + model.purchasesOfDesiredCustomer(ChoiceCustomer.getSelectedItem()).get(i).toStringForTextArea());
                         }
+                        
                     } else {
                         JTextAreaTxostenak.setText("Something went wrong... Please, close this tab and try again. ");
                     }
 
                 } else if (JComboBoxTxostenak.getSelectedIndex() == 4) {
                     //JSpinnerCustomerId.setEnabled(true);
-                    //JTextFieldUsernameUser.setEditable(false);  JTextFieldUsernameUser.setEnabled(false);
                     JTextFieldTodaysDate.setEditable(false);    JTextFieldTodaysDate.setEnabled(false);
-
-                    //model.purchasesOfDesiredCustomer(JTextFieldUsernameUser.getText());
+                    
                     System.out.println("desired customer's purchases");
 
                 } else if (JComboBoxTxostenak.getSelectedIndex() == 5) {
@@ -173,23 +185,45 @@ public class Controller implements ActionListener {
                     JTextFieldTodaysDate.setEditable(false);
                     JTextFieldTodaysDate.setEnabled(false);
                     JSpinnerCustomerId.setEnabled(false);
-                    JTextFieldUsernameUser.setEditable(false);
-                    JTextFieldUsernameUser.setEnabled(false);
                 }
 
-                /*
-                view.JDialog2Table.setSize(600, 600);
-                view.JDialog2Table.setVisible(true);
-                JDialogTextualUnderage
-                 */
                 System.out.println("Ver informes. \n");
                 break;
+            
+            case "Clear":
+                JComboBoxTxostenak.setSelectedIndex(0);
+                CheckboxViewOnTable.setState(false);
+                JSpinnerCustomerId.setValue(0);
+                ChoiceCustomer.select(0);
+                JTextAreaTxostenak.setText("");
+                JTextFieldTodaysDate.setText("");
+                
+                break;
+            
             case "Return to textual reports":
                 view.JDialogTextual.dispose();
                 break;
-            case "Save":
+            
+            case "Customer Registration":
+                String strCustomersHistory = "";
+                
+                for (int i = 0; i < Model.getAllCustomers().size(); ++i) {
+                    strCustomersHistory = strCustomersHistory + Model.getAllCustomers().get(i).toStringExtended();
+                }
+                Model.saveCustomersToFile(strCustomersHistory);
                 System.out.println("Guardando contenido en un fichero...\n");
                 break;
+            
+            case "Download Catalog":
+                String strProductCatalog = "";
+                
+                for (int i = 0; i < Model.getAllProducts().size(); ++i) {
+                    strProductCatalog = strProductCatalog + Model.getAllProducts().get(i).toStringTextArea();
+                }
+                Model.saveCatalogToFile(strProductCatalog);
+                System.out.println("Guardando contenido en un fichero...\n");
+                break;
+            
             case "Go back": //menu nagusira bueltatu
                 View.JFrameTextReports.dispose();
                 break;
@@ -202,6 +236,9 @@ public class Controller implements ActionListener {
                 break;
             case "Go back to start":
                 View.JFrameGraphicalReports.dispose();
+                break;
+            
+            case "Login":
                 break;
             /*
             case "New Client":

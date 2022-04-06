@@ -28,7 +28,7 @@ public class ProgramMain {
         
         
         //ver compras cliente
-        model.purchasesOfDesiredCustomer("user22");
+        System.out.println(model.purchasesOfDesiredCustomer("user22"));
         System.out.println("");
         
         

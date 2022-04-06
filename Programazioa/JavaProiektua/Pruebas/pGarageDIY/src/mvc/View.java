@@ -31,6 +31,15 @@ public class View extends javax.swing.JFrame {
         JComboBoxTxostenak.addItem("The three least frequent customers");
         JComboBoxTxostenak.addItem("Underage on table");
         
+        
+        //Choose customer using "choice" tool
+        ChoiceCustomer.setEnabled(false);
+        ChoiceCustomer.addItem("...");        
+        for (int i = 0; i < Model.getAllCustomers().size(); ++i) {
+            ChoiceCustomer.addItem(Model.getAllCustomers().get(i).getUsername());
+        }
+        
+        
         JSpinnerCustomerId.setValue(0);
         JSpinnerCustomerId.setEnabled(false);
         JTextAreaTxostenak.setAutoscrolls(true);
@@ -42,8 +51,6 @@ public class View extends javax.swing.JFrame {
         
         
         JFrameTextReports.setResizable(false);
-        JTextFieldUsernameUser.setEditable(false);
-        JTextFieldUsernameUser.setEnabled(false);
         //JFrameTextualReports.setSize(600, 600);
     }
     
@@ -81,11 +88,14 @@ public class View extends javax.swing.JFrame {
         JLabelTitulo1 = new javax.swing.JLabel();
         JTextFieldTodaysDate = new javax.swing.JTextField();
         JLabelIntro1 = new javax.swing.JLabel();
-        JButtonSaveInFile = new javax.swing.JButton();
-        JLabelUsername = new javax.swing.JLabel();
-        JTextFieldUsernameUser = new javax.swing.JTextField();
-        JLabelDateFormat = new javax.swing.JLabel();
         CheckboxViewOnTable = new java.awt.Checkbox();
+        ChoiceCustomer = new java.awt.Choice();
+        JLabelChooseCustomer = new javax.swing.JLabel();
+        JButtonClear = new javax.swing.JButton();
+        JLabelShowImage = new javax.swing.JLabel();
+        JButtonSaveUsersFile = new javax.swing.JButton();
+        JButtonSaveCatalog = new javax.swing.JButton();
+        JButtonLoginToSave = new javax.swing.JButton();
         JFrameGraphicalReports = new javax.swing.JFrame();
         JCheckPurchaseHistory = new javax.swing.JCheckBox();
         JCheckBoxSortAge = new javax.swing.JCheckBox();
@@ -102,6 +112,7 @@ public class View extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         JTableUnderage = new javax.swing.JTable();
         JButtonReturnFromTable = new javax.swing.JButton();
+        JFrameDownloadData = new javax.swing.JFrame();
         JLabelTitulo = new javax.swing.JLabel();
         JLabelIntro = new javax.swing.JLabel();
         JButtonGoTxostenak = new javax.swing.JButton();
@@ -128,7 +139,7 @@ public class View extends javax.swing.JFrame {
 
         JLabelSpecifyId.setText("Specify ID:");
 
-        JLabelSpecifyDate.setText("Enter date:");
+        JLabelSpecifyDate.setText("Date: (yyyy-mm-dd)");
 
         JLabelTitulo1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         JLabelTitulo1.setForeground(new java.awt.Color(0, 0, 0));
@@ -136,13 +147,26 @@ public class View extends javax.swing.JFrame {
 
         JLabelIntro1.setText("Welcome to Garage HALAB's official GUI.");
 
-        JButtonSaveInFile.setText("Save");
+        CheckboxViewOnTable.setLabel("Table");
 
-        JLabelUsername.setText("Username:");
+        ChoiceCustomer.setName("MenuCustomers"); // NOI18N
 
-        JLabelDateFormat.setText("(yyyy-mm-dd)");
+        JLabelChooseCustomer.setText("Choose Customer:");
 
-        CheckboxViewOnTable.setLabel("View on table");
+        JButtonClear.setText("Clear");
+
+        JLabelShowImage.setText("Poner alguna imagen");
+
+        JButtonSaveUsersFile.setText("Customer Registration");
+        JButtonSaveUsersFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JButtonSaveUsersFileActionPerformed(evt);
+            }
+        });
+
+        JButtonSaveCatalog.setText("Download Catalog");
+
+        JButtonLoginToSave.setText("Login");
 
         javax.swing.GroupLayout JFrameTextReportsLayout = new javax.swing.GroupLayout(JFrameTextReports.getContentPane());
         JFrameTextReports.getContentPane().setLayout(JFrameTextReportsLayout);
@@ -151,11 +175,9 @@ public class View extends javax.swing.JFrame {
             .addGroup(JFrameTextReportsLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JLabelTitulo1)
                     .addGroup(JFrameTextReportsLayout.createSequentialGroup()
-                        .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(JFrameTextReportsLayout.createSequentialGroup()
                                 .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(JComboBoxTxostenak, 0, 228, Short.MAX_VALUE)
@@ -163,27 +185,36 @@ public class View extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(JFrameTextReportsLayout.createSequentialGroup()
-                                        .addComponent(JButtonPrintTxosten, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(JButtonReturnStart))
-                                    .addGroup(JFrameTextReportsLayout.createSequentialGroup()
                                         .addComponent(CheckboxViewOnTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
-                        .addGap(18, 18, 18)
+                                        .addGap(112, 112, 112))
+                                    .addGroup(JFrameTextReportsLayout.createSequentialGroup()
+                                        .addComponent(JButtonPrintTxosten, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(JButtonClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(18, 18, 18))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JFrameTextReportsLayout.createSequentialGroup()
+                                .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)))
                         .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(JLabelSpecifyDate, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(JLabelSpecifyId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(JLabelUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(JSpinnerCustomerId, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(JButtonSaveInFile, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
-                            .addComponent(JLabelDateFormat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(JTextFieldUsernameUser)
-                            .addComponent(JTextFieldTodaysDate))
-                        .addGap(74, 74, 74))
-                    .addGroup(JFrameTextReportsLayout.createSequentialGroup()
-                        .addComponent(JLabelTitulo1)
-                        .addGap(66, 66, 66))))
+                            .addComponent(JLabelChooseCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(JFrameTextReportsLayout.createSequentialGroup()
+                                .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ChoiceCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(JTextFieldTodaysDate, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(JLabelSpecifyId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(JSpinnerCustomerId, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(JLabelSpecifyDate, javax.swing.GroupLayout.Alignment.LEADING)))
+                                .addGap(43, 43, 43)
+                                .addComponent(JLabelShowImage))
+                            .addComponent(JButtonReturnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JButtonLoginToSave, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(JButtonSaveCatalog, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JButtonSaveUsersFile, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         JFrameTextReportsLayout.setVerticalGroup(
             JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,27 +230,33 @@ public class View extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JComboBoxTxostenak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JButtonReturnStart)
                     .addComponent(JButtonPrintTxosten)
-                    .addComponent(JSpinnerCustomerId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JSpinnerCustomerId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JButtonClear))
                 .addGap(13, 13, 13)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(JFrameTextReportsLayout.createSequentialGroup()
-                        .addComponent(JLabelUsername)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(JTextFieldUsernameUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(JLabelChooseCustomer)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ChoiceCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JLabelShowImage))
+                        .addGap(14, 14, 14)
                         .addComponent(JLabelSpecifyDate)
-                        .addGap(5, 5, 5)
-                        .addComponent(JLabelDateFormat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(JTextFieldTodaysDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(JButtonSaveInFile, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(JButtonLoginToSave)
+                        .addGap(18, 18, 18)
+                        .addComponent(JButtonReturnStart))
                     .addComponent(jScrollPane3))
-                .addGap(33, 33, 33))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+                .addComponent(JButtonSaveUsersFile)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(JButtonSaveCatalog)
+                .addGap(22, 22, 22))
         );
 
         JCheckPurchaseHistory.setText("Certain customer's purchase history");
@@ -329,6 +366,17 @@ public class View extends javax.swing.JFrame {
                 .addContainerGap(62, Short.MAX_VALUE))
         );
 
+        javax.swing.GroupLayout JFrameDownloadDataLayout = new javax.swing.GroupLayout(JFrameDownloadData.getContentPane());
+        JFrameDownloadData.getContentPane().setLayout(JFrameDownloadDataLayout);
+        JFrameDownloadDataLayout.setHorizontalGroup(
+            JFrameDownloadDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        JFrameDownloadDataLayout.setVerticalGroup(
+            JFrameDownloadDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         JLabelTitulo.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -350,31 +398,31 @@ public class View extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(JButtonGoTxostenak, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(JButtonGoGraphicall, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(104, 104, 104))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(JLabelTitulo))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(122, 122, 122)
-                        .addComponent(JLabelIntro))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(JButtonGoManage)))
+                        .addComponent(JLabelIntro)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(JButtonProbarDBConection)
-                .addGap(197, 197, 197))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(JButtonGoTxostenak, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(JButtonGoGraphicall, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(104, 104, 104))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(JButtonGoManage)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JButtonProbarDBConection)
+                        .addGap(52, 52, 52))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -389,11 +437,11 @@ public class View extends javax.swing.JFrame {
                     .addComponent(JButtonGoGraphicall))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(JButtonGoManage)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(JButtonProbarDBConection)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JButtonProbarDBConection)
+                    .addComponent(JButtonGoManage))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -401,68 +449,66 @@ public class View extends javax.swing.JFrame {
 
     private void JComboBoxTxostenakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JComboBoxTxostenakActionPerformed
         // TODO add your handling code here:
-        JTextAreaTxostenak.setText("Waiting for a report request...");
+        
+        //JTextAreaTxostenak.setText("Waiting for a report request...");
 
         if (JComboBoxTxostenak.getSelectedIndex() == 0) {
             System.out.println("Actual report: No report selected. Please, choose one and press the 'View' button. \n");
 
         } else if (JComboBoxTxostenak.getSelectedIndex() == 1) {
-
-            System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString());
-            System.out.println("\t-> Introduce una fecha para ver las reservas existentes. \n");
-            JTextFieldTodaysDate.setEditable(true);
-            JTextFieldTodaysDate.setEnabled(true);
+            JTextFieldTodaysDate.setEditable(true); JTextFieldTodaysDate.setEnabled(true);
             JSpinnerCustomerId.setEnabled(false);
-            JTextFieldUsernameUser.setEnabled(false);
+            ChoiceCustomer.setEnabled(false);
             JTextFieldTodaysDate.setText("");
+            
+            System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString() + ". \n");
+            //JTextAreaTxostenak.setText("Enter the date which availabikity you want to know about. ");
 
         } else if (JComboBoxTxostenak.getSelectedIndex() == 2) {
             JSpinnerCustomerId.setEnabled(false);
             JTextFieldTodaysDate.setEnabled(false);
-            JTextFieldUsernameUser.setEnabled(false);
-            System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString());
-            System.out.println("\t-> A continuación, podrás ver las compras que ha realizado un cliente determinado. Para ello, ingresa el id de dicho cliente. \n");
+            ChoiceCustomer.setEnabled(false);
+            
+            System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString() + ". \n");
+            //JTextAreaTxostenak.setText("Press the 'View' button to see the underage customers...");
 
         } else if (JComboBoxTxostenak.getSelectedIndex() == 3) {
-            JTextFieldUsernameUser.setText("");
-            JSpinnerCustomerId.setValue(0);
-            JSpinnerCustomerId.setEnabled(true);
             JTextFieldTodaysDate.setEnabled(false);
-            JTextFieldUsernameUser.setEditable(true);
-            JTextFieldUsernameUser.setEnabled(true);
-            System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString());
-            System.out.println("\t-> A continuación, podrás ver las compras que ha realizado un cliente determinado. Para ello, ingresa el id de dicho cliente. \n");
+            ChoiceCustomer.setEnabled(true);
+            JSpinnerCustomerId.setValue(0); JSpinnerCustomerId.setEnabled(true);
+            
+            System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString() + ". \n");
+            //JTextAreaTxostenak.setText("Specify desired customer's ID to check the purchases. ");
 
         } else if (JComboBoxTxostenak.getSelectedIndex() == 4) {
-            JTextFieldUsernameUser.setText("");
-            JSpinnerCustomerId.setValue(0);
-            JSpinnerCustomerId.setEnabled(true);
+            JSpinnerCustomerId.setValue(0); JSpinnerCustomerId.setEnabled(true);
             JTextFieldTodaysDate.setEnabled(false);
-            JTextFieldUsernameUser.setEditable(true);
-            JTextFieldUsernameUser.setEnabled(true);
-            System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString());
-            System.out.println("\t-> A continuación, podrás ver las compras que ha realizado un cliente determinado. Para ello, ingresa el id de dicho cliente. \n");
+            ChoiceCustomer.setEnabled(false);
+            
+            System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString() + ". \n");
+            //JTextAreaTxostenak.setText("Press the 'View' button to differentiate between morning and afternoon reservations");
 
         } else if (JComboBoxTxostenak.getSelectedIndex() == 5) {
-            JTextAreaTxostenak.setText("Press the 'View' button to check the report...");
-            JSpinnerCustomerId.setValue(0);
-            JSpinnerCustomerId.setEnabled(false);
+            JSpinnerCustomerId.setValue(0); JSpinnerCustomerId.setEnabled(false);
             JTextFieldTodaysDate.setEnabled(false);
-            JTextFieldUsernameUser.setEditable(true);
-            JTextFieldUsernameUser.setEnabled(true);
-            System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString());
-            System.out.println("\t-> A continuación, podrás ver las compras que ha realizado un cliente determinado. Para ello, ingresa el id de dicho cliente. \n");
+            ChoiceCustomer.setEnabled(false);
+            
+            System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString() + ". \n");
+            //JTextAreaTxostenak.setText("Press the 'View' button to find out which products have given the best results. ");
 
         } else {
             System.out.println("Choose any option from the combo box and press 'View'. \n");
-            JTextFieldTodaysDate.setEditable(false);
-            JTextFieldTodaysDate.setEnabled(false);
+            JTextFieldTodaysDate.setEditable(false);    JTextFieldTodaysDate.setEnabled(false);
             JSpinnerCustomerId.setEnabled(false);
-            JTextFieldUsernameUser.setEditable(false);
-            JTextFieldUsernameUser.setEnabled(false);
+            ChoiceCustomer.setEnabled(false);
+            
         }
 
     }//GEN-LAST:event_JComboBoxTxostenakActionPerformed
+
+    private void JButtonSaveUsersFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonSaveUsersFileActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JButtonSaveUsersFileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -504,40 +550,44 @@ public class View extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static java.awt.Checkbox CheckboxViewOnTable;
+    public static java.awt.Choice ChoiceCustomer;
     public static javax.swing.JButton JButtonClean;
+    public static javax.swing.JButton JButtonClear;
     public static javax.swing.JButton JButtonGoBack;
     public static javax.swing.JButton JButtonGoGraphicall;
     public static javax.swing.JButton JButtonGoManage;
     public static javax.swing.JButton JButtonGoTxostenak;
+    public static javax.swing.JButton JButtonLoginToSave;
     public static javax.swing.JButton JButtonPrintTxosten;
     public static javax.swing.JButton JButtonProbarDBConection;
     public static javax.swing.JButton JButtonReturnFromTable;
     public static javax.swing.JButton JButtonReturnStart;
-    public static javax.swing.JButton JButtonSaveInFile;
+    public static javax.swing.JButton JButtonSaveCatalog;
+    public static javax.swing.JButton JButtonSaveUsersFile;
     public static javax.swing.JButton JButtonViewGra;
     public static javax.swing.JCheckBox JCheckBoxPurchaseEvolution;
     public static javax.swing.JCheckBox JCheckBoxSortAge;
     public static javax.swing.JCheckBox JCheckPurchaseHistory;
     public static javax.swing.JComboBox<String> JComboBoxTxostenak;
     public static javax.swing.JDialog JDialogTextual;
+    public static javax.swing.JFrame JFrameDownloadData;
     public static javax.swing.JFrame JFrameGraphicalReports;
     public static javax.swing.JFrame JFrameTextReports;
-    public static javax.swing.JLabel JLabelDateFormat;
+    public static javax.swing.JLabel JLabelChooseCustomer;
     public static javax.swing.JLabel JLabelGarageTitulo;
     public static javax.swing.JLabel JLabelGraphIntro;
     public static javax.swing.JLabel JLabelIntro;
     public static javax.swing.JLabel JLabelIntro1;
+    public static javax.swing.JLabel JLabelShowImage;
     public static javax.swing.JLabel JLabelSpecifyDate;
     public static javax.swing.JLabel JLabelSpecifyId;
     public static javax.swing.JLabel JLabelTitulo;
     public static javax.swing.JLabel JLabelTitulo1;
-    public static javax.swing.JLabel JLabelUsername;
     public static javax.swing.JSpinner JSpinnerCustomerId;
     javax.swing.JTable JTableUnderage;
     public static javax.swing.JTextArea JTextAreaGraphics;
     public static javax.swing.JTextArea JTextAreaTxostenak;
     public static javax.swing.JTextField JTextFieldTodaysDate;
-    public static javax.swing.JTextField JTextFieldUsernameUser;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

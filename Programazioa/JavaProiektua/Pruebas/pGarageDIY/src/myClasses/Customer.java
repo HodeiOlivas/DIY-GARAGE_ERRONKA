@@ -109,8 +109,12 @@ public class Customer {
     }
     
     public String toStringExtended() {
-        return "customer [username: " + this.getUsername() + ",name: " + this.getBirthday() + ",surname: " + this.getSurname() + 
-                ",password: " + this.getPassword() + ",birthday: " + this.getBirthday() + ",mail: " + this.getMail() + ", phone: " + this.getPhone_Number() + "]";
+        return "\nUsername: " + this.getUsername() + ",\tPassword: " + this.getPassword() + "," +
+                "\nName: " + this.getName() + ",\tSurname: " + this.getSurname() + "," +
+                "\nBirthday: " + this.getBirthday() + ",\tPhone: " + this.getPhone_Number() + "," +
+                "\nMail: " + this.getMail() +                 
+                "\n--------------------------------------------------x--------------------------------------------------";
+       
     }
     
     
