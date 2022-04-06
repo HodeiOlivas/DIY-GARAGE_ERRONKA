@@ -15,7 +15,7 @@ import javax.swing.table.AbstractTableModel;
 public class UnderageTableModela extends AbstractTableModel {
     
     
-    private final String[] zutabeIzenak = {"Username", "Name", "Surname", "Birthday"};
+    private final String[] columnsName = {"Username", "Name", "Surname", "Birthday"};
     private ArrayList<Customer> underageCustomersList = new ArrayList<>();
 
     public UnderageTableModela(ArrayList<Customer> datosEnArrayList) {
@@ -29,7 +29,7 @@ public class UnderageTableModela extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return zutabeIzenak.length;
+        return columnsName.length;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class UnderageTableModela extends AbstractTableModel {
      */
     @Override
     public String getColumnName(int col) {
-        return zutabeIzenak[col];
+        return columnsName[col];
     }
     
 }

@@ -46,11 +46,12 @@ public class SaleTrack {
 
     @Override
     public String toString() {
-        return "\nProdict code:  \t\t" + this.getCode_Product() + 
+        
+        return "\nProduct code:  \t\t" + this.getCode_Product() + 
                "\nAppearances on pur.:  \t" + this.getAppearances() + 
                "\nSold units:  \t\t" + this.getTimes_Sold() + 
                "\nEarned with the product:  \t" + this.getBenefits_Prod() +
-                "\n--------------------------------------------------x--------------------------------------------------";
+               "\n--------------------------------------------------x--------------------------------------------------";
     }
     
     

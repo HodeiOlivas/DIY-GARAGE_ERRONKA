@@ -29,6 +29,7 @@ public class View extends javax.swing.JFrame {
         JComboBoxTxostenak.addItem("Morning / afternoon");
         JComboBoxTxostenak.addItem("Best sellers");
         JComboBoxTxostenak.addItem("The three least frequent customers");
+        JComboBoxTxostenak.addItem("Underage on table");
         
         JSpinnerCustomerId.setValue(0);
         JSpinnerCustomerId.setEnabled(false);
@@ -84,6 +85,7 @@ public class View extends javax.swing.JFrame {
         JLabelUsername = new javax.swing.JLabel();
         JTextFieldUsernameUser = new javax.swing.JTextField();
         JLabelDateFormat = new javax.swing.JLabel();
+        CheckboxViewOnTable = new java.awt.Checkbox();
         JFrameGraphicalReports = new javax.swing.JFrame();
         JCheckPurchaseHistory = new javax.swing.JCheckBox();
         JCheckBoxSortAge = new javax.swing.JCheckBox();
@@ -96,9 +98,10 @@ public class View extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         JTextAreaGraphics = new javax.swing.JTextArea();
         JCheckBoxPurchaseEvolution = new javax.swing.JCheckBox();
-        JDialogTextualUnderage = new javax.swing.JDialog();
+        JDialogTextual = new javax.swing.JDialog();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        JTableUnderage = new javax.swing.JTable();
+        JButtonReturnFromTable = new javax.swing.JButton();
         JLabelTitulo = new javax.swing.JLabel();
         JLabelIntro = new javax.swing.JLabel();
         JButtonGoTxostenak = new javax.swing.JButton();
@@ -139,6 +142,8 @@ public class View extends javax.swing.JFrame {
 
         JLabelDateFormat.setText("(yyyy-mm-dd)");
 
+        CheckboxViewOnTable.setLabel("View on table");
+
         javax.swing.GroupLayout JFrameTextReportsLayout = new javax.swing.GroupLayout(JFrameTextReports.getContentPane());
         JFrameTextReports.getContentPane().setLayout(JFrameTextReportsLayout);
         JFrameTextReportsLayout.setHorizontalGroup(
@@ -156,9 +161,14 @@ public class View extends javax.swing.JFrame {
                                     .addComponent(JComboBoxTxostenak, 0, 228, Short.MAX_VALUE)
                                     .addComponent(JLabelIntro1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addComponent(JButtonPrintTxosten, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(JButtonReturnStart)))
+                                .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(JFrameTextReportsLayout.createSequentialGroup()
+                                        .addComponent(JButtonPrintTxosten, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(JButtonReturnStart))
+                                    .addGroup(JFrameTextReportsLayout.createSequentialGroup()
+                                        .addComponent(CheckboxViewOnTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(18, 18, 18)
                         .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -180,10 +190,12 @@ public class View extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JFrameTextReportsLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(JLabelTitulo1)
-                .addGap(12, 12, 12)
-                .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JLabelIntro1)
-                    .addComponent(JLabelSpecifyId))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(JLabelIntro1)
+                        .addComponent(JLabelSpecifyId))
+                    .addComponent(CheckboxViewOnTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JComboBoxTxostenak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -205,7 +217,7 @@ public class View extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(JTextFieldTodaysDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(JButtonSaveInFile, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
+                        .addComponent(JButtonSaveInFile, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
                     .addComponent(jScrollPane3))
                 .addGap(33, 33, 33))
         );
@@ -288,23 +300,33 @@ public class View extends javax.swing.JFrame {
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
-        jScrollPane2.setViewportView(jTable1);
+        JTableUnderage.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane2.setViewportView(JTableUnderage);
 
-        javax.swing.GroupLayout JDialogTextualUnderageLayout = new javax.swing.GroupLayout(JDialogTextualUnderage.getContentPane());
-        JDialogTextualUnderage.getContentPane().setLayout(JDialogTextualUnderageLayout);
-        JDialogTextualUnderageLayout.setHorizontalGroup(
-            JDialogTextualUnderageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JDialogTextualUnderageLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+        JButtonReturnFromTable.setText("Go back");
+        JButtonReturnFromTable.setActionCommand("Return to textual reports");
+
+        javax.swing.GroupLayout JDialogTextualLayout = new javax.swing.GroupLayout(JDialogTextual.getContentPane());
+        JDialogTextual.getContentPane().setLayout(JDialogTextualLayout);
+        JDialogTextualLayout.setHorizontalGroup(
+            JDialogTextualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JDialogTextualLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jScrollPane2)
+                .addGap(44, 44, 44))
+            .addGroup(JDialogTextualLayout.createSequentialGroup()
+                .addGap(221, 221, 221)
+                .addComponent(JButtonReturnFromTable)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        JDialogTextualUnderageLayout.setVerticalGroup(
-            JDialogTextualUnderageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JDialogTextualUnderageLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+        JDialogTextualLayout.setVerticalGroup(
+            JDialogTextualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JDialogTextualLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JButtonReturnFromTable)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -421,6 +443,16 @@ public class View extends javax.swing.JFrame {
             System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString());
             System.out.println("\t-> A continuación, podrás ver las compras que ha realizado un cliente determinado. Para ello, ingresa el id de dicho cliente. \n");
 
+        } else if (JComboBoxTxostenak.getSelectedIndex() == 5) {
+            JTextAreaTxostenak.setText("Press the 'View' button to check the report...");
+            JSpinnerCustomerId.setValue(0);
+            JSpinnerCustomerId.setEnabled(false);
+            JTextFieldTodaysDate.setEnabled(false);
+            JTextFieldUsernameUser.setEditable(true);
+            JTextFieldUsernameUser.setEnabled(true);
+            System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString());
+            System.out.println("\t-> A continuación, podrás ver las compras que ha realizado un cliente determinado. Para ello, ingresa el id de dicho cliente. \n");
+
         } else {
             System.out.println("Choose any option from the combo box and press 'View'. \n");
             JTextFieldTodaysDate.setEditable(false);
@@ -471,6 +503,7 @@ public class View extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static java.awt.Checkbox CheckboxViewOnTable;
     public static javax.swing.JButton JButtonClean;
     public static javax.swing.JButton JButtonGoBack;
     public static javax.swing.JButton JButtonGoGraphicall;
@@ -478,6 +511,7 @@ public class View extends javax.swing.JFrame {
     public static javax.swing.JButton JButtonGoTxostenak;
     public static javax.swing.JButton JButtonPrintTxosten;
     public static javax.swing.JButton JButtonProbarDBConection;
+    public static javax.swing.JButton JButtonReturnFromTable;
     public static javax.swing.JButton JButtonReturnStart;
     public static javax.swing.JButton JButtonSaveInFile;
     public static javax.swing.JButton JButtonViewGra;
@@ -485,7 +519,7 @@ public class View extends javax.swing.JFrame {
     public static javax.swing.JCheckBox JCheckBoxSortAge;
     public static javax.swing.JCheckBox JCheckPurchaseHistory;
     public static javax.swing.JComboBox<String> JComboBoxTxostenak;
-    private javax.swing.JDialog JDialogTextualUnderage;
+    public static javax.swing.JDialog JDialogTextual;
     public static javax.swing.JFrame JFrameGraphicalReports;
     public static javax.swing.JFrame JFrameTextReports;
     public static javax.swing.JLabel JLabelDateFormat;
@@ -499,17 +533,17 @@ public class View extends javax.swing.JFrame {
     public static javax.swing.JLabel JLabelTitulo1;
     public static javax.swing.JLabel JLabelUsername;
     public static javax.swing.JSpinner JSpinnerCustomerId;
+    javax.swing.JTable JTableUnderage;
     public static javax.swing.JTextArea JTextAreaGraphics;
     public static javax.swing.JTextArea JTextAreaTxostenak;
     public static javax.swing.JTextField JTextFieldTodaysDate;
     public static javax.swing.JTextField JTextFieldUsernameUser;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    public static javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
 

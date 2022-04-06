@@ -129,6 +129,7 @@ public class Purchase {
                 "\nProduct: \t" + this.getId_product() + 
                 "\nDate:  \t" + this.getDate() + 
                 "\nAmount:  \t" + this.getAmount() +
+                "\nTotal cost:  \t" + this.getFinal_Cost() +
                 "\n--------------------------------------------------x--------------------------------------------------";
     }
     

@@ -64,6 +64,15 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" + "id_Product=" + id_Product + ", name=" + name + ", Price=" + Price + ", description=" + description + '}';
+        
+    }
+    
+    public String toStringTextArea() {
+        return "\nCode:  \t" + this.getId_Product() + 
+                "\nName:  \t" + this.getName()+
+                "\nPrice:  \t" + this.getPrice() + 
+                "\nDescription:  \t" + this.getDescription() +
+                "\n--------------------------------------------------x--------------------------------------------------";
     }
     
     

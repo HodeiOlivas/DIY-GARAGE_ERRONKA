@@ -54,6 +54,22 @@ public class Model {
     }
     
     
+    private static Connection connect2() {
+        // SQLite connection string
+        String url = "jdbc:mysql://localhost:3306/db_pruebagarage1";
+        //String url = "jdbc:sqlite:" + DB;
+        
+        Connection conn = null;
+        try {
+            //conn = DriverManager.getConnection(url);
+            conn = DriverManager.getConnection(url, "root", "");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return conn;
+    }
+    
+    
     public String underAgeCustomers() {
         String sql = "SELECT * FROM customer ORDER BY customer.Birthday desc";  //añadir: limit X
         ArrayList<Customer> underageCustomers = new ArrayList<>();
@@ -108,11 +124,11 @@ public class Model {
     }
     
     
-    public ArrayList<Customer> underAge() {
+    public static ArrayList<Customer> underAge() {
         String sql = "SELECT * FROM customer ORDER BY customer.Birthday desc";  //añadir: limit X
         ArrayList<Customer> underageCustomers = new ArrayList<>();
         
-        try (Connection conn = connect();
+        try (Connection conn = connect2();
              Statement stmt  = conn.createStatement();
              ResultSet rs    = stmt.executeQuery(sql)){
             
@@ -148,7 +164,6 @@ public class Model {
                         rs.getString("Mail"),
                         rs.getInt("Phone_Number"));
                 }
-                
             }
             System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
             System.out.println(underageCustomers.toString());
@@ -162,14 +177,14 @@ public class Model {
     }
     
     
-    public ArrayList<Purchase> purchasesOfDesiredCustomer(String desiredCustomer) {
+    public static ArrayList<Purchase> purchasesOfDesiredCustomer(String desiredCustomer) {
         
         String sql = "SELECT * FROM purchase WHERE cust_Username = ?";  //añadir: limit X
         ArrayList<Purchase> comprasClienteDeseado = new ArrayList<>();
         
         ResultSet rs = null;
         
-        try (Connection conn = connect();
+        try (Connection conn = connect2();
                PreparedStatement pstmt = conn.prepareStatement(sql)
                 ){
             
@@ -180,7 +195,6 @@ public class Model {
             System.out.println("====================================================================================================================");
             System.out.printf("%-10s %10s %20s %25s %20s %25s\n", "Purchase ID", "Username", "Product", "Date", "Amount", "Total");
             System.out.println("--------------------------------------------------------------------------------------------------------------------");
-            
             
             while (rs.next()) {
                 //Purchase cadaCompra = new Purchase(rs.getString("cust_Username"), rs.getString("prod_ID"), rs.getDate("Date").toLocalDate(), rs.getInt("Amount"), rs.getDouble("Final_Cost"));
@@ -210,20 +224,16 @@ public class Model {
     }
     
     
-    public ArrayList<SaleTrack> /*void*/ mostSoldProducts(){
+    public static ArrayList<SaleTrack> /*void*/ mostSoldProducts(){
         String sql = "SELECT Distinct(prod_ID) as Catalogo, "
                 + "count(prod_ID) as Recuento, "
                 + "SUM(Amount) as Vendidos,  "
                 + "SUM(purchase.amount * product.Price) as Total FROM purchase INNER JOIN product "
-                + "ON (purchase.prod_ID = product.id_Product) group by prod_ID order by Total desc"; //añadir limit 3
+                + "ON (purchase.prod_ID = product.id_Product) group by prod_ID order by Total desc"; //añadir limit X
         
         ArrayList<SaleTrack> bestSelledProducts = new ArrayList<>();
-               
-        
-        //PreparedStatement pstmt = null;
-        //ResultSet rs = null;
-        
-        try (Connection conn = connect();
+                
+        try (Connection conn = connect2();
                 Statement stmt  = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql);
                 ){
@@ -252,6 +262,11 @@ public class Model {
         
         return bestSelledProducts;
     } 
+    
+    
+    
+    //seguir con los métodos para guardar contenido en ficheros
+    
 }
 
 
