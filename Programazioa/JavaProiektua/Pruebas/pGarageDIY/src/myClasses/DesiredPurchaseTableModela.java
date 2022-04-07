@@ -30,7 +30,8 @@ public class DesiredPurchaseTableModela extends AbstractTableModel {
     public int getColumnCount() {
         return columnsName.length;
     }
-
+    
+    
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         if (columnIndex == 0) {
@@ -49,6 +50,8 @@ public class DesiredPurchaseTableModela extends AbstractTableModel {
         
         return null;
     }
+    
+    
     
     @Override
     public String getColumnName(int col) {

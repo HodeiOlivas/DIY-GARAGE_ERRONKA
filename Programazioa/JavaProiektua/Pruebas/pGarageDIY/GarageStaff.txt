@@ -1,0 +1,25 @@
+
+Worker ID: 1
+Name: primer	Surname: trabajador
+Occupation: Mechanic	Salary: 1200.99
+Mail: trabajador.primer@garage.diy,	Phone: 123456789
+Start Time: 09:00,	Finish Time: 19:00
+--------------------------------------------------x--------------------------------------------------
+Worker ID: 2
+Name: bigarren	Surname: langile
+Occupation: Mechanic	Salary: 900.2
+Mail: langile.bigarren@garage.diy,	Phone: 987654321
+Start Time: 09:00,	Finish Time: 19:00
+--------------------------------------------------x--------------------------------------------------
+Worker ID: 3
+Name: Jhon	Surname: Philips
+Occupation: Mechanic	Salary: 1600.2
+Mail: Philips.Jhon@garage.diy,	Phone: 123456897
+Start Time: 09:00,	Finish Time: 19:00
+--------------------------------------------------x--------------------------------------------------
+Worker ID: 4
+Name: Noel	Surname: Anderson
+Occupation: Mechanic	Salary: 1250.45
+Mail: Anderson.Noel@garage.diy,	Phone: 951357852
+Start Time: 09:00,	Finish Time: 19:00
+--------------------------------------------------x--------------------------------------------------

@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -294,18 +295,13 @@ public class Model {
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql);
                 ){
-
-            String cadaRegistro = "";
             while (rs.next()) {
-                
                 Customer everyCustomer = new Customer(
                             rs.getString("Username"), rs.getString("Name"), rs.getString("Surname"), rs.getString("Password"),
                             LocalDate.parse(rs.getString("Birthday")), rs.getString("Mail"), rs.getInt("Phone_Number"));
                 
                 allRegisteredCustomers.add(everyCustomer);
             }
-            
-            System.out.println(allRegisteredCustomers.toString());
             
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -343,25 +339,20 @@ public class Model {
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql);
                 ){
-
-            String cadaRegistro = "";
             while (rs.next()) {
-                
                 Product everyProduct = new Product(
                             rs.getString("id_Product"), rs.getString("Name"), rs.getDouble("Price"), rs.getString("Description"));
                 
                 allProductCatalog.add(everyProduct);
             }
             
-            System.out.println(allProductCatalog.toString());
-            
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
 
         return allProductCatalog;
-
     }
+    
     
     
     public static void saveCatalogToFile(String contentAllProducts){
@@ -379,6 +370,50 @@ public class Model {
             }
         }
     } 
+    
+    
+    public static ArrayList<Worker> getAllWorkers() {
+        
+        ArrayList<Worker> allRegisteredWorkers = new ArrayList<>();
+        String sql = "SELECT * FROM worker";
+        
+        try (Connection conn = connect2();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql);
+                ){
+
+            while (rs.next()) {
+                Worker everyWorker = new Worker(
+                            rs.getInt("Worker_ID"), rs.getString("Name"), rs.getString("Surname"), rs.getString("Password"), rs.getString("Occupation"), rs.getString("Mail"),
+                            rs.getInt("Phone_Number"), rs.getDouble("Salary"), rs.getTime("Start_time").toLocalTime(), rs.getTime("Finish_time").toLocalTime());
+                
+                allRegisteredWorkers.add(everyWorker);
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return allRegisteredWorkers;
+
+    }
+    
+    
+    public static void saveStaffToFile(String contentAllWorkers){
+        BufferedReader inputStream = null;
+        PrintWriter outputStream = null;
+        
+        try {
+            outputStream = new PrintWriter(new FileWriter("../pGarageDIY/GarageStaff.txt"));
+            outputStream.print(contentAllWorkers);
+        } catch (IOException ex) {
+            Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (outputStream != null) {
+                outputStream.close();
+            }
+        }
+    }
+    
     
 }
 

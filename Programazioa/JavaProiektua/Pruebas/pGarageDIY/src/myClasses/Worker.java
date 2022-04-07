@@ -48,7 +48,27 @@ public class Worker {
         this.finish_Time = finish_Time;
         
     }
-
+    
+    
+    public Worker (int id_worker, String name, String surname, String password,
+            String occupation, String mail, int phone_Number, double salary, 
+            LocalTime start_Time, LocalTime finish_Time) {
+        
+        //this.id_worker = id_worker;
+        this.id_worker = id_worker;
+        this.name = name;
+        this.surname = surname;
+        this.password = password;
+        this.occupation = occupation;
+        this.mail = mail;
+        this.phone_Number = phone_Number;
+        this.salary = salary;
+        this.start_Time = start_Time;
+        this.finish_Time = finish_Time;
+        
+    }
+    
+    
     public int getId_worker() {
         return id_worker;
     }
@@ -131,6 +151,18 @@ public class Worker {
                 ", password: " + this.getPassword() + ", occupation: " + this.getOccupation() + ", mail: " + this.getMail() + 
                 ", phone number: " + this.getPhone_Number() + ", salary: " + this.getSalary() + 
                 ", start time: " + this.getStart_Time().toString() + ", finish time: " + this.getFinish_Time() + "]";
+    }
+    
+    
+    
+    public String toStringExtended() {
+        return "\nWorker ID: " + this.getId_worker() + 
+                "\nName: " + this.getName() + "\tSurname: " + this.getSurname() + 
+                "\nOccupation: " + this.getOccupation() + "\tSalary: " + this.getSalary() + 
+                "\nMail: " + this.getMail() + ",\tPhone: " + this.getPhone_Number() + 
+                "\nStart Time: " + this.getStart_Time() + ",\tFinish Time: " + this.getFinish_Time() + 
+                "\n--------------------------------------------------x--------------------------------------------------";
+       
     }
     
     

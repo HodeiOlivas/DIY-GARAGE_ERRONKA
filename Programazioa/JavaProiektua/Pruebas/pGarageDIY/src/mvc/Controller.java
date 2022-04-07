@@ -43,7 +43,9 @@ public class Controller implements ActionListener {
         //--------------------------//
         View.JButtonGoTxostenak.addActionListener(listener);  //inicio -> botón para ver txostenak textuales
         View.JButtonGoGraphicall.addActionListener(listener); //inicio -> botón para ver los informes gráficos 
-
+        
+        
+        
         View.JButtonPrintTxosten.addActionListener(listener); //textual reports -> botón para ver/imprimir los datos
         View.JButtonReturnStart.addActionListener(listener);  //textual reports -> botón para volver al menú inicial
         View.JButtonSaveUsersFile.addActionListener(listener);   //textual reports -> botón para guardar el contenido del text area en un fichero
@@ -56,10 +58,13 @@ public class Controller implements ActionListener {
         
         View.JButtonReturnFromTable.addActionListener(listener);    //dialogTable -> button to return to Textual Reports' section
         
+        
+        View.JButtonLoginToSave.addActionListener(listener);    //textual reports -> log in as a WORKER to continue (download data)
+        View.JButtonValidateWorker.addActionListener(listener); //textual reports -> validate worker's login to unlock the download buttons
         View.JButtonSaveUsersFile.addActionListener(listener);  //download -> save all users
         View.JButtonSaveCatalog.addActionListener(listener);    //download -> save catalog of products (all of them)
+        View.JButtonSaveEntireStaff.addActionListener(listener);    //download -> save all garage's staff data
         
-        View.JButtonLoginToSave.addActionListener(listener);    //download -> log in as a WORKER to continue (download data)
         
 
     }
@@ -76,7 +81,7 @@ public class Controller implements ActionListener {
                 System.out.println("Wait... The Textual Report's section is loading. \n");
                 View.JFrameTextReports.setVisible(true);
                 View.JFrameTextReports.setTitle("Create a New Customer!");
-                View.JFrameTextReports.setSize(900, 600);   //600,400
+                View.JFrameTextReports.setSize(900, 800);   //600,400   //900, 600
                 View.JFrameTextReports.setResizable(false);
 
                 break;
@@ -204,6 +209,32 @@ public class Controller implements ActionListener {
                 view.JDialogTextual.dispose();
                 break;
             
+            case "Validate":
+                for (int i = 0; i < Model.getAllWorkers().size(); ++i) {
+                    if ((Model.getAllWorkers().get(i).getName().toLowerCase().equals(JTextFieldWorkerNameUser.getText().toLowerCase())) 
+                            && (Model.getAllWorkers().get(i).getSurname().toLowerCase().equals(JTextFieldWorkerSurnameUser.getText().toLowerCase()))
+                            && (Model.getAllWorkers().get(i).getPassword().equals(String.valueOf(JPasswordFieldPasswordUser.getPassword())))) {
+                        
+                        JTextAreaSaveProcessInstructor.setText("Loged as: " + Model.getAllWorkers().get(i).getName() + " " + Model.getAllWorkers().get(i).getSurname());
+                        JButtonSaveUsersFile.setEnabled(true);
+                        JButtonSaveCatalog.setEnabled(true);
+                        JButtonSaveEntireStaff.setEnabled(true);
+                        JButtonSaveCabin.setEnabled(true);
+                        
+                        JTextAreaSaveProcessInstructor.setEnabled(true);
+                        break;
+                        
+                    } else {
+                        JTextAreaSaveProcessInstructor.setText("Login failed... Wrong name, surname or password. ");
+                        JButtonSaveUsersFile.setEnabled(false);
+                        JButtonSaveCatalog.setEnabled(false);
+                        JButtonSaveEntireStaff.setEnabled(false);
+                    }
+                }
+                //&& (Model.getAllCustomers().get(i).getPassword().equals(String.valueOf(JPasswordFieldPasswordUser.getPassword())))
+                
+                break;
+            
             case "Customer Registration":
                 String strCustomersHistory = "";
                 
@@ -211,7 +242,7 @@ public class Controller implements ActionListener {
                     strCustomersHistory = strCustomersHistory + Model.getAllCustomers().get(i).toStringExtended();
                 }
                 Model.saveCustomersToFile(strCustomersHistory);
-                System.out.println("Guardando contenido en un fichero...\n");
+                JTextAreaSaveProcessInstructor.setText("All registered customers' data is being saved on a file. ");
                 break;
             
             case "Download Catalog":
@@ -221,12 +252,30 @@ public class Controller implements ActionListener {
                     strProductCatalog = strProductCatalog + Model.getAllProducts().get(i).toStringTextArea();
                 }
                 Model.saveCatalogToFile(strProductCatalog);
-                System.out.println("Guardando contenido en un fichero...\n");
+                JTextAreaSaveProcessInstructor.setText("A detailed catalog of all our products will be ready soon." + "\n" + "Downloading... Saved!");
+                break;
+            
+            case "Entire Staff":
+                String strGarageStaff = "";
+                for (int i = 0; i < Model.getAllWorkers().size(); ++i) {
+                    strGarageStaff = strGarageStaff + Model.getAllWorkers().get(i).toStringExtended();
+                }
+                Model.saveStaffToFile(strGarageStaff);
+                JTextAreaSaveProcessInstructor.setText("The file with all staff's data (no passwords shown) is already saved. " + "\n" + "Downloading... Saved!");
                 break;
             
             case "Go back": //menu nagusira bueltatu
                 View.JFrameTextReports.dispose();
                 break;
+            
+            case "Login":
+                JButtonValidateWorker.setEnabled(true);
+                JTextFieldWorkerNameUser.setEnabled(true); JTextFieldWorkerNameUser.setEditable(true);
+                JTextFieldWorkerSurnameUser.setEnabled(true);  JTextFieldWorkerSurnameUser.setEditable(true);
+                JPasswordFieldPasswordUser.setEnabled(true);   JPasswordFieldPasswordUser.setEditable(true);
+                break;
+            
+            
 
             case "View Graphics":   //txosten grafikoak -> ver datos en forma de gráficos
                 System.out.println("Ver los datos en forma de gráficos. ");
@@ -238,8 +287,7 @@ public class Controller implements ActionListener {
                 View.JFrameGraphicalReports.dispose();
                 break;
             
-            case "Login":
-                break;
+            
             /*
             case "New Client":
                 System.out.println("Has pulsado el botón 'New Client'");
