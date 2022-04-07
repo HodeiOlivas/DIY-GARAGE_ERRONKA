@@ -157,9 +157,10 @@ public class Worker {
     public String toStringExtended() {
         return /*"\nWorker ID: " + this.getId_worker() + */
                 "\nName: " + this.getName() + "\tSurname: " + this.getSurname() + 
-                "\nOccupation: " + this.getOccupation() + "\tSalary: " + this.getSalary() + 
-                "\nMail: " + this.getMail() + "\tPhone: " + this.getPhone_Number() + 
+                "\nOccupation: " + this.getOccupation() + 
+                "\nSalary: " + this.getSalary() + "\tPhone: " + this.getPhone_Number() + 
                 "\nStart Time: " + this.getStart_Time() + "\tFinish Time: " + this.getFinish_Time() + 
+                "\nMail: " + this.getMail() +
                 "\n--------------------------------------------------x--------------------------------------------------";
        
     }

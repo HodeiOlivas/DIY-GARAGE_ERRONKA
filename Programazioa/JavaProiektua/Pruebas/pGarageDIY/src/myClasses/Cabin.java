@@ -90,14 +90,17 @@ public class Cabin {
     
     public String toStringCabinData() {
         //
-        return "\nName: " + this.getId_cabin() + 
-                "\nColor: " + this.getColor() + "\tPrice Hour: " + this.getPrice_Hour() + 
-                "\nInitial Assistant's ID: " + this.getId_assistant() + "\tSize: " + this.size +  
-                "\nDescription: " + this.getDescription() + 
-                "\n--------------------------------------------------x--------------------------------------------------";
+        return "\n\n\t\t\t\t\t\t\t\tName: " + this.getId_cabin() + 
+                "\n\t\t\t\t\t\tColor: " + this.getColor() + "\tPrice Hour: " + this.getPrice_Hour() + "   Size: " + this.size +
+                "\n\t\t\t\t\t\t\tInitial Assistant's ID: " + this.getId_assistant() + 
+                /*"\n\t\t\t\t\t\tDescription: " + this.getDescription() + */
+                "\n\n--------------------------------------------------x--------------------------------x--------------------------------------------------";
+                   
     }
     
     
-            
+    /*
+    --------------------------------------------------x--------------------------------x--------------------------------------------------
+    */
     
 }

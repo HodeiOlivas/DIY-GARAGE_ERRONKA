@@ -44,8 +44,6 @@ public class Controller implements ActionListener {
         View.JButtonGoTxostenak.addActionListener(listener);  //inicio -> botón para ver txostenak textuales
         View.JButtonGoGraphicall.addActionListener(listener); //inicio -> botón para ver los informes gráficos 
         
-        
-        
         View.JButtonPrintTxosten.addActionListener(listener); //textual reports -> botón para ver/imprimir los datos
         View.JButtonReturnStart.addActionListener(listener);  //textual reports -> botón para volver al menú inicial
         View.JButtonSaveUsersFile.addActionListener(listener);   //textual reports -> botón para guardar el contenido del text area en un fichero
@@ -58,8 +56,9 @@ public class Controller implements ActionListener {
         
         View.JButtonReturnFromTable.addActionListener(listener);    //dialogTable -> button to return to Textual Reports' section
         
-        
         View.JButtonLoginToSave.addActionListener(listener);    //textual reports -> log in as a WORKER to continue (download data)
+        View.JButtonLogOut.addActionListener(listener); //textual reports -> logout from the previously logged session
+        
         View.JButtonValidateWorker.addActionListener(listener); //textual reports -> validate worker's login to unlock the download buttons
         View.JButtonSaveUsersFile.addActionListener(listener);  //download -> save all users
         View.JButtonSaveCatalog.addActionListener(listener);    //download -> save catalog of products (all of them)
@@ -82,7 +81,7 @@ public class Controller implements ActionListener {
                 System.out.println("Wait... The Textual Report's section is loading. \n");
                 View.JFrameTextReports.setVisible(true);
                 View.JFrameTextReports.setTitle("Create a New Customer!");
-                View.JFrameTextReports.setSize(900, 800);   //600,400   //900, 600
+                View.JFrameTextReports.setSize(750, 675);   //600,400   //900, 600
                 View.JFrameTextReports.setResizable(false);
 
                 break;
@@ -149,23 +148,17 @@ public class Controller implements ActionListener {
                         System.out.println("The requested data is being represented in a table. ");
                         
                     } else if (CheckboxViewOnTable.getState() == false) {
-                        /*for (int i = 0; i < model.purchasesOfDesiredCustomer(JTextFieldUsernameUser.getText()).size(); ++i) {
-                            JTextAreaTxostenak.setText(JTextAreaTxostenak.getText() + model.purchasesOfDesiredCustomer(JTextFieldUsernameUser.getText()).get(i).toStringForTextArea());
-                        }*/
-                        
                         for (int i = 0; i < model.purchasesOfDesiredCustomer(ChoiceCustomer.getSelectedItem()).size(); ++i) {
                             JTextAreaTxostenak.setText(JTextAreaTxostenak.getText() + model.purchasesOfDesiredCustomer(ChoiceCustomer.getSelectedItem()).get(i).toStringForTextArea());
                         }
-                        
                     } else {
                         JTextAreaTxostenak.setText("Something went wrong... Please, close this tab and try again. ");
                     }
 
                 } else if (JComboBoxTxostenak.getSelectedIndex() == 4) {
-                    //JSpinnerCustomerId.setEnabled(true);
-                    JTextFieldTodaysDate.setEditable(false);    JTextFieldTodaysDate.setEnabled(false);
-                    
-                    System.out.println("desired customer's purchases");
+                    for (int i = 0; i < Model.rushHourCabin().size(); ++i) {
+                        JTextAreaTxostenak.setText(JTextAreaTxostenak.getText() + Model.rushHourCabin().get(i));
+                    }
 
                 } else if (JComboBoxTxostenak.getSelectedIndex() == 5) {
                     JTextFieldTodaysDate.setEditable(false);    JTextFieldTodaysDate.setEnabled(false);
@@ -217,6 +210,7 @@ public class Controller implements ActionListener {
                             && (Model.getAllWorkers().get(i).getPassword().equals(String.valueOf(JPasswordFieldPasswordUser.getPassword())))) {
                         
                         JTextAreaSaveProcessInstructor.setText("Loged as: " + Model.getAllWorkers().get(i).getName() + " " + Model.getAllWorkers().get(i).getSurname());
+                        JButtonLogOut.setEnabled(true);
                         JButtonSaveUsersFile.setEnabled(true);
                         JButtonSaveCatalog.setEnabled(true);
                         JButtonSaveEntireStaff.setEnabled(true);
@@ -230,15 +224,32 @@ public class Controller implements ActionListener {
                         JButtonSaveUsersFile.setEnabled(false);
                         JButtonSaveCatalog.setEnabled(false);
                         JButtonSaveEntireStaff.setEnabled(false);
+                        JButtonSaveCabin.setEnabled(false);
                     }
                 }
                 //&& (Model.getAllCustomers().get(i).getPassword().equals(String.valueOf(JPasswordFieldPasswordUser.getPassword())))
                 
                 break;
             
+            case "Logout":
+                JButtonLogOut.setEnabled(false);
+                JTextFieldWorkerNameUser.setText(""); JTextFieldWorkerNameUser.setEnabled(false); JTextFieldWorkerNameUser.setEditable(false);
+                JTextFieldWorkerSurnameUser.setText(""); JTextFieldWorkerSurnameUser.setEnabled(false);  JTextFieldWorkerSurnameUser.setEditable(false);
+                JPasswordFieldPasswordUser.setText(""); JPasswordFieldPasswordUser.setEnabled(false);   JPasswordFieldPasswordUser.setEditable(false);
+                
+                JButtonValidateWorker.setEnabled(false);
+                
+                JTextAreaSaveProcessInstructor.setText(""); JTextAreaSaveProcessInstructor.setEnabled(false); JTextAreaSaveProcessInstructor.setEditable(false);
+                
+                JButtonSaveUsersFile.setEnabled(false);
+                JButtonSaveCatalog.setEnabled(false);
+                JButtonSaveEntireStaff.setEnabled(false);
+                JButtonSaveCabin.setEnabled(false);
+                
+                break;
+            
             case "Customer Registration":
                 String strCustomersHistory = "";
-                
                 for (int i = 0; i < Model.getAllCustomers().size(); ++i) {
                     strCustomersHistory = strCustomersHistory + Model.getAllCustomers().get(i).toStringExtended();
                 }
@@ -248,7 +259,6 @@ public class Controller implements ActionListener {
             
             case "Download Catalog":
                 String strProductCatalog = "";
-                
                 for (int i = 0; i < Model.getAllProducts().size(); ++i) {
                     strProductCatalog = strProductCatalog + Model.getAllProducts().get(i).toStringTextArea();
                 }
@@ -294,7 +304,8 @@ public class Controller implements ActionListener {
                 View.JTextAreaGraphics.setText("Please, choose the report you want to represent");
                 break;
             case "Go back to start":
-                View.JFrameGraphicalReports.dispose();
+                //View.JFrameGraphicalReports.dispose();
+                View.JFrameGraphicalReports.setDefaultCloseOperation(EXIT_ON_CLOSE);
                 break;
             
             

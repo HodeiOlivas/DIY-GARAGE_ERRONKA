@@ -53,6 +53,7 @@ public class View extends javax.swing.JFrame {
         
         
         //Textual Reports - Worker's section - Process to be allowed to save data on files
+        JButtonLogOut.setEnabled(false);
         JButtonValidateWorker.setEnabled(false);
         
         JTextFieldWorkerNameUser.setEnabled(false); JTextFieldWorkerNameUser.setEditable(false);
@@ -111,7 +112,6 @@ public class View extends javax.swing.JFrame {
         ChoiceCustomer = new java.awt.Choice();
         JLabelChooseCustomer = new javax.swing.JLabel();
         JButtonClear = new javax.swing.JButton();
-        JLabelShowImage = new javax.swing.JLabel();
         JButtonSaveUsersFile = new javax.swing.JButton();
         JButtonSaveCatalog = new javax.swing.JButton();
         JButtonLoginToSave = new javax.swing.JButton();
@@ -128,6 +128,7 @@ public class View extends javax.swing.JFrame {
         JButtonSaveCabin = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         JTextAreaSaveProcessInstructor = new javax.swing.JTextArea();
+        JButtonLogOut = new javax.swing.JButton();
         JFrameGraphicalReports = new javax.swing.JFrame();
         JCheckPurchaseHistory = new javax.swing.JCheckBox();
         JCheckBoxSortAge = new javax.swing.JCheckBox();
@@ -189,8 +190,6 @@ public class View extends javax.swing.JFrame {
 
         JButtonClear.setText("Clear");
 
-        JLabelShowImage.setText("Poner alguna imagen");
-
         JButtonSaveUsersFile.setText("Customer Registration");
         JButtonSaveUsersFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,6 +220,8 @@ public class View extends javax.swing.JFrame {
         JTextAreaSaveProcessInstructor.setRows(5);
         jScrollPane4.setViewportView(JTextAreaSaveProcessInstructor);
 
+        JButtonLogOut.setText("Logout");
+
         javax.swing.GroupLayout JFrameTextReportsLayout = new javax.swing.GroupLayout(JFrameTextReports.getContentPane());
         JFrameTextReports.getContentPane().setLayout(JFrameTextReportsLayout);
         JFrameTextReportsLayout.setHorizontalGroup(
@@ -230,65 +231,24 @@ public class View extends javax.swing.JFrame {
                 .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(JFrameTextReportsLayout.createSequentialGroup()
                         .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JLabelWorkerName)
+                            .addComponent(JLabelWorkerPassword)
                             .addComponent(JLabelWorkerSurname)
-                            .addComponent(JLabelWorkerPassword))
-                        .addGap(27, 27, 27)
-                        .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(JTextFieldWorkerNameUser, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                            .addComponent(JTextFieldWorkerSurnameUser)
-                            .addComponent(JPasswordFieldPasswordUser))
+                            .addComponent(JLabelWorkerName))
+                        .addGap(18, 18, 18)
                         .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(JFrameTextReportsLayout.createSequentialGroup()
+                                .addComponent(JPasswordFieldPasswordUser, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(JLabelStaffOnly))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JFrameTextReportsLayout.createSequentialGroup()
-                                .addGap(42, 42, 42)
                                 .addComponent(JButtonValidateWorker)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(JFrameTextReportsLayout.createSequentialGroup()
-                        .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(JFrameTextReportsLayout.createSequentialGroup()
-                                    .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(JComboBoxTxostenak, 0, 228, Short.MAX_VALUE)
-                                        .addComponent(JLabelIntro1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(CheckboxViewOnTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(JFrameTextReportsLayout.createSequentialGroup()
-                                            .addComponent(JButtonPrintTxosten, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(JButtonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(18, 18, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JFrameTextReportsLayout.createSequentialGroup()
-                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(214, 214, 214)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(JFrameTextReportsLayout.createSequentialGroup()
                                 .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(JLabelTitulo1)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(JLabelChooseCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ChoiceCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(JFrameTextReportsLayout.createSequentialGroup()
-                                .addComponent(JLabelSpecifyId, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(JSpinnerCustomerId, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(JLabelSpecifyDate)
-                            .addComponent(JTextFieldTodaysDate)
-                            .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(JButtonLoginToSave, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JFrameTextReportsLayout.createSequentialGroup()
-                                    .addGap(13, 13, 13)
-                                    .addComponent(JButtonReturnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(JFrameTextReportsLayout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(JLabelShowImage))))
-                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(JTextFieldWorkerSurnameUser, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(JTextFieldWorkerNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(JLabelStaffOnly)
+                                .addGap(94, 94, 94)))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JFrameTextReportsLayout.createSequentialGroup()
                         .addComponent(JButtonSaveUsersFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
@@ -296,69 +256,106 @@ public class View extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(JButtonSaveEntireStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(JButtonSaveCabin, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                        .addComponent(JButtonSaveCabin, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JFrameTextReportsLayout.createSequentialGroup()
+                        .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(JFrameTextReportsLayout.createSequentialGroup()
+                                .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(JComboBoxTxostenak, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(JLabelIntro1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(JFrameTextReportsLayout.createSequentialGroup()
+                                        .addComponent(JButtonPrintTxosten, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(JButtonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(CheckboxViewOnTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(JLabelTitulo1)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(JLabelChooseCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ChoiceCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(JFrameTextReportsLayout.createSequentialGroup()
+                                    .addComponent(JLabelSpecifyId, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(JSpinnerCustomerId, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(JLabelSpecifyDate))
+                            .addGroup(JFrameTextReportsLayout.createSequentialGroup()
+                                .addComponent(JButtonLoginToSave, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(JButtonLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(JButtonReturnStart, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(JTextFieldTodaysDate)))
+                    .addComponent(jSeparator4))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         JFrameTextReportsLayout.setVerticalGroup(
             JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JFrameTextReportsLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(JLabelTitulo1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(JLabelIntro1)
-                    .addComponent(CheckboxViewOnTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JLabelShowImage))
-                .addGap(18, 18, 18)
-                .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JComboBoxTxostenak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JButtonPrintTxosten)
-                    .addComponent(JButtonClear)
-                    .addComponent(JSpinnerCustomerId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JLabelSpecifyId))
-                .addGap(13, 13, 13)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(JFrameTextReportsLayout.createSequentialGroup()
-                        .addComponent(JLabelChooseCustomer)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ChoiceCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JLabelSpecifyDate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(JTextFieldTodaysDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(JButtonLoginToSave)
-                        .addGap(22, 22, 22)
-                        .addComponent(JButtonReturnStart))
-                    .addComponent(jScrollPane3))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(14, 14, 14)
                 .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JFrameTextReportsLayout.createSequentialGroup()
-                        .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JLabelWorkerName)
-                            .addComponent(JTextFieldWorkerNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JLabelStaffOnly))
+                        .addComponent(JLabelIntro1)
                         .addGap(18, 18, 18)
                         .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JLabelWorkerSurname)
-                            .addComponent(JTextFieldWorkerSurnameUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(JComboBoxTxostenak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JButtonPrintTxosten)
+                            .addComponent(JButtonClear)
+                            .addComponent(JSpinnerCustomerId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JLabelSpecifyId))
+                        .addGap(13, 13, 13)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(JFrameTextReportsLayout.createSequentialGroup()
+                                .addComponent(JLabelChooseCustomer)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ChoiceCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(JLabelSpecifyDate)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(JTextFieldTodaysDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                                .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(JButtonLoginToSave)
+                                    .addComponent(JButtonLogOut))
+                                .addGap(20, 20, 20)
+                                .addComponent(JButtonReturnStart))
+                            .addComponent(jScrollPane3))
                         .addGap(18, 18, 18)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(JLabelWorkerName)
+                                .addComponent(JTextFieldWorkerNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(JLabelStaffOnly))
+                            .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(JFrameTextReportsLayout.createSequentialGroup()
+                                    .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(JLabelWorkerSurname)
+                                        .addComponent(JTextFieldWorkerSurnameUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(JPasswordFieldPasswordUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(JLabelWorkerPassword)
+                                        .addComponent(JButtonValidateWorker)))
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(34, 34, 34)
                         .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JLabelWorkerPassword)
-                            .addComponent(JPasswordFieldPasswordUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JButtonValidateWorker)))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JButtonSaveEntireStaff)
-                    .addComponent(JButtonSaveCabin)
-                    .addComponent(JButtonSaveCatalog)
-                    .addComponent(JButtonSaveUsersFile))
-                .addGap(69, 69, 69))
+                            .addComponent(JButtonSaveEntireStaff)
+                            .addComponent(JButtonSaveCabin)
+                            .addComponent(JButtonSaveCatalog)
+                            .addComponent(JButtonSaveUsersFile))
+                        .addContainerGap(34, Short.MAX_VALUE))
+                    .addGroup(JFrameTextReportsLayout.createSequentialGroup()
+                        .addComponent(CheckboxViewOnTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         JCheckPurchaseHistory.setText("Certain customer's purchase history");
@@ -566,25 +563,22 @@ public class View extends javax.swing.JFrame {
             JSpinnerCustomerId.setEnabled(false);
             ChoiceCustomer.setEnabled(false);
             JTextFieldTodaysDate.setText("");
-
+            
             System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString() + ". \n");
-            //JTextAreaTxostenak.setText("Enter the date which availabikity you want to know about. ");
-
+            
         } else if (JComboBoxTxostenak.getSelectedIndex() == 2) {
             JSpinnerCustomerId.setEnabled(false);
             JTextFieldTodaysDate.setEnabled(false);
             ChoiceCustomer.setEnabled(false);
 
             System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString() + ". \n");
-            //JTextAreaTxostenak.setText("Press the 'View' button to see the underage customers...");
 
         } else if (JComboBoxTxostenak.getSelectedIndex() == 3) {
             JTextFieldTodaysDate.setEnabled(false);
             ChoiceCustomer.setEnabled(true);
-            JSpinnerCustomerId.setValue(0); JSpinnerCustomerId.setEnabled(true);
+            JSpinnerCustomerId.setValue(0); JSpinnerCustomerId.setEnabled(false);
 
             System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString() + ". \n");
-            //JTextAreaTxostenak.setText("Specify desired customer's ID to check the purchases. ");
 
         } else if (JComboBoxTxostenak.getSelectedIndex() == 4) {
             JSpinnerCustomerId.setValue(0); JSpinnerCustomerId.setEnabled(true);
@@ -592,7 +586,6 @@ public class View extends javax.swing.JFrame {
             ChoiceCustomer.setEnabled(false);
 
             System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString() + ". \n");
-            //JTextAreaTxostenak.setText("Press the 'View' button to differentiate between morning and afternoon reservations");
 
         } else if (JComboBoxTxostenak.getSelectedIndex() == 5) {
             JSpinnerCustomerId.setValue(0); JSpinnerCustomerId.setEnabled(false);
@@ -600,7 +593,6 @@ public class View extends javax.swing.JFrame {
             ChoiceCustomer.setEnabled(false);
 
             System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString() + ". \n");
-            //JTextAreaTxostenak.setText("Press the 'View' button to find out which products have given the best results. ");
 
         } else {
             System.out.println("Choose any option from the combo box and press 'View'. \n");
@@ -658,6 +650,7 @@ public class View extends javax.swing.JFrame {
     public static javax.swing.JButton JButtonGoGraphicall;
     public static javax.swing.JButton JButtonGoManage;
     public static javax.swing.JButton JButtonGoTxostenak;
+    public static javax.swing.JButton JButtonLogOut;
     public static javax.swing.JButton JButtonLoginToSave;
     public static javax.swing.JButton JButtonPrintTxosten;
     public static javax.swing.JButton JButtonProbarDBConection;
@@ -677,20 +670,19 @@ public class View extends javax.swing.JFrame {
     public static javax.swing.JFrame JFrameAdminSection;
     public static javax.swing.JFrame JFrameGraphicalReports;
     public static javax.swing.JFrame JFrameTextReports;
-    private javax.swing.JLabel JLabelChooseCustomer;
+    public static javax.swing.JLabel JLabelChooseCustomer;
     public static javax.swing.JLabel JLabelGarageTitulo;
     public static javax.swing.JLabel JLabelGraphIntro;
     public static javax.swing.JLabel JLabelIntro;
-    private javax.swing.JLabel JLabelIntro1;
-    private javax.swing.JLabel JLabelShowImage;
-    private javax.swing.JLabel JLabelSpecifyDate;
-    private javax.swing.JLabel JLabelSpecifyId;
-    private javax.swing.JLabel JLabelStaffOnly;
+    public static javax.swing.JLabel JLabelIntro1;
+    public static javax.swing.JLabel JLabelSpecifyDate;
+    public static javax.swing.JLabel JLabelSpecifyId;
+    public static javax.swing.JLabel JLabelStaffOnly;
     public static javax.swing.JLabel JLabelTitulo;
-    private javax.swing.JLabel JLabelTitulo1;
-    private javax.swing.JLabel JLabelWorkerName;
-    private javax.swing.JLabel JLabelWorkerPassword;
-    private javax.swing.JLabel JLabelWorkerSurname;
+    public static javax.swing.JLabel JLabelTitulo1;
+    public static javax.swing.JLabel JLabelWorkerName;
+    public static javax.swing.JLabel JLabelWorkerPassword;
+    public static javax.swing.JLabel JLabelWorkerSurname;
     public static javax.swing.JPasswordField JPasswordFieldPasswordUser;
     public static javax.swing.JSpinner JSpinnerCustomerId;
     javax.swing.JTable JTableUnderage;

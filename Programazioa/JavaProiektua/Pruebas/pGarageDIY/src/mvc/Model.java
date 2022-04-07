@@ -458,6 +458,53 @@ public class Model {
     }
     
     
+    public static ArrayList<String> rushHourCabin() {
+        /*String sql = "SELECT Distinct(id_cabin) as Cabin, "
+                + "SCOUNT(*) as cantMorning FROM reservation where Ending_Hour <= '13:00:00' group by id_cabin"; //añadir limit X*/
+        
+        /*String sql = "SELECT Distinct(id_cabin) as Cabin, "
+                + "COUNT(*) as cantMorning FROM reservation where Ending_Hour >= '15:00:00' group by id_cabin"; //añadir limit X*/
+        /* DONE
+        String sql = "select count(*) as Cabin,"
+                + "count(case when Ending_Hour <= '13:00:00' then 1 else null end) as cantMorning "
+                + "FROM reservation;";
+        */
+        String sql = "select DISTINCT(id_cabin) as Cabin,"
+                + "count(case when Ending_Hour <= '13:00:00' then 1 else null end) as cantMorning,"
+                + "count(case when Starting_Hour >= '15:00:00' then 1 else null end) as cantAfternoon "
+                + "FROM reservation group by id_cabin;";
+
+        ArrayList<String> morningReservations = new ArrayList<>();
+
+        try (Connection conn = connect2();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql);) {
+            
+            String rentMorning = "";
+            while (rs.next()) {
+                //"--------------------------------------------------" + rs.getString("Cabin") + "--------------------------------------------------"
+                morningReservations.add("\n");
+                rentMorning = "   |----------------------------------------------  " + rs.getString("Cabin") + "  -----------------------------------------------| " +  //3 spaces
+                        "\n\t\t Morning: " + rs.getInt("cantMorning") + 
+                        "\n\t\tAfternoon: " + rs.getInt("cantAfternoon") + "\n";
+                
+                morningReservations.add(rentMorning);
+                
+                /*System.out.printf("%12s %30d %30d \n",
+                        rs.getString("Cabin"),
+                        rs.getInt("cantMorning"),
+                        rs.getInt("cantAfternoon")
+                );*/
+                
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return morningReservations;
+    }
+    
+    
     /**
      * Method created to asign a random customer to a cabin which is just created. (the 
      * cabin needs at least one worker; so this method allows us to asign random worker.)

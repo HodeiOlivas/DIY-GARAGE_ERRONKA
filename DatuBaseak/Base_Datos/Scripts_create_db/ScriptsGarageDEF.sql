@@ -161,7 +161,18 @@ SELECT Worker_ID, Name FROM worker ORDER BY RAND() LIMIT 1;
 
 
 
-
 ---links info
 https://www.freecodecamp.org/espanol/news/declaracion-sql-update/
 https://www.mysqltutorial.org/select-random-records-database-table.aspx
+https://www.codegrepper.com/code-examples/sql/date+greater+than+in+sql --(consultas SQL)
+https://ubiq.co/database-blog/multiple-counts-with-different-conditions-in-single-mysql-query/
+
+
+
+
+
+
+
+
+
+
