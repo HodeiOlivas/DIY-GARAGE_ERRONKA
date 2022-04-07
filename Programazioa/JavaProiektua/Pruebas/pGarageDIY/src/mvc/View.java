@@ -60,11 +60,14 @@ public class View extends javax.swing.JFrame {
         JPasswordFieldPasswordUser.setEnabled(false);   JPasswordFieldPasswordUser.setEditable(false);
         
         JTextAreaSaveProcessInstructor.setEnabled(false);   JTextAreaSaveProcessInstructor.setEditable(false);
+        JTextAreaSaveProcessInstructor.setAutoscrolls(true);
         
         JButtonSaveUsersFile.setEnabled(false);
         JButtonSaveCatalog.setEnabled(false);
         JButtonSaveEntireStaff.setEnabled(false);
         JButtonSaveCabin.setEnabled(false);
+        
+        
         
         
         
@@ -214,6 +217,7 @@ public class View extends javax.swing.JFrame {
         JButtonSaveCabin.setText("Cabin Structure");
 
         JTextAreaSaveProcessInstructor.setColumns(20);
+        JTextAreaSaveProcessInstructor.setLineWrap(true);
         JTextAreaSaveProcessInstructor.setRows(5);
         jScrollPane4.setViewportView(JTextAreaSaveProcessInstructor);
 

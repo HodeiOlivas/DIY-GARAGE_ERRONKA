@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -412,6 +413,61 @@ public class Model {
                 outputStream.close();
             }
         }
+    }
+    
+    
+    public static ArrayList<Cabin> getAllCabins() {
+        
+        ArrayList<Cabin> allCabins = new ArrayList<>();
+        String sql = "SELECT * FROM cabin";
+        
+        try (Connection conn = connect2();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql);
+                ){
+
+            while (rs.next()) {
+                
+                Cabin everyCabin = new Cabin(WorkArea.valueOf(rs.getString("Cabin_ID")), Model.getRandomWorker(Model.getAllWorkers()), rs.getDouble("Size"), rs.getString("Color"), rs.getDouble("Price_Hour"), rs.getString("Description"));
+                
+                allCabins.add(everyCabin);
+                
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return allCabins;
+    }
+    
+    
+    public static void saveCabinsToFile(String contentAllCabins){
+        BufferedReader inputStream = null;
+        PrintWriter outputStream = null;
+        
+        try {
+            outputStream = new PrintWriter(new FileWriter("../pGarageDIY/CabinStructure.txt"));
+            outputStream.print(contentAllCabins);
+        } catch (IOException ex) {
+            Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (outputStream != null) {
+                outputStream.close();
+            }
+        }
+    }
+    
+    
+    /**
+     * Method created to asign a random customer to a cabin which is just created. (the 
+     * cabin needs at least one worker; so this method allows us to asign random worker.)
+     * @param list
+     * @return 
+     */
+    public static Worker getRandomWorker(ArrayList<Worker> listOfWorkers)
+    {
+        Random rand = new Random();
+        return listOfWorkers.get(rand.nextInt(listOfWorkers.size()));
     }
     
     

@@ -1,0 +1,26 @@
+
+Name: C0
+Color: Blue	Price Hour: 25.63
+Initial Assistant's ID: 2	Size: 2.0
+Description: Washing Cabin
+--------------------------------------------------x--------------------------------------------------
+Name: C1
+Color: Yellow	Price Hour: 45.1
+Initial Assistant's ID: 4	Size: 3.2
+Description: Cabin designed for tall vehicles. 
+--------------------------------------------------x--------------------------------------------------
+Name: C2
+Color: Green	Price Hour: 30.0
+Initial Assistant's ID: 1	Size: 1.85
+Description: Non-Stick Cabib - Designed to repairs that can get
+--------------------------------------------------x--------------------------------------------------
+Name: C3
+Color: White	Price Hour: 95.6
+Initial Assistant's ID: 1	Size: 4.5
+Description: Cabin made for hosting painting and plating proces
+--------------------------------------------------x--------------------------------------------------
+Name: C4
+Color: Black	Price Hour: 71.8
+Initial Assistant's ID: 1	Size: 2.25
+Description: Soundproofed cabin - Designed to test customers' vehicle
+--------------------------------------------------x--------------------------------------------------

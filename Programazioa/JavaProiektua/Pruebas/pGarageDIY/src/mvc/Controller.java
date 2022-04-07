@@ -64,6 +64,7 @@ public class Controller implements ActionListener {
         View.JButtonSaveUsersFile.addActionListener(listener);  //download -> save all users
         View.JButtonSaveCatalog.addActionListener(listener);    //download -> save catalog of products (all of them)
         View.JButtonSaveEntireStaff.addActionListener(listener);    //download -> save all garage's staff data
+        View.JButtonSaveCabin.addActionListener(listener);      //download -> save on a file the information of the garage's cabins
         
         
 
@@ -242,7 +243,7 @@ public class Controller implements ActionListener {
                     strCustomersHistory = strCustomersHistory + Model.getAllCustomers().get(i).toStringExtended();
                 }
                 Model.saveCustomersToFile(strCustomersHistory);
-                JTextAreaSaveProcessInstructor.setText("All registered customers' data is being saved on a file. ");
+                JTextAreaSaveProcessInstructor.setText("Downloading all registered customers' data on a file." + "\n\n" + "Successfully Completed!");
                 break;
             
             case "Download Catalog":
@@ -252,7 +253,7 @@ public class Controller implements ActionListener {
                     strProductCatalog = strProductCatalog + Model.getAllProducts().get(i).toStringTextArea();
                 }
                 Model.saveCatalogToFile(strProductCatalog);
-                JTextAreaSaveProcessInstructor.setText("A detailed catalog of all our products will be ready soon." + "\n" + "Downloading... Saved!");
+                JTextAreaSaveProcessInstructor.setText("A detailed catalog of all our products will be ready soon." + "\n\n" + "Downloading... \nSaved!");
                 break;
             
             case "Entire Staff":
@@ -261,7 +262,16 @@ public class Controller implements ActionListener {
                     strGarageStaff = strGarageStaff + Model.getAllWorkers().get(i).toStringExtended();
                 }
                 Model.saveStaffToFile(strGarageStaff);
-                JTextAreaSaveProcessInstructor.setText("The file with all staff's data (no passwords shown) is already saved. " + "\n" + "Downloading... Saved!");
+                JTextAreaSaveProcessInstructor.setText("Downloading all staff's data (except passwords)..." + "\n\n" + "Completed!!");
+                break;
+            
+            case "Cabin Structure":
+                String strAllCabins = "";
+                for (int i = 0; i < Model.getAllCabins().size(); ++i) {
+                    strAllCabins = strAllCabins + Model.getAllCabins().get(i).toStringCabinData();
+                }
+                Model.saveCabinsToFile(strAllCabins);
+                JTextAreaSaveProcessInstructor.setText("Basic information of Garage's cabins is saved on file. " + "\n\n" + "Go check it!");
                 break;
             
             case "Go back": //menu nagusira bueltatu

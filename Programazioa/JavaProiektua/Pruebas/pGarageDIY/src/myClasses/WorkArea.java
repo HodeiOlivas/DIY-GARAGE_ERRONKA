@@ -11,6 +11,6 @@ package myClasses;
  */
 public enum WorkArea {
     
-    C1, C2, C3, C4
+    C0, C1, C2, C3, C4
     
 }

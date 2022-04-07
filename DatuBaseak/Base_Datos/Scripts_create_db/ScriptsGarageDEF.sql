@@ -147,13 +147,21 @@ SET reservation.Total_Price = (SELECT (reservation.Amount_Hours * cabin.Price_Ho
                                INNER JOIN cabin 
                                ON reservation.id_cabin=cabin.Cabin_ID);
 
+
 --TXOSTENAK--
 --Cuántas veces se ha vendido cada producto:
 String sql = "SELECT Distinct(id_Product) as Catalogo, count(id_Product) as Recuento FROM purchase group by id_Product";
+
 --Compras del cliente deseado:
 String sql = "SELECT * FROM purchase WHERE cust_Username = ?";
+
+--consulta para obtener registro random de una tabla (p.e.: random worker):
+SELECT Worker_ID, Name FROM worker ORDER BY RAND() LIMIT 1;
+
+
 
 
 
 ---links info
 https://www.freecodecamp.org/espanol/news/declaracion-sql-update/
+https://www.mysqltutorial.org/select-random-records-database-table.aspx
