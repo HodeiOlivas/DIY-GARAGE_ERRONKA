@@ -6,11 +6,12 @@
         include("test_connect_db.php");
         $username = $_POST["username"];
         $product = $_POST["product_Id"];
+        $date = date("Y-m-d");  //echo "Today is " . date("Y-m-d") . "<br>";
         $quantity = $_POST["amount"];
         $link = connectDataBase();
-        $emaitza = mysqli_query($link, "insert into purchase values('$id','$izena')");
+        $emaitza = mysqli_query($link, "insert into purchase (cust_Username, prod_ID, Date, Amount) values('$username','$product', $date, $quantity)");   
 
-        $kontsulta = mysqli_query($link, "select * from langilea");
+        $kontsulta = mysqli_query($link, "select * from purchase");
         ?>
         <TABLE BORDER=1 CELLSPACING=1 CELLPADDING=1>
             <Tr>

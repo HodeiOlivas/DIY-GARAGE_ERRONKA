@@ -30,7 +30,7 @@
         ?>
 
         <div class="container">
-            <h2>Your Purchases</h2>
+            <h2>Your Reservations</h2>
             <p>Once you the new purchase is created, you should refresh the page to see it on the table. </p>
             <br>
             <table style="text-align:center; margin-left:200px" align="right" BORDER=1 CELLSPACING=10 CELLPADDING=10>
@@ -68,8 +68,8 @@
         </div>
 
         <div style="margin:auto;width:100%;margin-top:100px;">
-                <br><br><br><br><br><br><br><br>
-            </div>
+                <br><br><br><br><br><br>
+        </div>
 
         <div class="container" style="margin-top: 200px;">
             
@@ -104,6 +104,7 @@
 
     </div>
 
+
     <pre>
         <br>
         <br>
@@ -119,11 +120,11 @@
     </div>
     
     
-    <div style='margin:auto;width:600px;margin-top:50px;'>
+    <div style='width:600px;float:right;margin-top:50px; margin-right:300px'>      <!-- style='margin:auto;width:600px;margin-top:50px;' -->
         <p>dwdq</p>
         <h1>Add a new purchase</h1>
         <!--<form action="insertNewPurchase.php" method="POST"> -->
-        <form method="POST">
+        <form action="insertNewPurchase.php" method="POST">
             <table>
                 <tr>
                     <td>Customer's username:</td>
