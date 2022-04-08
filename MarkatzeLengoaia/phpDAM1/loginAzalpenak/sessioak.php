@@ -50,6 +50,8 @@
 
 
     <?php
+    session_start();
+    printf($_SESSION['usuario']);
         }
     }
     ?>

@@ -18,10 +18,11 @@
     // else if (mysqli_num_rows($result) == 1)
     {
         session_start();
-        $_SESSION["newsession"]=$usuario;
-        echo $_SESSION["newsession"];
+        $_SESSION["usuario"]=$usuario;
+        // echo $_SESSION["newsession"];
 
-        header("Location:webErabiltzaileak.php?incorrecto=no");
+        // header("Location:webErabiltzaileak.php?incorrecto=no");
+        header("Location:webErabiltzaileak.php");
         
     }
 
