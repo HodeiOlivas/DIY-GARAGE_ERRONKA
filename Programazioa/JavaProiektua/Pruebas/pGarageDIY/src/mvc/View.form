@@ -25,19 +25,21 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="JPasswordFieldPasswordUser" min="-2" pref="120" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="JButtonValidateWorker" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="JTextFieldWorkerSurnameUser" min="-2" pref="120" max="-2" attributes="0"/>
-                                      <Component id="JTextFieldWorkerNameUser" min="-2" pref="120" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="JTextFieldWorkerNameUser" min="-2" pref="120" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="JLabelStaffOnly" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="JPasswordFieldPasswordUser" min="-2" pref="120" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="JButtonValidateWorker" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="JTextFieldWorkerSurnameUser" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jScrollPane4" min="-2" pref="206" max="-2" attributes="0"/>
@@ -74,16 +76,14 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="JLabelChooseCustomer" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                                  <Component id="ChoiceCustomer" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="JLabelSpecifyId" min="-2" pref="58" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="JSpinnerCustomerId" min="-2" pref="120" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="JLabelSpecifyDate" min="-2" max="-2" attributes="0"/>
+                              <Component id="JLabelChooseCustomer" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                              <Component id="ChoiceCustomer" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="JLabelSpecifyId" min="-2" pref="58" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="JSpinnerCustomerId" min="-2" pref="120" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="JLabelSpecifyDate" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="JButtonLoginToSave" min="-2" pref="94" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
