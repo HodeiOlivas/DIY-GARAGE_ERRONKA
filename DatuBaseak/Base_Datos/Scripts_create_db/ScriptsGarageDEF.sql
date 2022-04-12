@@ -168,8 +168,20 @@ https://www.codegrepper.com/code-examples/sql/date+greater+than+in+sql --(consul
 https://ubiq.co/database-blog/multiple-counts-with-different-conditions-in-single-mysql-query/
 
 
-
-
+/*
+<TABLE BORDER=1 CELLSPACING=1 CELLPADDING=1>
+    <Tr>
+        <th>&nbsp;Langilearen ID&nbsp;</th>
+        <th>&nbsp;Izena-Abizena&nbsp;</th>
+    </Tr>
+    <?php
+    while ($erregistroa = mysqli_fetch_array($kontsulta)) {
+        printf("<tr><td>%d</td><td>%s</td></tr>", $erregistroa[0], $erregistroa[1]);
+    }
+    mysqli_free_result($kontsulta);
+    ?>
+</table>
+*/
 
 
 
