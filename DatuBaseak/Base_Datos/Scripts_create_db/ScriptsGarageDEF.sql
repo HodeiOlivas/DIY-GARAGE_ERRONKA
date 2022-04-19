@@ -183,6 +183,21 @@ https://ubiq.co/database-blog/multiple-counts-with-different-conditions-in-singl
 </table>
 */
 
+--link php to sql
+https://www.php.net/manual/es/function.date.php
+
+
+-- sentencia: selecciona los 3 mejores clientes (en cuanto a reservas)
+SELECT cust_Username, SUM(Total_Price) FROM reservation group by cust_Username;
+
+SELECT cust_Username, SUM(Amount_Hours) as ReservedHours, SUM(Total_Price) as eachPaid 
+FROM reservation group by cust_Username order by eachPaid desc limit 2;
+
+https://www.w3resource.com/sql/aggregate-functions/sum-with-group-by.php
+
+
+-- java radio button group
+https://www.geeksforgeeks.org/jradiobutton-java-swing/
 
 
 

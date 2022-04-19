@@ -5,6 +5,8 @@
  */
 package mvc;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.io.PrintWriter;
 import java.io.*;
 import java.sql.Connection;
@@ -21,7 +23,10 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import mvc.View.*;
 import myClasses.*;
+import forGraphics.*;
 
 //import myClasses.*;
 /**
@@ -489,13 +494,6 @@ public class Model {
                         "\n\t\tAfternoon: " + rs.getInt("cantAfternoon") + "\n";
                 
                 morningReservations.add(rentMorning);
-                
-                /*System.out.printf("%12s %30d %30d \n",
-                        rs.getString("Cabin"),
-                        rs.getInt("cantMorning"),
-                        rs.getInt("cantAfternoon")
-                );*/
-                
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -518,6 +516,110 @@ public class Model {
     }
     
     
+    /**
+     * Option 1.1 - Select the best 2 customer (in terms of most money paid in reservations)
+     * Option 1.2 - Select the 3 best reservations (depending on the generated money)
+     * Option 2 - Select the 3 biggest Total Prices of the reservation's table
+     */
+    public static ArrayList<String> biggestTotalPricesReservations() {
+        
+        ArrayList<String> bestTwoCustomers = new ArrayList<>();    //option 1.1
+        String sql = "SELECT cust_Username, SUM(Amount_Hours) as ReservedHours, SUM(Total_Price) as eachPaid "
+                + "FROM reservation group by cust_Username order by eachPaid desc limit 2;";
+        
+        try (Connection conn = connect2();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql);) {
+            
+            String bestCust = "";
+            while (rs.next()) {
+                //"--------------------------------------------------" + rs.getString("Cabin") + "--------------------------------------------------"
+                bestTwoCustomers.add("\n");
+                bestCust = "----" + rs.getString("cust_Username") + "----" +  //3 spaces
+                        "\n\t\t Username: " + rs.getString("cust_Username") + 
+                        "\n\t\t Booking time: " + rs.getInt("ReservedHours") + " hours " +  
+                        "\n\t\tTotal paid: " + rs.getDouble("eachPaid") + "\n";
+                /*
+                bestCust = "   |----------------------------------------------  " + " BEST TWO" + "  -----------------------------------------------| " +  //3 spaces
+                        "\n\t\t Username: " + rs.getString("cust_Username") + 
+                        "\n\t\t Booking time: " + rs.getInt("ReservedHours") + " hours " +  
+                        "\n\t\tTotal paid: " + rs.getInt("eachPaid") + "\n";
+                */
+                
+                bestTwoCustomers.add(bestCust);
+                System.out.println(bestCust);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return bestTwoCustomers;
+    }
+    
+    
+    public static void clearGraphicFrame() {
+        View.JFrameGraphicalReports.repaint();
+        View.JLabelReportANumReservations.setVisible(false);
+        View.JLabelReportATotalPaid.setVisible(false); 
+        View.JLabelReportABookingTime.setVisible(false);
+
+        
+        View.ButtonGroupGraphReports.clearSelection();
+    }
+    
+    public static void best2original() {
+             
+            Graphics g0 = View.JFrameGraphicalReports.getGraphics();
+            g0.drawLine(100, 825, 100, View.JFrameGraphicalReports.getHeight() / 2);
+            g0.drawLine(100, 775, 825, 775);    //g0.drawLine(100, 825, 825, 825);
+            
+            g0.drawString("Num. Reservations", 150, 500);
+            g0.drawString("Total Paid", 350, 500);
+            g0.drawString("Booking time", 550, 500);
+            g0.drawString("Top Reservation", 700, 500);
+            
+            //g0.drawRect(175, 575, 10, 250);
+            
+            /*
+            Rectangle r1 = new Rectangle(175, 550, 185, 775);   //Rectangle r1 = new Rectangle(175, 825, 185, 700);
+            g0.setPaintMode();
+            g0.setColor(Color.red);
+            r1.drawTest(g0);
+            */
+            
+            //plantear hacer el gráfico al revés
+            g0.setColor(Color.red);
+            g0.fillRect(175, 625, 20, 90);  //(x, y, anchura, precio)
+            
+            g0.setColor(Color.blue);
+            g0.fillRect(210, 625, 20, 142);
+            
+            System.out.println("First graphic report: Best two customers (reservations) ");
+
+            for (int i = 0; i < Model.biggestTotalPricesReservations().size(); ++i) {
+                View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.biggestTotalPricesReservations().get(i));
+            }
+            View.JLabelReportANumReservations.setVisible(true);
+            View.JLabelReportATotalPaid.setVisible(true); 
+            View.JLabelReportABookingTime.setVisible(true);
+            
+    }
+    
+    
+    public static void pruebaGraficos() {
+             
+            Graphics g0 = View.JFrameGraphicalReports.getGraphics();
+            g0.drawLine(300, 700, 100, 700);
+            
+            System.out.println("First graphic report: Best two customers (reservations) ");
+
+            
+            View.JLabelReportANumReservations.setVisible(false);
+            View.JLabelReportATotalPaid.setVisible(false); 
+            View.JLabelReportABookingTime.setVisible(false);
+            
+    }
+    
+    
 }
 
 
@@ -531,3 +633,4 @@ SELECT SUM(purchase.amount * product.Price) FROM purchase
 INNER JOIN product
 ON (purchase.prod_ID = product.id_Product)
 */
+

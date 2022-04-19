@@ -6,7 +6,12 @@
 package mvc;
 
 import myClasses.*;
-import javax.swing.JOptionPane;
+import javax.swing.*;
+
+
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.Graphics;
 
 /**
  *
@@ -67,6 +72,14 @@ public class View extends javax.swing.JFrame {
         JButtonSaveCatalog.setEnabled(false);
         JButtonSaveEntireStaff.setEnabled(false);
         JButtonSaveCabin.setEnabled(false);
+        
+        
+        JLabelReportANumReservations.setVisible(false);
+        JLabelReportATotalPaid.setVisible(false); 
+        JLabelReportABookingTime.setVisible(false);
+        
+        JButtonClean.setEnabled(false);
+        
         
         
         
@@ -133,7 +146,7 @@ public class View extends javax.swing.JFrame {
         JCheckPurchaseHistory = new javax.swing.JCheckBox();
         JCheckBoxSortAge = new javax.swing.JCheckBox();
         jSeparator3 = new javax.swing.JSeparator();
-        JButtonViewGra = new javax.swing.JButton();
+        JButtonStartGra = new javax.swing.JButton();
         JButtonGoBack = new javax.swing.JButton();
         JButtonClean = new javax.swing.JButton();
         JLabelGarageTitulo = new javax.swing.JLabel();
@@ -141,11 +154,17 @@ public class View extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         JTextAreaGraphics = new javax.swing.JTextArea();
         JCheckBoxPurchaseEvolution = new javax.swing.JCheckBox();
+        JLabelReportANumReservations = new javax.swing.JLabel();
+        JLabelReportATotalPaid = new javax.swing.JLabel();
+        JLabelReportABookingTime = new javax.swing.JLabel();
+        JCheckBoxBestTwoCustomers = new javax.swing.JCheckBox();
+        JButtonViewGraph = new javax.swing.JButton();
         JDialogTextual = new javax.swing.JDialog();
         jScrollPane2 = new javax.swing.JScrollPane();
         JTableUnderage = new javax.swing.JTable();
         JButtonReturnFromTable = new javax.swing.JButton();
         JFrameAdminSection = new javax.swing.JFrame();
+        ButtonGroupGraphReports = new javax.swing.ButtonGroup();
         JLabelTitulo = new javax.swing.JLabel();
         JLabelIntro = new javax.swing.JLabel();
         JButtonGoTxostenak = new javax.swing.JButton();
@@ -272,8 +291,8 @@ public class View extends javax.swing.JFrame {
                                         .addComponent(JButtonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(CheckboxViewOnTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(JLabelTitulo1)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(JFrameTextReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(JLabelChooseCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -362,8 +381,8 @@ public class View extends javax.swing.JFrame {
 
         JCheckBoxSortAge.setText("Sort by age");
 
-        JButtonViewGra.setText("View");
-        JButtonViewGra.setActionCommand("View Graphics");
+        JButtonStartGra.setText("Start");
+        JButtonStartGra.setActionCommand("Start Graphics");
 
         JButtonGoBack.setText("Go back");
         JButtonGoBack.setActionCommand("Go back to start");
@@ -381,59 +400,96 @@ public class View extends javax.swing.JFrame {
 
         JCheckBoxPurchaseEvolution.setText("Purchase evolution");
 
+        JLabelReportANumReservations.setText("Num. Reservations");
+
+        JLabelReportATotalPaid.setText("Total Paid");
+        JLabelReportATotalPaid.setToolTipText("");
+
+        JLabelReportABookingTime.setText("Booking Time");
+
+        JCheckBoxBestTwoCustomers.setText("Best Two Customers");
+
+        JButtonViewGraph.setText("View");
+        JButtonViewGraph.setActionCommand("View Graphic");
+
         javax.swing.GroupLayout JFrameGraphicalReportsLayout = new javax.swing.GroupLayout(JFrameGraphicalReports.getContentPane());
         JFrameGraphicalReports.getContentPane().setLayout(JFrameGraphicalReportsLayout);
         JFrameGraphicalReportsLayout.setHorizontalGroup(
             JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JFrameGraphicalReportsLayout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+            .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
                 .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JLabelGarageTitulo)
-                    .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JFrameGraphicalReportsLayout.createSequentialGroup()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(31, 31, 31)
-                            .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(JCheckBoxPurchaseEvolution)
-                                .addComponent(JCheckPurchaseHistory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
+                        .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
+                                .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
+                                        .addGap(142, 142, 142)
+                                        .addComponent(JLabelReportANumReservations)
+                                        .addGap(81, 81, 81)
+                                        .addComponent(JLabelReportATotalPaid)))
+                                .addGap(40, 40, 40))
+                            .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
+                                .addComponent(JCheckBoxBestTwoCustomers)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(JCheckBoxSortAge)
-                                .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
-                                    .addComponent(JButtonViewGra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(JButtonClean, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addComponent(JButtonGoBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGap(49, 49, 49))
-                        .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
-                            .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(JLabelGraphIntro))
-                            .addContainerGap()))))
+                                .addGap(192, 192, 192)))
+                        .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
+                                .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(JButtonGoBack, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                                    .addComponent(JLabelReportABookingTime)
+                                    .addComponent(JButtonStartGra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
+                                .addComponent(JButtonViewGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(JButtonClean, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
+                        .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
+                                .addComponent(JLabelGraphIntro)
+                                .addGap(18, 18, 18)
+                                .addComponent(JCheckBoxPurchaseEvolution)
+                                .addGap(18, 18, 18)
+                                .addComponent(JCheckPurchaseHistory))
+                            .addComponent(JLabelGarageTitulo))
+                        .addContainerGap(130, Short.MAX_VALUE))))
         );
         JFrameGraphicalReportsLayout.setVerticalGroup(
             JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
                 .addComponent(JLabelGarageTitulo)
                 .addGap(18, 18, 18)
-                .addComponent(JLabelGraphIntro)
+                .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JLabelGraphIntro)
+                    .addComponent(JCheckBoxPurchaseEvolution)
+                    .addComponent(JCheckPurchaseHistory))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
-                        .addComponent(JCheckBoxPurchaseEvolution)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(JCheckPurchaseHistory)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(JCheckBoxSortAge)
+                        .addComponent(JButtonGoBack)
                         .addGap(18, 18, 18)
-                        .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JButtonViewGra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(JButtonClean, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(JButtonGoBack))
+                        .addComponent(JButtonStartGra))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JButtonClean)
+                    .addComponent(JCheckBoxBestTwoCustomers)
+                    .addComponent(JCheckBoxSortAge)
+                    .addComponent(JButtonViewGraph))
+                .addGap(75, 75, 75)
+                .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JLabelReportANumReservations)
+                    .addComponent(JLabelReportATotalPaid)
+                    .addComponent(JLabelReportABookingTime))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         JTableUnderage.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -642,6 +698,7 @@ public class View extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.ButtonGroup ButtonGroupGraphReports;
     public static java.awt.Checkbox CheckboxViewOnTable;
     public static java.awt.Choice ChoiceCustomer;
     public static javax.swing.JButton JButtonClean;
@@ -660,8 +717,10 @@ public class View extends javax.swing.JFrame {
     public static javax.swing.JButton JButtonSaveCatalog;
     public static javax.swing.JButton JButtonSaveEntireStaff;
     public static javax.swing.JButton JButtonSaveUsersFile;
+    public static javax.swing.JButton JButtonStartGra;
     public static javax.swing.JButton JButtonValidateWorker;
-    public static javax.swing.JButton JButtonViewGra;
+    public static javax.swing.JButton JButtonViewGraph;
+    public static javax.swing.JCheckBox JCheckBoxBestTwoCustomers;
     public static javax.swing.JCheckBox JCheckBoxPurchaseEvolution;
     public static javax.swing.JCheckBox JCheckBoxSortAge;
     public static javax.swing.JCheckBox JCheckPurchaseHistory;
@@ -675,6 +734,9 @@ public class View extends javax.swing.JFrame {
     public static javax.swing.JLabel JLabelGraphIntro;
     public static javax.swing.JLabel JLabelIntro;
     public static javax.swing.JLabel JLabelIntro1;
+    public static javax.swing.JLabel JLabelReportABookingTime;
+    public static javax.swing.JLabel JLabelReportANumReservations;
+    public static javax.swing.JLabel JLabelReportATotalPaid;
     public static javax.swing.JLabel JLabelSpecifyDate;
     public static javax.swing.JLabel JLabelSpecifyId;
     public static javax.swing.JLabel JLabelStaffOnly;

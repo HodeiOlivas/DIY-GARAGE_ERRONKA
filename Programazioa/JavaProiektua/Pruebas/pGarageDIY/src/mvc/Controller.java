@@ -5,9 +5,11 @@
  */
 package mvc;
 
+import forGraphics.Rectangle;
 import myClasses.*;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static mvc.View.*;
@@ -22,6 +24,7 @@ public class Controller implements ActionListener {
 
     private Model model;
     private View view;
+    private Graphics gGraphics;
 
     /*
     public Controller(Model model, View view) {
@@ -47,10 +50,6 @@ public class Controller implements ActionListener {
         View.JButtonPrintTxosten.addActionListener(listener); //textual reports -> botón para ver/imprimir los datos
         View.JButtonReturnStart.addActionListener(listener);  //textual reports -> botón para volver al menú inicial
         View.JButtonSaveUsersFile.addActionListener(listener);   //textual reports -> botón para guardar el contenido del text area en un fichero
-
-        View.JButtonViewGra.addActionListener(listener);  //graphical reports -> ver contenido (en gráficos) de los informes
-        View.JButtonClean.addActionListener(listener);  //graphical reports -> limpiar contenido del textArea
-        View.JButtonGoBack.addActionListener(listener);   //graphical report -> volcer al menú inicial
         
         View.JButtonClear.addActionListener(listener);  //textual reports -> clear all the fields
         
@@ -64,6 +63,23 @@ public class Controller implements ActionListener {
         View.JButtonSaveCatalog.addActionListener(listener);    //download -> save catalog of products (all of them)
         View.JButtonSaveEntireStaff.addActionListener(listener);    //download -> save all garage's staff data
         View.JButtonSaveCabin.addActionListener(listener);      //download -> save on a file the information of the garage's cabins
+        
+        
+        View.JButtonStartGra.addActionListener(listener);  //graphical reports -> ver contenido (en gráficos) de los informes
+        View.JButtonClean.addActionListener(listener);  //graphical reports -> limpiar contenido del textArea
+        View.JButtonGoBack.addActionListener(listener);   //graphical report -> volcer al menú inicial
+        View.JButtonViewGraph.addActionListener(listener);  //graphic reports -> view selected report
+        
+        View.JCheckBoxBestTwoCustomers.addActionListener(listener); //graphic reports -> best 2 customers (reservations)
+        
+        
+        /*
+        View.JRadioButtonBestTwoCustomers.addActionListener(listener);  //graphical reports -> data of the best 2 customers (in terms of reservations)
+        View.JRadioButtonBestTwo.addActionListener(listener);
+        */
+        
+        
+        
         
         
 
@@ -89,8 +105,10 @@ public class Controller implements ActionListener {
                 System.out.println("Wait... The Graphical Report's section is loading. \n");
                 View.JFrameGraphicalReports.setVisible(true);
                 View.JFrameGraphicalReports.setTitle("Create a New Customer!");
-                View.JFrameGraphicalReports.setSize(600, 356);  //600, 356
+                View.JFrameGraphicalReports.setSize(900, 606);  //600, 356
                 View.JFrameGraphicalReports.setResizable(false);
+                
+                
                 break;
 
             case "View Txostena":   //txosten textualak ikusi
@@ -297,17 +315,83 @@ public class Controller implements ActionListener {
             
             
 
-            case "View Graphics":   //txosten grafikoak -> ver datos en forma de gráficos
-                System.out.println("Ver los datos en forma de gráficos. ");
+            case "Start Graphics":   //txosten grafikoak -> ver datos en forma de gráficos
+                System.out.println("hola 111"); 
+                View.JFrameGraphicalReports.setSize(900, 906);  //600, 356
+                //Model.graphicDrawing();
+                
+                
+                
                 break;
+            
+            case "View Graphic":
+                if (JCheckBoxBestTwoCustomers.isSelected()) {
+                    
+                    System.out.println("mejores");
+                                        
+                    Model.best2original();
+                    
+                    JCheckBoxBestTwoCustomers.setEnabled(false); JCheckBoxBestTwoCustomers.setSelected(false);
+                    JCheckBoxSortAge.setEnabled(false);
+                    
+                    JButtonStartGra.setEnabled(false);
+                    
+                } else if (JCheckBoxSortAge.isSelected()) {
+                    
+                    Model.pruebaGraficos();
+                }
+                else {
+                    System.out.println("no mejores");
+                    View.JFrameGraphicalReports.repaint();
+                }
+                
+                
+                JButtonClean.setEnabled(true);
+                break;
+            
             case "Clean":   //txosten grafikoak -> vaciar el contenido del text area
                 View.JTextAreaGraphics.setText("Please, choose the report you want to represent");
+                
+                JCheckBoxBestTwoCustomers.setSelected(false);
+                JCheckBoxBestTwoCustomers.setEnabled(true);
+                
+                JCheckBoxSortAge.setSelected(false);
+                JCheckBoxSortAge.setEnabled(true);
+                
+                
+                JButtonStartGra.setEnabled(true);
+                /*View.JFrameGraphicalReports.repaint();
+                JLabelReportANumReservations.setVisible(false);
+                JLabelReportATotalPaid.setVisible(false); 
+                JLabelReportABookingTime.setVisible(false);
+                
+                JRadioButtonBestTwoCustomers.setSelected(false);
+                ButtonGroupGraphReports.clearSelection();*/
+                
+                Model.clearGraphicFrame();
+                
+                //repaint();
                 break;
             case "Go back to start":
                 //View.JFrameGraphicalReports.dispose();
+                
                 View.JFrameGraphicalReports.setDefaultCloseOperation(EXIT_ON_CLOSE);
                 break;
             
+            case "BestTwoCustomers":
+                //String premiumCustomers = "";
+                System.out.println("Testing... ");
+                //Model.clearGraphicFrame();
+                View.JFrameGraphicalReports.setSize(900, 906);
+                
+                Model.best2original();
+                
+                break;
+            
+            case "Best 2":
+                System.out.println("testing 2");
+                
+                break;
             
             /*
             case "New Client":
