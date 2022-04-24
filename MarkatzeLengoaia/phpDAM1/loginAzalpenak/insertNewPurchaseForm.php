@@ -2,19 +2,19 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> -->
-  <title>New Purchase Page</title>
+    <title>New Purchase Page</title>
 
-  
+
 </head>
 
-<body >    
+<body>
     <!--style='margin:auto;width:600px;margin-top:100px;' -->
     <!-- style='width:600px;float:left; padding:10%'-->
     <div style='width:600px;float:left; padding:10%;'>
@@ -26,7 +26,7 @@
         $link2 = connectDataBase();
         $emaitza1 = mysqli_query($link1, "select * from reservation where cust_Username='$currentUser'");
         $emaitza2 = mysqli_query($link2, "select * from product");
-        
+
         ?>
 
         <div class="container">
@@ -45,10 +45,10 @@
                         <th>Amount Hours</th>
                         <th>Total Price</th>
                     </tr>
-            
+
                     <?php
-                        while ($erregistroa = mysqli_fetch_array($emaitza1)) {
-                            printf("<tr >
+                    while ($erregistroa = mysqli_fetch_array($emaitza1)) {
+                        printf("<tr >
                                 <td>%d</td>
                                 <td>%s</td>
                                 <td>%s</td>
@@ -58,9 +58,9 @@
                                 <td>%d</td>
                                 <td>%.2f</td>
                             </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[6], $erregistroa[7]);
-                        }
-                        mysqli_free_result($emaitza1);
-                        mysqli_close($link1);
+                    }
+                    mysqli_free_result($emaitza1);
+                    mysqli_close($link1);
                     ?>
 
                 </thead>
@@ -68,34 +68,34 @@
         </div>
 
         <div style="margin:auto;width:100%;margin-top:100px;">
-                <br><br><br><br><br><br>
+            <br><br><br><br><br><br>
         </div>
 
         <div class="container" style="margin-top: 200px;">
-            
+
             <h2>Catalog of Products:</h2>
             <p>Check the information of the product you want to buy</p>
             <br>
             <table style="text-align:center; margin-right:320px" align="right" BORDER=1 CELLSPACING=10 CELLPADDING=10>
                 <thead style="vertical-align:left">
-                <tr style="text-align:center">
+                    <tr style="text-align:center">
                         <th>Code</th>
                         <th>Name</th>
                         <th>Price</th>
                         <th>Description</th>
                     </tr>
-            
+
                     <?php
-                        while ($erregistroa = mysqli_fetch_array($emaitza2)) {
-                            printf("<tr >
+                    while ($erregistroa = mysqli_fetch_array($emaitza2)) {
+                        printf("<tr >
                                 <td>%s</td>
                                 <td>%s</td>
                                 <td>%.2f</td>
                                 <td>%s</td>
                             </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3]);
-                        }
-                        mysqli_free_result($emaitza2);
-                        mysqli_close($link2);
+                    }
+                    mysqli_free_result($emaitza2);
+                    mysqli_close($link2);
                     ?>
 
                 </thead>
@@ -113,14 +113,15 @@
         <br>
         <br>
     </pre>
-    
+
     <div style="margin:auto;width:100%;margin-top:100px;">
         <br><br><br><br><br><br><br><br>
-        <hr/>
+        <hr />
     </div>
-    
-    
-    <div style='width:600px;float:right;margin-top:50px; margin-right:300px'>      <!-- style='margin:auto;width:600px;margin-top:50px;' -->
+
+
+    <div style='width:600px;float:right;margin-top:50px; margin-right:300px'>
+        <!-- style='margin:auto;width:600px;margin-top:50px;' -->
         <p>dwdq</p>
         <h1>Add a new purchase</h1>
         <!--<form action="insertNewPurchase.php" method="POST"> -->
@@ -133,7 +134,8 @@
                 <tr>
                     <td>Product ID:</td>
                     <td><input name="product_Id" type="text"><br></td>
-                    <td>    <!-- https://stackoverflow.com/questions/47634469/how-to-populate-dropdown-menu-from-sql-table-in-php -->
+                    <td>
+                        <!-- https://stackoverflow.com/questions/47634469/how-to-populate-dropdown-menu-from-sql-table-in-php -->
                         <form action="/action_page.php">
                             <select name="cars" class="custom-select mb-3">
                                 <option selected>Custom Select Menu</option>
@@ -149,21 +151,25 @@
                     <td><input name="amount" type="number"><br></td>
                 </tr>
                 <tr>
-                    <td><input name="bidali" type="submit" value="INSERTATU"></td>
-                    <td><input type="reset" value="GARBITU"></td>
+                    <td>Purchase's Date (yyyy-mm-dd):</td>
+                    <td><input id="datepicker" type="date" name="dateOfInsert" placeholder="specify date" class="formAlign" style="display: table-cell;" /></td>
+                </tr>
+                <tr>
+                    <td><br><input name="send" type="submit" value="Add Purchase"></td>
+                    <td><br><input type="reset" value="Clear"></td>
                 </tr>
                 <!-- echo "Today is " . date("Y-m-d") . "<br>"; -->
             </table>
         </form>
+        <br>
+        <br>
     </div>
 
-    <pre>
-        <br>
-        <br>
-        <br>
-    </pre>
-    
-    
+    <br>
+    <br>
+
+
+
 </body>
 
 </html>
