@@ -133,16 +133,17 @@ public class Controller implements ActionListener {
                         JDialogTextual.setVisible(true);
                         view.JTableUnderage.setVisible(true);
                         
-                        view.JTableUnderage.setModel(new UnderageTableModela(Model.underAge()));
+                        view.JTableUnderage.setModel(new UnderageTableModela(Model.underAgeCustomers()));
 
                         //view.JTableUnderage.setModel(dataModel);
                         
-                        //Jtable -> model -> custom code -> new UnderageTableModela(Model.underAge())
+                        //Jtable -> model -> custom code -> new UnderageTableModela(Model.underAgeCustomers())
                         System.out.println("The requested data is being represented in a table. ");
                         
                     } else if (CheckboxViewOnTable.getState() == false) {
-                        for (int i = 0; i < model.underAge().size(); ++i) {
-                            JTextAreaTxostenak.setText(JTextAreaTxostenak.getText() + model.underAge().get(i).toString());
+                        for (int i = 0; i < model.underAgeCustomers().size(); ++i) {
+                            JTextAreaTxostenak.setText(JTextAreaTxostenak.getText() + model.underAgeCustomers().get(i).toString());
+                            //JTextAreaTxostenak.setText(JTextAreaTxostenak.getText() + model.adultCustomers().get(i).toString());
                         }
                     } else {
                         JTextAreaTxostenak.setText("Something went wrong... Please, close this tab and try again. ");
@@ -329,7 +330,7 @@ public class Controller implements ActionListener {
                     
                     System.out.println("mejores");
                                         
-                    Model.best2original();
+                    Model.drawBest2original();
                     
                     JCheckBoxBestTwoCustomers.setEnabled(false); JCheckBoxBestTwoCustomers.setSelected(false);
                     JCheckBoxSortAge.setEnabled(false);
@@ -338,7 +339,7 @@ public class Controller implements ActionListener {
                     
                 } else if (JCheckBoxSortAge.isSelected()) {
                     
-                    Model.pruebaGraficos();
+                    Model.drawSortByAge();
                 }
                 else {
                     System.out.println("no mejores");
@@ -350,14 +351,12 @@ public class Controller implements ActionListener {
                 break;
             
             case "Clean":   //txosten grafikoak -> vaciar el contenido del text area
-                View.JTextAreaGraphics.setText("Please, choose the report you want to represent");
                 
                 JCheckBoxBestTwoCustomers.setSelected(false);
                 JCheckBoxBestTwoCustomers.setEnabled(true);
                 
                 JCheckBoxSortAge.setSelected(false);
                 JCheckBoxSortAge.setEnabled(true);
-                
                 
                 JButtonStartGra.setEnabled(true);
                 /*View.JFrameGraphicalReports.repaint();
@@ -384,7 +383,7 @@ public class Controller implements ActionListener {
                 //Model.clearGraphicFrame();
                 View.JFrameGraphicalReports.setSize(900, 906);
                 
-                Model.best2original();
+                Model.drawBest2original();
                 
                 break;
             

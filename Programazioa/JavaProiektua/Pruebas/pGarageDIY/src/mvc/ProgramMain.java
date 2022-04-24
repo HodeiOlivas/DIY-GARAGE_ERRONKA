@@ -22,7 +22,7 @@ public class ProgramMain {
         
         //inicio pruebas
         //ordenar los Customer por edad (descendente)
-        model.underAgeCustomers();
+        model.underAgeCustomersString();
         
         //clientes menores de edad
         

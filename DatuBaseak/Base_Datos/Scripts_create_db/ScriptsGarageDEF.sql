@@ -199,6 +199,9 @@ https://www.w3resource.com/sql/aggregate-functions/sum-with-group-by.php
 -- java radio button group
 https://www.geeksforgeeks.org/jradiobutton-java-swing/
 
+--simbolos para decoracion del jframe
+https://fsymbols.com/es/teclado/windows/alt-codes/lista/
+
 
 
 

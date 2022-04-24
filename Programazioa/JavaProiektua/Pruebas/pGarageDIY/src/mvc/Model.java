@@ -76,7 +76,7 @@ public class Model {
         return conn;
     }
 
-    public String underAgeCustomers() {
+    public String underAgeCustomersString() {
         String sql = "SELECT * FROM customer ORDER BY customer.Birthday desc";  //añadir: limit X
         ArrayList<Customer> underageCustomers = new ArrayList<>();
 
@@ -128,7 +128,7 @@ public class Model {
         return underageCustomers.toString();
     }
 
-    public static ArrayList<Customer> underAge() {
+    public static ArrayList<Customer> underAgeCustomers() {
         String sql = "SELECT * FROM customer ORDER BY customer.Birthday desc";  //añadir: limit X
         ArrayList<Customer> underageCustomers = new ArrayList<>();
 
@@ -521,7 +521,7 @@ public class Model {
      * Option 1.2 - Select the 3 best reservations (depending on the generated money)
      * Option 2 - Select the 3 biggest Total Prices of the reservation's table
      */
-    public static ArrayList<String> biggestTotalPricesReservations() {
+    public static ArrayList<String> biggestTotalPricesReservations() {  
         
         ArrayList<String> bestTwoCustomers = new ArrayList<>();    //option 1.1
         String sql = "SELECT cust_Username, SUM(Amount_Hours) as ReservedHours, SUM(Total_Price) as eachPaid "
@@ -532,28 +532,38 @@ public class Model {
                 ResultSet rs = stmt.executeQuery(sql);) {
             
             String bestCust = "";
+            String customerUsername = "";
             while (rs.next()) {
                 //"--------------------------------------------------" + rs.getString("Cabin") + "--------------------------------------------------"
                 bestTwoCustomers.add("\n");
-                bestCust = "----" + rs.getString("cust_Username") + "----" +  //3 spaces
-                        "\n\t\t Username: " + rs.getString("cust_Username") + 
-                        "\n\t\t Booking time: " + rs.getInt("ReservedHours") + " hours " +  
-                        "\n\t\tTotal paid: " + rs.getDouble("eachPaid") + "\n";
+                bestCust = 
+                        "\n\t\tUsername: " + rs.getString("cust_Username") + 
+                         
+                        "\n\tTotal paid: " + rs.getDouble("eachPaid") + 
+                        "\tBooking time: " + rs.getInt("ReservedHours") + " hours " + 
+                        "\n--------------------------------------------------xx---------------------------------------------------" + "\n";
+                customerUsername = rs.getString("cust_Username");
                 /*
-                bestCust = "   |----------------------------------------------  " + " BEST TWO" + "  -----------------------------------------------| " +  //3 spaces
+                bestCust = 
                         "\n\t\t Username: " + rs.getString("cust_Username") + 
                         "\n\t\t Booking time: " + rs.getInt("ReservedHours") + " hours " +  
-                        "\n\t\tTotal paid: " + rs.getInt("eachPaid") + "\n";
+                        "\n\t\tTotal paid: " + rs.getDouble("eachPaid") + 
+                        "\n--------------------------------------------------xx---------------------------------------------------" + "\n";
                 */
+                bestTwoCustomers.add(bestCust);         //add into the arraylist the basic data of those customers
+                bestTwoCustomers.add(customerUsername); //add also, the 2 usernames of the best 2 customers
                 
-                bestTwoCustomers.add(bestCust);
                 System.out.println(bestCust);
+                System.out.println(customerUsername);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return bestTwoCustomers;
     }
+    
+    
+    
     
     
     public static void clearGraphicFrame() {
@@ -566,7 +576,7 @@ public class Model {
         View.ButtonGroupGraphReports.clearSelection();
     }
     
-    public static void best2original() {
+    public static void drawBest2original() {
              
             Graphics g0 = View.JFrameGraphicalReports.getGraphics();
             g0.drawLine(100, 825, 100, View.JFrameGraphicalReports.getHeight() / 2);
@@ -574,19 +584,25 @@ public class Model {
             
             g0.drawString("Num. Reservations", 150, 500);
             g0.drawString("Total Paid", 350, 500);
-            g0.drawString("Booking time", 550, 500);
-            g0.drawString("Top Reservation", 700, 500);
+            g0.drawString("Booking time", 500, 500);    //g0.drawString("Booking time", 550, 500);
+            g0.drawString("Top Reservation", 650, 500); //g0.drawString("Top Reservation", 700, 500);
             
-            //g0.drawRect(175, 575, 10, 250);
+            g0.drawString("First cust.: ", 125, 800);   //g0.drawString("First cust.: " + Model.biggestTotalPricesReservations().get(2), 125, 800);
+            g0.setColor(Color.blue);
+            g0.drawString(Model.biggestTotalPricesReservations().get(2), 190, 800);
+            g0.setColor(Color.black);
             
-            /*
-            Rectangle r1 = new Rectangle(175, 550, 185, 775);   //Rectangle r1 = new Rectangle(175, 825, 185, 700);
-            g0.setPaintMode();
+            g0.drawString("Second cust.: ", 300, 800);
             g0.setColor(Color.red);
-            r1.drawTest(g0);
-            */
+            g0.drawString(Model.biggestTotalPricesReservations().get(5), 380, 800);
+            g0.setColor(Color.black);
             
             //plantear hacer el gráfico al revés
+            //comparation 1 - number of reservations
+            //comparation 2 - total paid
+            //comparation 3 - booking time
+            //comparation 4 - top/best reservation of each customer
+            
             g0.setColor(Color.red);
             g0.fillRect(175, 625, 20, 90);  //(x, y, anchura, precio)
             
@@ -596,7 +612,10 @@ public class Model {
             System.out.println("First graphic report: Best two customers (reservations) ");
 
             for (int i = 0; i < Model.biggestTotalPricesReservations().size(); ++i) {
-                View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.biggestTotalPricesReservations().get(i));
+                if (i == 0 || i == 1 || i == 4) {
+                    View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.biggestTotalPricesReservations().get(i));  
+                }
+                //View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.biggestTotalPricesReservations().get(i));
             }
             View.JLabelReportANumReservations.setVisible(true);
             View.JLabelReportATotalPaid.setVisible(true); 
@@ -605,17 +624,100 @@ public class Model {
     }
     
     
-    public static void pruebaGraficos() {
-             
-            Graphics g0 = View.JFrameGraphicalReports.getGraphics();
-            g0.drawLine(300, 700, 100, 700);
-            
-            System.out.println("First graphic report: Best two customers (reservations) ");
+    public static ArrayList<Customer> adultCustomers() {
+        String sql = "SELECT * FROM customer ORDER BY customer.Birthday desc";  //añadir: limit X
+        ArrayList<Customer> adultCustomers = new ArrayList<>();
 
+        try (Connection conn = connect2();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+
+            LocalDate fechaActual = LocalDate.now();
+            System.out.println("Fecha actual: " + fechaActual);
+
+            LocalDate fechaLimite = fechaActual.minusYears(18);
+            System.out.println("Para ser mayor de edad: " + fechaLimite);
+
+            System.out.println("\nUnderage customers: ");
+            System.out.println("==========================================================================================================================");
+            System.out.printf("%-10s %10s %15s %15s %15s %-20s %20s \n", "Username", "Name", "Surname", "Password", "Birthday", "Mail", "Phone Number");
+            System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+
+            while (rs.next()) {
+
+                LocalDate fechaCustomer = LocalDate.parse(rs.getString("Birthday"));
+
+                if (!fechaCustomer.isAfter(fechaLimite)) {
+                    Customer underCustomer = new Customer(
+                            rs.getString("Username"), rs.getString("Name"), rs.getString("Surname"), rs.getString("Password"),
+                            LocalDate.parse(rs.getString("Birthday")), rs.getString("Mail"), rs.getInt("Phone_Number"));
+
+                    adultCustomers.add(underCustomer);
+
+                    System.out.printf("%-10s %10s %15s %15s %15s %-20s %20d \n",
+                            rs.getString("Username"),
+                            rs.getString("Name"),
+                            rs.getString("Surname"),
+                            rs.getString("Password"),
+                            rs.getString("Birthday"),
+                            rs.getString("Mail"),
+                            rs.getInt("Phone_Number"));
+                }
+            }
+            System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
+            System.out.println(adultCustomers.toString());
+            System.out.println("");
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return adultCustomers;
+    }
+    
+    
+    public static void drawSortByAge() {
+             
+            Graphics g1 = View.JFrameGraphicalReports.getGraphics();
+            //g1.drawLine(300, 700, 100, 700);
             
-            View.JLabelReportANumReservations.setVisible(false);
-            View.JLabelReportATotalPaid.setVisible(false); 
-            View.JLabelReportABookingTime.setVisible(false);
+            int amountUnderage = Model.underAgeCustomers().size();
+            int amountAdults = Model.adultCustomers().size();
+            
+            int totalCustomers = amountUnderage + amountAdults;
+            
+            System.out.println(amountUnderage);
+            System.out.println(amountAdults);
+            System.out.println("Total customers: " + totalCustomers);
+            //System.out.println("The biggest group is: " + theBiggestGroup);
+            
+            System.out.println("----");            
+              
+            
+            int portionsUnderage = (360 * amountUnderage) / totalCustomers;  //int prueba1 = 360 * (amountUnderage / totalCustomers);
+            System.out.println("afwf" + portionsUnderage);
+            
+            int portionsAdults = (360 * amountAdults) / totalCustomers;  //int prueba1 = 360 * (amountUnderage / totalCustomers);
+            System.out.println("afwf" + portionsAdults);
+            
+            //g1.fillArc(350, 700, 100, 100, 0, 360 - (360 * (amountUnderage / totalCustomers)));
+            
+            g1.setColor(Color.orange);  g1.fillArc(350, 500, 100, 100, 90, portionsUnderage);   //g1.fillArc(350, 500, 150, 100, 90, portionsUnderage);
+            
+            //show amount of UNDERAGE customers
+            g1.setColor(Color.black); g1.drawString("➜ Number of ", 500, 550);
+            g1.setColor(Color.orange); g1.drawString("underage ", 580, 550);
+            g1.setColor(Color.black); g1.drawString("customers: " + amountUnderage, 640, 550);
+            
+            //show amount of ADULTS customers
+            g1.setColor(Color.black); g1.drawString("➜ Number of ", 500, 570);
+            g1.setColor(Color.blue); g1.drawString("adult ", 580, 570);
+            g1.setColor(Color.black); g1.drawString("customers: " + amountAdults, 615, 570);
+            
+            int startAngleAdults = 360 - (360 - (90 + portionsUnderage));
+            int angleAdults = 90 + (360 - (90 + portionsUnderage));
+            g1.setColor(Color.blue);
+            g1.fillArc(350, 500, 100, 100, startAngleAdults, angleAdults);    //g1.fillArc(350, 500, 150, 100, 360 - (360 - 306), 90 + (360 - 306));
             
     }
     

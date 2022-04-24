@@ -38,6 +38,7 @@ public class Customer {
         this.mail = mail;
         this.phone_Number = phone_Number;
     }
+    
 
     public String getUsername() {
         return username;
@@ -117,6 +118,8 @@ public class Customer {
                 "\n--------------------------------------------------x--------------------------------------------------";
        
     }
+    
+    
     
     
 }
