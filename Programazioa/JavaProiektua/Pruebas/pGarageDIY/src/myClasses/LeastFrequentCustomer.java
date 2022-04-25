@@ -58,17 +58,12 @@ public class LeastFrequentCustomer extends Customer {
     
     public String toString() {
         
-        return "\n\tName: " + super.getName() + ",\tSurname: " + super.getSurname() + 
-                "\n\tUsername: " + super.getUsername() + ",\tDays Passed: " + this.getDaysPassed() + 
-                "\n\tReservation Code: " + this.getCodeReservation() + ",       Last Reservation: " + this.getLastReservation() + 
-                "\n -------------------------------------------------- xx ---------------------------------------------------";
-        
-        /*
         return "\nReservation Code: " + this.getCodeReservation() + ",\t\tLast Reservation: " + this.getLastReservation() + 
                 "\nUsername: " + super.getUsername() + ",\t\tName: " + super.getName() + 
-                "\nSurname: " + super.getSurname() + ",\t\tDays Passed: " + this.getDaysPassed() + 
+                //"\nSurname: " + super.getSurname() + ",\t\tDays Passed: " + this.getDaysPassed() + 
+                "\nDays Passed: " + this.getDaysPassed() + ",\t\tSurname: " + super.getSurname() + 
                 "\n -------------------------------------------------- xx ---------------------------------------------------";
-        */
+        
     }
     
     
