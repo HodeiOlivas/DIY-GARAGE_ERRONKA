@@ -541,7 +541,7 @@ public class Model {
                          
                         "\n\tTotal paid: " + rs.getDouble("eachPaid") + 
                         "\tBooking time: " + rs.getInt("ReservedHours") + " hours " + 
-                        "\n--------------------------------------------------xx---------------------------------------------------" + "\n";
+                        "\n\n--------------------------------------------------xx---------------------------------------------------" + "\n";
                 customerUsername = rs.getString("cust_Username");
                 /*
                 bestCust = 
@@ -563,7 +563,127 @@ public class Model {
     }
     
     
+    /**
+     * Returning ArrayList<String> Method
+     * 
+     * This method returns an ArrayList made of Strings with the desired data. Returning a String ArrayList 
+     * allows the user to change the GUI's textArea's content easier than using an ArrayList of other certain 
+     * class. 
+     * 
+     * Later, we'll transform this method into one that returns an ArrayList of the class/object we are 
+     * looking for (in this case, an object from the Reservation class).
+     * 
+     * @return 
+     */
+    public static ArrayList<String> oldestThreeCustomersBookingString() {
+        
+        //option 1 -> reservation_ID, username, date of last reservation of him/her
+        //option 2 -> reservation.* (full data of the last reservation of the 3 customers)
+        //option 3 -> custoemr.* (full data of the least 3 frequent customers)
+        //option 4 -> username, name, surname, amount of days since the last reservation
+        
+        ArrayList<String> theNewests = new ArrayList<>();
+        //String leastFrequentCustomer = "";
+                
+        String sql = "SELECT \n" +
+"		reservation.id_Reservation as Reservation_Code, \n" +
+"		MAX(reservation.Date) as Last_Reservation, \n" +
+"		customer.Username, customer.Name, customer.Surname, \n" +
+"               DATEDIFF(now(), MAX(reservation.Date)) as Days_Passed \n" +
+"		FROM reservation, customer\n" +
+"		WHERE reservation.cust_Username = customer.Username and \n" +
+"		reservation.Date < cast((now()) as date) \n" +
+"		GROUP BY cust_Username ORDER by Days_Passed desc limit 3;";
+        
+        try (Connection conn = connect2();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql);) {
+            
+            String leastFrequentCustomer = "";
+            String newestReservation = "";
+            
+            while (rs.next()) {
+                /*
+                bestCust = 
+                        "\n\t\tUsername: " + rs.getString("cust_Username") + 
+                         
+                        "\n\tTotal paid: " + rs.getDouble("eachPaid") + 
+                        "\tBooking time: " + rs.getInt("ReservedHours") + " hours " + 
+                        "\n--------------------------------------------------xx---------------------------------------------------" + "\n";
+                customerUsername = rs.getString("cust_Username");
+                
+                bestTwoCustomers.add(bestCust);         //add into the arraylist the basic data of those customers
+                bestTwoCustomers.add(customerUsername); //add also, the 2 usernames of the best 2 customers
+                */
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return theNewests;
+    }
     
+    /**
+     * Returning ArrayList<LeastFrequentCustomer> Method
+     * 
+     * This method returns an ArrayList made of objects belonging to the Customer's 
+     * subclass called LeastFrequentCustomer. 
+     * 
+     * This subclass will be quite similar to his father class. In adittion to the 
+     * father class' main attributes, the LeastFrequentCustome class will have some 
+     * other ones like:
+     * 
+     *  -> Other attributes: codeReservation, lastReservation, daysPassed
+     * 
+     * @return 
+     */
+    public static ArrayList<LeastFrequentCustomer> oldestThreeCustomersBooking() {
+        
+        //option 1 -> reservation_ID, username, date of last reservation of him/her
+        //option 2 -> reservation.* (full data of the last reservation of the 3 customers)
+        //option 3 -> custoemr.* (full data of the least 3 frequent customers)
+        //option 4 -> username, name, surname, amount of days since the last reservation
+        
+        ArrayList<LeastFrequentCustomer> theNewests = new ArrayList<>();
+                        
+        String sql = "SELECT \n" +
+"		reservation.id_Reservation as Reservation_Code, \n" +
+"		MAX(reservation.Date) as Last_Reservation, \n" +
+"		customer.Username as UsernameCust, customer.Name as NameCust, customer.Surname as SurnameCust, \n" +
+"               DATEDIFF(now(), MAX(reservation.Date)) as Days_Passed \n" +
+"		FROM reservation, customer\n" +
+"		WHERE reservation.cust_Username = customer.Username and \n" +
+"		reservation.Date < cast((now()) as date) \n" +
+"		GROUP BY cust_Username ORDER by Days_Passed desc limit 3;";
+        
+        try (Connection conn = connect2();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql);) {
+            
+            //String leastFrequentCustomer = "";
+            //String newestReservation = "";
+            
+            
+            
+            while (rs.next()) {
+                
+                LeastFrequentCustomer infrequentlyCustomer = new LeastFrequentCustomer(
+                        rs.getInt("Reservation_Code"), LocalDate.parse(rs.getString("Last_Reservation")),
+                        rs.getString("UsernameCust"), rs.getString("NameCust"), rs.getString("SurnameCust"),
+                        rs.getInt("Days_Passed")
+                        );
+                
+                theNewests.add(infrequentlyCustomer);
+                
+            }
+            System.out.println(theNewests.toString());
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return theNewests;
+    }
     
     
     public static void clearGraphicFrame() {
@@ -677,47 +797,48 @@ public class Model {
     
     
     public static void drawSortByAge() {
-             
-            Graphics g1 = View.JFrameGraphicalReports.getGraphics();
-            //g1.drawLine(300, 700, 100, 700);
-            
-            int amountUnderage = Model.underAgeCustomers().size();
-            int amountAdults = Model.adultCustomers().size();
-            
-            int totalCustomers = amountUnderage + amountAdults;
-            
-            System.out.println(amountUnderage);
-            System.out.println(amountAdults);
-            System.out.println("Total customers: " + totalCustomers);
-            //System.out.println("The biggest group is: " + theBiggestGroup);
-            
-            System.out.println("----");            
-              
-            
-            int portionsUnderage = (360 * amountUnderage) / totalCustomers;  //int prueba1 = 360 * (amountUnderage / totalCustomers);
-            System.out.println("afwf" + portionsUnderage);
-            
-            int portionsAdults = (360 * amountAdults) / totalCustomers;  //int prueba1 = 360 * (amountUnderage / totalCustomers);
-            System.out.println("afwf" + portionsAdults);
-            
-            //g1.fillArc(350, 700, 100, 100, 0, 360 - (360 * (amountUnderage / totalCustomers)));
-            
-            g1.setColor(Color.orange);  g1.fillArc(350, 500, 100, 100, 90, portionsUnderage);   //g1.fillArc(350, 500, 150, 100, 90, portionsUnderage);
-            
-            //show amount of UNDERAGE customers
-            g1.setColor(Color.black); g1.drawString("➜ Number of ", 500, 550);
-            g1.setColor(Color.orange); g1.drawString("underage ", 580, 550);
-            g1.setColor(Color.black); g1.drawString("customers: " + amountUnderage, 640, 550);
-            
-            //show amount of ADULTS customers
-            g1.setColor(Color.black); g1.drawString("➜ Number of ", 500, 570);
-            g1.setColor(Color.blue); g1.drawString("adult ", 580, 570);
-            g1.setColor(Color.black); g1.drawString("customers: " + amountAdults, 615, 570);
-            
-            int startAngleAdults = 360 - (360 - (90 + portionsUnderage));
-            int angleAdults = 90 + (360 - (90 + portionsUnderage));
-            g1.setColor(Color.blue);
-            g1.fillArc(350, 500, 100, 100, startAngleAdults, angleAdults);    //g1.fillArc(350, 500, 150, 100, 360 - (360 - 306), 90 + (360 - 306));
+        
+        
+        Graphics g1 = View.JFrameGraphicalReports.getGraphics();
+        //g1.drawLine(300, 700, 100, 700);
+
+        int amountUnderage = Model.underAgeCustomers().size();
+        int amountAdults = Model.adultCustomers().size();
+
+        int totalCustomers = amountUnderage + amountAdults;
+
+        System.out.println(amountUnderage);
+        System.out.println(amountAdults);
+        System.out.println("Total customers: " + totalCustomers);
+        //System.out.println("The biggest group is: " + theBiggestGroup);
+
+        System.out.println("----");            
+
+
+        int portionsUnderage = (360 * amountUnderage) / totalCustomers;  //int prueba1 = 360 * (amountUnderage / totalCustomers);
+        System.out.println("afwf" + portionsUnderage);
+
+        int portionsAdults = (360 * amountAdults) / totalCustomers;  //int prueba1 = 360 * (amountUnderage / totalCustomers);
+        System.out.println("afwf" + portionsAdults);
+
+        //g1.fillArc(350, 700, 100, 100, 0, 360 - (360 * (amountUnderage / totalCustomers)));
+
+        g1.setColor(Color.orange);  g1.fillArc(350, 500, 100, 100, 90, portionsUnderage);   //g1.fillArc(350, 500, 150, 100, 90, portionsUnderage);
+
+        //show amount of UNDERAGE customers
+        g1.setColor(Color.black); g1.drawString("➜ Number of ", 500, 550);
+        g1.setColor(Color.orange); g1.drawString("underage ", 580, 550);
+        g1.setColor(Color.black); g1.drawString("customers: " + amountUnderage, 640, 550);
+
+        //show amount of ADULTS customers
+        g1.setColor(Color.black); g1.drawString("➜ Number of ", 500, 570);
+        g1.setColor(Color.blue); g1.drawString("adult ", 580, 570);
+        g1.setColor(Color.black); g1.drawString("customers: " + amountAdults, 615, 570);
+
+        int startAngleAdults = 360 - (360 - (90 + portionsUnderage));
+        int angleAdults = 90 + (360 - (90 + portionsUnderage));
+        g1.setColor(Color.blue);
+        g1.fillArc(350, 500, 100, 100, startAngleAdults, angleAdults);    //g1.fillArc(350, 500, 150, 100, 360 - (360 - 306), 90 + (360 - 306));
             
     }
     

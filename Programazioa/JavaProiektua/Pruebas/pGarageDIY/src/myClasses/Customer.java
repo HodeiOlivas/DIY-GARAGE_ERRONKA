@@ -26,6 +26,11 @@ public class Customer {
         
     }
     
+    public Customer(String username, String name, String surname) {
+        this.username = username;
+        this.name = name;
+        this.surname = surname;
+    }
     
     public Customer(String username, String name, String surname, String password, 
             LocalDate birthday, String mail, int phone_Number) {

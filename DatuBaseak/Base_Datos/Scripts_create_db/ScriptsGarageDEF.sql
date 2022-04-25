@@ -203,6 +203,29 @@ https://www.geeksforgeeks.org/jradiobutton-java-swing/
 https://fsymbols.com/es/teclado/windows/alt-codes/lista/
 
 
+-- get the THREE customers with the oldest reservation date
+SELECT id_Reservation, cust_Username, MAX(Date) as Last_Reservation 
+FROM reservation GROUP BY cust_Username ORDER by Last_Reservation desc limit 2;
+
+-- obtener la última compra más vieja de los 3 clientes que más tiempo hacen que no reservan
+SELECT id_Reservation, cust_Username, MAX(Date) as Last_Reservation 
+FROM reservation WHERE Date < cast((now()) as date) 
+GROUP BY cust_Username ORDER by Last_Reservation desc limit 3;
+
+SELECT * 
+FROM reservation WHERE Date < cast((now()) as date) 
+GROUP BY cust_Username ORDER by Date desc limit 3;
+
+
+-- SELECT m1.*
+-- FROM reservation m1 LEFT JOIN reservation m2
+ -- ON (m1.cust_Username = m2.cust_Username AND m1.Date > m2.Date)
+-- WHERE m2.Date IS NULL;
+
+
+-- TR 
+
+
 
 
 

@@ -12,6 +12,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.table.DefaultTableModel;
 import static mvc.View.*;
 //import static mvc.View.*;
 //import model.Model;
@@ -54,7 +55,7 @@ public class Controller implements ActionListener {
         View.JButtonClear.addActionListener(listener);  //textual reports -> clear all the fields
         
         View.JButtonReturnFromTable.addActionListener(listener);    //dialogTable -> button to return to Textual Reports' section
-        
+                
         View.JButtonLoginToSave.addActionListener(listener);    //textual reports -> log in as a WORKER to continue (download data)
         View.JButtonLogOut.addActionListener(listener); //textual reports -> logout from the previously logged session
         
@@ -121,8 +122,6 @@ public class Controller implements ActionListener {
                     JTextFieldTodaysDate.setEditable(true);
                     JTextFieldTodaysDate.setEnabled(true);
                     
-                    
-                    
                     System.out.println("Today's occupation report selected.");
                     //JTextAreaTxostenak.setText("Searching the occupation of " + "'" + JTextFieldTodaysDate.getText() + "'" + ". ");
                     
@@ -131,9 +130,9 @@ public class Controller implements ActionListener {
                     if (CheckboxViewOnTable.getState() == true) {
                         JDialogTextual.setSize(600, 600);
                         JDialogTextual.setVisible(true);
-                        view.JTableUnderage.setVisible(true);
+                        view.JTableDataOnTable.setVisible(true);
                         
-                        view.JTableUnderage.setModel(new UnderageTableModela(Model.underAgeCustomers()));
+                        view.JTableDataOnTable.setModel(new UnderageTableModela(Model.underAgeCustomers()));
 
                         //view.JTableUnderage.setModel(dataModel);
                         
@@ -157,10 +156,10 @@ public class Controller implements ActionListener {
                     if (CheckboxViewOnTable.getState() == true) {
                         JDialogTextual.setSize(900, 600);
                         JDialogTextual.setVisible(true);
-                        view.JTableUnderage.setVisible(true);
+                        view.JTableDataOnTable.setVisible(true);
                         
                         //view.JTableUnderage.setModel(new DesiredPurchaseTableModela(Model.purchasesOfDesiredCustomer(JTextFieldUsernameUser.getText())));
-                        view.JTableUnderage.setModel(new DesiredPurchaseTableModela(model.purchasesOfDesiredCustomer(ChoiceCustomer.getSelectedItem())));
+                        view.JTableDataOnTable.setModel(new DesiredPurchaseTableModela(model.purchasesOfDesiredCustomer(ChoiceCustomer.getSelectedItem())));
                         System.out.println(ChoiceCustomer.getSelectedItem());
                         
                         
@@ -185,9 +184,9 @@ public class Controller implements ActionListener {
                     if (CheckboxViewOnTable.getState() == true) {
                         JDialogTextual.setSize(600, 600);
                         JDialogTextual.setVisible(true);
-                        view.JTableUnderage.setVisible(true);
+                        view.JTableDataOnTable.setVisible(true);
                         
-                        view.JTableUnderage.setModel(new SaleTrackTableModela(Model.mostSoldProducts()));
+                        view.JTableDataOnTable.setModel(new SaleTrackTableModela(Model.mostSoldProducts()));
                         
                         System.out.println("The requested data is being represented in a table. ");
                         
@@ -199,7 +198,30 @@ public class Controller implements ActionListener {
                         JTextAreaTxostenak.setText("Something went wrong... Please, close this tab and try again. ");
                     }
                     
-                } else {
+                } else if (JComboBoxTxostenak.getSelectedIndex() == 6) {
+                    System.out.println("Three Least Frequent Customers");
+                    
+                    if (CheckboxViewOnTable.getState() == true) {
+                        JDialogTextual.setSize(900, 600);
+                        JDialogTextual.setVisible(true);
+                        view.JTableDataOnTable.setVisible(true);
+                        
+                        view.JTableDataOnTable.setModel(new FrequentCustomerTableModel(Model.oldestThreeCustomersBooking()));
+                        
+                    } else if (CheckboxViewOnTable.getState() == false) {
+                        for (int i = 0; i < model.oldestThreeCustomersBooking().size(); ++i) {
+                            JTextAreaTxostenak.setText(JTextAreaTxostenak.getText() + model.oldestThreeCustomersBooking().get(i).toString());
+                        }
+                    } else {
+                        JTextAreaTxostenak.setText("Something went wrong... Please, close this tab and try again. ");
+                    }
+                    
+                    Model.oldestThreeCustomersBooking();
+                    
+                    
+                }
+                
+                else {
                     JTextFieldTodaysDate.setEditable(false);
                     JTextFieldTodaysDate.setEnabled(false);
                     JSpinnerCustomerId.setEnabled(false);
@@ -209,6 +231,9 @@ public class Controller implements ActionListener {
                 break;
             
             case "Clear":
+                
+                CheckboxViewOnTable.setEnabled(true);
+                
                 JComboBoxTxostenak.setSelectedIndex(0);
                 CheckboxViewOnTable.setState(false);
                 JSpinnerCustomerId.setValue(0);
@@ -221,6 +246,8 @@ public class Controller implements ActionListener {
             case "Return to textual reports":
                 view.JDialogTextual.dispose();
                 break;
+            
+            
             
             case "Validate":
                 for (int i = 0; i < Model.getAllWorkers().size(); ++i) {
@@ -326,12 +353,16 @@ public class Controller implements ActionListener {
                 break;
             
             case "View Graphic":
+                View.JTextAreaGraphics.setText("");
+                JButtonViewGraph.setEnabled(false);
+                
                 if (JCheckBoxBestTwoCustomers.isSelected()) {
                     
                     System.out.println("mejores");
                                         
                     Model.drawBest2original();
                     
+                    //disable the checkbox of all reports until the user presses the "Clean" button
                     JCheckBoxBestTwoCustomers.setEnabled(false); JCheckBoxBestTwoCustomers.setSelected(false);
                     JCheckBoxSortAge.setEnabled(false);
                     
@@ -340,6 +371,12 @@ public class Controller implements ActionListener {
                 } else if (JCheckBoxSortAge.isSelected()) {
                     
                     Model.drawSortByAge();
+                    
+                    //disable the checkbox of all reports until the user presses the "Clean" button
+                    JCheckBoxBestTwoCustomers.setEnabled(false); JCheckBoxBestTwoCustomers.setSelected(false);
+                    JCheckBoxSortAge.setEnabled(false);
+                    
+                    JButtonStartGra.setEnabled(false);
                 }
                 else {
                     System.out.println("no mejores");
@@ -351,6 +388,8 @@ public class Controller implements ActionListener {
                 break;
             
             case "Clean":   //txosten grafikoak -> vaciar el contenido del text area
+                View.JTextAreaGraphics.setText("");
+                JButtonViewGraph.setEnabled(true);
                 
                 JCheckBoxBestTwoCustomers.setSelected(false);
                 JCheckBoxBestTwoCustomers.setEnabled(true);

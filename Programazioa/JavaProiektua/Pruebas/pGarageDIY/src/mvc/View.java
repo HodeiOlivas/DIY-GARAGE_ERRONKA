@@ -161,7 +161,7 @@ public class View extends javax.swing.JFrame {
         JButtonViewGraph = new javax.swing.JButton();
         JDialogTextual = new javax.swing.JDialog();
         jScrollPane2 = new javax.swing.JScrollPane();
-        JTableUnderage = new javax.swing.JTable();
+        JTableDataOnTable = new javax.swing.JTable();
         JButtonReturnFromTable = new javax.swing.JButton();
         JFrameAdminSection = new javax.swing.JFrame();
         ButtonGroupGraphReports = new javax.swing.ButtonGroup();
@@ -492,8 +492,8 @@ public class View extends javax.swing.JFrame {
                 .addContainerGap(196, Short.MAX_VALUE))
         );
 
-        JTableUnderage.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jScrollPane2.setViewportView(JTableUnderage);
+        JTableDataOnTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane2.setViewportView(JTableDataOnTable);
 
         JButtonReturnFromTable.setText("Go back");
         JButtonReturnFromTable.setActionCommand("Return to textual reports");
@@ -504,21 +504,19 @@ public class View extends javax.swing.JFrame {
             JDialogTextualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JDialogTextualLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(jScrollPane2)
+                .addGroup(JDialogTextualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
+                    .addComponent(JButtonReturnFromTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(44, 44, 44))
-            .addGroup(JDialogTextualLayout.createSequentialGroup()
-                .addGap(221, 221, 221)
-                .addComponent(JButtonReturnFromTable)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         JDialogTextualLayout.setVerticalGroup(
             JDialogTextualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JDialogTextualLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(JButtonReturnFromTable)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout JFrameAdminSectionLayout = new javax.swing.GroupLayout(JFrameAdminSection.getContentPane());
@@ -637,6 +635,9 @@ public class View extends javax.swing.JFrame {
             System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString() + ". \n");
 
         } else if (JComboBoxTxostenak.getSelectedIndex() == 4) {
+            
+            //CheckboxViewOnTable.setEnabled(false);  //disable the option of viewing on a table the data/result of this report (morning and afternoon reservations)
+            
             JSpinnerCustomerId.setValue(0); JSpinnerCustomerId.setEnabled(true);
             JTextFieldTodaysDate.setEnabled(false);
             ChoiceCustomer.setEnabled(false);
@@ -652,11 +653,16 @@ public class View extends javax.swing.JFrame {
 
         } else {
             System.out.println("Choose any option from the combo box and press 'View'. \n");
+            
+            CheckboxViewOnTable.setEnabled(true);
+            
             JTextFieldTodaysDate.setEditable(false);    JTextFieldTodaysDate.setEnabled(false);
             JSpinnerCustomerId.setEnabled(false);
             ChoiceCustomer.setEnabled(false);
 
-        }
+        } 
+        
+        
     }//GEN-LAST:event_JComboBoxTxostenakActionPerformed
 
     /**
@@ -747,7 +753,7 @@ public class View extends javax.swing.JFrame {
     public static javax.swing.JLabel JLabelWorkerSurname;
     public static javax.swing.JPasswordField JPasswordFieldPasswordUser;
     public static javax.swing.JSpinner JSpinnerCustomerId;
-    javax.swing.JTable JTableUnderage;
+    javax.swing.JTable JTableDataOnTable;
     public static javax.swing.JTextArea JTextAreaGraphics;
     public static javax.swing.JTextArea JTextAreaSaveProcessInstructor;
     public static javax.swing.JTextArea JTextAreaTxostenak;
