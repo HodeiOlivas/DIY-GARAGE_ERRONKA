@@ -13,13 +13,6 @@ import java.time.LocalDate;
  */
 public class LeastFrequentCustomer extends Customer {
     
-    /*
-    private String usernameCust;
-    private String nameCust;
-    private String surnameCust;
-    private int daysPassed;
-    */
-    
     private int codeReservation;            //CODE of the last reservation of the customer
     private LocalDate lastReservation;      //DATE of the last reservation of the customer
     private int daysPassed;                 //DAYS PASSED since the last reservation of the customer

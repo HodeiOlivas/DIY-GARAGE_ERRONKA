@@ -18,8 +18,8 @@ public class UnderageTableModela extends AbstractTableModel {
     private final String[] columnsName = {"Username", "Name", "Surname", "Birthday"};
     private ArrayList<Customer> underageCustomersList = new ArrayList<>();
 
-    public UnderageTableModela(ArrayList<Customer> datosEnArrayList) {
-        this.underageCustomersList = datosEnArrayList;
+    public UnderageTableModela(ArrayList<Customer> dataSavedOnArraylist) {
+        this.underageCustomersList = dataSavedOnArraylist;
     }
 
     @Override

@@ -27,6 +27,10 @@ import java.util.logging.Logger;
 import mvc.View.*;
 import myClasses.*;
 import forGraphics.*;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 //import myClasses.*;
 /**
@@ -842,6 +846,48 @@ public class Model {
         g1.fillArc(350, 500, 100, 100, startAngleAdults, angleAdults);    //g1.fillArc(350, 500, 150, 100, 360 - (360 - 306), 90 + (360 - 306));
             
     }
+    
+    
+    public static ArrayList<MonthOccupation> reservationsOfEachMonth() {
+        
+        String sql = "select MONTHNAME(STR_TO_DATE(Month(Date),'%m')) as Month, \n" +
+                "count(Date) as 'Occupation',\n" +
+                "sum(Total_Price) as 'Earned per month'\n" +
+                "from reservation group by Month(Date)";
+        
+        //String sql2 = "select MONTHNAME(STR_TO_DATE(Month(Date),'%m')) as Month, count(Date) as Amount from reservation group by Month(Date)";        
+        //String sql3 = "select MONTHNAME(STR_TO_DATE(Month(Date),'%m')), count(Date) from reservation where cust_Username = 'user22' group by Month(Date)";
+        
+        ArrayList<MonthOccupation> reservationsOfCertainMonth = new ArrayList<>();
+        
+        try (Connection conn = connect2();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                
+                MonthOccupation dataMonth = new MonthOccupation(
+                        rs.getString("Month"),
+                        rs.getInt("Occupation"),
+                        rs.getDouble("Earned per month"));
+                
+                System.out.println(dataMonth);
+                
+                reservationsOfCertainMonth.add(dataMonth);
+                
+            }
+            
+            System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
+            //System.out.println(adultCustomers.toString());
+            System.out.println("");
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return reservationsOfCertainMonth;
+    }
+    
     
     
 }

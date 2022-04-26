@@ -17,8 +17,8 @@ public class DesiredPurchaseTableModela extends AbstractTableModel {
     private final String[] columnsName = {"Purchase ID", "Cust. Username", "Product", "Date", "Amount", "Total"};
     private ArrayList<Purchase> purchasesOfDesiredCustomer = new ArrayList<>();
 
-    public DesiredPurchaseTableModela(ArrayList<Purchase> datosEnArrayList) {
-        this.purchasesOfDesiredCustomer = datosEnArrayList;
+    public DesiredPurchaseTableModela(ArrayList<Purchase> dataArrayList) {
+        this.purchasesOfDesiredCustomer = dataArrayList;
     }
 
     @Override

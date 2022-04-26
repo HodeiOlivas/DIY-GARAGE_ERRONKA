@@ -165,6 +165,9 @@ public class View extends javax.swing.JFrame {
         JButtonReturnFromTable = new javax.swing.JButton();
         JFrameAdminSection = new javax.swing.JFrame();
         ButtonGroupGraphReports = new javax.swing.ButtonGroup();
+        JDialogTextualTodaysOccupation = new javax.swing.JDialog();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        JTableTodaysOccupation = new javax.swing.JTable();
         JLabelTitulo = new javax.swing.JLabel();
         JLabelIntro = new javax.swing.JLabel();
         JButtonGoTxostenak = new javax.swing.JButton();
@@ -530,6 +533,33 @@ public class View extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
+        JTableTodaysOccupation.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane5.setViewportView(JTableTodaysOccupation);
+
+        javax.swing.GroupLayout JDialogTextualTodaysOccupationLayout = new javax.swing.GroupLayout(JDialogTextualTodaysOccupation.getContentPane());
+        JDialogTextualTodaysOccupation.getContentPane().setLayout(JDialogTextualTodaysOccupationLayout);
+        JDialogTextualTodaysOccupationLayout.setHorizontalGroup(
+            JDialogTextualTodaysOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDialogTextualTodaysOccupationLayout.createSequentialGroup()
+                .addContainerGap(137, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(121, 121, 121))
+        );
+        JDialogTextualTodaysOccupationLayout.setVerticalGroup(
+            JDialogTextualTodaysOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JDialogTextualTodaysOccupationLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         JLabelTitulo.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -760,6 +790,7 @@ public class View extends javax.swing.JFrame {
     public static javax.swing.JCheckBox JCheckPurchaseHistory;
     public static javax.swing.JComboBox<String> JComboBoxTxostenak;
     public static javax.swing.JDialog JDialogTextual;
+    private javax.swing.JDialog JDialogTextualTodaysOccupation;
     public static javax.swing.JFrame JFrameAdminSection;
     public static javax.swing.JFrame JFrameGraphicalReports;
     public static javax.swing.JFrame JFrameTextReports;
@@ -782,6 +813,7 @@ public class View extends javax.swing.JFrame {
     public static javax.swing.JPasswordField JPasswordFieldPasswordUser;
     public static javax.swing.JSpinner JSpinnerCustomerId;
     javax.swing.JTable JTableDataOnTable;
+    public static javax.swing.JTable JTableTodaysOccupation;
     public static javax.swing.JTextArea JTextAreaGraphics;
     public static javax.swing.JTextArea JTextAreaSaveProcessInstructor;
     public static javax.swing.JTextArea JTextAreaTxostenak;
@@ -792,6 +824,7 @@ public class View extends javax.swing.JFrame {
     public static javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;

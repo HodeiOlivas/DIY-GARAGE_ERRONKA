@@ -127,6 +127,29 @@ public class Controller implements ActionListener {
                     JTextFieldTodaysDate.setEditable(true);
                     JTextFieldTodaysDate.setEnabled(true);
                     
+                    if (CheckboxViewOnTable.getState() == true) {
+                        JDialogTextual.setSize(600, 600);
+                        JDialogTextual.setVisible(true);
+                        view.JTableDataOnTable.setVisible(true);
+                        
+                        view.JTableDataOnTable.setModel(new OccupationTableModel(Model.reservationsOfEachMonth()));
+
+                        //view.JTableUnderage.setModel(dataModel);
+                        
+                        //Jtable -> model -> custom code -> new UnderageTableModela(Model.underAgeCustomers())
+                        System.out.println("The requested data is being represented in a table. ");
+                        
+                    } else if (CheckboxViewOnTable.getState() == false) {
+                        for (int i = 0; i < model.reservationsOfEachMonth().size(); ++i) {
+                            JTextAreaTxostenak.setText(JTextAreaTxostenak.getText() + model.reservationsOfEachMonth().get(i).toString());
+                            //JTextAreaTxostenak.setText(JTextAreaTxostenak.getText() + model.adultCustomers().get(i).toString());
+                        }
+                    } else {
+                        JTextAreaTxostenak.setText("Something went wrong... Please, close this tab and try again. ");
+                    }
+                    
+                    //view.JTableDataOnTable.setModel(new UnderageTableModela(Model.underAgeCustomers()));
+                    
                     System.out.println("Today's occupation report selected.");
                     //JTextAreaTxostenak.setText("Searching the occupation of " + "'" + JTextFieldTodaysDate.getText() + "'" + ". ");
                     
