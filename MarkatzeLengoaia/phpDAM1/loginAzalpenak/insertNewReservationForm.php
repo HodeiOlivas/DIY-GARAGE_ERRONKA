@@ -51,24 +51,33 @@
                 <tr>
                     <td>
                         <form>
-                            <select name="selectCabin">
-                                <option selected>...</option> -->
+                            <select name="selectCabin" class="custom-select mb-3">
+                                <option selected>...</option> 
                                 <?php
                                 include("test_connect_db.php");
                                 $link = connectDataBase();
                                 $sql = mysqli_query($link, "select distinct Cabin_ID from cabin order by 1 asc");
-
-                                // while ($erregistroa= $sql->fetch_assoc()) {
-                                while ($erregistroa = mysqli_fetch_array($sql)) {
-
                                 ?>
-                                    <option value="<?php echo $erregistroa['Cabin_ID']; ?>"><?php echo $erregistroa['Cabin_ID']; ?></option>
-                                <?php
-                                    // close while loop   
-                                }
+
+                                <!-- <option select name='ccc' value="<?php echo $row['Cabin_ID']; ?>"><?php echo $row['Cabin_ID']; ?></option> -->
                                 
+                                <?php
+                                while ($row = mysqli_fetch_array($sql)) {
+                                        ?>
+                                        
+                                        <option value="<?php echo $row['Cabin_ID']; ?>"><?php echo $row['Cabin_ID']; ?></option>
+                                        <?php
+                                        
+
+                                    }
                                 ?>
+                                
+
+                                
+
+                                
                             </select>
+
                         </form>
                     </td>
                 </tr>
@@ -163,3 +172,29 @@
 </body>
 
 </html>
+
+
+<!-- 
+    LINKS INFO
+    
+https://www.plus2net.com/php_tutorial/php_drop_down_list.php    
+https://stackoverflow.com/questions/45157149/creating-dropdown-list-from-sql-database-in-php 
+-->
+
+
+<!-- 
+    require "config.php";// Database connection
+//////////////////////////////
+ if($r_set = $connection->query("SELECT * from student")){
+
+echo "<select id=name name=name class='form-control' style='width:100px;'>";
+while ($row = $r_set->fetch_assoc()) {
+echo "<option value=$row[id]>$row[name]</option>";
+}
+echo "</select>";
+}else{
+echo $connection->error;
+}
+
+-->
+

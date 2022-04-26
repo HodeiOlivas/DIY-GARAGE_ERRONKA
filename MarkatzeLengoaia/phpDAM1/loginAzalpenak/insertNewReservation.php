@@ -25,7 +25,8 @@
         
         
         
-        //$cabina11 = $_POST["selectCabina"]; //dropdown menu with sql sentence
+        // $cabina11 = $_POST["selectCabin1"]; //dropdown menu with sql sentence
+        //$cabina11 = $_POST["selectCabin"]; //dropdown menu with sql sentence
 
         // $selected = $_POST['selectCabin'];
         // if(isset($_POST["send"])) {
