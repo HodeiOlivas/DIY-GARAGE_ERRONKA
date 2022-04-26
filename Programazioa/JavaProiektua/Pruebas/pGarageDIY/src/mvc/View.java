@@ -28,13 +28,12 @@ public class View extends javax.swing.JFrame {
         this.setTitle("Primera prueba GUI");
         
         JComboBoxTxostenak.addItem("...");
-        JComboBoxTxostenak.addItem("Today's occupation");
+        JComboBoxTxostenak.addItem("Monthly occupation");
         JComboBoxTxostenak.addItem("Underage customers");
         JComboBoxTxostenak.addItem("Desired customer's purchases");
         JComboBoxTxostenak.addItem("Morning / afternoon");
         JComboBoxTxostenak.addItem("Best sellers");
         JComboBoxTxostenak.addItem("The three least frequent customers");
-        JComboBoxTxostenak.addItem("Underage on table");
         
         
         //Choose customer using "choice" tool
