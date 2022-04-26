@@ -22,6 +22,10 @@ import static mvc.View.*;
  * @author arceredillo.adrian
  */
 public class Controller implements ActionListener {
+    
+    //variables to modify/change the color of the terminal's output text/data.
+    public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
+    public static final String ANSI_RED = "\u001B[3m";
 
     private Model model;
     private View view;
@@ -116,7 +120,8 @@ public class Controller implements ActionListener {
                 JTextAreaTxostenak.setText("");
                 if (JComboBoxTxostenak.getSelectedIndex() == 0) {
                     JTextAreaTxostenak.setText("");
-                    System.out.println("No report selected");
+                    JTextAreaTxostenak.setText("Please, select a report and then press the 'View' button. ");
+                    //System.out.println("No report selected");
 
                 } else if (JComboBoxTxostenak.getSelectedIndex() == 1) {
                     JTextFieldTodaysDate.setEditable(true);
@@ -166,8 +171,17 @@ public class Controller implements ActionListener {
                         System.out.println("The requested data is being represented in a table. ");
                         
                     } else if (CheckboxViewOnTable.getState() == false) {
-                        for (int i = 0; i < model.purchasesOfDesiredCustomer(ChoiceCustomer.getSelectedItem()).size(); ++i) {
-                            JTextAreaTxostenak.setText(JTextAreaTxostenak.getText() + model.purchasesOfDesiredCustomer(ChoiceCustomer.getSelectedItem()).get(i).toStringForTextArea());
+                        
+                        if (view.ChoiceCustomer.getSelectedIndex() == 0) {
+                            //view.CheckboxViewOnTable.setEnabled(false);
+                            System.out.println("Please, select a customer to continue! ");
+                            JTextAreaTxostenak.setText("Please, select a customer to continue! ");
+                            //JTextAreaTxostenak.setText("Please, select a customer to continue! ");
+                        } else {
+                            //view.CheckboxViewOnTable.setEnabled(true);
+                            for (int i = 0; i < model.purchasesOfDesiredCustomer(ChoiceCustomer.getSelectedItem()).size(); ++i) {
+                                JTextAreaTxostenak.setText(JTextAreaTxostenak.getText() + model.purchasesOfDesiredCustomer(ChoiceCustomer.getSelectedItem()).get(i).toStringForTextArea());
+                            }
                         }
                     } else {
                         JTextAreaTxostenak.setText("Something went wrong... Please, close this tab and try again. ");
@@ -226,8 +240,9 @@ public class Controller implements ActionListener {
                     JTextFieldTodaysDate.setEnabled(false);
                     JSpinnerCustomerId.setEnabled(false);
                 }
-
-                System.out.println("Ver informes. \n");
+                
+                //System.out.println("\nData provided by DIY HALAB garage! \n");
+                System.out.println(ANSI_PURPLE_BACKGROUND + "Data provided by DIY HALAB garage!" + ANSI_RED + "\n" + "\n----------------");
                 break;
             
             case "Clear":
@@ -245,6 +260,8 @@ public class Controller implements ActionListener {
             
             case "Return to textual reports":
                 view.JDialogTextual.dispose();
+                view.CheckboxViewOnTable.setState(false);
+                view.JComboBoxTxostenak.setSelectedIndex(0);
                 break;
             
             
@@ -354,6 +371,7 @@ public class Controller implements ActionListener {
             
             case "View Graphic":
                 View.JTextAreaGraphics.setText("");
+                View.JTextAreaGraphics.setEditable(false);
                 JButtonViewGraph.setEnabled(false);
                 
                 if (JCheckBoxBestTwoCustomers.isSelected()) {

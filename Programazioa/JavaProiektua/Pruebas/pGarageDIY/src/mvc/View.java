@@ -611,8 +611,13 @@ public class View extends javax.swing.JFrame {
 
         if (JComboBoxTxostenak.getSelectedIndex() == 0) {
             System.out.println("Actual report: No report selected. Please, choose one and press the 'View' button. \n");
+            CheckboxViewOnTable.setVisible(true);   CheckboxViewOnTable.setEnabled(false);  CheckboxViewOnTable.setState(false);
+            
 
         } else if (JComboBoxTxostenak.getSelectedIndex() == 1) {
+            
+            CheckboxViewOnTable.setVisible(true);   CheckboxViewOnTable.setEnabled(true);   CheckboxViewOnTable.setState(false);
+            
             JTextFieldTodaysDate.setEditable(true); JTextFieldTodaysDate.setEnabled(true);
             JSpinnerCustomerId.setEnabled(false);
             ChoiceCustomer.setEnabled(false);
@@ -621,6 +626,9 @@ public class View extends javax.swing.JFrame {
             System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString() + ". \n");
             
         } else if (JComboBoxTxostenak.getSelectedIndex() == 2) {
+            
+            CheckboxViewOnTable.setVisible(true);   CheckboxViewOnTable.setEnabled(true);   CheckboxViewOnTable.setState(false);
+            
             JSpinnerCustomerId.setEnabled(false);
             JTextFieldTodaysDate.setEnabled(false);
             ChoiceCustomer.setEnabled(false);
@@ -628,15 +636,20 @@ public class View extends javax.swing.JFrame {
             System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString() + ". \n");
 
         } else if (JComboBoxTxostenak.getSelectedIndex() == 3) {
+            
+            CheckboxViewOnTable.setVisible(true);   CheckboxViewOnTable.setEnabled(true);   CheckboxViewOnTable.setState(false);
+            
             JTextFieldTodaysDate.setEnabled(false);
             ChoiceCustomer.setEnabled(true);
             JSpinnerCustomerId.setValue(0); JSpinnerCustomerId.setEnabled(false);
-
+            
             System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString() + ". \n");
 
         } else if (JComboBoxTxostenak.getSelectedIndex() == 4) {
             
             //CheckboxViewOnTable.setEnabled(false);  //disable the option of viewing on a table the data/result of this report (morning and afternoon reservations)
+            
+            CheckboxViewOnTable.setVisible(true);   CheckboxViewOnTable.setEnabled(false);   CheckboxViewOnTable.setState(false);
             
             JSpinnerCustomerId.setValue(0); JSpinnerCustomerId.setEnabled(true);
             JTextFieldTodaysDate.setEnabled(false);
@@ -645,16 +658,31 @@ public class View extends javax.swing.JFrame {
             System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString() + ". \n");
 
         } else if (JComboBoxTxostenak.getSelectedIndex() == 5) {
+            
+            CheckboxViewOnTable.setVisible(true);   CheckboxViewOnTable.setEnabled(true);   CheckboxViewOnTable.setState(false);
+            
             JSpinnerCustomerId.setValue(0); JSpinnerCustomerId.setEnabled(false);
             JTextFieldTodaysDate.setEnabled(false);
             ChoiceCustomer.setEnabled(false);
 
             System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString() + ". \n");
 
-        } else {
+        } else if (JComboBoxTxostenak.getSelectedIndex() == 6) {
+            
+            CheckboxViewOnTable.setVisible(true);   CheckboxViewOnTable.setEnabled(true);   CheckboxViewOnTable.setState(false);
+            
+            JSpinnerCustomerId.setValue(0); JSpinnerCustomerId.setEnabled(false);
+            JTextFieldTodaysDate.setEnabled(false);
+            ChoiceCustomer.setEnabled(false);
+
+            System.out.println("Actual report: " + JComboBoxTxostenak.getSelectedItem().toString() + ". \n");
+
+        }
+        
+        else {
             System.out.println("Choose any option from the combo box and press 'View'. \n");
             
-            CheckboxViewOnTable.setEnabled(true);
+            //CheckboxViewOnTable.setEnabled(true);
             
             JTextFieldTodaysDate.setEditable(false);    JTextFieldTodaysDate.setEnabled(false);
             JSpinnerCustomerId.setEnabled(false);

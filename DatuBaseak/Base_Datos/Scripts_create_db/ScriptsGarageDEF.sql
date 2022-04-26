@@ -227,5 +227,17 @@ GROUP BY cust_Username ORDER by Date desc limit 3;
 
 
 
+/*
+// while (selectCabin) {
+		while ($erregistroa = mysqli_fetch_array($sql)) {
+			echo "<option value='" . $row['Cabin_ID'] . "'>" . $row['Cabin_ID'] . "</option>";
 
+		?>
+			<option value="<?php echo $erregistroa['Cabin_ID']; ?>"><?php echo $erregistroa['Cabin_ID']; ?></option>
+		<?php
+			// close while loop   
+		}
+		
+		?>
+*/
 

@@ -192,7 +192,7 @@ public class Model {
             pstmt.setString(1, desiredCustomer);
             rs = pstmt.executeQuery();
 
-            System.out.println("Purchases of the desired Customer: ");
+            System.out.println("\nPurchases of the desired Customer: ");
             System.out.println("====================================================================================================================");
             System.out.printf("%-10s %10s %20s %25s %20s %25s\n", "Purchase ID", "Username", "Product", "Date", "Amount", "Total");
             System.out.println("--------------------------------------------------------------------------------------------------------------------");
@@ -537,11 +537,11 @@ public class Model {
                 //"--------------------------------------------------" + rs.getString("Cabin") + "--------------------------------------------------"
                 bestTwoCustomers.add("\n");
                 bestCust = 
-                        "\n\t\tUsername: " + rs.getString("cust_Username") + 
-                         
-                        "\n\tTotal paid: " + rs.getDouble("eachPaid") + 
-                        "\tBooking time: " + rs.getInt("ReservedHours") + " hours " + 
-                        "\n\n--------------------------------------------------xx---------------------------------------------------" + "\n";
+                        //"\n\t\tUsername: " + rs.getString("cust_Username") + 
+                        "\t\tUsername: " + rs.getString("cust_Username") + 
+                        "\n\tBooking time: " + rs.getInt("ReservedHours") + " hours " +                          
+                        "       Total paid: " + rs.getDouble("eachPaid") + " €" + 
+                        "\n\n--------------------------------------------------xx---------------------------------------------------" + "\n\n";
                 customerUsername = rs.getString("cust_Username");
                 /*
                 bestCust = 
@@ -732,6 +732,7 @@ public class Model {
             System.out.println("First graphic report: Best two customers (reservations) ");
 
             for (int i = 0; i < Model.biggestTotalPricesReservations().size(); ++i) {
+                System.out.println("");
                 if (i == 0 || i == 1 || i == 4) {
                     View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.biggestTotalPricesReservations().get(i));  
                 }
