@@ -18,6 +18,10 @@ public class BestCustomer {
     private double topReservationPrice;      //the price of the best reservation of the customer
     
     
+    public BestCustomer() {
+        
+    }
+    
     public BestCustomer(String usernameCustomer, int bookingTime, double totalPaid) {
         this.usernameCustomer = usernameCustomer;
         this.bookingTime = bookingTime;
@@ -57,7 +61,7 @@ public class BestCustomer {
     public String toString() {
         
         return "\n\t\tUsername: " + this.getUsernameCustomer() + 
-               "\n\tBooking Time: " + this.getBookingTime() + 
+               "\n\tBooking Time: " + this.getBookingTime() + " h." +
                "        Total paid: " + this.getTotalPaid() + " €" + 
                "\n\n--------------------------------------------------xx---------------------------------------------------" + "\n\n";
     }

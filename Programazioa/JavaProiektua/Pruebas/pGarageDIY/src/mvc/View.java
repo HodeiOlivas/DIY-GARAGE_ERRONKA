@@ -19,11 +19,16 @@ import java.awt.Graphics;
  */
 public class View extends javax.swing.JFrame {
 
-    /**
-     * Creates new form BocetoGUI_start
-     */
+    FondoPanel fondo = new FondoPanel();
+    
     public View() {
+        
+        this.setContentPane(fondo);
+        
+        
         initComponents();
+        //this.setResizable(false);
+        this.setSize(900, 500);
         this.setResizable(false);
         this.setTitle("Primera prueba GUI");
         
@@ -74,6 +79,8 @@ public class View extends javax.swing.JFrame {
         
         JButtonViewGraph.setEnabled(false);        
         JButtonClean.setEnabled(false);
+        
+        JCheckBoxViewGraphicOnTable.setEnabled(false);
         
         
         
@@ -150,22 +157,23 @@ public class View extends javax.swing.JFrame {
         JCheckBoxMonthlyOccupancy = new javax.swing.JCheckBox();
         JCheckBoxBestTwoCustomers = new javax.swing.JCheckBox();
         JButtonViewGraph = new javax.swing.JButton();
+        JCheckBoxViewGraphicOnTable = new javax.swing.JCheckBox();
         JDialogTextual = new javax.swing.JDialog();
         jScrollPane2 = new javax.swing.JScrollPane();
         JTableDataOnTable = new javax.swing.JTable();
         JButtonReturnFromTable = new javax.swing.JButton();
         JFrameAdminSection = new javax.swing.JFrame();
         ButtonGroupGraphReports = new javax.swing.ButtonGroup();
-        JDialogTextualTodaysOccupation = new javax.swing.JDialog();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        JTableTodaysOccupation = new javax.swing.JTable();
+        JDialogGraphicReports = new javax.swing.JDialog();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        JTableGraphicInfo = new javax.swing.JTable();
+        JButtonReturnToGraphic = new javax.swing.JButton();
         JLabelTitulo = new javax.swing.JLabel();
         JLabelIntro = new javax.swing.JLabel();
         JButtonGoTxostenak = new javax.swing.JButton();
         JButtonGoGraphicall = new javax.swing.JButton();
         JButtonGoManage = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        JButtonProbarDBConection = new javax.swing.JButton();
 
         JFrameTextReports.setResizable(false);
 
@@ -386,18 +394,21 @@ public class View extends javax.swing.JFrame {
 
         JLabelGraphIntro.setText("This section allows you to know more about the garage.");
 
+        JTextAreaGraphics.setEditable(false);
         JTextAreaGraphics.setColumns(20);
         JTextAreaGraphics.setLineWrap(true);
         JTextAreaGraphics.setRows(5);
         jScrollPane1.setViewportView(JTextAreaGraphics);
 
         JCheckBoxMonthlyOccupancy.setText("Monthly Occupancy");
-        JCheckBoxMonthlyOccupancy.setActionCommand("Monthly Occupancy");
 
         JCheckBoxBestTwoCustomers.setText("Best Two Customers");
 
         JButtonViewGraph.setText("View");
         JButtonViewGraph.setActionCommand("View Graphic");
+
+        JCheckBoxViewGraphicOnTable.setText("Table");
+        JCheckBoxViewGraphicOnTable.setActionCommand("GraphicOnTable");
 
         javax.swing.GroupLayout JFrameGraphicalReportsLayout = new javax.swing.GroupLayout(JFrameGraphicalReports.getContentPane());
         JFrameGraphicalReports.getContentPane().setLayout(JFrameGraphicalReportsLayout);
@@ -409,7 +420,10 @@ public class View extends javax.swing.JFrame {
                     .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
                         .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JLabelGraphIntro)
+                            .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
+                                .addComponent(JLabelGraphIntro)
+                                .addGap(28, 28, 28)
+                                .addComponent(JCheckBoxViewGraphicOnTable))
                             .addComponent(JLabelGarageTitulo))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
@@ -440,7 +454,9 @@ public class View extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(JLabelGarageTitulo)
                 .addGap(18, 18, 18)
-                .addComponent(JLabelGraphIntro)
+                .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JLabelGraphIntro)
+                    .addComponent(JCheckBoxViewGraphicOnTable))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -456,13 +472,13 @@ public class View extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(JCheckBoxSortAge)
-                        .addComponent(JCheckBoxMonthlyOccupancy))
+                    .addComponent(JCheckBoxMonthlyOccupancy)
+                    .addComponent(JCheckBoxSortAge)
                     .addComponent(JCheckBoxBestTwoCustomers))
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(196, Short.MAX_VALUE))
         );
 
+        JTableDataOnTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         JTableDataOnTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane2.setViewportView(JTableDataOnTable);
 
@@ -501,7 +517,10 @@ public class View extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
-        JTableTodaysOccupation.setModel(new javax.swing.table.DefaultTableModel(
+        JDialogGraphicReports.setPreferredSize(new java.awt.Dimension(542, 409));
+
+        JTableGraphicInfo.setBackground(new java.awt.Color(255, 153, 153));
+        JTableGraphicInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -509,32 +528,41 @@ public class View extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane5.setViewportView(JTableTodaysOccupation);
+        JTableGraphicInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane6.setViewportView(JTableGraphicInfo);
 
-        javax.swing.GroupLayout JDialogTextualTodaysOccupationLayout = new javax.swing.GroupLayout(JDialogTextualTodaysOccupation.getContentPane());
-        JDialogTextualTodaysOccupation.getContentPane().setLayout(JDialogTextualTodaysOccupationLayout);
-        JDialogTextualTodaysOccupationLayout.setHorizontalGroup(
-            JDialogTextualTodaysOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDialogTextualTodaysOccupationLayout.createSequentialGroup()
-                .addContainerGap(137, Short.MAX_VALUE)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(121, 121, 121))
+        JButtonReturnToGraphic.setText("Go Back");
+        JButtonReturnToGraphic.setActionCommand("Return To Graphic Section");
+
+        javax.swing.GroupLayout JDialogGraphicReportsLayout = new javax.swing.GroupLayout(JDialogGraphicReports.getContentPane());
+        JDialogGraphicReports.getContentPane().setLayout(JDialogGraphicReportsLayout);
+        JDialogGraphicReportsLayout.setHorizontalGroup(
+            JDialogGraphicReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JDialogGraphicReportsLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(JDialogGraphicReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+                    .addComponent(JButtonReturnToGraphic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(60, 60, 60))
         );
-        JDialogTextualTodaysOccupationLayout.setVerticalGroup(
-            JDialogTextualTodaysOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JDialogTextualTodaysOccupationLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+        JDialogGraphicReportsLayout.setVerticalGroup(
+            JDialogGraphicReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JDialogGraphicReportsLayout.createSequentialGroup()
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
+                .addComponent(JButtonReturnToGraphic)
+                .addGap(103, 103, 103))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         JLabelTitulo.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        JLabelTitulo.setForeground(new java.awt.Color(0, 0, 0));
-        JLabelTitulo.setText("Garage HALAB");
+        JLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        JLabelTitulo.setText("Welcome, driver!");
 
-        JLabelIntro.setText("Welcome to Garage HALAB's official GUI.");
+        JLabelIntro.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        JLabelIntro.setForeground(new java.awt.Color(255, 255, 255));
+        JLabelIntro.setText("You're in HALAB's Garage official GUI.");
 
         JButtonGoTxostenak.setText("Textual Reports");
 
@@ -542,57 +570,41 @@ public class View extends javax.swing.JFrame {
 
         JButtonGoManage.setText("Manage Garage");
 
-        JButtonProbarDBConection.setText("Probar DB");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
-                        .addComponent(JLabelTitulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(JLabelIntro)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1)
+                    .addComponent(JButtonGoManage, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JButtonGoGraphicall, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(JLabelTitulo)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(JButtonGoTxostenak, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(JButtonGoGraphicall, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(104, 104, 104))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(JButtonGoManage)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(JButtonProbarDBConection)
-                        .addGap(52, 52, 52))))
+                                .addComponent(JButtonGoTxostenak, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(JLabelIntro))
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 809, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(46, 46, 46))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(JLabelTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(JLabelIntro)
-                .addGap(29, 29, 29)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JButtonGoTxostenak)
-                    .addComponent(JButtonGoGraphicall))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JButtonProbarDBConection)
-                    .addComponent(JButtonGoManage))
-                .addContainerGap(31, Short.MAX_VALUE))
+                    .addComponent(JLabelIntro))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(JButtonGoGraphicall)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(JButtonGoManage)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 287, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(JLabelTitulo)
+                .addGap(31, 31, 31))
         );
 
         pack();
@@ -742,9 +754,9 @@ public class View extends javax.swing.JFrame {
     public static javax.swing.JButton JButtonLogOut;
     public static javax.swing.JButton JButtonLoginToSave;
     public static javax.swing.JButton JButtonPrintTxosten;
-    public static javax.swing.JButton JButtonProbarDBConection;
     public static javax.swing.JButton JButtonReturnFromTable;
     public static javax.swing.JButton JButtonReturnStart;
+    public static javax.swing.JButton JButtonReturnToGraphic;
     public static javax.swing.JButton JButtonSaveCabin;
     public static javax.swing.JButton JButtonSaveCatalog;
     public static javax.swing.JButton JButtonSaveEntireStaff;
@@ -755,9 +767,10 @@ public class View extends javax.swing.JFrame {
     public static javax.swing.JCheckBox JCheckBoxBestTwoCustomers;
     public static javax.swing.JCheckBox JCheckBoxMonthlyOccupancy;
     public static javax.swing.JCheckBox JCheckBoxSortAge;
+    public static javax.swing.JCheckBox JCheckBoxViewGraphicOnTable;
     public static javax.swing.JComboBox<String> JComboBoxTxostenak;
+    public static javax.swing.JDialog JDialogGraphicReports;
     public static javax.swing.JDialog JDialogTextual;
-    private javax.swing.JDialog JDialogTextualTodaysOccupation;
     public static javax.swing.JFrame JFrameAdminSection;
     public static javax.swing.JFrame JFrameGraphicalReports;
     public static javax.swing.JFrame JFrameTextReports;
@@ -777,7 +790,7 @@ public class View extends javax.swing.JFrame {
     public static javax.swing.JPasswordField JPasswordFieldPasswordUser;
     public static javax.swing.JSpinner JSpinnerCustomerId;
     javax.swing.JTable JTableDataOnTable;
-    public static javax.swing.JTable JTableTodaysOccupation;
+    public static javax.swing.JTable JTableGraphicInfo;
     public static javax.swing.JTextArea JTextAreaGraphics;
     public static javax.swing.JTextArea JTextAreaSaveProcessInstructor;
     public static javax.swing.JTextArea JTextAreaTxostenak;
@@ -788,12 +801,33 @@ public class View extends javax.swing.JFrame {
     public static javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
+    public static javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     // End of variables declaration//GEN-END:variables
+    
+    
+    class FondoPanel extends JPanel {
+        private Image imagen;
+        
+        @Override
+        public void paint(Graphics g) {
+            //imagen = new ImageIcon(getClass().getResource("/images/fondoF1_1.jpg")).getImage();
+            imagen = new ImageIcon(getClass().getResource("/images/fondoIndex3.jpg")).getImage();
+            //imagen = new ImageIcon(getClass().getResource("/images/fondoIndex3.png")).getImage();
+            
+            
+            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+            
+            setOpaque(false);
+            
+            super.paint(g);
+            
+        }
+    }
+    
 }
 
 

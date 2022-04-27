@@ -10,8 +10,11 @@ import myClasses.*;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import static mvc.View.*;
 //import static mvc.View.*;
@@ -46,8 +49,7 @@ public class Controller implements ActionListener {
 
     private void gehituActionListener(ActionListener listener) {
         //GUIaren konponente guztiei gehitu listenerra
-
-        View.JButtonProbarDBConection.addActionListener(listener);    //botón para comprobar la conexión a la db
+        
         //--------------------------//
         View.JButtonGoTxostenak.addActionListener(listener);  //inicio -> botón para ver txostenak textuales
         View.JButtonGoGraphicall.addActionListener(listener); //inicio -> botón para ver los informes gráficos 
@@ -80,6 +82,8 @@ public class Controller implements ActionListener {
         //View.JCheckBoxUnknownYet.addActionListener(listener);
         View.JCheckBoxMonthlyOccupancy.addActionListener(listener); //graphic reports -> represent graphically the number of reservations made in each month
         
+        View.JCheckBoxViewGraphicOnTable.addActionListener(listener);   //graphic reports -> show on a table the data of the report
+        View.JButtonReturnToGraphic.addActionListener(listener);        //graphic reports -> button to close the table's dialog and return to Graphic section
         /*
         View.JRadioButtonBestTwoCustomers.addActionListener(listener);  //graphical reports -> data of the best 2 customers (in terms of reservations)
         View.JRadioButtonBestTwo.addActionListener(listener);
@@ -108,6 +112,7 @@ public class Controller implements ActionListener {
                 
                 System.out.println("Wait... The Textual Report's section is loading. \n");
                 View.JFrameTextReports.setVisible(true);
+                
                 View.JFrameTextReports.setTitle("Create a New Customer!");
                 View.JFrameTextReports.setSize(750, 675);   //600,400   //900, 600
                 View.JFrameTextReports.setResizable(false);
@@ -234,7 +239,7 @@ public class Controller implements ActionListener {
                     JTextFieldTodaysDate.setEditable(false);    JTextFieldTodaysDate.setEnabled(false);
                     
                     if (CheckboxViewOnTable.getState() == true) {
-                        JDialogTextual.setSize(600, 600);
+                        JDialogTextual.setSize(800, 600);
                         JDialogTextual.setVisible(true);
                         view.JTableDataOnTable.setVisible(true);
                         
@@ -402,6 +407,7 @@ public class Controller implements ActionListener {
                 View.JFrameGraphicalReports.setSize(900, 906);  //600, 356
                 View.JButtonViewGraph.setEnabled(true);
                 View.JButtonClean.setEnabled(true);
+                View.JCheckBoxViewGraphicOnTable.setEnabled(true);
                 /*
                 View.JCheckBoxBestTwoCustomers.setEnabled(true);
                 View.JCheckBoxSortAge.setEnabled(true);
@@ -416,24 +422,34 @@ public class Controller implements ActionListener {
             case "View Graphic":
                 View.JTextAreaGraphics.setText("");
                 View.JTextAreaGraphics.setEditable(false);
-                JButtonViewGraph.setEnabled(false);
+                JButtonViewGraph.setEnabled(true);
                 
-                /*
+                
                 if (!(JCheckBoxBestTwoCustomers.isSelected() || JCheckBoxSortAge.isSelected())) {
                     View.JTextAreaGraphics.setText("No report selected. Please choose one and then press the 'View' button. ");
                     JButtonViewGraph.setEnabled(true);
                 }
-                */
+                
                 
                 if (JCheckBoxBestTwoCustomers.isSelected()) {
                     
-                    System.out.println("mejores");
-                                        
-                    Model.drawBest2original();
+                    if (View.JCheckBoxViewGraphicOnTable.isSelected()) {
+                        //JDialogGraphicReports
+                        JDialogGraphicReports.setSize(1000, 450);    //600,450
+                        JDialogGraphicReports.setVisible(true);
+                        View.JTableGraphicInfo.setVisible(true);
+                        
+                        view.JTableGraphicInfo.setModel(new BestCustomerTableModel(Model.bestCustomers()));
+                        //view.JTableDataOnTable.setModel(new OccupationTableModel(Model.reservationsOfEachMonth()));
+                        
+                    } else {
+                        Model.drawBest2original();
+                    }
                     
                     //disable the checkbox of all reports until the user presses the "Clean" button
-                    JCheckBoxBestTwoCustomers.setEnabled(false); JCheckBoxBestTwoCustomers.setSelected(false);
+                    JCheckBoxBestTwoCustomers.setEnabled(false); JCheckBoxBestTwoCustomers.setSelected(true);
                     JCheckBoxSortAge.setEnabled(false);
+                    JCheckBoxMonthlyOccupancy.setEnabled(false);
                     
                     JButtonStartGra.setEnabled(false);
                     
@@ -442,11 +458,37 @@ public class Controller implements ActionListener {
                     Model.drawSortByAge();
                     
                     //disable the checkbox of all reports until the user presses the "Clean" button
-                    JCheckBoxBestTwoCustomers.setEnabled(false); JCheckBoxBestTwoCustomers.setSelected(false);
-                    JCheckBoxSortAge.setEnabled(false);
+                    JCheckBoxBestTwoCustomers.setEnabled(false);    JCheckBoxBestTwoCustomers.setSelected(true);
+                    JCheckBoxSortAge.setEnabled(false);             JCheckBoxSortAge.setEnabled(false);
+                    JCheckBoxMonthlyOccupancy.setEnabled(false);
                     
                     JButtonStartGra.setEnabled(false);
+                    
+                } else if (View.JCheckBoxMonthlyOccupancy.isSelected()) {
+                    
+                    View.JCheckBoxViewGraphicOnTable.setEnabled(true);
+                    
+                    JCheckBoxBestTwoCustomers.setEnabled(false);    JCheckBoxBestTwoCustomers.setSelected(true);
+                    JCheckBoxSortAge.setEnabled(false);             JCheckBoxSortAge.setEnabled(false);
+                    JCheckBoxMonthlyOccupancy.setEnabled(false);
+                    
+                    if (View.JCheckBoxViewGraphicOnTable.isSelected()) {
+                        //JDialogGraphicReports
+                        View.JDialogGraphicReports.setSize(900, 450);
+                        JDialogGraphicReports.setVisible(true);
+                        View.JTableGraphicInfo.setVisible(true);
+                        
+                        view.JTableGraphicInfo.setModel(new OccupationTableModel(Model.reservationsOfEachMonth()));
+                        //view.JTableDataOnTable.setModel(new OccupationTableModel(Model.reservationsOfEachMonth()));
+                        
+                    } else {
+                        for (int i = 0; i < Model.reservationsOfEachMonth().size(); ++i) {
+                            JTextAreaTxostenak.setText(JTextAreaTxostenak.getText() + Model.reservationsOfEachMonth().get(i).toString());
+                        }
+                    }
+                    
                 }
+                
                 
                                
                 JButtonClean.setEnabled(true);
@@ -459,15 +501,18 @@ public class Controller implements ActionListener {
                 
                 View.JCheckBoxBestTwoCustomers.setSelected(false);    JCheckBoxBestTwoCustomers.setEnabled(true);
                 View.JCheckBoxSortAge.setSelected(false);             JCheckBoxSortAge.setEnabled(true);
+                View.JCheckBoxMonthlyOccupancy.setSelected(false);      View.JCheckBoxMonthlyOccupancy.setEnabled(true);
+                
+                View.JCheckBoxViewGraphicOnTable.setSelected(false);    JCheckBoxViewGraphicOnTable.setEnabled(true);
                 
                 JButtonStartGra.setEnabled(true);
-                Model.clearGraphicFrame();
                 
+                Model.clearGraphicFrame();
                 View.JFrameGraphicalReports.repaint();
                 break;
+            
             case "Go back to start":
                 //View.JFrameGraphicalReports.dispose();
-                
                 
                 View.JTextAreaGraphics.setText("");
                 View.JFrameGraphicalReports.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -484,8 +529,10 @@ public class Controller implements ActionListener {
                 
                 break;
             
-            case "Best 2":
-                System.out.println("testing 2");
+            case "Return To Graphic Section":
+                View.JDialogGraphicReports.dispose();
+                View.JCheckBoxViewGraphicOnTable.setSelected(false);
+                JFrameGraphicalReports.repaint();
                 
                 break;
             

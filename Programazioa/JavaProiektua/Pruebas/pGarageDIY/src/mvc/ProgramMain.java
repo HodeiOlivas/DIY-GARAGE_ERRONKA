@@ -28,7 +28,7 @@ public class ProgramMain {
         
         
         //ver compras cliente
-        System.out.println(model.purchasesOfDesiredCustomer("user22"));
+        //System.out.println(model.purchasesOfDesiredCustomer("user22"));
         System.out.println("");
         
         
@@ -37,7 +37,7 @@ public class ProgramMain {
         //ver los productos más vendidos (ventas y ganancias)
         System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
         System.out.println("En cuantas compras aparece cada producto");
-        model.mostSoldProducts();
+        //model.mostSoldProducts();
         
         System.out.println("\n########################################\n");
         

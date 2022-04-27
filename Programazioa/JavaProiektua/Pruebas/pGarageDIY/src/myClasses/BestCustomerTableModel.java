@@ -14,7 +14,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class BestCustomerTableModel extends AbstractTableModel {
     
-    private final String[] columnsName = {"Num. Reservations", "Total Money Paid (€) ", "Booking Time (h)", "Top Reservation (€)"};
+    private final String[] columnsName = {"Customer", "Num. Reservations", "Total Money Paid (€) ", "Booking Time (h)", "Top Reservation (€)"};
     private ArrayList<BestCustomer> premiumCustData = new ArrayList<>();
     
     
@@ -36,16 +36,24 @@ public class BestCustomerTableModel extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         if (columnIndex == 0) {
-            return premiumCustData.get(rowIndex).getNumReservations();
+            return premiumCustData.get(rowIndex).getUsernameCustomer();
         } else if (columnIndex == 1) {
-            return premiumCustData.get(rowIndex).getTotalPaid();
+            return premiumCustData.get(rowIndex).getNumReservations();
         } else if (columnIndex == 2) {
-            return premiumCustData.get(rowIndex).getBookingTime();
+            return premiumCustData.get(rowIndex).getTotalPaid();
         } else if (columnIndex == 3) {
+            return premiumCustData.get(rowIndex).getBookingTime();
+        } else if (columnIndex == 4) {
             return premiumCustData.get(rowIndex).getTopReservationPrice();
         } 
         
         return null;
+    }
+    
+    
+    @Override
+    public String getColumnName(int col) {
+        return columnsName[col];
     }
     
     

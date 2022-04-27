@@ -572,34 +572,26 @@ public class Model {
         ArrayList<BestCustomer> premiumCustomers = new ArrayList<>();    //option 1.1
         
         String sql = "SELECT cust_Username as Customer, SUM(Amount_Hours) as 'Booking Time', "
-                + "COUNT(id_Reservation) as 'Num. Reservations', SUM(Total_Price) as 'Total Paid', "
+                + "COUNT(id_Reservation) as 'Num. Reservations', SUM(Total_Price) as Total, "
                 + "MAX(Total_Price) as 'Top Reservation' "
-                + "FROM reservation group by cust_Username order by 'Total Paid' desc limit 2;";
+                + "FROM reservation group by cust_Username order by Total desc limit 2;";
         
         /*
         String sql2 = "SELECT cust_Username as Customer,  SUM(Amount_Hours) as 'Booking Time', SUM(Total_Price) as 'Total Paid', MAX(Total_Price) as 'Top Reservation'"
                 + "FROM reservation group by cust_Username order by eachPaid desc limit 2;";
         */
         
-        
         try (Connection conn = connect2();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql);) {
             
             while (rs.next()) {
-                //"--------------------------------------------------" + rs.getString("Cabin") + "--------------------------------------------------"
                 
-                BestCustomer premCust = new BestCustomer(rs.getString("Customer"),
-                                                    rs.getInt("Booking Time"),
-                                                    rs.getInt("Num. Reservations"),
-                                                    rs.getDouble("Total Paid"),
-                                                    rs.getDouble("Top Reservation"));
+                BestCustomer premCust = new BestCustomer(rs.getString("Customer"), rs.getInt("Booking Time"), rs.getInt("Num. Reservations"),
+                                                                rs.getDouble("Total"), rs.getDouble("Top Reservation"));
                 
                 premiumCustomers.add(premCust);
-                
-                
                 System.out.println(premCust);
-                System.out.println(premiumCustomers);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -621,23 +613,17 @@ public class Model {
      */
     public static ArrayList<String> oldestThreeCustomersBookingString() {
         
-        //option 1 -> reservation_ID, username, date of last reservation of him/her
-        //option 2 -> reservation.* (full data of the last reservation of the 3 customers)
-        //option 3 -> custoemr.* (full data of the least 3 frequent customers)
-        //option 4 -> username, name, surname, amount of days since the last reservation
-        
         ArrayList<String> theNewests = new ArrayList<>();
-        //String leastFrequentCustomer = "";
                 
         String sql = "SELECT \n" +
-"		reservation.id_Reservation as Reservation_Code, \n" +
-"		MAX(reservation.Date) as Last_Reservation, \n" +
-"		customer.Username, customer.Name, customer.Surname, \n" +
-"               DATEDIFF(now(), MAX(reservation.Date)) as Days_Passed \n" +
-"		FROM reservation, customer\n" +
-"		WHERE reservation.cust_Username = customer.Username and \n" +
-"		reservation.Date < cast((now()) as date) \n" +
-"		GROUP BY cust_Username ORDER by Days_Passed desc limit 3;";
+                "reservation.id_Reservation as Reservation_Code, \n" +
+                "MAX(reservation.Date) as Last_Reservation, \n" +
+                "customer.Username, customer.Name, customer.Surname, \n" +
+                "DATEDIFF(now(), MAX(reservation.Date)) as Days_Passed \n" +
+                "FROM reservation, customer\n" +
+                "WHERE reservation.cust_Username = customer.Username and \n" +
+                "reservation.Date < cast((now()) as date) \n" +
+                "GROUP BY cust_Username ORDER by Days_Passed desc limit 3;";
         
         try (Connection conn = connect2();
                 Statement stmt = conn.createStatement();
@@ -647,18 +633,7 @@ public class Model {
             String newestReservation = "";
             
             while (rs.next()) {
-                /*
-                bestCust = 
-                        "\n\t\tUsername: " + rs.getString("cust_Username") + 
-                         
-                        "\n\tTotal paid: " + rs.getDouble("eachPaid") + 
-                        "\tBooking time: " + rs.getInt("ReservedHours") + " hours " + 
-                        "\n--------------------------------------------------xx---------------------------------------------------" + "\n";
-                customerUsername = rs.getString("cust_Username");
                 
-                bestTwoCustomers.add(bestCust);         //add into the arraylist the basic data of those customers
-                bestTwoCustomers.add(customerUsername); //add also, the 2 usernames of the best 2 customers
-                */
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -704,11 +679,6 @@ public class Model {
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql);) {
             
-            //String leastFrequentCustomer = "";
-            //String newestReservation = "";
-            
-            
-            
             while (rs.next()) {
                 
                 LeastFrequentCustomer infrequentlyCustomer = new LeastFrequentCustomer(
@@ -731,10 +701,8 @@ public class Model {
     
     
     public static void clearGraphicFrame() {
-        
-
-        
         View.ButtonGroupGraphReports.clearSelection();
+        
     }
     
     public static void drawBest2original() {
@@ -758,14 +726,6 @@ public class Model {
             g0.drawString(Model.bestCustomers().get(1).getUsernameCustomer(), 550, 800);    //g0.drawString(Model.bestCustomers().get(1).getUsernameCustomer(), 210, 820);    
             
             g0.setColor(Color.black);
-            
-            
-            
-            //plantear hacer el gráfico al revés
-            //comparation 1 - number of reservations
-            //comparation 2 - total paid
-            //comparation 3 - booking time
-            //comparation 4 - top/best reservation of each customer
             
             //calculate values for the graphic
             //number of reservations
@@ -854,11 +814,13 @@ public class Model {
             System.out.println("First graphic report: Best two customers (reservations) ");
 
             for (int i = 0; i < Model.bestCustomers().size(); ++i) {
-                System.out.println("");
-                if (i == 0 || i == 1 || i == 4) {
-                    View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.bestCustomers().get(i).toString());  
+                View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.bestCustomers().get(i).toStringExtended());  
+                /*
+                if (i == 0 || i == 1) {
+                    View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.bestCustomers().get(i).toStringExtended());  
                     //View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.biggestTotalPricesReservations().get(i));  
                 }
+                */
                 //View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.biggestTotalPricesReservations().get(i));
             }
             
@@ -920,6 +882,7 @@ public class Model {
     
     public static void drawSortByAge() {
         
+        View.JCheckBoxViewGraphicOnTable.setEnabled(false);
         
         Graphics g1 = View.JFrameGraphicalReports.getGraphics();
         //g1.drawLine(300, 700, 100, 700);
@@ -967,7 +930,7 @@ public class Model {
     
     public static ArrayList<MonthOccupation> reservationsOfEachMonth() {
         
-        String sql = "select MONTHNAME(Date) as Month, count(Date) as Occupation, sum(Total_Price) as 'Earned per month' from reservation GROUP BY Month ORDER BY Date(Month);";
+        String sql = "select MONTHNAME(Date) as Month, count(Date) as Occupation, sum(Total_Price) as 'Earned per month' from reservation GROUP BY Month ORDER BY Month(Date) asc;";
         
         //String sql2 = "select MONTHNAME(STR_TO_DATE(Month(Date),'%m')) as Month, count(Date) as 'Occupation', sum(Total_Price) as 'Earned per month' from reservation group by Month(Date)";
         //String sql3 = "select MONTHNAME(STR_TO_DATE(Month(Date),'%m')) as Month, count(Date) as Amount from reservation group by Month(Date)";        
