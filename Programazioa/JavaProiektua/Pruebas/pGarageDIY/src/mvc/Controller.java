@@ -76,7 +76,9 @@ public class Controller implements ActionListener {
         View.JButtonViewGraph.addActionListener(listener);  //graphic reports -> view selected report
         
         View.JCheckBoxBestTwoCustomers.addActionListener(listener); //graphic reports -> best 2 customers (reservations)
-        
+        View.JCheckBoxSortAge.addActionListener(listener);          //graphic reports -> represent graphically the difference between underage and adult customers
+        //View.JCheckBoxUnknownYet.addActionListener(listener);
+        View.JCheckBoxMonthlyOccupancy.addActionListener(listener); //graphic reports -> represent graphically the number of reservations made in each month
         
         /*
         View.JRadioButtonBestTwoCustomers.addActionListener(listener);  //graphical reports -> data of the best 2 customers (in terms of reservations)
@@ -99,6 +101,11 @@ public class Controller implements ActionListener {
                 //model.terminoakImprimatu();
                 break;
             case "Textual Reports":
+                
+                //Graphicall Reports
+                View.JButtonViewGraph.setEnabled(false);
+                View.JButtonClean.setEnabled(false);
+                
                 System.out.println("Wait... The Textual Report's section is loading. \n");
                 View.JFrameTextReports.setVisible(true);
                 View.JFrameTextReports.setTitle("Create a New Customer!");
@@ -108,6 +115,14 @@ public class Controller implements ActionListener {
                 break;
             case "Graphicall Reports":
                 System.out.println("Wait... The Graphical Report's section is loading. \n");
+                
+                /*
+                View.JCheckBoxBestTwoCustomers.setEnabled(false);
+                View.JCheckBoxSortAge.setEnabled(false);
+                View.JCheckBoxUnknownYet.setEnabled(false);
+                View.JCheckBoxMonthlyOccupancy.setEnabled(false);
+                */
+                
                 View.JFrameGraphicalReports.setVisible(true);
                 View.JFrameGraphicalReports.setTitle("Create a New Customer!");
                 View.JFrameGraphicalReports.setSize(900, 606);  //600, 356
@@ -383,19 +398,32 @@ public class Controller implements ActionListener {
             
             
 
-            case "Start Graphics":   //txosten grafikoak -> ver datos en forma de gráficos
-                System.out.println("hola 111"); 
+            case "Start Graphics":
                 View.JFrameGraphicalReports.setSize(900, 906);  //600, 356
-                //Model.graphicDrawing();
+                View.JButtonViewGraph.setEnabled(true);
+                View.JButtonClean.setEnabled(true);
+                /*
+                View.JCheckBoxBestTwoCustomers.setEnabled(true);
+                View.JCheckBoxSortAge.setEnabled(true);
+                View.JCheckBoxUnknownYet.setEnabled(true);
+                View.JCheckBoxMonthlyOccupancy.setEnabled(true);
                 
-                
-                
+                View.JButtonViewGraph.setEnabled(true);
+                View.JButtonClean.setEnabled(true);
+                */
                 break;
             
             case "View Graphic":
                 View.JTextAreaGraphics.setText("");
                 View.JTextAreaGraphics.setEditable(false);
                 JButtonViewGraph.setEnabled(false);
+                
+                /*
+                if (!(JCheckBoxBestTwoCustomers.isSelected() || JCheckBoxSortAge.isSelected())) {
+                    View.JTextAreaGraphics.setText("No report selected. Please choose one and then press the 'View' button. ");
+                    JButtonViewGraph.setEnabled(true);
+                }
+                */
                 
                 if (JCheckBoxBestTwoCustomers.isSelected()) {
                     
@@ -419,42 +447,31 @@ public class Controller implements ActionListener {
                     
                     JButtonStartGra.setEnabled(false);
                 }
-                else {
-                    System.out.println("no mejores");
-                    View.JFrameGraphicalReports.repaint();
-                }
                 
-                
+                               
                 JButtonClean.setEnabled(true);
                 break;
             
             case "Clean":   //txosten grafikoak -> vaciar el contenido del text area
+                
                 View.JTextAreaGraphics.setText("");
                 JButtonViewGraph.setEnabled(true);
                 
-                JCheckBoxBestTwoCustomers.setSelected(false);
-                JCheckBoxBestTwoCustomers.setEnabled(true);
-                
-                JCheckBoxSortAge.setSelected(false);
-                JCheckBoxSortAge.setEnabled(true);
+                View.JCheckBoxBestTwoCustomers.setSelected(false);    JCheckBoxBestTwoCustomers.setEnabled(true);
+                View.JCheckBoxSortAge.setSelected(false);             JCheckBoxSortAge.setEnabled(true);
                 
                 JButtonStartGra.setEnabled(true);
-                /*View.JFrameGraphicalReports.repaint();
-                JLabelReportANumReservations.setVisible(false);
-                JLabelReportATotalPaid.setVisible(false); 
-                JLabelReportABookingTime.setVisible(false);
-                
-                JRadioButtonBestTwoCustomers.setSelected(false);
-                ButtonGroupGraphReports.clearSelection();*/
-                
                 Model.clearGraphicFrame();
                 
-                //repaint();
+                View.JFrameGraphicalReports.repaint();
                 break;
             case "Go back to start":
                 //View.JFrameGraphicalReports.dispose();
                 
+                
+                View.JTextAreaGraphics.setText("");
                 View.JFrameGraphicalReports.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                View.JFrameGraphicalReports.dispose();
                 break;
             
             case "BestTwoCustomers":

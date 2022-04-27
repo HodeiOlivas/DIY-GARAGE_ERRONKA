@@ -454,51 +454,42 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jSeparator3" alignment="0" min="-2" pref="510" max="-2" attributes="0"/>
+                              <Component id="JLabelGraphIntro" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="JLabelGarageTitulo" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jScrollPane1" min="-2" pref="432" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="JCheckBoxBestTwoCustomers" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="JCheckBoxSortAge" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jScrollPane1" min="-2" pref="432" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="JCheckBoxBestTwoCustomers" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="JCheckBoxSortAge" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="JCheckBoxMonthlyOccupancy" min="-2" pref="142" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="JButtonGoBack" pref="224" max="32767" attributes="0"/>
-                                  <Component id="JLabelReportABookingTime" min="-2" max="-2" attributes="0"/>
-                                  <Component id="JButtonStartGra" alignment="0" max="32767" attributes="0"/>
-                              </Group>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="JButtonGoBack" max="32767" attributes="0"/>
+                              <Component id="JButtonStartGra" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="JButtonViewGraph" min="-2" pref="103" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="JButtonClean" min="-2" pref="103" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="JLabelReportANumReservations" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="JLabelReportATotalPaid" min="-2" max="-2" attributes="0"/>
-                              </Group>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jSeparator3" alignment="0" min="-2" pref="510" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="JLabelGraphIntro" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="JCheckBoxPurchaseEvolution" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="JCheckPurchaseHistory" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="JLabelGarageTitulo" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="130" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -510,11 +501,7 @@
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Component id="JLabelGarageTitulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="JLabelGraphIntro" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="JCheckBoxPurchaseEvolution" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="JCheckPurchaseHistory" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="JLabelGraphIntro" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jSeparator3" min="-2" pref="27" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -523,13 +510,6 @@
                           <Component id="JButtonGoBack" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="JButtonStartGra" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="JLabelReportANumReservations" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="JLabelReportATotalPaid" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="JLabelReportABookingTime" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="JButtonViewGraph" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -539,24 +519,19 @@
                       <Component id="jScrollPane1" min="-2" pref="170" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="JCheckBoxBestTwoCustomers" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="JCheckBoxSortAge" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="JCheckBoxSortAge" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JCheckBoxMonthlyOccupancy" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="JCheckBoxBestTwoCustomers" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="196" max="32767" attributes="0"/>
+                  <EmptySpace pref="200" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JCheckBox" name="JCheckPurchaseHistory">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Certain customer&apos;s purchase history"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-          </AuxValues>
-        </Component>
         <Component class="javax.swing.JCheckBox" name="JCheckBoxSortAge">
           <Properties>
             <Property name="text" type="java.lang.String" value="Sort by age"/>
@@ -631,34 +606,10 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JCheckBox" name="JCheckBoxPurchaseEvolution">
+        <Component class="javax.swing.JCheckBox" name="JCheckBoxMonthlyOccupancy">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Purchase evolution"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="JLabelReportANumReservations">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Num. Reservations"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="JLabelReportATotalPaid">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Total Paid"/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="JLabelReportABookingTime">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Booking Time"/>
+            <Property name="text" type="java.lang.String" value="Monthly Occupancy"/>
+            <Property name="actionCommand" type="java.lang.String" value="Monthly Occupancy"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>

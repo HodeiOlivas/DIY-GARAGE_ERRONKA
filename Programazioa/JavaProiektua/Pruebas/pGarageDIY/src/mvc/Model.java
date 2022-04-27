@@ -567,6 +567,46 @@ public class Model {
     }
     
     
+    public static ArrayList<BestCustomer> bestCustomers() {  
+        
+        ArrayList<BestCustomer> premiumCustomers = new ArrayList<>();    //option 1.1
+        
+        String sql = "SELECT cust_Username as Customer, SUM(Amount_Hours) as 'Booking Time', "
+                + "COUNT(id_Reservation) as 'Num. Reservations', SUM(Total_Price) as 'Total Paid', "
+                + "MAX(Total_Price) as 'Top Reservation' "
+                + "FROM reservation group by cust_Username order by 'Total Paid' desc limit 2;";
+        
+        /*
+        String sql2 = "SELECT cust_Username as Customer,  SUM(Amount_Hours) as 'Booking Time', SUM(Total_Price) as 'Total Paid', MAX(Total_Price) as 'Top Reservation'"
+                + "FROM reservation group by cust_Username order by eachPaid desc limit 2;";
+        */
+        
+        
+        try (Connection conn = connect2();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql);) {
+            
+            while (rs.next()) {
+                //"--------------------------------------------------" + rs.getString("Cabin") + "--------------------------------------------------"
+                
+                BestCustomer premCust = new BestCustomer(rs.getString("Customer"),
+                                                    rs.getInt("Booking Time"),
+                                                    rs.getInt("Num. Reservations"),
+                                                    rs.getDouble("Total Paid"),
+                                                    rs.getDouble("Top Reservation"));
+                
+                premiumCustomers.add(premCust);
+                
+                
+                System.out.println(premCust);
+                System.out.println(premiumCustomers);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return premiumCustomers;
+    }
+    
     /**
      * Returning ArrayList<String> Method
      * 
@@ -691,10 +731,7 @@ public class Model {
     
     
     public static void clearGraphicFrame() {
-        View.JFrameGraphicalReports.repaint();
-        View.JLabelReportANumReservations.setVisible(false);
-        View.JLabelReportATotalPaid.setVisible(false); 
-        View.JLabelReportABookingTime.setVisible(false);
+        
 
         
         View.ButtonGroupGraphReports.clearSelection();
@@ -707,19 +744,22 @@ public class Model {
             g0.drawLine(100, 775, 825, 775);    //g0.drawLine(100, 825, 825, 825);
             
             g0.drawString("Num. Reservations", 150, 500);
-            g0.drawString("Total Paid", 350, 500);
-            g0.drawString("Booking time", 500, 500);    //g0.drawString("Booking time", 550, 500);
+            g0.drawString("Total Money Paid", 315, 500);
+            g0.drawString("Booking time", 490, 500);    //g0.drawString("Booking time", 550, 500);
             g0.drawString("Top Reservation", 650, 500); //g0.drawString("Top Reservation", 700, 500);
             
-            g0.drawString("First cust.: ", 125, 800);   //g0.drawString("First cust.: " + Model.biggestTotalPricesReservations().get(2), 125, 800);
+            g0.drawString("First cust.: ", 310, 800);   //g0.drawString("First cust.: " + Model.biggestTotalPricesReservations().get(2), 125, 800);
             g0.setColor(Color.blue);
-            g0.drawString(Model.biggestTotalPricesReservations().get(2), 190, 800);
+            g0.drawString(Model.bestCustomers().get(0).getUsernameCustomer(), 370, 800);
             g0.setColor(Color.black);
             
-            g0.drawString("Second cust.: ", 300, 800);
+            g0.drawString("Second cust.: ", 460, 800);  //g0.drawString("Second cust.: ", 300, 800);
             g0.setColor(Color.red);
-            g0.drawString(Model.biggestTotalPricesReservations().get(5), 380, 800);
+            g0.drawString(Model.bestCustomers().get(1).getUsernameCustomer(), 550, 800);    //g0.drawString(Model.bestCustomers().get(1).getUsernameCustomer(), 210, 820);    
+            
             g0.setColor(Color.black);
+            
+            
             
             //plantear hacer el gráfico al revés
             //comparation 1 - number of reservations
@@ -727,24 +767,101 @@ public class Model {
             //comparation 3 - booking time
             //comparation 4 - top/best reservation of each customer
             
-            g0.setColor(Color.red);
-            g0.fillRect(175, 625, 20, 90);  //(x, y, anchura, precio)
+            //calculate values for the graphic
+            //number of reservations
+            int c1NumReservations = Model.bestCustomers().get(0).getNumReservations();
+            int c2NumReservations = Model.bestCustomers().get(1).getNumReservations();
             
+            //total paid
+            int c1totalPaid = (int) Model.bestCustomers().get(0).getTotalPaid();
+            int c2totalPaid = (int) Model.bestCustomers().get(1).getTotalPaid();
+            
+            //booking time
+            int c1BookingTime = Model.bestCustomers().get(0).getBookingTime();
+            int c2BookingTime = Model.bestCustomers().get(1).getBookingTime();
+            
+            //top reservation
+            int c1topReservation = (int) Model.bestCustomers().get(0).getTopReservationPrice();
+            int c2topReservation = (int) Model.bestCustomers().get(1).getTopReservationPrice();
+            
+            System.out.println("first :" + c1NumReservations);
+            System.out.println("second :" + c2NumReservations);
+            
+            //bars of NUMBER OF RESERVATIONS
+            if (c1NumReservations > c2NumReservations) {
+                
+                g0.setColor(Color.blue);    //first customer
+                g0.fillRect(180, 775 - (c1NumReservations * 30), 20, c1NumReservations * 30);
+                
+                g0.setColor(Color.red);    //second customer
+                g0.fillRect(210, 775 - (c2NumReservations * 30), 20, c2NumReservations * 30);
+                
+            
+            } else if (c1NumReservations < c2NumReservations) {
+                g0.setColor(Color.blue);    //first customer
+                g0.fillRect(180, 775 - (c1NumReservations * 30), 20, c1NumReservations * 30);
+                
+                g0.setColor(Color.red);    //second customer
+                g0.fillRect(210, 775 - (c2NumReservations * 30), 20, c2NumReservations * 30);
+            }
+                        
+            //bars of TOTAL PAID
             g0.setColor(Color.blue);
-            g0.fillRect(210, 625, 20, 142);
+            g0.fillRect(335, 775 - c1totalPaid, 20, c1totalPaid);  //(x, y, anchura, valor deseado del usuario)
+            //g0.fillRect(175, 775-90, 20, 90);  //(x, y, anchura, precio)
             
+            g0.setColor(Color.red);
+            g0.fillRect(365, 775 - c2totalPaid, 20, c2totalPaid);
+            
+            //bars of BOOKING TIME
+            
+            if (c1BookingTime > c2BookingTime) {
+                g0.setColor(Color.blue);
+                g0.fillRect(510, 775 - (c1BookingTime * 30), 20, c1BookingTime * 30);
+                
+                g0.setColor(Color.red);
+                g0.fillRect(540, 775 - (c2BookingTime * 30), 20, c2BookingTime * 30);
+            
+            } else if (c1BookingTime < c2BookingTime) {
+                g0.setColor(Color.blue);
+                g0.fillRect(510, 775 - (c1BookingTime * 30), 20, c1BookingTime * 30);
+                
+                g0.setColor(Color.red);
+                g0.fillRect(540, 775 - (c2BookingTime * 30), 20, c2BookingTime * 30);
+            }
+            
+            
+            //bars of TOP RESERVATION
+            
+            if (c1topReservation > c2topReservation) {
+                
+                g0.setColor(Color.blue);    //first customer
+                g0.fillRect(680, 775 - c1topReservation, 20, c1topReservation);
+                
+                g0.setColor(Color.red);    //second customer
+                g0.fillRect(710, 775 - c2topReservation, 20, c2topReservation);
+                
+            
+            } else if (c1topReservation < c2topReservation) {
+                g0.setColor(Color.blue);    //first customer
+                g0.fillRect(680, 775 - c1topReservation, 20, c1topReservation);
+                
+                g0.setColor(Color.red);    //second customer
+                g0.fillRect(710, 775 - c2topReservation, 20, c2topReservation);
+            }
+            
+            //System.out.println(c1totalPaid);
             System.out.println("First graphic report: Best two customers (reservations) ");
 
-            for (int i = 0; i < Model.biggestTotalPricesReservations().size(); ++i) {
+            for (int i = 0; i < Model.bestCustomers().size(); ++i) {
                 System.out.println("");
                 if (i == 0 || i == 1 || i == 4) {
-                    View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.biggestTotalPricesReservations().get(i));  
+                    View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.bestCustomers().get(i).toString());  
+                    //View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.biggestTotalPricesReservations().get(i));  
                 }
                 //View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.biggestTotalPricesReservations().get(i));
             }
-            View.JLabelReportANumReservations.setVisible(true);
-            View.JLabelReportATotalPaid.setVisible(true); 
-            View.JLabelReportABookingTime.setVisible(true);
+            
             
     }
     
@@ -850,13 +967,11 @@ public class Model {
     
     public static ArrayList<MonthOccupation> reservationsOfEachMonth() {
         
-        String sql = "select MONTHNAME(STR_TO_DATE(Month(Date),'%m')) as Month, \n" +
-                "count(Date) as 'Occupation',\n" +
-                "sum(Total_Price) as 'Earned per month'\n" +
-                "from reservation group by Month(Date)";
+        String sql = "select MONTHNAME(Date) as Month, count(Date) as Occupation, sum(Total_Price) as 'Earned per month' from reservation GROUP BY Month ORDER BY Date(Month);";
         
-        //String sql2 = "select MONTHNAME(STR_TO_DATE(Month(Date),'%m')) as Month, count(Date) as Amount from reservation group by Month(Date)";        
-        //String sql3 = "select MONTHNAME(STR_TO_DATE(Month(Date),'%m')), count(Date) from reservation where cust_Username = 'user22' group by Month(Date)";
+        //String sql2 = "select MONTHNAME(STR_TO_DATE(Month(Date),'%m')) as Month, count(Date) as 'Occupation', sum(Total_Price) as 'Earned per month' from reservation group by Month(Date)";
+        //String sql3 = "select MONTHNAME(STR_TO_DATE(Month(Date),'%m')) as Month, count(Date) as Amount from reservation group by Month(Date)";        
+        //String sql4 = "select MONTHNAME(STR_TO_DATE(Month(Date),'%m')), count(Date) from reservation where cust_Username = 'user22' group by Month(Date)";
         
         ArrayList<MonthOccupation> reservationsOfCertainMonth = new ArrayList<>();
         
@@ -887,6 +1002,7 @@ public class Model {
         
         return reservationsOfCertainMonth;
     }
+    
     
     
     
