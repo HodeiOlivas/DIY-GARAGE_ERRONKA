@@ -16,7 +16,9 @@
       font-size: 16px;
       height: 100%;
       padding: 10px 25px;
-      background-color:white;
+      background-color: white;
+      /* 8B0000 */
+      /* 991F36 */
       /* margin-left: 12px; */
     }
 
@@ -30,7 +32,7 @@
       background-image: url("img/fondoF1_1.jpg");
 
       /* Full height */
-      height: 100%; 
+      height: 100%;
 
       /* Create the parallax scrolling effect */
       background-attachment: fixed;
@@ -38,7 +40,7 @@
       background-repeat: no-repeat;
       background-size: cover;
     }
-    
+
     ul {
       list-style-type: none;
       margin: 0;
@@ -82,8 +84,6 @@
     h2 {
       text-align: center;
     }
-
-
   </style>
 </head>
 
@@ -93,12 +93,12 @@
 
 <body>
 
-  
+
 
   <?php
-    session_start();
-    // printf($_SESSION['usuario']);
-    echo "Welcome, " . $_SESSION['usuario'];
+  session_start();
+  // printf($_SESSION['usuario']);
+  echo "Welcome, " . $_SESSION['usuario'];
   ?>
   <h1 id="start Customers"> Welcome to Customer's website. </h1>
   <!-- <h1 style="margin-left: 80px;"> Welcome to Customer's website. </h1> -->
@@ -106,7 +106,7 @@
   <div class="header">
     <h2>CUSTOMER</h2>
     <p>Scroll down to see the sticky effect.</p>
-    
+
   </div>
 
   <!-- inicio3.jpg -->
@@ -116,7 +116,7 @@
 
 
       <p style="margin-left:25px; color:white">Welcome to (Y)our garage!</p><br>
-      
+
     </div>
   </div>
 
@@ -162,13 +162,13 @@
     </ul>
 
     <br><br><br><br>
-    
+
   </div>
 
-  <hr/>
+  <hr />
   <br><br>
-  
-  
+
+
 
   <div style="height:1000px;background-color:red;font-size:36px">
     <ul style="font-size: 16px;">
@@ -189,19 +189,19 @@
     This div is just here to enable scrolling.
     Tip: Try to remove the background-attachment property to remove the scrolling effect.
   </div>
-   
+
 
 
   <br><br>
   <hr id="products info" /><br><br>
   <!--dirigir al apartado de las cabinas -->
   <h3>Catalog of Products</h3>
-  
+
   <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
   <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
   <a href="#" class="btn btn-info" role="button">wfw</a>
 
-  
+
 
   <!-- </div> -->
   <br><br>
@@ -218,7 +218,7 @@
   <hr />
   <br>
 
-  
+
   <div class="container">
     <h2>Our Services</h2>
     <p>The <strong>HALAB Garage</strong> allows you to repair every problem you have on your vehicle. Lets have a quick look. </p>
@@ -266,7 +266,7 @@
   <hr />
   <br>
 
-  
+
 
   <!--dirigir al apartado de las cabinas -->
   <h3 style="text-align: right;">Purchases</h3>
@@ -289,9 +289,9 @@
 
   <div>
     <?php
-      include("test_connect_db.php");
-      $link = connectDataBase();
-      $emaitza = mysqli_query($link, "select * from customer");
+    include("test_connect_db.php");
+    $link = connectDataBase();
+    $emaitza = mysqli_query($link, "select * from customer");
     ?>
 
     <div class="container">
@@ -311,8 +311,8 @@
           </tr>
 
           <?php
-            while ($erregistroa = mysqli_fetch_array($emaitza)) {
-              printf("<tr>
+          while ($erregistroa = mysqli_fetch_array($emaitza)) {
+            printf("<tr>
                         <td>%s</td>
                         <td>%s</td>
                         <td>%s</td>
@@ -321,9 +321,9 @@
                         <td>%s</td>
                         <td>%d</td>
                     </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[6]);
-            }
-            mysqli_free_result($emaitza);
-            mysqli_close($link);
+          }
+          mysqli_free_result($emaitza);
+          mysqli_close($link);
           ?>
 
         </thead>
@@ -339,7 +339,7 @@
   <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
   <p>Image at the bottom (card-img-bottom):</p>
 
-  
+
 
   <hr />
   <hr />
@@ -363,10 +363,10 @@
 
   <div>
     <?php
-      //include("test_connect_db.php");
-      $currentUser = $_SESSION['usuario'];
-      $link = connectDataBase();
-      $emaitza = mysqli_query($link, "select * from reservation where cust_Username='$currentUser'");
+    //include("test_connect_db.php");
+    $currentUser = $_SESSION['usuario'];
+    $link = connectDataBase();
+    $emaitza = mysqli_query($link, "select * from reservation where cust_Username='$currentUser'");
 
     ?>
 
@@ -388,8 +388,8 @@
           </tr>
 
           <?php
-            while ($erregistroa = mysqli_fetch_array($emaitza)) {
-              printf("<tr >
+          while ($erregistroa = mysqli_fetch_array($emaitza)) {
+            printf("<tr >
                         <td>%d</td>
                         <td>%s</td>
                         <td>%s</td>
@@ -399,9 +399,9 @@
                         <td>%d</td>
                         <td>%.2f</td>
                       </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[6], $erregistroa[7]);
-            }
-            mysqli_free_result($emaitza);
-            mysqli_close($link);
+          }
+          mysqli_free_result($emaitza);
+          mysqli_close($link);
           ?>
 
         </thead>
@@ -486,8 +486,6 @@
                           
                       </td>
                     </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[0]);
-
-            
           }
           mysqli_free_result($emaitza);
           mysqli_close($link);
@@ -497,11 +495,7 @@
         </thead>
       </table>
 
-      <
-  
-      
-
-      <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
+      < <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
         <h1>Anything else?</h1>
         <p style="margin-left: 25px">Try to add, upadte or delete pruchases! </p>
 
@@ -519,36 +513,36 @@
             <!-- <button onclick=location.href="webClients.php">Login now</button>     -->
           </div>
         </div>
-      </div>
+    </div>
 
-      <br>
-      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Continue managing</button>
-      <div id="demo" class="collapse">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    <br>
+    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Continue managing</button>
+    <div id="demo" class="collapse">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
-        <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
-          <h1>Anything else?</h1>
-          <p style="margin-left: 25px">Try to add, upadte or delete pruchases! </p>
+      <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
+        <h1>Anything else?</h1>
+        <p style="margin-left: 25px">Try to add, upadte or delete pruchases! </p>
 
-          <div class="hero-image" style="text-align: right;">
-            <div class="hero-text">
-              <button onclick=location.href="insertNewPurchaseForm.php">New</button>
-              <button onclick=location.href="sessioakWorkers.php">Update</button>
-              <button onclick=location.href="loginClientes.php">Delete</button>
-              <!-- <button onclick=location.href="webClients.php">Login now</button>     -->
-            </div>
+        <div class="hero-image" style="text-align: right;">
+          <div class="hero-text">
+            <button onclick=location.href="insertNewPurchaseForm.php">New</button>
+            <button onclick=location.href="sessioakWorkers.php">Update</button>
+            <button onclick=location.href="loginClientes.php">Delete</button>
+            <!-- <button onclick=location.href="webClients.php">Login now</button>     -->
           </div>
         </div>
       </div>
-
     </div>
+
+  </div>
 
 
   </div>
 
-  
+
 
   <br>
   <hr />
