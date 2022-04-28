@@ -17,6 +17,10 @@
     <div>
         <?php
         include("test_connect_db.php");
+
+        session_start();
+        $username00 = $_SESSION['usuario'];
+
         $username = $_POST["username"];
         $product = $_POST["product_Id"];
         //$date = date("Y-m-d");  //echo "Today is " . date("Y-m-d") . "<br>";
@@ -28,9 +32,9 @@
         $quantity = $_POST["amount"];
 
         $link = connectDataBase();
-        $emaitza = mysqli_query($link, "insert into purchase (cust_Username, prod_ID, Date, Amount) values('$username','$product', '$date11', '$quantity')");
+        $emaitza = mysqli_query($link, "insert into purchase (cust_Username, prod_ID, Date, Amount) values('$username00','$product', '$date11', '$quantity')");
 
-        $kontsulta = mysqli_query($link, "select * from purchase where cust_Username = '$username'");
+        $kontsulta = mysqli_query($link, "select * from purchase where cust_Username = '$username00'");
         ?>
         <table class="table table-dark" style="text-align:center; font-size:12px">
             <thead style="vertical-align:left">

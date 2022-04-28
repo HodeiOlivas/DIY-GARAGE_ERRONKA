@@ -1,101 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-  <title>Customer's Website</title>
+<style>
+body, html {
+  height: 100%;
+}
 
-  <style>
-    body {
-      font-size: 16px;
-      height: 100%;
-      padding: 10px 25px;
-      background-color:white;
-      /* margin-left: 12px; */
-    }
+.parallax {
+  /* The image used */
+  background-image: url("img/encabezadoTaller3.jpg");
 
-    html {
-      height: 100%;
-    }
+  /* Full height */
+  height: 100%; 
 
-    .parallax {
-      /* The image used */
-      /* background-image: url("img/encabezadoTaller3.jpg"); */
-      background-image: url("img/fondoF1_1.jpg");
-
-      /* Full height */
-      height: 100%; 
-
-      /* Create the parallax scrolling effect */
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-    
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #256;
-      /*#333*/
-      position: -webkit-sticky;
-      /* Safari */
-      position: sticky;
-      top: 0;
-    }
-
-    li {
-      float: left;
-    }
-
-    li a {
-      display: block;
-      color: white;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-    }
-
-    li a:hover {
-      background-color: white;
-      /* background-color: lightgrey; */
-      /*#111*/
-    }
-
-    .active {
-      background-color: slategray;
-      /*#4CAF50*/
-    }
-
-    h1 {
-      padding: 10px 25px;
-    }
-
-    h2 {
-      text-align: center;
-    }
-
-
-  </style>
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+</style>
 </head>
-
-<!-- <body class="specificBody"> -->
-
-
-
 <body>
 
-  
+<div class="parallax"></div>
 
-  <?php
+<div style="height:1000px;background-color:red;font-size:36px">
+Scroll Up and Down this page to see the parallax scrolling effect.
+This div is just here to enable scrolling.
+Tip: Try to remove the background-attachment property to remove the scrolling effect.
+</div>
+
+<div class="parallax"></div>
+<?php
     session_start();
     // printf($_SESSION['usuario']);
     echo "Welcome, " . $_SESSION['usuario'];
@@ -106,102 +48,31 @@
   <div class="header">
     <h2>CUSTOMER</h2>
     <p>Scroll down to see the sticky effect.</p>
-    
   </div>
 
-  <!-- inicio3.jpg -->
-  <div class="parallax" style="background-image: url('img/inicio3.jpg'); width:100%; height: 50%; text-align:center">
-    <div style="text-align: left;">
-      <h1 style="font-size:50px; color:greenyellow">DIY GARAGE</h1>
+  <ul>
+    <li><a class="active" href="#start Customers">Home</a></li>
+    <li><a href="#products info">Products</a></li>
+    <li><a href="#cabins info">Cabins</a></li>
+    <li><a href="#reservations interaction">Reservations</a></li>
+    <li><a href="#purchases interaction">Purchases</a></li>
+    <li><a href="#profile">Profile</a></li>
+    <li><a href="#contact">Contact</a></li>
 
+    <li style="float:right"><a class="active" href="#view profile">Profile</a></li>
+    <li style="float:right"><a href="#log out">Log out</a></li>
 
-      <p style="margin-left:25px; color:white">Welcome to (Y)our garage!</p><br>
-      
-    </div>
-  </div>
-
-  <div style="height:auto;background-color:white;font-size:16px">
-    Scroll Up and Down this page to see the parallax scrolling effect.
-    This div is just here to enable scrolling.
-    Tip: Try to remove the background-attachment property to remove the scrolling effect.
-    <div class="row">
-      <div class="col-sm-4">
-        <br><br><br><br>
-        <h3 style="color:darkred">Product 1</h3>
-        <p style="color:grey">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-        <p style="color:grey">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-      </div>
-      <div class="col-sm-4">
-        <br><br><br><br>
-        <h3 style="color:darkred">Product 2</h3>
-        <p style="color:grey">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-        <p style="color:grey">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-      </div>
-      <div class="col-sm-4">
-        <br><br><br><br>
-        <h3 style="color:darkred">Product 3</h3>
-        <p style="color:grey">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-        <p style="color:grey">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-      </div>
-    </div>
-
-    <br><br>
-    <ul style="background-color:brown;">
-      <li><a class="active" href="#start Customers">Home</a></li>
-      <li><a href="#products info">Products</a></li>
-      <li><a href="#cabins info">Cabins</a></li>
-      <li><a href="#reservations interaction">Reservations</a></li>
-      <li><a href="#purchases interaction">Purchases</a></li>
-      <li><a href="#profile">Profile</a></li>
-      <li><a href="#contact">Contact</a></li>
-
-      <li style="float:right"><a class="active" href="#view profile">Profile</a></li>
-      <li style="float:right"><a href="#log out">Log out</a></li>
-
-      <li><a href="#acabar">About us</a></li>
-    </ul>
-
-    <br><br><br><br>
-    
-  </div>
-
-  <hr/>
-  <br><br>
-  
-  
-
-  <div style="height:1000px;background-color:red;font-size:36px">
-    <ul style="font-size: 16px;">
-      <li><a class="active" href="#start Customers">Home</a></li>
-      <li><a href="#products info">Products</a></li>
-      <li><a href="#cabins info">Cabins</a></li>
-      <li><a href="#reservations interaction">Reservations</a></li>
-      <li><a href="#purchases interaction">Purchases</a></li>
-      <li><a href="#profile">Profile</a></li>
-      <li><a href="#contact">Contact</a></li>
-
-      <li style="float:right"><a class="active" href="#view profile">Profile</a></li>
-      <li style="float:right"><a href="#log out">Log out</a></li>
-
-      <li><a href="#acabar">About us</a></li>
-    </ul>
-    Scroll Up and Down this page to see the parallax scrolling effect.
-    This div is just here to enable scrolling.
-    Tip: Try to remove the background-attachment property to remove the scrolling effect.
-  </div>
-   
-
+    <li><a href="#acabar">About us</a></li>
+  </ul>
 
   <br><br>
   <hr id="products info" /><br><br>
   <!--dirigir al apartado de las cabinas -->
   <h3>Catalog of Products</h3>
-  
   <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
   <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
   <a href="#" class="btn btn-info" role="button">wfw</a>
 
-  
 
   <!-- </div> -->
   <br><br>
@@ -219,6 +90,10 @@
   <br>
 
   
+
+  
+
+
   <div class="container">
     <h2>Our Services</h2>
     <p>The <strong>HALAB Garage</strong> allows you to repair every problem you have on your vehicle. Lets have a quick look. </p>
@@ -265,8 +140,6 @@
   <br>
   <hr />
   <br>
-
-  
 
   <!--dirigir al apartado de las cabinas -->
   <h3 style="text-align: right;">Purchases</h3>
@@ -339,8 +212,6 @@
   <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
   <p>Image at the bottom (card-img-bottom):</p>
 
-  
-
   <hr />
   <hr />
 
@@ -350,16 +221,6 @@
   <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
   <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
   <br><br>
-
-  <div class="parallax" style="background-image: url('img/fondoF1_2.jpg'); width:100%; height: 25%; text-align:center"></div>
-
-  <div style="height:1000px;background-color:red;font-size:36px">
-    Scroll Up and Down this page to see the parallax scrolling effect.
-    This div is just here to enable scrolling.
-    Tip: Try to remove the background-attachment property to remove the scrolling effect.
-  </div>
-
-  <div class="parallax"></div>
 
   <div>
     <?php
@@ -548,8 +409,6 @@
 
   </div>
 
-  
-
   <br>
   <hr />
   <br><br><br><br>
@@ -606,34 +465,5 @@
     <br><br>
   </div>
 
-
 </body>
-
 </html>
-
-
-<!-- 
-  jquery add edit delete - https://www.javatpoint.com/add-edit-delete-table-row-in-jquery
- -->
-
-
-<!-- 
-  <div class="dropdown">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-          Dropdown button
-        </button>
-        <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
-          <h1>Anything else?</h1>
-          <p style="margin-left: 25px">Try to add, upadte or delete pruchases! </p>
-
-          <div class="hero-image" style="text-align: right;">
-            <div class="hero-text">
-              <button onclick=location.href="insertNewPurchaseForm.php">New</button>
-              <button onclick=location.href="sessioakWorkers.php">Update</button>
-              <button onclick=location.href="loginClientes.php">Delete</button>
-              
-            </div>
-          </div>
-        </div>
-      </div>
--->

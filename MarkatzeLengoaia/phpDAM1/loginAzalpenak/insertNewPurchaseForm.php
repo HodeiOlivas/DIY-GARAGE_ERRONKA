@@ -133,7 +133,7 @@
                 </tr>
                 <tr>
                     <td>Product ID:</td>
-                    <td><input name="product_Id" type="text"><br></td>
+                    <td><input name="product_Id" type="text" required><br></td>
                     <td>
                         <!-- https://stackoverflow.com/questions/47634469/how-to-populate-dropdown-menu-from-sql-table-in-php -->
                         <form action="/action_page.php">
@@ -148,11 +148,11 @@
                 </tr>
                 <tr>
                     <td>Amount:</td>
-                    <td><input name="amount" type="number"><br></td>
+                    <td><input name="amount" type="number" required><br></td>
                 </tr>
                 <tr>
                     <td>Purchase's Date (yyyy-mm-dd):</td>
-                    <td><input id="datepicker" type="date" name="dateOfInsert" placeholder="specify date" class="formAlign" style="display: table-cell;" /></td>
+                    <td><input id="datepicker" type="date" name="dateOfInsert" placeholder="specify date" class="formAlign" style="display: table-cell;" required/></td>
                 </tr>
                 <tr>
                     <td><br><input name="send" type="submit" value="Add Purchase"></td>
