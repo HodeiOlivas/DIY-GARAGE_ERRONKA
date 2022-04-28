@@ -19,11 +19,11 @@ import java.awt.Graphics;
  */
 public class View extends javax.swing.JFrame {
 
-    FondoPanel fondo = new FondoPanel();
+    //FondoPanel fondo = new FondoPanel();
     
     public View() {
         
-        this.setContentPane(fondo);
+        //this.setContentPane(fondo);
         
         
         initComponents();
@@ -440,12 +440,12 @@ public class View extends javax.swing.JFrame {
                                 .addComponent(JCheckBoxMonthlyOccupancy, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(40, 40, 40)
                         .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(JButtonGoBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(JButtonStartGra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
                                 .addComponent(JButtonViewGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(JButtonClean, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(JButtonClean, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(JButtonGoBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 100, Short.MAX_VALUE))))
         );
         JFrameGraphicalReportsLayout.setVerticalGroup(
@@ -462,9 +462,9 @@ public class View extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
-                        .addComponent(JButtonGoBack)
-                        .addGap(18, 18, 18)
                         .addComponent(JButtonStartGra)
+                        .addGap(18, 18, 18)
+                        .addComponent(JButtonGoBack)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(JButtonViewGraph)
@@ -516,8 +516,6 @@ public class View extends javax.swing.JFrame {
             JFrameAdminSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
-
-        JDialogGraphicReports.setPreferredSize(new java.awt.Dimension(542, 409));
 
         JTableGraphicInfo.setBackground(new java.awt.Color(255, 153, 153));
         JTableGraphicInfo.setModel(new javax.swing.table.DefaultTableModel(
@@ -701,8 +699,14 @@ public class View extends javax.swing.JFrame {
         } 
         
         
+        //########################################################
+        
+        
+        
+        
     }//GEN-LAST:event_JComboBoxTxostenakActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */
@@ -809,6 +813,7 @@ public class View extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
     
+    /*
     class FondoPanel extends JPanel {
         private Image imagen;
         
@@ -827,6 +832,7 @@ public class View extends javax.swing.JFrame {
             
         }
     }
+*/
     
 }
 
