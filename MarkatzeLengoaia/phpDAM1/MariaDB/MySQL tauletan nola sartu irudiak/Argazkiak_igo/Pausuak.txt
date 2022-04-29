@@ -1,0 +1,30 @@
+ARGAZKIAK PHP BIDEZ MYSQL-RA IGO ETA BISTARATU
+----------------------------------------------
+
+1- Formulario bat sortuko dugu. Formularioaren edukiak: 	Argazkia, "file" motakoa
+								Botoi bat.
+
+
+	informazio gehigarria: 		File motako formulario batek, argazkiren datuak Array bidirekzional baten kargatzen ditu.
+-----------------------------------------------------------------------------------------------------------------------------------------
+2- Array hori lortu behar dugu.
+
+3- Datu base bat sortu.
+
+4- Datu basearekin konexioa burutu.
+
+5- Argazkiak/DB deituriko karpeta bat sortu. (Sortzen dugun karpetaren izena jarri behar dugu nahitaez)
+
+6- Array-aren balioak gorde:
+
+	$serbitzarikoHelbidea
+	$helbideTemporala
+	$argazkiIzena
+	$bukaeraHelbidea
+
+7- move_uploaded_file($helbideTemporala,$bukaeraHelbidea) erabili irudia kopiatzeko
+		     (      Origen     ,     Destino	)
+
+8- SQL komandoak idatzi.
+
+9- Bistaratu.

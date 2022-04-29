@@ -33,7 +33,12 @@
 						
 						<?php
 						while ($erregistroa = mysqli_fetch_array($result)) {
-							printf("<tr><td>&nbsp;%d</td><td>&nbsp;%s&nbsp;</td><td>&nbsp;%s&nbsp;</td><td>&nbsp;%d&nbsp;</td></tr>", $erregistroa["id"], $erregistroa["name"],  $erregistroa["picture"],  $erregistroa["breweryID"]);
+							printf("<tr>
+										<td>&nbsp;%d</td>
+										<td>&nbsp;%s&nbsp;</td>
+										<td><img src=%s width='180' height='214'><br></td>
+										<td>&nbsp;%d&nbsp;</td>
+									</tr>", $erregistroa["id"], $erregistroa["name"],  $erregistroa["picture"],  $erregistroa["breweryID"]);
 						}
 						mysqli_free_result($result);
 						mysqli_close($link);

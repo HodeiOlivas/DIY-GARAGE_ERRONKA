@@ -14,13 +14,24 @@
     <?php
         $ID =  $_POST['ID'];
         $name = $_POST['name'];
-        $photo = $_POST['argazkia'];
+        
+        $serbitzarikoHelbidea = 'images/DB'; 							# Karpeta sortu "Argazkiak", honen barruan beste bat "DB". 
+        $helbideTemporala = 	$_FILES['argazkia']['tmp_name']; 				# Argazkiaren helbidea:
+        $argazkiIzena = 		$_FILES['argazkia']['name']; 					# Argazki izena:
+        $bukaeraHelbidea = 		$serbitzarikoHelbidea.'/'.$argazkiIzena; 	# Bukaerako helbidearen helbidea gorde. 
+        move_uploaded_file($helbideTemporala,$bukaeraHelbidea); 			# Argazkiaren kopia bat egin "Argazkiak/DB" karpetan. 
+
+        // $photo = $_POST['argazkia'];
+
         $breID =  $_POST['breID'];
 
-        include("connect_db.php");
-        $link = connectDataBase();
-        $result = "INSERT INTO beers (id, name, picture, breweryID)
-                VALUES ($ID, '$name', '$photo', $breID )";
+        // include("connect_db.php");
+        // $link = connectDataBase();
+        include("test_connect_db.php");
+        $link = Konektatzea();
+
+        // $result = "INSERT INTO beers (id, name, picture, breweryID) VALUES ($ID, '$name', '$photo', $breID )";
+        $result = "INSERT INTO beers (id, name, picture, breweryID) VALUES ($ID, '$name', '$bukaeraHelbidea', $breID )";
         
         if (mysqli_query($link, $result)) {
             echo "New record created successfully";
@@ -28,6 +39,13 @@
             echo "Error: " . $result . "<br>" . mysqli_error($link);
         }
         mysqli_close($link); //zelan itxi ahal da ez egoteko arazorik
+
+        #Konexioa itxi
+        mysqli_close($link);
+        
+        echo'<br><br><br>';
+        echo'<a href="Bistaratu.php"> Bistaratu </a>';
+
         ?>
     <br/>
     <button><a href='index.html'>HOME</a></button>

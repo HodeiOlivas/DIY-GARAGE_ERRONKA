@@ -29,7 +29,8 @@
                     </div>
                     <div class="form-group mt-3">
                         <label class="col-sm-2">Argazkia:</label>
-                        <input class="col-sm-8" type="file" accept="image/png, image/jpeg" name="argazkia"></br>
+                        <!-- <input class="col-sm-8" type="file" accept="image/png, image/jpeg" name="argazkia"></br> -->
+                        <input type="file" id="Argazk" name="Argazk"/><br />
                     </div>
                     <div class="form-group mt-3">
                         <label class="col-sm-2">Brewery ID:</label> 
