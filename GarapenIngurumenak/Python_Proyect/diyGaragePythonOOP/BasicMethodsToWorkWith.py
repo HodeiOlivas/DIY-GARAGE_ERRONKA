@@ -19,7 +19,7 @@ class BasicsMethods():
         timeValue = datetime.datetime.strptime(timeUser, "%H:%M")
         #print(str(timeValue.hour) + str(":") + str(timeValue.minute))
         #a = str(timeValue.hour) + str(":") + str(timeValue.minute)
-        print(timeValue.__format__("%H:%M"))
+        #print(timeValue.__format__("%H:%M"))
         a = timeValue.__format__("%H:%M")
         return timeValue
 
