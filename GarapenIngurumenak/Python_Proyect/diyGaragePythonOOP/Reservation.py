@@ -78,7 +78,18 @@ class Reservation:
                     validStartHour = 0
 
         #total price of the reservation
-        self.totalPrice
+        for i in allCabins:
+            if i == self.cabin:
+                cabin = allCabins.index(i) + 1
+                print(cabin)
+
+                price = allCabinsPrice[cabin - 1]
+                print(price)
+
+                totalPrice = price * 2
+                self.totalPrice = price * self.amountHours
+                print(self.totalPrice)
+
 
 
         #self.start_time = BasicMethodsToWorkWith.BasicsMethods.asktime("the time you START working ('hh:mm'): ")
