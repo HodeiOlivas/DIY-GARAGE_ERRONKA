@@ -1,5 +1,8 @@
 from Person import Person
 import BasicMethodsToWorkWith
+from datetime import datetime
+
+
 from _datetime import datetime
 
 """
@@ -12,7 +15,13 @@ class Customer(Person):
         Person.__init__(self)
 
         self.username = BasicMethodsToWorkWith.BasicsMethods.askstring("username")
-        self.birthday = BasicMethodsToWorkWith.BasicsMethods.askdate("your birthday")
+        #self.birthday = BasicMethodsToWorkWith.BasicsMethods.askdate("your birthday")
+
+        custBirthdayUser = BasicMethodsToWorkWith.BasicsMethods.askdate("your birthday's date ")
+        #custBirthday = datetime.strptime(custBirthdayUser, "%Y-%m-%d")
+        custBirthday = datetime.strptime(custBirthdayUser, "%d-%m-%Y")
+        self.birthday = custBirthday
+
         # self.birthday = datetime.strptime(birthday, '%d-%m-%Y').date()
         # self.mail = str(self.surname.lower()) + str(".") + str(self.name.lower()) + str("@garage.diy")
 

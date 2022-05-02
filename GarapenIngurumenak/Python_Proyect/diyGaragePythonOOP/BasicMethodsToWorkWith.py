@@ -1,3 +1,4 @@
+import datetime
 
 
 class BasicsMethods():
@@ -13,8 +14,23 @@ class BasicsMethods():
         return date1
 
     @staticmethod
+    def asktime(n):
+        timeUser = input("\tEnter the value of " + n + " ('hh:mm'): ")
+        timeValue = datetime.datetime.strptime(timeUser, "%H:%M")
+        #print(str(timeValue.hour) + str(":") + str(timeValue.minute))
+        #a = str(timeValue.hour) + str(":") + str(timeValue.minute)
+        print(timeValue.__format__("%H:%M"))
+        a = timeValue.__format__("%H:%M")
+        return timeValue
+
+    @staticmethod
     def askinteger( n):
         a = int(input("\tEnter a value of " + n + ": "))
+        return a
+
+    @staticmethod
+    def askfloat(n):
+        a = float(input("\tEnter a value of " + n + ": "))
         return a
 
     @staticmethod
@@ -23,3 +39,8 @@ class BasicsMethods():
         return a
 
 
+
+"""
+Link of info to work with dates and time:
+    https://www.codegrepper.com/code-examples/python/python+datetime+strptime+hour+minute+second
+"""

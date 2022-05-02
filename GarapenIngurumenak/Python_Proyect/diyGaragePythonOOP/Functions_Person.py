@@ -1,15 +1,18 @@
 from Customer import Customer
+from Worker import Worker
 import BasicMethodsToWorkWith
+from datetime import datetime
+import datetime
 
-"""
-    Test the whole data of the Person class. (create new, view object's data/ modify/change values of it/ delete the object)
-        -> superclass: Person
-        -> sub classes: Customer, Worker
-"""
+# time_obj = datetime.strptime("09:15:20", "%H:%M:%S").time()
+date = '20:52'
+datem = datetime.datetime.strptime(date, "%H:%M")
+print(str(datem.hour) + str(":") + str(datem.minute))
+print("--------------------------------")
+
+# -----------------------------------------------------
 
 listCustomers = []
-
-
 
 # Create an object of the super class
 print("\n##################################")
@@ -24,8 +27,7 @@ customerA.printCustomer()
 print()
 listCustomers.append(customerA)
 
-listCustomers.append(Customer())    #create a new Customer object and add it to the list at the same time
-
+listCustomers.append(Customer())  # create a new Customer object and add it to the list at the same time
 
 print("--------------------------------")
 print("View/search specific Customer on a list of them: \n")
@@ -57,6 +59,39 @@ print()
 print("\t\tOLD password: " + str(oldPassword))
 print("\t\tNEW password: " + customerC.getPassword() + "\n")
 customerC.printCustomer()
+
+listCustomers.append(customerC)
+
+print("--------------------------------")
+print("Ask the user for a specific Customer and delete it: \n")
+
+for item in listCustomers:
+    item.printCustomer()
+print()
+
+customerToDelete = BasicMethodsToWorkWith.BasicsMethods.askstring("the Customer you want to delete (Username) ").lower()
+
+for eachCustomer in listCustomers:
+    if eachCustomer.getUsername().lower() == customerToDelete:
+        listCustomers.remove(eachCustomer)
+        print("\nThe selected Customer has been successfully deleted! ")
+
+print()
+for item in listCustomers:
+    item.printCustomer()
+print()
+
+print("\n\n##################################")
+print("### Testing the Worker class ###")
+print("##################################")
+print("--------------------------------")
+print("Create a new Worker: ")
+
+listWorkers = []
+
+worker1 = Worker()
+worker1.printWorker()
+listWorkers.append(worker1)
 
 """
 print("\nCreate new Customer:\n")
