@@ -1,6 +1,7 @@
 
 import BasicMethodsToWorkWith
 from datetime import datetime, date
+import datetime
 
 allCabins = ["C0", "C1", "C2", "C3", "C4"]
 """
@@ -19,24 +20,32 @@ class Reservation:
         validCabin = 1
         while validCabin == 1:
             cabinUser = BasicMethodsToWorkWith.BasicsMethods.askstring("the reservation's Cabin: " + "\n\t\t" + str(allCabins)).capitalize()
+            print(cabinUser)
             if cabinUser not in allCabins:
                 print("No result found for the specified Cabin. Try again! ")
             else:
                 #self.cabin = BasicMethodsToWorkWith.BasicsMethods.askstring("the reservation's Cabin: " + "\n\t\t" + str(allCabins)).capitalize()
                 self.cabin = cabinUser
-                validOccupation = 0
+                validCabin = 0
 
 
         validDate = 1
         while validDate == 1:
             today = date.today()
-            limitDateOld = datetime.strftime("01-01-2000", "%d-%m-%Y")
+
+            limitDateOld = datetime.datetime.strptime("01-01-2000", "%d-%m-%Y").date()
             resDateUser = BasicMethodsToWorkWith.BasicsMethods.askdate("your Reservation's Date: ")
-            resDate = datetime.strftime(resDateUser, "%d-%m-%Y")
-            if resDate < limitDateOld:
-                print("You cant make a reservation with a Date before " + str(limitDateOld))
+            #resDateUser = datetime.datetime.strptime(resDateUser, "%d-%m-%Y").date()
+            #resDate = datetime.strftime(resDateUser, "%d-%m-%Y")
+
+            dateReservation = datetime.datetime.strptime(resDateUser, "%d-%m-%Y").date()
+            print(dateReservation)
+
+
+            if dateReservation < limitDateOld:
+                print("\tYou cant make a reservation with a Date before " + str(limitDateOld) + "\n")
             else:
-                self.date = resDate
+                self.date = dateReservation
                 validDate = 0
 
 

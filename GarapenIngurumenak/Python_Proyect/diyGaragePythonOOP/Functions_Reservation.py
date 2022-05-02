@@ -3,6 +3,18 @@ import BasicMethodsToWorkWith
 from datetime import datetime
 import datetime
 
+
+# Create an object of the Reservation class
+print("\n#####################################")
+print("### Testing the Reservation class ###")
+print("#####################################")
+print("--------------------------------")
+print("Create a new Customer: ")
+
+reservation1 = Reservation()
+
+
+
 allCabins = ["C0", "C1", "C2", "C3", "C4"]
 cabinConcrete = "C1"
 
