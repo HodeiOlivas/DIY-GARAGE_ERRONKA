@@ -130,10 +130,11 @@ public class Controller implements ActionListener {
                 View.JCheckBoxMonthlyOccupancy.setEnabled(false);
                 */
                 
+                View.JLabelDetailsGif.setVisible(false);
                 View.JFrameGraphicalReports.setVisible(true);
                 View.JFrameGraphicalReports.setTitle("Manage of Graphic Reports!");
                 //View.JFrameGraphicalReports.setSize(900, 606);  //600, 356
-                View.JFrameGraphicalReports.setSize(900, 725);  //600, 356
+                View.JFrameGraphicalReports.setSize(900, 500);  //600, 356
                 View.JFrameGraphicalReports.setResizable(false);
                 
                 

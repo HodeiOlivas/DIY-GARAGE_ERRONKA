@@ -465,7 +465,7 @@
                                   <Component id="JCheckBoxSortAge" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="separate" pref="102" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="JButtonGoBack" alignment="0" max="32767" attributes="0"/>
                               <Component id="JButtonShowHideDetails" max="32767" attributes="0"/>
@@ -526,12 +526,14 @@
                       <Component id="jScrollPane1" min="-2" pref="170" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="JCheckBoxBestTwoCustomers" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="JCheckBoxSortAge" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="JCheckBoxMonthlyOccupancy" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="JCheckBoxBestTwoCustomers" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JCheckBoxMonthlyOccupancy" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="70" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="JLabelDetailsGif" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
@@ -922,7 +924,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="You&apos;re in HALAB&apos;s Garage official GUI."/>
+        <Property name="text" type="java.lang.String" value="You&apos;re in HALAB Garage&apos;s official GUI."/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
