@@ -1,0 +1,16 @@
+
+Code:  	CM11
+Name:  	Carrocería Metal
+Price:  	74.1
+Description:  	CCAM
+--------------------------------------------------x--------------------------------------------------
+Code:  	EP06
+Name:  	Exhaust Pipe
+Price:  	60.0
+Description:  	Silent exhaust pipe
+--------------------------------------------------x--------------------------------------------------
+Code:  	FS90
+Name:  	Front Spoiler
+Price:  	260.0
+Description:  	Front spoiler for racing cars.
+--------------------------------------------------x--------------------------------------------------

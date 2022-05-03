@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-04-2022 a las 14:23:50
+-- Tiempo de generación: 03-05-2022 a las 09:43:37
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.2
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_pruebagarage1`
 --
+CREATE DATABASE IF NOT EXISTS `db_pruebagarage1` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `db_pruebagarage1`;
 
 -- --------------------------------------------------------
 
@@ -33,7 +35,7 @@ CREATE TABLE `cabin` (
   `Size` double(3,2) NOT NULL,
   `Color` varchar(20) NOT NULL,
   `Price_Hour` double(5,2) NOT NULL,
-  `Description` varchar(50) NOT NULL
+  `Description` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -45,7 +47,7 @@ INSERT INTO `cabin` (`Cabin_ID`, `id_worker`, `Size`, `Color`, `Price_Hour`, `De
 ('C1', 2, 3.20, 'Yellow', 45.10, 'Cabin designed for tall vehicles. '),
 ('C2', 1, 1.85, 'Green', 30.00, 'Non-Stick Cabib - Designed to repairs that can get'),
 ('C3', 2, 4.50, 'White', 95.60, 'Cabin made for hosting painting and plating proces'),
-('C4', 4, 2.25, 'Black', 71.80, 'Soundproofed cabin - Designed to test customers\' v');
+('C4', 4, 2.25, 'Black', 71.80, 'Soundproofed cabin - Designed to test customers\' vehicle');
 
 -- --------------------------------------------------------
 
@@ -70,7 +72,8 @@ CREATE TABLE `customer` (
 INSERT INTO `customer` (`Username`, `Name`, `Surname`, `Password`, `Birthday`, `Mail`, `Phone_Number`) VALUES
 ('user11', 'primer', 'cliente', 'pwd1', '2020-06-06', 'cliente.primer@garage.diy', 963852741),
 ('user22', 'bigarren', 'bezeroa', 'pwd2', '2016-10-08', 'bezeroa.bigarren@garage.diy', 123456789),
-('user33', 'third', 'customer', 'pwd3', '2015-04-04', 'customer.third@garage.diy', 123789456);
+('user33', 'third', 'customer', 'pwd3', '2015-04-04', 'customer.third@garage.diy', 123789456),
+('user44', 'Lorena', 'Perez', 'pwd4', '2000-07-11', 'Perez.Lorena@garage.diy', 111222333);
 
 -- --------------------------------------------------------
 
@@ -82,7 +85,7 @@ CREATE TABLE `product` (
   `id_Product` varchar(50) NOT NULL,
   `Name` varchar(50) NOT NULL,
   `Price` double(10,2) NOT NULL,
-  `Description` varchar(50) NOT NULL
+  `Description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -90,7 +93,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id_Product`, `Name`, `Price`, `Description`) VALUES
-('CM11', 'Carrocería Metal', 74.10, 'Carrocería con acabado metálico.'),
+('CM11', 'Carrocería Metal', 74.10, 'CCAM'),
 ('EP06', 'Exhaust Pipe', 60.00, 'Silent exhaust pipe'),
 ('FS90', 'Front Spoiler', 260.00, 'Front spoiler for racing cars.');
 
@@ -115,9 +118,12 @@ CREATE TABLE `purchase` (
 
 INSERT INTO `purchase` (`id_Purchase`, `cust_Username`, `prod_ID`, `Date`, `Amount`, `Final_Cost`) VALUES
 (1, 'user11', 'CM11', '2021-09-27', 3, 90.00),
-(8, 'user22', 'FS90', '2016-02-17', 1, 260.00),
-(10, 'user22', 'CM11', '2014-06-22', 2, 60.00),
-(11, 'user33', 'CM11', '2022-01-13', 7, 60.55);
+(11, 'user33', 'CM11', '2022-01-13', 7, 60.55),
+(15, 'user22', 'EP06', '2022-04-12', 2, 0.00),
+(29, 'user22', 'EP06', '2022-04-20', 3, 0.00),
+(30, 'user22', 'EP06', '2022-04-20', 3, 0.00),
+(34, 'user22', 'EP06', '2022-04-14', 2, 0.00),
+(35, 'user22', 'EP06', '2022-04-14', 2, 0.00);
 
 -- --------------------------------------------------------
 
@@ -142,10 +148,11 @@ CREATE TABLE `reservation` (
 
 INSERT INTO `reservation` (`id_Reservation`, `cust_Username`, `id_cabin`, `Date`, `Starting_Hour`, `Ending_Hour`, `Amount_Hours`, `Total_Price`) VALUES
 (1, 'user11', 'C0', '2022-03-30', '09:00:00', '11:00:00', 2, 15.40),
-(5, 'user22', 'C0', '2022-04-05', '10:00:00', '12:00:00', 0, 0.00),
-(7, 'user22', 'C0', '2022-03-30', '11:00:00', '12:00:00', 2, 3.00),
-(8, 'user33', 'C3', '2022-04-21', '10:00:00', '12:00:00', 2, 0.00),
-(11, 'user22', 'C1', '2019-11-06', '10:00:00', '11:00:00', 1, 0.00);
+(5, 'user22', 'C0', '2022-04-05', '10:00:00', '12:00:00', 2, 50.95),
+(7, 'user22', 'C0', '2022-03-30', '11:00:00', '12:00:00', 2, 3.88),
+(8, 'user33', 'C3', '2016-04-21', '10:00:00', '12:00:00', 2, 44.73),
+(11, 'user22', 'C1', '2019-11-06', '10:00:00', '11:00:00', 1, 86.20),
+(46, 'user11', 'C1', '2022-04-25', '10:00:00', '11:00:00', 1, 180.55);
 
 -- --------------------------------------------------------
 
@@ -174,7 +181,7 @@ INSERT INTO `worker` (`Worker_ID`, `Name`, `Surname`, `Password`, `Occupation`, 
 (1, 'primer', 'trabajador', 'pwd1', 'Mechanic', 'trabajador.primer@garage.diy', 123456789, 1200.99, '09:00:00', '19:00:00'),
 (2, 'bigarren', 'langile', 'pwd2', 'Mechanic', 'langile.bigarren@garage.diy', 987654321, 900.20, '09:00:00', '19:00:00'),
 (3, 'Jhon', 'Philips', 'pwd3', 'Mechanic', 'Philips.Jhon@garage.diy', 123456897, 1600.20, '09:00:00', '19:00:00'),
-(4, 'Noel', 'Anderson', 'pwd4', 'Mechanic', 'Anderson.Noel@garage.diy', 951357852, 1250.45, '09:00:00', '19:00:00');
+(4, 'Noel', 'Anderson', 'pwd4', 'Admin', 'Anderson.Noel@garage.diy', 951357852, 1250.45, '09:00:00', '19:00:00');
 
 --
 -- Índices para tablas volcadas
@@ -229,13 +236,13 @@ ALTER TABLE `worker`
 -- AUTO_INCREMENT de la tabla `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `id_Purchase` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_Purchase` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id_Reservation` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_Reservation` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `worker`

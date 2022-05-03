@@ -1,4 +1,5 @@
 import datetime
+import pickle
 
 
 class BasicsMethods():
@@ -39,6 +40,12 @@ class BasicsMethods():
         return a
 
 
+
+    @staticmethod
+    def save_object(obj, filename):
+        with open("reservationInfo.txt", 'ab') as outp:  # Overwrites any existing file.
+            pickle.dump(obj, outp, pickle.HIGHEST_PROTOCOL)
+    #save_object(obj, 'reservationInfo.txt')
 
 """
 Link of info to work with dates and time:

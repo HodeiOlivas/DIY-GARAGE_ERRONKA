@@ -4,11 +4,14 @@ import BasicMethodsToWorkWith
 from datetime import datetime
 import datetime
 
+"""
 # time_obj = datetime.strptime("09:15:20", "%H:%M:%S").time()
 date = '20:52'
 datem = datetime.datetime.strptime(date, "%H:%M")
 print(str(datem.hour) + str(":") + str(datem.minute))
 print("--------------------------------")
+
+"""
 
 # -----------------------------------------------------
 

@@ -1,4 +1,5 @@
 
+
 import BasicMethodsToWorkWith
 from datetime import datetime, date
 import datetime
@@ -21,7 +22,7 @@ class Reservation:
         while validCabin == 1:
             cabinUser = BasicMethodsToWorkWith.BasicsMethods.askstring("the reservation's Cabin: " + "\n\t\t" + str(allCabins)).capitalize()
             if cabinUser not in allCabins:
-                print("No result found for the specified Cabin. Try again! ")
+                print("\t->No result found for the specified Cabin. Try again! \n")
             else:
                 #self.cabin = BasicMethodsToWorkWith.BasicsMethods.askstring("the reservation's Cabin: " + "\n\t\t" + str(allCabins)).capitalize()
                 self.cabin = cabinUser
@@ -41,7 +42,7 @@ class Reservation:
 
 
             if dateReservation < limitDateOld:
-                print("\tYou cant make a reservation with a Date before " + str(limitDateOld) + "\n")
+                print("\t->You cant make a reservation with a Date before " + str(limitDateOld) + "\n")
             else:
                 self.date = dateReservation
                 validDate = 0
@@ -49,7 +50,7 @@ class Reservation:
 
 
 
-        #starting hour / ending hour / amount of hours of the reservation
+        #openning and closing hours
         now = datetime.datetime.now()
         openGarage = now.replace(hour=9, minute=00, second=0, microsecond=0).strptime("9:00:00", "%H:%M:%S")
         closeGarage = now.replace(hour=19, minute=00, second=0, microsecond=0).strptime("19:00:00", "%H:%M:%S")
@@ -60,7 +61,7 @@ class Reservation:
         while validStartHour == 1:
             resStartUser = BasicMethodsToWorkWith.BasicsMethods.asktime("the Reservation's Start Time")
             if resStartUser < openGarage:
-                print("You cant make a reservation whose Starting Hour is before the Garage's openning. Try again! ")
+                print("\t->You cant make a reservation whose Starting Hour is before the Garage's openning. Try again! \n")
             else:
                 self.start_time = resStartUser
                 validStartHour = 0
@@ -71,7 +72,7 @@ class Reservation:
             amountHoursUser = BasicMethodsToWorkWith.BasicsMethods.askinteger(
                 "the amount of hours of the reservation (max: 2)")
             if amountHoursUser > 2:
-                print("You can't make a reservation bigger than 2 hours. Try again!")
+                print("\t->You can't make a reservation bigger than 2 hours. Try again! \n")
             else:
                 self.amountHours = amountHoursUser
                 validAmountHours = 0
@@ -174,7 +175,7 @@ class Reservation:
             today = date.today()
 
             limitDateOld = datetime.datetime.strptime("01-01-2000", "%d-%m-%Y").date()
-            resDateUser = BasicMethodsToWorkWith.BasicsMethods.askdate("your Reservation's Date: ")
+            resDateUser = BasicMethodsToWorkWith.BasicsMethods.askdate("the reservation's NEW DATE: ")
             # resDateUser = datetime.datetime.strptime(resDateUser, "%d-%m-%Y").date()
             # resDate = datetime.strftime(resDateUser, "%d-%m-%Y")
 
@@ -201,7 +202,7 @@ class Reservation:
                 validStartHour = 0
 
     def printReservation(self):
-        print("\t-> " + str(self.idReservation) + ", " +
+        print("\t\t-> " + str(self.idReservation) + ", " +
               str(self.custUsername) + ", " +
               str(self.cabin) + ", " +
               str(self.date) + ", " +
@@ -210,6 +211,10 @@ class Reservation:
               str(self.amountHours) + ", " +
               str(self.totalPrice)
               )
+
+    def viewReservation(self):
+        return "\t\t-> " + str(self.idReservation) + ", " + str(self.custUsername) + ", " + str(self.cabin) + ", " + str(self.date) + ", " + str(self.getStartingHour()) + ", " + str(self.getFinishHour()) + ", " + str(self.amountHours) + ", " + str(self.totalPrice)
+
 
 
 
