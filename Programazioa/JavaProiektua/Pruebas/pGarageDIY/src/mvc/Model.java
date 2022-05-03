@@ -935,9 +935,6 @@ public class Model {
         g1.drawLine(75, 850, 825, 850);
         g1.drawLine(825, 850, 825, 480);
         
-        
-        
-            
     }
     
     
@@ -980,6 +977,30 @@ public class Model {
     }
     
     
+    public static void drawMonthlyOccupation() {
+        
+        ArrayList<MonthOccupation> twoOrLess = new ArrayList<>();
+        ArrayList<MonthOccupation> moreTwoLessFive = new ArrayList<>();
+        ArrayList<MonthOccupation> fiveOrMore = new ArrayList<>();
+        
+        
+        //Model.reservationsOfEachMonth();
+        for (int i = 0; i < Model.reservationsOfEachMonth().size(); ++i) {
+            if (Model.reservationsOfEachMonth().get(i).getAmountOfReservationsMonth() <= 2) {
+                twoOrLess.add(Model.reservationsOfEachMonth().get(i));
+                
+            } else if ((Model.reservationsOfEachMonth().get(i).getAmountOfReservationsMonth() > 2) && 
+                    (Model.reservationsOfEachMonth().get(i).getAmountOfReservationsMonth() < 5)) {
+                
+                moreTwoLessFive.add(Model.reservationsOfEachMonth().get(i));
+                
+            } else if (Model.reservationsOfEachMonth().get(i).getAmountOfReservationsMonth() >= 5) {
+                fiveOrMore.add(Model.reservationsOfEachMonth().get(i));
+            }
+        }
+        
+        
+    }
     
     
 }
@@ -995,4 +1016,5 @@ SELECT SUM(purchase.amount * product.Price) FROM purchase
 INNER JOIN product
 ON (purchase.prod_ID = product.id_Product)
 */
+
 
