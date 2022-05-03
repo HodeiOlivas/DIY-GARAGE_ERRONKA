@@ -19,7 +19,7 @@ class Customer(Person):
 
         custBirthdayUser = BasicMethodsToWorkWith.BasicsMethods.askdate("your birthday's date ")
         #custBirthday = datetime.strptime(custBirthdayUser, "%Y-%m-%d")
-        custBirthday = datetime.strptime(custBirthdayUser, "%d-%m-%Y")
+        custBirthday = datetime.strptime(custBirthdayUser, "%d-%m-%Y").date()
         self.birthday = custBirthday
 
         # self.birthday = datetime.strptime(birthday, '%d-%m-%Y').date()
@@ -65,17 +65,17 @@ class Customer(Person):
         self.phone_Number = newPhoneNumber
 
     def printCustomer(self):
-        print("\t-> " + self.username + ", " + self.name + ", " + self.surname + ", " + self.password + ", " + str(
-            self.birthday) + ", " + self.mail + ", " + str(self.phone_Number))
+        print("\t-> " + str(self.username) + ", " +
+              str(self.name) + ", " +
+              str(self.surname) + ", " +
+              str(self.password) + ", " +
+              str(self.birthday) + ", " +
+              str(self.mail) + ", " +
+              str(self.phone_Number)
+            )
 
     def printExtended(self):
-        print(str("Username: ") + str(self.username),
-              str("\nName: ") + str(self.name),
-              str("\nSurname: ") + str(self.surname),
-              str("\nPassword: ") + str(self.password),
-              str("\nBirthday: ") + str(self.birthday),
-              str("\nMail: ") + str(self.mail),
-              str("\nPhone Number: ") + str(self.phone_Number))
+        return str("\nUsername: ") + str(self.username) + ", " + str("Name: ") + str(self.name) + ", " + str("Surname: ") + str(self.surname) + ", " + str("Password: ") + str(self.password) + ", " + str("\nBirthday: ") + str(self.birthday) + ", " + str("Mail: ") + str(self.mail) + ", " + str("Phone Number: ") + str(self.phone_Number) + "\n"
 
     # def setAbizena(self):
     #     self.abizena = input("Enter the value of the surname: ")

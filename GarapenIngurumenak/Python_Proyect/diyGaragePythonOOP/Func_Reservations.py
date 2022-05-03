@@ -15,9 +15,12 @@ def saveReservation(obj, filename):
 
 def readReservations():
     with open("reservationInfo.txt", 'r') as outp:  # Overwrites any existing file.
-        lerroak = outp.readlines()
-        print(lerroak)
+        lines = outp.readlines()
+        print(lines)
 
-
+def viewListReservations(resList):
+    for res in resList:
+        Reservation.printReservation(res)
+    print()
 
 

@@ -202,15 +202,13 @@ class Reservation:
                 validStartHour = 0
 
     def printReservation(self):
-        print("\t\t-> " + str(self.idReservation) + ", " +
-              str(self.custUsername) + ", " +
-              str(self.cabin) + ", " +
-              str(self.date) + ", " +
-              str(self.getStartingHour()) + ", " +
-              str(self.getFinishHour()) + ", " +
-              str(self.amountHours) + ", " +
-              str(self.totalPrice)
-              )
+        return str("\nReservation ID: ") + str(self.idReservation) + ", " + str(
+            "Customer: ") + str(self.custUsername) + ", " + str("\nCabin: ") + str(
+            self.cabin) + ", " + str("Date: ") + str(self.date) + ", " + str(
+            "\nStart Hour: ") + str(self.getStartingHour()) + ", " + str(
+            "Finish Hour: ") + str(self.getFinishHour()) + ", " + str(
+            "\nAmount Hours: ") +  str(self.amountHours) + ", " + str("Total Price: ") + str(self.totalPrice)
+
 
     def viewReservation(self):
         return "\t\t-> " + str(self.idReservation) + ", " + str(self.custUsername) + ", " + str(self.cabin) + ", " + str(self.date) + ", " + str(self.getStartingHour()) + ", " + str(self.getFinishHour()) + ", " + str(self.amountHours) + ", " + str(self.totalPrice)
