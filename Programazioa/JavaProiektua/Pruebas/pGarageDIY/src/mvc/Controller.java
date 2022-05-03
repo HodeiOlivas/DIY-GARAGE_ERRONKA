@@ -7,13 +7,14 @@ package mvc;
 
 import forGraphics.Rectangle;
 import myClasses.*;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javafx.scene.paint.Color;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import static mvc.View.*;
@@ -76,6 +77,7 @@ public class Controller implements ActionListener {
         View.JButtonClean.addActionListener(listener);  //graphical reports -> limpiar contenido del textArea
         View.JButtonGoBack.addActionListener(listener);   //graphical report -> volcer al menú inicial
         View.JButtonViewGraph.addActionListener(listener);  //graphic reports -> view selected report
+        View.JButtonShowHideDetails.addActionListener(listener);    //graphic reports -> show/hide the animated gif
         
         View.JCheckBoxBestTwoCustomers.addActionListener(listener); //graphic reports -> best 2 customers (reservations)
         View.JCheckBoxSortAge.addActionListener(listener);          //graphic reports -> represent graphically the difference between underage and adult customers
@@ -113,10 +115,10 @@ public class Controller implements ActionListener {
                 System.out.println("Wait... The Textual Report's section is loading. \n");
                 View.JFrameTextReports.setVisible(true);
                 
-                View.JFrameTextReports.setTitle("Create a New Customer!");
+                View.JFrameTextReports.setTitle("Manage of Textual Reports!");
                 View.JFrameTextReports.setSize(750, 675);   //600,400   //900, 600
                 View.JFrameTextReports.setResizable(false);
-
+                
                 break;
             case "Graphicall Reports":
                 System.out.println("Wait... The Graphical Report's section is loading. \n");
@@ -129,8 +131,9 @@ public class Controller implements ActionListener {
                 */
                 
                 View.JFrameGraphicalReports.setVisible(true);
-                View.JFrameGraphicalReports.setTitle("Create a New Customer!");
-                View.JFrameGraphicalReports.setSize(900, 606);  //600, 356
+                View.JFrameGraphicalReports.setTitle("Manage of Graphic Reports!");
+                //View.JFrameGraphicalReports.setSize(900, 606);  //600, 356
+                View.JFrameGraphicalReports.setSize(900, 725);  //600, 356
                 View.JFrameGraphicalReports.setResizable(false);
                 
                 
@@ -412,6 +415,9 @@ public class Controller implements ActionListener {
                 View.JCheckBoxBestTwoCustomers.setSelected(false);
                 View.JCheckBoxSortAge.setSelected(false);
                 View.JCheckBoxMonthlyOccupancy.setSelected(false);
+                View.JLabelDetailsGif.setVisible(false);
+                
+                //View.JLabelAnimatedGif.setVisible(false);
                 
                 /*
                 View.JCheckBoxBestTwoCustomers.setEnabled(true);
@@ -424,7 +430,21 @@ public class Controller implements ActionListener {
                 */
                 break;
             
+            case "Show/Hide":
+                //View.JFrameGraphicalReports.setSize(900, 725);
+                if (JLabelDetailsGif.isVisible()) {
+                    JLabelDetailsGif.setVisible(false);
+                    View.JFrameGraphicalReports.setSize(900, 500);
+                } else {
+                    JLabelDetailsGif.setVisible(true);
+                    View.JFrameGraphicalReports.setSize(900, 725);
+                }
+                
+                break;
+            
             case "View Graphic":
+                View.JLabelDetailsGif.setVisible(false);
+                
                 View.JTextAreaGraphics.setText("");
                 View.JTextAreaGraphics.setEditable(false);
                 JButtonViewGraph.setEnabled(true);
@@ -461,10 +481,22 @@ public class Controller implements ActionListener {
                     
                 } else if (JCheckBoxSortAge.isSelected()) {
                     
-                    Model.drawSortByAge();
+                    if (View.JCheckBoxViewGraphicOnTable.isSelected()) {
+                        JTextAreaGraphics.setText("Sorry! This report will be available in tables in future updates ");
+                        JOptionPane.showMessageDialog(null,"Sorry, the 'table-version' of the requested report isn't supported yet. "
+                                + "\nThis report will be available in tables in future updates. Try to view it "
+                                + "\nwithout the 'table' option. \n\n", "Error",JOptionPane.WARNING_MESSAGE);
+                        //view.JTableDataOnTable.setModel(new OccupationTableModel(Model.reservationsOfEachMonth()));
+                        
+                    } else {
+                        Model.drawSortByAge();
+                        
+                    }
+                    
+                    
                     
                     //disable the checkbox of all reports until the user presses the "Clean" button
-                    JCheckBoxBestTwoCustomers.setEnabled(false);    JCheckBoxBestTwoCustomers.setSelected(true);
+                    JCheckBoxBestTwoCustomers.setEnabled(false);    JCheckBoxBestTwoCustomers.setSelected(false);
                     JCheckBoxSortAge.setEnabled(false);             JCheckBoxSortAge.setEnabled(false);
                     JCheckBoxMonthlyOccupancy.setEnabled(false);
                     
@@ -489,16 +521,16 @@ public class Controller implements ActionListener {
                         
                     } else {
                         for (int i = 0; i < Model.reservationsOfEachMonth().size(); ++i) {
-                            JTextAreaTxostenak.setText(JTextAreaTxostenak.getText() + Model.reservationsOfEachMonth().get(i).toString());
+                            JTextAreaGraphics.setText(JTextAreaGraphics.getText() + Model.reservationsOfEachMonth().get(i).toString());
+                            //JTextAreaTxostenak.setText(JTextAreaTxostenak.getText() + Model.reservationsOfEachMonth().get(i).toString());
                         }
                     }
                     
                 }
-                
-                
                                
                 JButtonClean.setEnabled(true);
                 break;
+            
             
             case "Clean":   //txosten grafikoak -> vaciar el contenido del text area
                 

@@ -42,9 +42,9 @@ public class MonthOccupation {
     
     public String toString() {
         
-        return "\nMonth: " + this.getMonth() + 
-                "\nOccupation: " + this.getAmountOfReservationsMonth() + 
-                "\nTotal Earned: " + this.getTotalEarnedPerMonth() + 
+        return "\n\tMonth: " + this.getMonth() + 
+                "\n\tOccupation: " + this.getAmountOfReservationsMonth() + 
+                "\n\tTotal Earned: " + this.getTotalEarnedPerMonth() + 
                 "\n -------------------------------------------------- xx ---------------------------------------------------";
     }
     

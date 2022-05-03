@@ -68,11 +68,11 @@ public class BestCustomer {
     
     public String toStringExtended() {
         
-        return "\n\t\tUsername: " + this.getUsernameCustomer() + 
+        return "\n\tUsername: " + this.getUsernameCustomer() + 
                "\n\tBooking Time: " + this.getBookingTime() + 
-               "\n\tNum. Reservations: " + this.getNumReservations() + 
-               "        Total paid: " + this.getTotalPaid() + " €" + 
-               "        Top Reservation: " + this.getTopReservationPrice() + " €" + 
+               "        Num. Reservations: " + this.getNumReservations() + 
+               "\n\tTotal paid: " + this.getTotalPaid() + " €" + 
+               "    Top Reservation: " + this.getTopReservationPrice() + " €" + 
                "\n\n--------------------------------------------------xx---------------------------------------------------" + "\n\n";
     }
     

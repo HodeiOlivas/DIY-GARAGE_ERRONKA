@@ -908,22 +908,35 @@ public class Model {
 
         //g1.fillArc(350, 700, 100, 100, 0, 360 - (360 * (amountUnderage / totalCustomers)));
 
-        g1.setColor(Color.orange);  g1.fillArc(350, 500, 100, 100, 90, portionsUnderage);   //g1.fillArc(350, 500, 150, 100, 90, portionsUnderage);
-
+        //g1.setColor(Color.orange);  g1.fillArc(350, 500, 100, 100, 90, portionsUnderage);   //g1.fillArc(350, 500, 150, 100, 90, portionsUnderage);
+        g1.setColor(Color.orange);  g1.fillArc(100, 500, 300, 300, 90, portionsUnderage);   //g1.fillArc(350, 500, 150, 100, 90, portionsUnderage);
+        
         //show amount of UNDERAGE customers
         g1.setColor(Color.black); g1.drawString("➜ Number of ", 500, 550);
         g1.setColor(Color.orange); g1.drawString("underage ", 580, 550);
         g1.setColor(Color.black); g1.drawString("customers: " + amountUnderage, 640, 550);
-
+        
         //show amount of ADULTS customers
         g1.setColor(Color.black); g1.drawString("➜ Number of ", 500, 570);
         g1.setColor(Color.blue); g1.drawString("adult ", 580, 570);
         g1.setColor(Color.black); g1.drawString("customers: " + amountAdults, 615, 570);
+        
+        View.JTextAreaGraphics.setText("Underage: " + amountUnderage + "\nAdults: " + amountAdults);
 
         int startAngleAdults = 360 - (360 - (90 + portionsUnderage));
         int angleAdults = 90 + (360 - (90 + portionsUnderage));
         g1.setColor(Color.blue);
-        g1.fillArc(350, 500, 100, 100, startAngleAdults, angleAdults);    //g1.fillArc(350, 500, 150, 100, 360 - (360 - 306), 90 + (360 - 306));
+        //g1.fillArc(350, 500, 100, 100, startAngleAdults, angleAdults);    //g1.fillArc(350, 500, 150, 100, 360 - (360 - 306), 90 + (360 - 306));
+        g1.fillArc(100, 500, 300, 300, startAngleAdults, angleAdults);    //g1.fillArc(350, 500, 150, 100, 360 - (360 - 306), 90 + (360 - 306));
+        
+        g1.setColor(Color.BLACK);
+        g1.drawLine(75, 480, 825, 480);
+        g1.drawLine(75, 480, 75, 850);
+        g1.drawLine(75, 850, 825, 850);
+        g1.drawLine(825, 850, 825, 480);
+        
+        
+        
             
     }
     
@@ -958,7 +971,7 @@ public class Model {
             System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
             //System.out.println(adultCustomers.toString());
             System.out.println("");
-
+            System.out.println(reservationsOfCertainMonth);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
