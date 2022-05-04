@@ -93,8 +93,6 @@ public class Controller implements ActionListener {
         
         
         
-        
-        
 
     }
 
@@ -471,6 +469,16 @@ public class Controller implements ActionListener {
                         
                     } else {
                         Model.drawBest2original();
+                        for (int i = 0; i < Model.bestCustomers().size(); ++i) {
+                            View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.bestCustomers().get(i).toStringExtended());  
+                            /*
+                            if (i == 0 || i == 1) {
+                                View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.bestCustomers().get(i).toStringExtended());  
+                                //View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.biggestTotalPricesReservations().get(i));  
+                            }
+                            */
+                            //View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.biggestTotalPricesReservations().get(i));
+                        }
                     }
                     
                     //disable the checkbox of all reports until the user presses the "Clean" button
@@ -521,10 +529,22 @@ public class Controller implements ActionListener {
                         //view.JTableDataOnTable.setModel(new OccupationTableModel(Model.reservationsOfEachMonth()));
                         
                     } else {
+                        View.JTextAreaGraphics.setText("NOTE: \n" 
+                                + "This report handless the folliwing operations: \n" 
+                                + "\t - Get the amount of reservations made on each month \n" 
+                                + "\t - Make 3 groups with different amount of reservations \n" 
+                                + "\t - Sort the months into groups \n" 
+                                + "\t - Count how many months are on each group \n" 
+                                + "\t - Show the biggest group represented as a filled group \n" 
+                                + "-----------------------------------------------------------------------------------------------------------" 
+                                + "\nResume: get the an approximation of the most usual amount of reservations made monthly " 
+                                );
+                        Model.drawMonthlyOccupation();
+                        /*
                         for (int i = 0; i < Model.reservationsOfEachMonth().size(); ++i) {
                             JTextAreaGraphics.setText(JTextAreaGraphics.getText() + Model.reservationsOfEachMonth().get(i).toString());
-                            //JTextAreaTxostenak.setText(JTextAreaTxostenak.getText() + Model.reservationsOfEachMonth().get(i).toString());
                         }
+                        */
                     }
                     
                 }

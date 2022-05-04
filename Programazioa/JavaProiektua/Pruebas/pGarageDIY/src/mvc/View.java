@@ -19,11 +19,11 @@ import java.awt.Graphics;
  */
 public class View extends javax.swing.JFrame {
 
-    FondoPanel fondo = new FondoPanel();
+    //FondoPanel fondo = new FondoPanel();
     
     public View() {
         
-        this.setContentPane(fondo);
+        //this.setContentPane(fondo);
         
         
         initComponents();
@@ -827,20 +827,14 @@ public class View extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
     
-    
+    /*
     class FondoPanel extends JPanel {
         private Image imagen;
         
         @Override
         public void paint(Graphics g) {
-            //imagen = new ImageIcon(getClass().getResource("/images/fondoF1_1.jpg")).getImage();
-            //imagen = new ImageIcon(getClass().getResource("/images/fondoIndex3.png")).getImage();
-            //-----
-            imagen = new ImageIcon(getClass().getResource("/images/fondoF1_1.jpg")).getImage();
+            //imagen = new ImageIcon(getClass().getResource("/images/fondoF1_1.jpg")).getImage();   
             //imagen = new ImageIcon(getClass().getResource("/images/animated4.gif")).getImage();
-            //imagen = new ImageIcon(getClass().getResource("/images/fondoIndex3.jpg")).getImage();
-            
-            
             
             g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
             
@@ -850,6 +844,7 @@ public class View extends javax.swing.JFrame {
             
         }
     }
+    */
 
     
 }

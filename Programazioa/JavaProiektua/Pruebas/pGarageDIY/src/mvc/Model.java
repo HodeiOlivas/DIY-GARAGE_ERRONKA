@@ -813,16 +813,7 @@ public class Model {
             //System.out.println(c1totalPaid);
             System.out.println("First graphic report: Best two customers (reservations) ");
 
-            for (int i = 0; i < Model.bestCustomers().size(); ++i) {
-                View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.bestCustomers().get(i).toStringExtended());  
-                /*
-                if (i == 0 || i == 1) {
-                    View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.bestCustomers().get(i).toStringExtended());  
-                    //View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.biggestTotalPricesReservations().get(i));  
-                }
-                */
-                //View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.biggestTotalPricesReservations().get(i));
-            }
+            
             
             
     }
@@ -959,7 +950,7 @@ public class Model {
                         rs.getInt("Occupation"),
                         rs.getDouble("Earned per month"));
                 
-                System.out.println(dataMonth);
+                //System.out.println(dataMonth);
                 
                 reservationsOfCertainMonth.add(dataMonth);
                 
@@ -968,7 +959,7 @@ public class Model {
             System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
             //System.out.println(adultCustomers.toString());
             System.out.println("");
-            System.out.println(reservationsOfCertainMonth);
+            //System.out.println(reservationsOfCertainMonth);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -979,25 +970,161 @@ public class Model {
     
     public static void drawMonthlyOccupation() {
         
+        Graphics g2 = View.JFrameGraphicalReports.getGraphics();
+        
         ArrayList<MonthOccupation> twoOrLess = new ArrayList<>();
         ArrayList<MonthOccupation> moreTwoLessFive = new ArrayList<>();
         ArrayList<MonthOccupation> fiveOrMore = new ArrayList<>();
         
-        
         //Model.reservationsOfEachMonth();
         for (int i = 0; i < Model.reservationsOfEachMonth().size(); ++i) {
             if (Model.reservationsOfEachMonth().get(i).getAmountOfReservationsMonth() <= 2) {
+                System.out.println("Two or less: ");
+                //System.out.println(Model.reservationsOfEachMonth().get(i));
                 twoOrLess.add(Model.reservationsOfEachMonth().get(i));
                 
             } else if ((Model.reservationsOfEachMonth().get(i).getAmountOfReservationsMonth() > 2) && 
-                    (Model.reservationsOfEachMonth().get(i).getAmountOfReservationsMonth() < 5)) {
+                       (Model.reservationsOfEachMonth().get(i).getAmountOfReservationsMonth() < 5)) {
                 
+                System.out.println("More than 2 - Less than 5: ");
+                System.out.println(Model.reservationsOfEachMonth().get(i));
                 moreTwoLessFive.add(Model.reservationsOfEachMonth().get(i));
                 
             } else if (Model.reservationsOfEachMonth().get(i).getAmountOfReservationsMonth() >= 5) {
+                System.out.println("More than 5: ");
+                System.out.println(Model.reservationsOfEachMonth().get(i));
                 fiveOrMore.add(Model.reservationsOfEachMonth().get(i));
             }
         }
+        
+        //draw the Pyramid (using lines)
+        //g2.drawPolygon(new int[] {100, 300, 500}, new int[] {750, 500, 750}, 3);
+        
+        //values of BOTTOM's polygon -> months with 2 reservation or less
+        int[] xPointsBottom = {95, 150, 450, 505};
+        int[] yPointsBottom = {865, 760, 760, 865};
+        
+        //values of MIDDLE's polygon -> months with more than 2 reservations, but less than 5
+        int[] xPointsMiddle = {155, 205, 395, 445};
+        int[] yPointsMiddle = {740, 635, 635, 740};
+        
+        //values of TOP's triangle -> months with more than 2 reservations, but less than 5
+        int[] xPointsTop = {210, 295, 390};
+        int[] yPointsTop = {615, 460, 615};
+        
+        
+        System.out.println("Months classified by amount of reservations: ");
+        System.out.println(twoOrLess);
+        System.out.println(moreTwoLessFive);
+        System.out.println(fiveOrMore);
+        //System.out.println(moreTwoLessFive);
+        //System.out.println(fiveOrMore);
+        //JTextAreaGraphics
+        
+        
+        if ((twoOrLess.size() > moreTwoLessFive.size()) && (twoOrLess.size() > fiveOrMore.size())) {
+            g2.setColor(Color.BLACK);           g2.drawPolygon(xPointsTop, yPointsTop, 3);
+            g2.setColor(Color.BLACK);           g2.drawPolygon(xPointsMiddle, yPointsMiddle, 4);
+            g2.setColor(Color.lightGray);       g2.fillPolygon(xPointsBottom, yPointsBottom, 4);   
+            
+        } else if ((moreTwoLessFive.size() > twoOrLess.size()) && (moreTwoLessFive.size() > fiveOrMore.size())) {
+            g2.setColor(Color.BLACK);           g2.drawPolygon(xPointsTop, yPointsTop, 3);
+            g2.setColor(Color.LIGHT_GRAY);      g2.fillPolygon(xPointsMiddle, yPointsMiddle, 4);
+            g2.setColor(Color.BLACK);           g2.drawPolygon(xPointsBottom, yPointsBottom, 4);
+            
+        } else if ((fiveOrMore.size() > twoOrLess.size()) && (fiveOrMore.size() > moreTwoLessFive.size())) {
+            g2.setColor(Color.LIGHT_GRAY);      g2.fillPolygon(xPointsTop, yPointsTop, 3);
+            g2.setColor(Color.BLACK);           g2.drawPolygon(xPointsMiddle, yPointsMiddle, 4);
+            g2.setColor(Color.BLACK);           g2.drawPolygon(xPointsBottom, yPointsBottom, 4);
+            
+        }
+        
+        //create an arrayList for each group (saving on it the names of the months)
+        ArrayList<String> topMonthsNames = new ArrayList<>();
+        ArrayList<String> middleMonthsNames = new ArrayList<>();
+        ArrayList<String> bottomMonthsNames = new ArrayList<>();
+        
+        //save the TOP group's month's names
+        for (int i = 0; i < fiveOrMore.size(); ++i) {
+            topMonthsNames.add(fiveOrMore.get(i).getMonth());
+        }
+        //save the MIDDLE group's month's names
+        for (int i = 0; i < moreTwoLessFive.size(); ++i) {
+            middleMonthsNames.add(moreTwoLessFive.get(i).getMonth());
+        }
+        //save the BOTTOM group's month's names
+        for (int i = 0; i < twoOrLess.size(); ++i) {
+            bottomMonthsNames.add(twoOrLess.get(i).getMonth());
+        }
+        
+        //show reservation ranges
+        //piece of TOP
+        g2.setColor(Color.GRAY);
+        g2.drawString("➜ res >= 5 ", 273, 610);
+        g2.drawString("➜ 2 < res < 5 ", 269, 735);
+        g2.drawString("➜ res <= 2 ", 271, 860);
+        
+        
+        
+        //draw lines to show the months of each group
+        g2.drawLine(350, 530, 800, 530);    //line TOP piece/group
+        g2.drawLine(435, 690, 800, 690);    //line TOP piece/group
+        g2.drawLine(505, 830, 800, 830);    //line TOP piece/group
+        
+        
+        //draw or show the month's name of each group
+        String topMonths = "";
+        for (int i = 0; i < topMonthsNames.size(); ++i) {
+            if (i == 0) {
+                topMonths = topMonthsNames.get(i);
+            } else {
+                topMonths = topMonths + ", " + topMonthsNames.get(i);
+            }
+            
+        }
+        
+        //g2.drawString(topMonthsNames.toString(), 550, 480);
+        g2.drawString(topMonths, 550, 480);
+        
+        
+        
+        //draw the square which contains the "graphic representation"
+        g2.drawLine(75, 440, 825, 440);
+        g2.drawLine(75, 440, 75, 880);
+        g2.drawLine(75, 880, 825, 880);
+        g2.drawLine(825, 880, 825, 440);
+        
+        /*
+        //ranges TOP
+        g2.setColor(Color.BLACK);
+        g2.drawLine(280, 460, 85, 460);
+        g2.drawLine(85, 460, 85, 510);
+        g2.drawString("➜ +5 Reserv. ", 80, 540);
+        g2.drawLine(200, 615, 85, 615);
+        g2.drawLine(85, 615, 85, 560);
+        
+        //ranges MIDDLE
+        g2.setColor(Color.BLACK);
+        g2.drawLine(190, 635, 85, 635);
+        g2.drawLine(85, 635, 85, 655);
+        //g2.drawString("➜ Number of ", 80, 525);
+        */
+        
+        
+        /*
+        //create, draw and fill BOTTOM's polygon
+        g2.setColor(Color.BLACK);
+        g2.fillPolygon(xPointsBottom, yPointsBottom, 4);
+        
+        //create, draw and fill MIDDLE's polygon
+        g2.setColor(Color.GRAY);
+        g2.drawPolygon(xPointsMiddle, yPointsMiddle, 4);
+        //g2.fillPolygon(xPointsMiddle, yPointsMiddle, 4);
+        
+        //create, draw and fill TOP's triangle
+        g2.setColor(Color.LIGHT_GRAY);
+        g2.fillPolygon(xPointsTop, yPointsTop, 3);
+        */
         
         
     }
