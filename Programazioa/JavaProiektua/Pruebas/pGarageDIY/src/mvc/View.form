@@ -444,6 +444,11 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="JFrameGraphicalReports">
+      <Properties>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor Por defecto"/>
+        </Property>
+      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>
@@ -550,11 +555,19 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator3">
+          <Properties>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor Por defecto"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="JButtonStartGra">
           <Properties>
             <Property name="text" type="java.lang.String" value="Start"/>
             <Property name="actionCommand" type="java.lang.String" value="Start Graphics"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor Por defecto"/>
+            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -645,6 +658,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Table"/>
             <Property name="actionCommand" type="java.lang.String" value="GraphicOnTable"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor de Mano"/>
+            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -862,7 +878,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="45" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="JButtonGoManage" min="-2" pref="150" max="-2" attributes="0"/>
+                  <Component id="JButtonVisitWebsite" min="-2" pref="150" max="-2" attributes="0"/>
                   <Component id="JButtonGoGraphicall" min="-2" pref="150" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                       <Component id="JLabelTitulo" min="-2" max="-2" attributes="0"/>
@@ -891,7 +907,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="JButtonGoGraphicall" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="JButtonGoManage" min="-2" max="-2" attributes="0"/>
+              <Component id="JButtonVisitWebsite" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="287" max="32767" attributes="0"/>
               <Component id="jSeparator1" min="-2" pref="14" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -946,9 +962,13 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="JButtonGoManage">
+    <Component class="javax.swing.JButton" name="JButtonVisitWebsite">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Manage Garage"/>
+        <Property name="text" type="java.lang.String" value="More..."/>
+        <Property name="actionCommand" type="java.lang.String" value="Visit Website"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor de Mano"/>
+        </Property>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>

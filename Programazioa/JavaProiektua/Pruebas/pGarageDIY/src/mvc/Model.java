@@ -1017,26 +1017,43 @@ public class Model {
         System.out.println(twoOrLess);
         System.out.println(moreTwoLessFive);
         System.out.println(fiveOrMore);
-        //System.out.println(moreTwoLessFive);
-        //System.out.println(fiveOrMore);
-        //JTextAreaGraphics
+        
+        
+        //3D effect (bottom with middle)
+        g2.drawLine(150, 760, 180, 740);
+        g2.drawLine(450, 760, 420, 740);
+        //3D effect (middle with top)
+        g2.drawLine(205, 635, 235, 615);
+        g2.drawLine(395, 635, 365, 615);
+        //extra line (filled bot's piece)
+        
         
         
         if ((twoOrLess.size() > moreTwoLessFive.size()) && (twoOrLess.size() > fiveOrMore.size())) {
             g2.setColor(Color.BLACK);           g2.drawPolygon(xPointsTop, yPointsTop, 3);
             g2.setColor(Color.BLACK);           g2.drawPolygon(xPointsMiddle, yPointsMiddle, 4);
-            g2.setColor(Color.lightGray);       g2.fillPolygon(xPointsBottom, yPointsBottom, 4);   
+            g2.setColor(Color.lightGray);       g2.fillPolygon(xPointsBottom, yPointsBottom, 4);  
+            //paint the filled piece's outline black
+            g2.setColor(Color.BLACK);           g2.drawPolygon(xPointsBottom, yPointsBottom, 4); 
             
         } else if ((moreTwoLessFive.size() > twoOrLess.size()) && (moreTwoLessFive.size() > fiveOrMore.size())) {
             g2.setColor(Color.BLACK);           g2.drawPolygon(xPointsTop, yPointsTop, 3);
             g2.setColor(Color.LIGHT_GRAY);      g2.fillPolygon(xPointsMiddle, yPointsMiddle, 4);
             g2.setColor(Color.BLACK);           g2.drawPolygon(xPointsBottom, yPointsBottom, 4);
+            //paint the filled piece's outline black
+            g2.setColor(Color.BLACK);           g2.drawPolygon(xPointsMiddle, yPointsMiddle, 4); 
             
         } else if ((fiveOrMore.size() > twoOrLess.size()) && (fiveOrMore.size() > moreTwoLessFive.size())) {
             g2.setColor(Color.LIGHT_GRAY);      g2.fillPolygon(xPointsTop, yPointsTop, 3);
             g2.setColor(Color.BLACK);           g2.drawPolygon(xPointsMiddle, yPointsMiddle, 4);
             g2.setColor(Color.BLACK);           g2.drawPolygon(xPointsBottom, yPointsBottom, 4);
+            //paint the filled piece's outline black
+            g2.setColor(Color.BLACK);           g2.drawPolygon(xPointsTop, yPointsTop, 4); 
             
+        } else {
+            g2.setColor(Color.BLACK);           g2.drawPolygon(xPointsTop, yPointsTop, 3);
+            g2.setColor(Color.BLACK);           g2.drawPolygon(xPointsMiddle, yPointsMiddle, 4);
+            g2.setColor(Color.BLACK);           g2.drawPolygon(xPointsBottom, yPointsBottom, 4);
         }
         
         //create an arrayList for each group (saving on it the names of the months)
@@ -1072,21 +1089,42 @@ public class Model {
         g2.drawLine(505, 830, 800, 830);    //line TOP piece/group
         
         
-        //draw or show the month's name of each group
-        String topMonths = "";
+        //draw or show the month's name of each group (saved on String)
+        String topMonthsStr = "";
+        String middleMonthsStr = "";
+        String bottomMonthsStr = "";
+        
+        //months TOP
         for (int i = 0; i < topMonthsNames.size(); ++i) {
             if (i == 0) {
-                topMonths = topMonthsNames.get(i);
+                topMonthsStr = topMonthsNames.get(i);
             } else {
-                topMonths = topMonths + ", " + topMonthsNames.get(i);
+                topMonthsStr = topMonthsStr + ", " + topMonthsNames.get(i);
             }
-            
         }
         
-        //g2.drawString(topMonthsNames.toString(), 550, 480);
-        g2.drawString(topMonths, 550, 480);
+        //months MIDDLE
+        for (int i = 0; i < middleMonthsNames.size(); ++i) {
+            if (i == 0) {
+                middleMonthsStr = middleMonthsNames.get(i);
+            } else {
+                middleMonthsStr = middleMonthsStr + ", " + middleMonthsNames.get(i);
+            }
+        }
         
+        //months BOTTOM
+        for (int i = 0; i < bottomMonthsNames.size(); ++i) {
+            if (i == 0) {
+                bottomMonthsStr = bottomMonthsNames.get(i);
+            } else {
+                bottomMonthsStr = bottomMonthsStr + ", " + bottomMonthsNames.get(i);
+            }
+        }
         
+        //view the months' names on the frame
+        g2.drawString(topMonthsStr, 550, 520);      //g2.drawString("Months: ", 500, 520);
+        g2.drawString(middleMonthsStr, 550, 680);   //g2.drawString("Months: ", 500, 680);
+        g2.drawString(bottomMonthsStr, 550, 820);   //g2.drawString("Months: ", 500, 820);   
         
         //draw the square which contains the "graphic representation"
         g2.drawLine(75, 440, 825, 440);
@@ -1094,41 +1132,20 @@ public class Model {
         g2.drawLine(75, 880, 825, 880);
         g2.drawLine(825, 880, 825, 440);
         
-        /*
-        //ranges TOP
-        g2.setColor(Color.BLACK);
-        g2.drawLine(280, 460, 85, 460);
-        g2.drawLine(85, 460, 85, 510);
-        g2.drawString("➜ +5 Reserv. ", 80, 540);
-        g2.drawLine(200, 615, 85, 615);
-        g2.drawLine(85, 615, 85, 560);
-        
-        //ranges MIDDLE
-        g2.setColor(Color.BLACK);
-        g2.drawLine(190, 635, 85, 635);
-        g2.drawLine(85, 635, 85, 655);
-        //g2.drawString("➜ Number of ", 80, 525);
-        */
-        
-        
-        /*
-        //create, draw and fill BOTTOM's polygon
-        g2.setColor(Color.BLACK);
-        g2.fillPolygon(xPointsBottom, yPointsBottom, 4);
-        
-        //create, draw and fill MIDDLE's polygon
-        g2.setColor(Color.GRAY);
-        g2.drawPolygon(xPointsMiddle, yPointsMiddle, 4);
-        //g2.fillPolygon(xPointsMiddle, yPointsMiddle, 4);
-        
-        //create, draw and fill TOP's triangle
-        g2.setColor(Color.LIGHT_GRAY);
-        g2.fillPolygon(xPointsTop, yPointsTop, 3);
-        */
-        
         
     }
     
+    
+    public static void visitWebpage() {
+        //url of the website we want to connect to
+        String webUrl = "http://localhost/phpDAM1/loginAzalpenak/index2.php";
+        try {
+            java.awt.Desktop.getDesktop().browse(java.net.URI.create(webUrl));
+        }
+        catch (java.io.IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
     
 }
 

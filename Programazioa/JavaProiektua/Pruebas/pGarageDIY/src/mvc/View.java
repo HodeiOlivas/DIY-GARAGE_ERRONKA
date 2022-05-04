@@ -19,11 +19,11 @@ import java.awt.Graphics;
  */
 public class View extends javax.swing.JFrame {
 
-    //FondoPanel fondo = new FondoPanel();
+    FondoPanel fondo = new FondoPanel();
     
     public View() {
         
-        //this.setContentPane(fondo);
+        this.setContentPane(fondo);
         
         
         initComponents();
@@ -31,6 +31,8 @@ public class View extends javax.swing.JFrame {
         this.setSize(900, 500);
         this.setResizable(false);
         this.setTitle("Primera prueba GUI");
+        
+        
         
         JComboBoxTxostenak.addItem("...");
         JComboBoxTxostenak.addItem("Monthly occupation");
@@ -174,7 +176,7 @@ public class View extends javax.swing.JFrame {
         JLabelIntro = new javax.swing.JLabel();
         JButtonGoTxostenak = new javax.swing.JButton();
         JButtonGoGraphicall = new javax.swing.JButton();
-        JButtonGoManage = new javax.swing.JButton();
+        JButtonVisitWebsite = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
         JFrameTextReports.setResizable(false);
@@ -381,10 +383,15 @@ public class View extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
+        JFrameGraphicalReports.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         JCheckBoxSortAge.setText("Sort by age");
+
+        jSeparator3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         JButtonStartGra.setText("Start");
         JButtonStartGra.setActionCommand("Start Graphics");
+        JButtonStartGra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         JButtonGoBack.setText("Go back");
         JButtonGoBack.setActionCommand("Go back to start");
@@ -411,6 +418,7 @@ public class View extends javax.swing.JFrame {
 
         JCheckBoxViewGraphicOnTable.setText("Table");
         JCheckBoxViewGraphicOnTable.setActionCommand("GraphicOnTable");
+        JCheckBoxViewGraphicOnTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         JButtonShowHideDetails.setText("Show/Hide details");
         JButtonShowHideDetails.setActionCommand("Show/Hide");
@@ -578,7 +586,9 @@ public class View extends javax.swing.JFrame {
 
         JButtonGoGraphicall.setText("Graphicall Reports");
 
-        JButtonGoManage.setText("Manage Garage");
+        JButtonVisitWebsite.setText("More...");
+        JButtonVisitWebsite.setActionCommand("Visit Website");
+        JButtonVisitWebsite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -587,7 +597,7 @@ public class View extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JButtonGoManage, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JButtonVisitWebsite, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JButtonGoGraphicall, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(JLabelTitulo)
@@ -609,7 +619,7 @@ public class View extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(JButtonGoGraphicall)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(JButtonGoManage)
+                .addComponent(JButtonVisitWebsite)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 287, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -765,7 +775,6 @@ public class View extends javax.swing.JFrame {
     public static javax.swing.JButton JButtonClear;
     public static javax.swing.JButton JButtonGoBack;
     public static javax.swing.JButton JButtonGoGraphicall;
-    public static javax.swing.JButton JButtonGoManage;
     public static javax.swing.JButton JButtonGoTxostenak;
     public static javax.swing.JButton JButtonLogOut;
     public static javax.swing.JButton JButtonLoginToSave;
@@ -781,6 +790,7 @@ public class View extends javax.swing.JFrame {
     public static javax.swing.JButton JButtonStartGra;
     public static javax.swing.JButton JButtonValidateWorker;
     public static javax.swing.JButton JButtonViewGraph;
+    public static javax.swing.JButton JButtonVisitWebsite;
     public static javax.swing.JCheckBox JCheckBoxBestTwoCustomers;
     public static javax.swing.JCheckBox JCheckBoxMonthlyOccupancy;
     public static javax.swing.JCheckBox JCheckBoxSortAge;
@@ -827,13 +837,13 @@ public class View extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
     
-    /*
+    
     class FondoPanel extends JPanel {
         private Image imagen;
         
         @Override
         public void paint(Graphics g) {
-            //imagen = new ImageIcon(getClass().getResource("/images/fondoF1_1.jpg")).getImage();   
+            imagen = new ImageIcon(getClass().getResource("/images/fondoF1_1.jpg")).getImage();
             //imagen = new ImageIcon(getClass().getResource("/images/animated4.gif")).getImage();
             
             g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
@@ -844,7 +854,7 @@ public class View extends javax.swing.JFrame {
             
         }
     }
-    */
+    
 
     
 }

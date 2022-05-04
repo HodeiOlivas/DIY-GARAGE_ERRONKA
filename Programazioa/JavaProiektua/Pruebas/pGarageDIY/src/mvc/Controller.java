@@ -52,46 +52,38 @@ public class Controller implements ActionListener {
         //GUIaren konponente guztiei gehitu listenerra
         
         //--------------------------//
-        View.JButtonGoTxostenak.addActionListener(listener);  //inicio -> botón para ver txostenak textuales
-        View.JButtonGoGraphicall.addActionListener(listener); //inicio -> botón para ver los informes gráficos 
+        View.JButtonGoTxostenak.addActionListener(listener);        //inicio -> button to go to the TEXTUAL report's section 
+        View.JButtonGoGraphicall.addActionListener(listener);       //inicio -> button to go to the GRAPHIC report's section 
+        View.JButtonVisitWebsite.addActionListener(listener);       //inicio -> button to visit the website
         
-        View.JButtonPrintTxosten.addActionListener(listener); //textual reports -> botón para ver/imprimir los datos
-        View.JButtonReturnStart.addActionListener(listener);  //textual reports -> botón para volver al menú inicial
-        View.JButtonSaveUsersFile.addActionListener(listener);   //textual reports -> botón para guardar el contenido del text area en un fichero
+        View.JButtonPrintTxosten.addActionListener(listener);       //textual reports -> button to print/view the data
+        View.JButtonReturnStart.addActionListener(listener);        //textual reports -> button to return to the starting/main menu
         
-        View.JButtonClear.addActionListener(listener);  //textual reports -> clear all the fields
-        
+        View.JButtonClear.addActionListener(listener);              //textual reports -> clear all the fields
         View.JButtonReturnFromTable.addActionListener(listener);    //dialogTable -> button to return to Textual Reports' section
                 
-        View.JButtonLoginToSave.addActionListener(listener);    //textual reports -> log in as a WORKER to continue (download data)
-        View.JButtonLogOut.addActionListener(listener); //textual reports -> logout from the previously logged session
+        View.JButtonLoginToSave.addActionListener(listener);        //textual reports -> log in as a WORKER to continue (download data)
+        View.JButtonLogOut.addActionListener(listener);             //textual reports -> logout from the previously logged session
         
-        View.JButtonValidateWorker.addActionListener(listener); //textual reports -> validate worker's login to unlock the download buttons
-        View.JButtonSaveUsersFile.addActionListener(listener);  //download -> save all users
-        View.JButtonSaveCatalog.addActionListener(listener);    //download -> save catalog of products (all of them)
+        View.JButtonValidateWorker.addActionListener(listener);     //textual reports -> validate worker's login to unlock the download buttons
+        View.JButtonSaveUsersFile.addActionListener(listener);      //download -> save all users
+        View.JButtonSaveCatalog.addActionListener(listener);        //download -> save catalog of products (all of them)
         View.JButtonSaveEntireStaff.addActionListener(listener);    //download -> save all garage's staff data
-        View.JButtonSaveCabin.addActionListener(listener);      //download -> save on a file the information of the garage's cabins
+        View.JButtonSaveCabin.addActionListener(listener);          //download -> save on a file the information of the garage's cabins
         
         
-        View.JButtonStartGra.addActionListener(listener);  //graphical reports -> ver contenido (en gráficos) de los informes
-        View.JButtonClean.addActionListener(listener);  //graphical reports -> limpiar contenido del textArea
-        View.JButtonGoBack.addActionListener(listener);   //graphical report -> volcer al menú inicial
-        View.JButtonViewGraph.addActionListener(listener);  //graphic reports -> view selected report
+        View.JButtonStartGra.addActionListener(listener);           //graphical reports -> ver contenido (en gráficos) de los informes
+        View.JButtonClean.addActionListener(listener);              //graphical reports -> limpiar contenido del textArea
+        View.JButtonGoBack.addActionListener(listener);             //graphical report -> volcer al menú inicial
+        View.JButtonViewGraph.addActionListener(listener);          //graphic reports -> view selected report
         View.JButtonShowHideDetails.addActionListener(listener);    //graphic reports -> show/hide the animated gif
         
         View.JCheckBoxBestTwoCustomers.addActionListener(listener); //graphic reports -> best 2 customers (reservations)
         View.JCheckBoxSortAge.addActionListener(listener);          //graphic reports -> represent graphically the difference between underage and adult customers
-        //View.JCheckBoxUnknownYet.addActionListener(listener);
         View.JCheckBoxMonthlyOccupancy.addActionListener(listener); //graphic reports -> represent graphically the number of reservations made in each month
         
         View.JCheckBoxViewGraphicOnTable.addActionListener(listener);   //graphic reports -> show on a table the data of the report
         View.JButtonReturnToGraphic.addActionListener(listener);        //graphic reports -> button to close the table's dialog and return to Graphic section
-        /*
-        View.JRadioButtonBestTwoCustomers.addActionListener(listener);  //graphical reports -> data of the best 2 customers (in terms of reservations)
-        View.JRadioButtonBestTwo.addActionListener(listener);
-        */
-        
-        
         
 
     }
@@ -101,7 +93,8 @@ public class Controller implements ActionListener {
         String actionCommand = e.getActionCommand();
         //listenerrak entzun dezakeen eragiketa bakoitzeko. Konponenteek 'actionCommad' propietatea daukate
         switch (actionCommand) {
-            case "Probar DB":
+            case "Visit Website":
+                Model.visitWebpage();
                 //model.terminoakImprimatu();
                 break;
             case "Textual Reports":
@@ -443,7 +436,7 @@ public class Controller implements ActionListener {
             
             case "View Graphic":
                 View.JLabelDetailsGif.setVisible(false);
-                
+                                
                 View.JTextAreaGraphics.setText("");
                 View.JTextAreaGraphics.setEditable(false);
                 JButtonViewGraph.setEnabled(true);
@@ -471,13 +464,6 @@ public class Controller implements ActionListener {
                         Model.drawBest2original();
                         for (int i = 0; i < Model.bestCustomers().size(); ++i) {
                             View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.bestCustomers().get(i).toStringExtended());  
-                            /*
-                            if (i == 0 || i == 1) {
-                                View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.bestCustomers().get(i).toStringExtended());  
-                                //View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.biggestTotalPricesReservations().get(i));  
-                            }
-                            */
-                            //View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.biggestTotalPricesReservations().get(i));
                         }
                     }
                     
