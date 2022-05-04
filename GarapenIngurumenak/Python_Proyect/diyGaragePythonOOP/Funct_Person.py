@@ -20,9 +20,18 @@ def saveCustomer(obj, filename):
 
 
 def readCustomers():
+    """
     with open("customerInfo.txt", 'r') as outp:  # Overwrites any existing file.
         lines = outp.readlines()
         print(lines)
+    """
+    with open("customerInfo.txt") as outp:
+        linesCust = outp.readline()
+        counter = 1
+        while linesCust:
+            print("Line {}: {}".format(counter, linesCust.strip()))
+            linesCust = outp.readline()
+            counter += 1
 
 
 def saveCustomerListOnFile(custList, filename):

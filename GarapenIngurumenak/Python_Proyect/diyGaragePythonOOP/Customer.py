@@ -2,7 +2,6 @@ from Person import Person
 import BasicMethodsToWorkWith
 from datetime import datetime
 
-
 from _datetime import datetime
 
 """
@@ -15,10 +14,10 @@ class Customer(Person):
         Person.__init__(self)
 
         self.username = BasicMethodsToWorkWith.BasicsMethods.askstring("username")
-        #self.birthday = BasicMethodsToWorkWith.BasicsMethods.askdate("your birthday")
+        # self.birthday = BasicMethodsToWorkWith.BasicsMethods.askdate("your birthday")
 
         custBirthdayUser = BasicMethodsToWorkWith.BasicsMethods.askdate("your birthday's date ")
-        #custBirthday = datetime.strptime(custBirthdayUser, "%Y-%m-%d")
+        # custBirthday = datetime.strptime(custBirthdayUser, "%Y-%m-%d")
         custBirthday = datetime.strptime(custBirthdayUser, "%d-%m-%Y").date()
         self.birthday = custBirthday
 
@@ -72,10 +71,13 @@ class Customer(Person):
               str(self.birthday) + ", " +
               str(self.mail) + ", " +
               str(self.phone_Number)
-            )
+              )
 
     def printExtended(self):
-        return str("\nUsername: ") + str(self.username) + ", " + str("Name: ") + str(self.name) + ", " + str("Surname: ") + str(self.surname) + ", " + str("Password: ") + str(self.password) + ", " + str("\nBirthday: ") + str(self.birthday) + ", " + str("Mail: ") + str(self.mail) + ", " + str("Phone Number: ") + str(self.phone_Number) + "\n"
+        return str("\nUsername: ") + str(self.username) + ", " + str("Name: ") + str(self.name) + ", " + str(
+            "Surname: ") + str(self.surname) + ", " + str("Password: ") + str(self.password) + ", " + str(
+            "\nBirthday: ") + str(self.birthday) + ", " + str("Mail: ") + str(self.mail) + ", " + str(
+            "Phone Number: ") + str(self.phone_Number) + "\n--------------------------------------------- \n"
 
     # def setAbizena(self):
     #     self.abizena = input("Enter the value of the surname: ")
