@@ -1,11 +1,17 @@
-import BasicMethodsToWorkWith
 from Reservation import Reservation
-from Person import Person
 from Customer import Customer
 from Worker import Worker
+from Product import Product
+import Func_Reservations, Func_Customer, Func_Worker
+
+"""
+import Func_Customer
 import Func_Reservations
-import Funct_Person
-from Person import Person
+import Func_Worker
+from Customer import Customer
+from Reservation import Reservation
+from Worker import Worker
+"""
 
 
 def reservationsMenu():
@@ -13,8 +19,9 @@ def reservationsMenu():
     listReservations = []
     while not (choiceReservation == 5):
         print("\n\t1. Create a new reservation: ")
-        print("\t2. Save the reservation's list on a FILE: ")
-        print("\t3. Delete customer from the File and List: ")  # clear the txt, delete the desired reservation from
+        print("\t2. Save the reservations' list on a FILE: ")
+        print(
+            "\t3. Delete a reservation from the File and List: ")  # clear the txt, delete the desired reservation from
         # the list, save the list again on the txt
         print("\t4. Read all the reservations: ")  # print/view the content of the txt file
         print("\t5. Go Back ")
@@ -59,11 +66,11 @@ def customersMenu():
     listCustomers = []
     while not (choiceCustomer == 5):
         print("\n\t1. Create a new customer: ")
-        print("\t2. Save the customer's list on a FILE: ")
-        print("\t3. Delete customer from the FILE and LIST: ")
-        print("\t4. Read all the customer's data: ")  # print/view the content of the txt file
+        print("\t2. Save the customers' list on a FILE: ")
+        print("\t3. Delete a customer from the FILE and LIST: ")
+        print("\t4. Read all the customers' data: ")  # print/view the content of the txt file
         print("\t5. Go Back ")
-        choiceCustomer = int(input("\n\tWhat do you want to do about Customer? "))
+        choiceCustomer = int(input("\n\tWhat do you want to do about Customers? "))
 
         if choiceCustomer == 1:
             print()
@@ -71,7 +78,7 @@ def customersMenu():
             # Funct_Person.saveCustomer(eachCustomer.printExtended(), "customerInfo.txt")
             print()
             listCustomers.append(eachCustomer)  # add it to the Customer's list
-            Funct_Person.viewListCustomers(listCustomers)  # print/view all the Customers of the list
+            Func_Customer.viewListCustomers(listCustomers)  # print/view all the Customers of the list
             print("--------------------------------")
             """
             Try:"customerInfo.txt"
@@ -81,46 +88,107 @@ def customersMenu():
 
         elif choiceCustomer == 2:
             # Funct_Person.saveCustomerListOnFile(listCustomers, "customerInfo.txt")
-            Funct_Person.clearCustomersFile("customerInfo.txt")
+            Func_Customer.clearCustomersFile("customerInfo.txt")
             for cust in listCustomers:
-                Funct_Person.saveCustomer(cust.printExtended(), "customerInfo.txt")
+                Func_Customer.saveCustomer(cust.printExtended(), "customerInfo.txt")
             print("--------------------------------")
 
         elif choiceCustomer == 3:
-            Funct_Person.viewListCustomers(listCustomers)  # print/view all the Customers of the list
-            Funct_Person.deleteCustomer(listCustomers)
-            Funct_Person.viewListCustomers(listCustomers)  # print/view all the Customers of the list
-            Funct_Person.clearCustomersFile("customerInfo.txt")  # erase the text file
+            Func_Customer.viewListCustomers(listCustomers)  # print/view all the Customers of the list
+            Func_Customer.deleteCustomer(listCustomers)
+            Func_Customer.viewListCustomers(listCustomers)  # print/view all the Customers of the list
+            Func_Customer.clearCustomersFile("customerInfo.txt")  # erase the text file
             for cust in listCustomers:
                 # Funct_Person.saveCustomerListAfterChanges(cust.printExtended(), "customerInfo.txt")
-                Funct_Person.saveCustomer(cust.printExtended(), "customerInfo.txt")
+                Func_Customer.saveCustomer(cust.printExtended(), "customerInfo.txt")
             print("--------------------------------")
 
         elif choiceCustomer == 4:
             print()
-            Funct_Person.readCustomers()
+            Func_Customer.readCustomers()
 
         elif choiceCustomer == 5:
             break;
 
 
-choice = "0"
+def workersMenu():
+    choiceWorker = 0
+    listWorkers = []
+    while not (choiceWorker == 5):
+        print("\n\t1. Create a new worker: ")
+        print("\t2. Save the workers' list on a FILE: ")
+        print("\t3. Delete a worker from the FILE and LIST: ")
+        print("\t4. Read all the workers' data: ")  # print/view the content of the txt file
+        print("\t5. Go Back ")
+        choiceWorker = int(input("\n\tWhat do you want to do about Workers? "))
 
-while not (choice == -1):
+        if choiceWorker == 1:
+            print()
+            eachWorker = Worker()  # create the new Customer
+            # Funct_Person.saveCustomer(eachCustomer.printExtended(), "customerInfo.txt")
+            print()
+            listWorkers.append(eachWorker)  # add it to the Customer's list
+            Func_Worker.viewListWorkers(listWorkers)  # print/view all the Customers of the list
+            print("--------------------------------")
+            """
+            Try:"customerInfo.txt"
+                - after the created reservation is added to the list, clear the txt file
+                - save on the txt file the whole list of reservations
+            """
+        elif choiceWorker == 2:
+            Func_Worker.clearWorkersFile("workerInfo.txt")
+            for work in listWorkers:
+                Func_Worker.saveWorker(work.printWorkerExtended(), "workerInfo.txt")
+            print("--------------------------------")
+
+        elif choiceWorker == 3:
+            Func_Worker.viewListWorkers(listWorkers)  # show all the Workers of the list (BEFORE delete)
+            Func_Worker.deleteWorker(listWorkers)  # delete the user's wanted worker from the list
+            Func_Worker.viewListWorkers(listWorkers)  # show all the Workers of the list (AFTER delete)
+            Func_Worker.clearWorkersFile("workerInfo.txt")  # erase the text file
+            for work in listWorkers:
+                Func_Worker.saveWorker(work.printWorkerExtended(), "workerInfo.txt")
+            print("--------------------------------")
+
+        elif choiceWorker == 4:
+            print()
+            Func_Worker.readWorkers()
+
+        elif choiceWorker == 5:
+            break
+
+
+def productsMenu():
+    choiceProduct = 0
+    listProducts = []
+    while not (choiceProduct == 5):
+        print("\n\t1. Create a new product: ")
+        print("\t2. Save the products' list on a FILE: ")
+        print("\t3. Delete a product from the FILE and LIST: ")
+        print("\t4. Read all the products' data: ")  # print all the information of products' text file
+        print("\t5. Go Back ")
+        choiceProduct = int(input("\n\tWhat do you want to do about Products? "))
+
+# main menu
+choiceStart = "0"
+while not (choiceStart == -1):
     print("\n1. Reservations: ")
     print("2. Customer: ")
     print("3. Worker: ")
     print("4. Products: ")
     print("5. Exit ")
-    choice = int(input("\nWhat do you want to do? "))
+    choiceStart = int(input("\nWhat do you want to do? "))
 
-    if choice == 1:
+    if choiceStart == 1:
         reservationsMenu()
 
-    elif choice == 2:
+    elif choiceStart == 2:
         customersMenu()
 
-    elif choice == 5:
+    elif choiceStart == 3:
+        workersMenu()
+
+    elif choiceStart == 5:
         break;
 
     print("---------------")

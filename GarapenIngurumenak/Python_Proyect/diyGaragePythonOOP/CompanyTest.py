@@ -1,5 +1,5 @@
 import pickle
-import Funct_Person
+import Func_Customer
 def save_object(obj, filename):
     with open('company_data.txt', 'wb') as f:
         pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)

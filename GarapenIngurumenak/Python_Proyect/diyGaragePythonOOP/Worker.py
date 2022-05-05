@@ -1,10 +1,12 @@
 import time
 
+# import Func_Worker
 from Person import Person
 import BasicMethodsToWorkWith
 from datetime import datetime, time
 
 allOccupations = ["Mechanic", "Painter", "Inspector"]
+
 
 class Worker:
     def __init__(self):
@@ -12,45 +14,32 @@ class Worker:
 
         self.worker_ID = BasicMethodsToWorkWith.BasicsMethods.askinteger("your Worker's ID")
 
+        # validate the user entered value/data for the Worker's OCCUPATION
         validOccupation = 1
         while validOccupation == 1:
-            occupationUser = BasicMethodsToWorkWith.BasicsMethods.askstring("your OCCUPATION: " + "\n\t\t" + str(allOccupations)).capitalize()
+            occupationUser = BasicMethodsToWorkWith.BasicsMethods.askstring(
+                "your OCCUPATION: " + "\n\t\t" + str(allOccupations)).capitalize()
             if occupationUser not in allOccupations:
-                print("No result found for the specified occupation. Try again! ")
+                print("No result found for the specified occupation. Try again! \n")
             else:
-                #self.occupation = BasicMethodsToWorkWith.BasicsMethods.askstring("your OCCUPATION: " + "\n\t\t" + str(allOccupations)).capitalize()
                 self.occupation = occupationUser
                 validOccupation = 0
 
+        # validate the user entered value/data for the Worker's SALARY
         validSalary = 1
         while validSalary == 1:
-            salaryUser = BasicMethodsToWorkWith.BasicsMethods.askfloat("your SALARY")
+            salaryUser = BasicMethodsToWorkWith.BasicsMethods.askfloat("worker's SALARY")
             if salaryUser > 1500:
                 print("The first salary cant be bigger than 1500.00 €. ")
             else:
-                # self.salary = BasicMethodsToWorkWith.BasicsMethods.askfloat("your SALARY")
                 self.salary = salaryUser
                 validSalary = 0
 
-        self.start_time = BasicMethodsToWorkWith.BasicsMethods.asktime("the time you START working ('hh:mm'): ")
-        self.finish_time = BasicMethodsToWorkWith.BasicsMethods.asktime("the time you FINISH working ('hh:mm'): ")
+        # specify the STARTING and FINISHING time of working
+        self.start_time = BasicMethodsToWorkWith.BasicsMethods.asktime("the time you START working").time()
+        self.finish_time = BasicMethodsToWorkWith.BasicsMethods.asktime("the time you FINISH working").time()
 
-    """
-        def Worker(self, worker_ID, name, surname, password, occupation, phone_number, salary, start_time,
-                 finish_time):
-        self.worker_ID = worker_ID
-        self.name = name
-        self.surname = surname
-        self.password = password
-        self.occupation = occupation
-        self.mail = str(self.surname.lower()) + str(".") + str(self.name.lower()) + str("@garage.diy")
-        self.phone_number = phone_number
-        self.salary = salary
-        self.start_time = start_time
-        self.finish_time = finish_time
-    """
-
-
+    # getter methods
     def getWorkerID(self):
         return self.worker_ID
 
@@ -78,13 +67,18 @@ class Worker:
     def getStartHour(self):
         return self.start_time
 
-    def getFinishtHour(self):
+    def getFinishHour(self):
         return self.finish_time
 
     """
-    start with the setters
+    It doesnt make much sence to change the main user data (like: Username, Name, Surname, Birthday); so 
+    we will only give the user the option to modify/change those that may vary over time.
+
+        -> Fixed data: Worker ID, Name, Surname, Mail
+        -> Variable data: Salary, Occupation, Start Time, Finish Time, Password, Phone Number, 
     """
 
+    # setter methods
     def setSalary(self):
         self.salary = BasicMethodsToWorkWith.BasicsMethods.askfloat("your new Salary: ")
 
@@ -109,3 +103,11 @@ class Worker:
               str(self.start_time) + ", " +
               str(self.finish_time)
               )
+
+    def printWorkerExtended(self):
+        return str("\nWorker ID: ") + str(self.worker_ID) + ", " + str("Name: ") + str(self.name) + ", " + str(
+            "Surname: ") + str(self.surname) + ", " + str("Password: ") + str(self.password) + ", " + str(
+            "\nOccupation: ") + str(self.occupation) + ", " + str("Mail: ") + str(self.mail) + ", " + str(
+            "Phone Number: ") + str(self.phone_Number) + str("\nSalary: ") + str(self.salary) + ", " + str(
+            "Start Working: ") + str(self.start_time) + ", " + str("Finish Working: ") + str(self.finish_time) + str(
+            "\n--------------------------------------------- \n ")

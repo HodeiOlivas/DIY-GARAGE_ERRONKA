@@ -2,11 +2,8 @@ import pickle
 import csv
 from Customer import Customer
 import BasicMethodsToWorkWith
-from Worker import Worker
-from Person import Person
 
 
-# methods of the subclass called 'Customer'
 def createCustomer():
     customer = Customer()
 

@@ -1,12 +1,7 @@
 from Person import Person
 import BasicMethodsToWorkWith
 from datetime import datetime
-
 from _datetime import datetime
-
-"""
-print(datetime.now().strftime('%d%m%y'))
-"""
 
 
 class Customer(Person):
@@ -14,15 +9,9 @@ class Customer(Person):
         Person.__init__(self)
 
         self.username = BasicMethodsToWorkWith.BasicsMethods.askstring("username")
-        # self.birthday = BasicMethodsToWorkWith.BasicsMethods.askdate("your birthday")
-
         custBirthdayUser = BasicMethodsToWorkWith.BasicsMethods.askdate("your birthday's date ")
-        # custBirthday = datetime.strptime(custBirthdayUser, "%Y-%m-%d")
         custBirthday = datetime.strptime(custBirthdayUser, "%d-%m-%Y").date()
         self.birthday = custBirthday
-
-        # self.birthday = datetime.strptime(birthday, '%d-%m-%Y').date()
-        # self.mail = str(self.surname.lower()) + str(".") + str(self.name.lower()) + str("@garage.diy")
 
     def getUsername(self):
         return self.username
@@ -37,8 +26,6 @@ class Customer(Person):
         return self.password
 
     def getBirthday(self):
-        # print(datetime.now().strftime('%d/%m/%Y'))
-        # print(datetime.strptime(self.birthday, '%d-%m-%Y')).date()
         return self.birthday
 
     def getMail(self):
@@ -56,7 +43,6 @@ class Customer(Person):
     """
 
     def setPassword(self):
-        # self.password = input("Forgotten password? Enter a new one: ")
         self.password = BasicMethodsToWorkWith.BasicsMethods.askstring("your NEW PASSWORD")
 
     def setPhone_Number(self):
@@ -79,11 +65,4 @@ class Customer(Person):
             "\nBirthday: ") + str(self.birthday) + ", " + str("Mail: ") + str(self.mail) + ", " + str(
             "Phone Number: ") + str(self.phone_Number) + "\n--------------------------------------------- \n"
 
-    # def setAbizena(self):
-    #     self.abizena = input("Enter the value of the surname: ")
-    #
-    # def setMobile(self):
-    #     self.mobile = int(input("Enter the value of the mobile phone: "))
-    #
-    # def print(self):
-    #     print(self.dni, self.izena, self.abizena, self.mobile)
+
