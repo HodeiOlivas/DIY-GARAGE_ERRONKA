@@ -1101,9 +1101,6 @@ public class Model {
             }
         }
         
-        //draw the Pyramid (using lines)
-        //g2.drawPolygon(new int[] {100, 300, 500}, new int[] {750, 500, 750}, 3);
-        
         //values of BOTTOM's polygon -> months with 2 reservation or less
         int[] xPointsBottom = {95, 150, 450, 505};
         int[] yPointsBottom = {865, 760, 760, 865};
@@ -1130,7 +1127,6 @@ public class Model {
         g2.drawLine(205, 635, 235, 615);
         g2.drawLine(395, 635, 365, 615);
         //extra line (filled bot's piece)
-        
         
         
         if ((twoOrLess.size() > moreTwoLessFive.size()) && (twoOrLess.size() > fiveOrMore.size())) {
@@ -1184,7 +1180,6 @@ public class Model {
         g2.drawString("➜ res >= 5 ", 273, 610);
         g2.drawString("➜ 2 < res < 5 ", 269, 735);
         g2.drawString("➜ res <= 2 ", 271, 860);
-        
         
         
         //draw lines to show the months of each group

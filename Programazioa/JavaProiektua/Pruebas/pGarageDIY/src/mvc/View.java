@@ -34,6 +34,9 @@ public class View extends javax.swing.JFrame {
         
         
         
+        
+        
+        
         JComboBoxTxostenak.addItem("...");
         JComboBoxTxostenak.addItem("Monthly occupation");
         JComboBoxTxostenak.addItem("Underage customers");
@@ -90,6 +93,8 @@ public class View extends javax.swing.JFrame {
         
         
     }
+    
+    
     
     public static View visualizarGUI() {
         View v = new View();
@@ -843,8 +848,11 @@ public class View extends javax.swing.JFrame {
         
         @Override
         public void paint(Graphics g) {
+            //JFrameTextReports.getContentPane().setBackground(new Color(64,93,97));
+            //JFrameTextReports.getContentPane().setBackground(new Color(149,3,14));
+            
             imagen = new ImageIcon(getClass().getResource("/images/fondoF1_1.jpg")).getImage();
-            //imagen = new ImageIcon(getClass().getResource("/images/animated4.gif")).getImage();
+            //imagen = new ImageIcon(getClass().getResource("/images/animated3.gif")).getImage();
             
             g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
             
@@ -855,6 +863,12 @@ public class View extends javax.swing.JFrame {
         }
     }
     
+    /*
+    public void paint2(Graphics draw) {
+    //esto solamente lo utilizaré para darle un nuevo color de fondo al jframe
+        JFrameTextReports.getContentPane().setBackground(new Color(70, 80, 70));
+    }
+    */
 
     
 }
