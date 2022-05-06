@@ -84,6 +84,54 @@
     h2 {
       text-align: center;
     }
+
+    .cardProduct {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      max-width: 300px;
+      /* margin: auto; */
+      padding-left: 10px 25px;
+      text-align: center;
+      font-family: arial;
+    }
+
+    .priceProduct {
+      color: grey;
+      font-size: 22px;
+    }
+
+    .cardProduct button {
+      border: none;
+      outline: 0;
+      padding: 12px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+    }
+
+    .cardProduct button:hover {
+      opacity: 0.7;
+    }
+
+    .table2 {
+      margin-left: 0px;
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+      border: 1px solid #ddd;
+    }
+
+    .th2 {
+      text-align: left;
+      padding: 8px;
+    }
+
+    .td2 {
+      text-align: left;
+      padding: 0px;
+    }
   </style>
 </head>
 
@@ -243,49 +291,103 @@
         </thead>
       </table>
 
-      <TABLE BORDER=1 CELLSPACING=1 CELLPADDING=1>
-            <Tr>
-              <th>Product ID</th>
-              <th>Name</th>
-              <th>Picture</th>
-            </Tr>
-            <?php
-            $emaitza2 = mysqli_query($link, "select * from product");
-            while ($erregistroa = mysqli_fetch_array($emaitza2)) {
-                printf("<tr>
-                          <td>%s</td>
-                          <td>%s</td>
-                          <td><img src=%s width='50' height='50'><br></td>
-                        </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[4]);
-            }
-            mysqli_free_result($emaitza2);
-            //mysqli_close($link);
-            ?>
-      </table>
-
-      <TABLE style="border: none;" cellpadding="30"cellspacing="pixels">
-            <Tr style="text-align: center;">
-              <th>Product</th>
-              <th>Name</th>
-              <th>Picture</th>
-            </Tr>
-            <?php
-            $emaitza3 = mysqli_query($link, "select * from product");
-            while ($erregistroa = mysqli_fetch_array($emaitza3)) {
-                printf("<tr>
+      <TABLE style="border: none;" cellpadding="30" cellspacing="pixels">
+        <Tr style="text-align: center;">
+          <th>Product</th>
+          <th>Name</th>
+          <th>Picture</th>
+        </Tr>
+        <?php
+        $emaitza3 = mysqli_query($link, "select * from product");
+        while ($erregistroa = mysqli_fetch_array($emaitza3)) {
+          printf("<tr>
                           <td><img src=%s width='250' height='250'><br></td>
                           <td>%s</td>
                           <td>%5d</td>
                           <td>%s</td>
                         </tr>", $erregistroa[4], $erregistroa[1], 2, $erregistroa[0]);
-            }
-            mysqli_free_result($emaitza3);
-            mysqli_close($link);
-            ?>
+        }
+        mysqli_free_result($emaitza3);
+        //mysqli_close($link);
+        ?>
       </table>
+
+      <hr />
+      <TABLE style="border: none;" cellpadding="30" cellspacing="pixels">
+        <Tr style="text-align: center;">
+          <th>Produact</th>
+          <th>Name</th>
+          <th>Picturgefee</th>
+        </Tr>
+        <?php
+
+        $emaitza4 = mysqli_query($link, "select * from product");
+        while ($erregistroa = mysqli_fetch_array($emaitza4)) {
+        ?>
+          <tr>
+            <td>
+              <div class="container">
+
+                <div class="card img-fluid" style="width:500px">
+                  <img class="card-img-top" src="<?php echo $erregistroa['Picture']; ?>" alt="Card image" style="width:100%;">
+                  <div class="card-img-overlay">
+                    <h4 class="card-title"><?php echo $erregistroa['Name']; ?></h4>
+                    <p class="card-text" style="text-align: left;">Some example text some example text. Some example text some example text. Some example text some example text. Some example text some example text.</p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+        <?php
+        }
+        mysqli_free_result($emaitza4);
+        //mysqli_close($link);
+        ?>
+      </table>
+
+
+      <TABLE class="table2" style="border: 1; " cellpadding="30" cellspacing="pixels">
+        <Tr style="text-align: center;">
+          <th>Product</th>
+          <th>Name</th>
+          <th>Picturgefee</th>
+        </Tr>
+        <?php
+
+        $emaitza4 = mysqli_query($link, "select * from product");
+        while ($erregistroa = mysqli_fetch_array($emaitza4)) {
+        ?>
+          <div>
+            <td2 style="margin-left: -200px;">
+              <div class="cardProduct">
+                <img class="card-img-top" src="<?php echo $erregistroa['Picture']; ?>" alt="Card image" style="width:100%; height:150px">
+                <h1><?php echo $erregistroa['Name']; ?></h1>
+                <p class="priceProduct"><?php echo $erregistroa['Price']; ?></p>
+                <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+                <p><button>Add to Cart</button></p>
+              </div>
+            </td2>
+          </div>
+        <?php
+        }
+        mysqli_free_result($emaitza4);
+        mysqli_close($link);
+        ?>
+      </TABLE>
 
     </div>
 
+
+
+
+
+  </div>
+  </div>
+
+  </table>
+  </div>
 
   </div>
 
@@ -377,7 +479,7 @@
 
   <div>
     <?php
-    include("test_connect_db.php");
+    //include("test_connect_db.php");
     $link = connectDataBase();
     $emaitza = mysqli_query($link, "select * from product");
     ?>
@@ -416,6 +518,11 @@
 
 
   </div>
+
+
+
+
+
 
   <br />
 
@@ -723,43 +830,43 @@ links info:
 
 
 <div>
-    <?php
-    include("test_connect_db.php");
-    $link = connectDataBase();
-    $emaitza = mysqli_query($link, "select * from product");
-    ?>
+  <?php
+  //include("test_connect_db.php");
+  $link = connectDataBase();
+  $emaitza = mysqli_query($link, "select * from product");
+  ?>
 
-    <div class="container">
-      <h2>ALL THE PRODUCTS</h2>
-      <p>The .table-dark class adds a black background to the table:</p>
-      <table class="table table-dark">
-        <thead>
-          <tr>
-            <th>Product ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Picture</th>
+  <div class="container">
+    <h2>ALL THE PRODUCTS</h2>
+    <p>The .table-dark class adds a black background to the table:</p>
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th>Product ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th>Picture</th>
 
-          </tr>
-          <!-- <img src="../loginAzalpenak/img/inicio3.jpg" class="rounded float-start" alt="a" style="width: 33%; margin-left:20px"> -->
-          <?php
-          while ($erregistroa = mysqli_fetch_array($emaitza)) {
-            printf("<tr>
+        </tr>
+        <!-- <img src="../loginAzalpenak/img/inicio3.jpg" class="rounded float-start" alt="a" style="width: 33%; margin-left:20px"> -->
+        <?php
+        while ($erregistroa = mysqli_fetch_array($emaitza)) {
+          printf("<tr>
                         <td>%s</td>
                         <td>%s</td>
                         <td>%.2f</td>
                         <td>%s</td>
                         <td><img src=%s width='50' height='50'><br></td>
                     </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4]);
-          }
-          mysqli_free_result($emaitza);
-          mysqli_close($link);
-          ?>
+        }
+        mysqli_free_result($emaitza);
+        mysqli_close($link);
+        ?>
 
-        </thead>
-      </table>
-    </div>
-
-
+      </thead>
+    </table>
   </div>
+
+
+</div>
