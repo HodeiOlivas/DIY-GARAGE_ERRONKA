@@ -2,7 +2,7 @@ from Reservation import Reservation
 from Customer import Customer
 from Worker import Worker
 from Product import Product
-import Func_Reservations, Func_Customer, Func_Worker
+import Func_Reservations, Func_Customer, Func_Worker, Func_Product
 
 """
 import Func_Customer
@@ -106,6 +106,23 @@ def productsMenu():
         print("\t4. Go Back ")
         choiceProduct = int(input("\n\tWhat do you want to do about Products? "))
 
+        if choiceProduct == 1:
+            print()
+            eachProduct = Product()  # create the new Worker
+            Func_Product.saveProduct(eachProduct, "productInfo.pkl")
+            print()
+            print("--------------------------------")
+        elif choiceProduct == 2:
+            Func_Product.deleteProduct()
+            print("--------------------------------")
+
+        elif choiceProduct == 3:
+            Func_Product.readProductsFile()
+            print("--------------------------------")
+
+        elif choiceProduct == 4:
+            break
+
 
 # main menu
 choiceStart = "0"
@@ -125,6 +142,9 @@ while not (choiceStart == -1):
 
     elif choiceStart == 3:
         workersMenu()
+
+    elif choiceStart == 4:
+        productsMenu()
 
     elif choiceStart == 5:
         break;

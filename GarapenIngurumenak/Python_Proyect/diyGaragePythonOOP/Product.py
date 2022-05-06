@@ -30,20 +30,16 @@ class Product:
         newProductDescription = BasicMethodsToWorkWith.BasicsMethods.askfloat("the product's NEW DESCRIPTION")
         self.description = newProductDescription
 
-    def printCustomer(self):
-        print("\t-> " + str(self.username) + ", " +
+    def printProduct(self):
+        print("\t-> " + str(self.idProduct) + ", " +
               str(self.name) + ", " +
-              str(self.surname) + ", " +
-              str(self.password) + ", " +
-              str(self.birthday) + ", " +
-              str(self.mail) + ", " +
-              str(self.phone_Number)
+              str(self.price) + ", " +
+              str(self.description)
               )
 
-    def printExtended(self):
-        return str("\nUsername: ") + str(self.username) + ", " + str("Name: ") + str(self.name) + ", " + str(
-            "Surname: ") + str(self.surname) + ", " + str("Password: ") + str(self.password) + ", " + str(
-            "\nBirthday: ") + str(self.birthday) + ", " + str("Mail: ") + str(self.mail) + ", " + str(
-            "Phone Number: ") + str(self.phone_Number) + "\n--------------------------------------------- \n"
+    def printExtendedProd(self):
+        return str("\nProduct ID: ") + str(self.idProduct) + ", " + str("Name: ") + str(self.name) + ", " + str(
+            "Price: ") + str(self.price) + ", " + str("Description: ") + str(
+            self.description) + "\n--------------------------------------------- \n "
 
 

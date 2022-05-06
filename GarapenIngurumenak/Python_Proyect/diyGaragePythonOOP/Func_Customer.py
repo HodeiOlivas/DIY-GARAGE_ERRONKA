@@ -10,10 +10,8 @@ def saveCustomer(obj, filename):
         pickle.dump(obj, outp, pickle.HIGHEST_PROTOCOL)
 
 
-# save_object(obj, 'customerInfo.txt')
-
 def readCustomersFile():
-    if os.path.exists("reservationInfo.pkl"):
+    if os.path.exists("customerInfo.pkl"):
         inp = open("customerInfo.pkl", 'rb')
         objectsCust = []
         cont = 1
@@ -30,7 +28,6 @@ def readCustomersFile():
         print("\tFounded " + str(len(objectsCust)) + " customers. \n")
     else:
         print("No files founded with that name...")
-
 
 
 def deleteCustomer():
@@ -60,21 +57,3 @@ def deleteCustomer():
         print("No files founded with that name...")
 
 
-
-
-
-
-"""
-This function will save on a File the content of the list of customer, once the needed changes are done. For 
-example, if you want to delete a customer from the list, you will also need to delete from the file. So this 
-function will override the data of the file with the new values of the list of customers.
-
-    -> to override the file: 'wb'
-"""
-
-def clearCustomersFile(filename):
-    open(filename, 'w').close()
-
-def saveCustomerListAfterChanges(cust, filename):
-    with open(filename, 'ab') as outp:  # Overwrites any existing file.
-        pickle.dump(cust, outp, pickle.HIGHEST_PROTOCOL)
