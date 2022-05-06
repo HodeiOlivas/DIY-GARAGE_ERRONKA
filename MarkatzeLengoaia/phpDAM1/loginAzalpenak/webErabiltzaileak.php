@@ -195,11 +195,99 @@
   <br><br>
   <hr id="products info" /><br><br>
   <!--dirigir al apartado de las cabinas -->
-  <h3>Catalog of Products</h3>
+  <!-- productos izquierda pruebas -->
+  <div>
+    <h3>Caaaatalog of Products</h3>
 
-  <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-  <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
-  <a href="#" class="btn btn-info" role="button">wfw</a>
+    <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
+    <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
+    <a href="#" class="btn btn-info" role="button">wfw</a>
+  </div>
+
+  <!-- productos izquierda pruebas -->
+  <div>
+    <?php
+    include("test_connect_db.php");
+    $link = connectDataBase();
+    $emaitza = mysqli_query($link, "select * from product");
+    ?>
+
+    <div class="container">
+      <h2>ALL THE PRODUCTS</h2>
+      <p>The .table-dark class adds a black background to the table:</p>
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th>Product ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Picture</th>
+
+          </tr>
+          <!-- <img src="../loginAzalpenak/img/inicio3.jpg" class="rounded float-start" alt="a" style="width: 33%; margin-left:20px"> -->
+          <?php
+          while ($erregistroa = mysqli_fetch_array($emaitza)) {
+            printf("<tr>
+                        <td>%s</td>
+                        <td>%s</td>
+                        <td>%.2f</td>
+                        <td>%s</td>
+                        <td><img src=%s width='50' height='50'><br></td>
+                    </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4]);
+          }
+          mysqli_free_result($emaitza);
+          //mysqli_close($link);
+          ?>
+
+        </thead>
+      </table>
+
+      <TABLE BORDER=1 CELLSPACING=1 CELLPADDING=1>
+            <Tr>
+              <th>Product ID</th>
+              <th>Name</th>
+              <th>Picture</th>
+            </Tr>
+            <?php
+            $emaitza2 = mysqli_query($link, "select * from product");
+            while ($erregistroa = mysqli_fetch_array($emaitza2)) {
+                printf("<tr>
+                          <td>%s</td>
+                          <td>%s</td>
+                          <td><img src=%s width='50' height='50'><br></td>
+                        </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[4]);
+            }
+            mysqli_free_result($emaitza2);
+            //mysqli_close($link);
+            ?>
+      </table>
+
+      <TABLE style="border: none;" cellpadding="30"cellspacing="pixels">
+            <Tr style="text-align: center;">
+              <th>Product</th>
+              <th>Name</th>
+              <th>Picture</th>
+            </Tr>
+            <?php
+            $emaitza3 = mysqli_query($link, "select * from product");
+            while ($erregistroa = mysqli_fetch_array($emaitza3)) {
+                printf("<tr>
+                          <td><img src=%s width='250' height='250'><br></td>
+                          <td>%s</td>
+                          <td>%5d</td>
+                          <td>%s</td>
+                        </tr>", $erregistroa[4], $erregistroa[1], 2, $erregistroa[0]);
+            }
+            mysqli_free_result($emaitza3);
+            mysqli_close($link);
+            ?>
+      </table>
+
+    </div>
+
+
+  </div>
 
 
 
@@ -291,36 +379,32 @@
     <?php
     include("test_connect_db.php");
     $link = connectDataBase();
-    $emaitza = mysqli_query($link, "select * from customer");
+    $emaitza = mysqli_query($link, "select * from product");
     ?>
 
     <div class="container">
-      <h2>Registered users</h2>
+      <h2>ALL THE PRODUCTS</h2>
       <p>The .table-dark class adds a black background to the table:</p>
       <table class="table table-dark">
         <thead>
           <tr>
-            <th>Username</th>
+            <th>Product ID</th>
             <th>Name</th>
-            <th>Surname</th>
-            <th>Password</th>
-            <th>Birthday</th>
-            <th>Mail</th>
-            <th>Phone_Number</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Picture</th>
 
           </tr>
-
+          <!-- <img src="../loginAzalpenak/img/inicio3.jpg" class="rounded float-start" alt="a" style="width: 33%; margin-left:20px"> -->
           <?php
           while ($erregistroa = mysqli_fetch_array($emaitza)) {
             printf("<tr>
                         <td>%s</td>
                         <td>%s</td>
+                        <td>%.2f</td>
                         <td>%s</td>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>%d</td>
-                    </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[6]);
+                        <td><img src=%s width='50' height='50'><br></td>
+                    </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4]);
           }
           mysqli_free_result($emaitza);
           mysqli_close($link);
@@ -422,10 +506,6 @@
       </div>
 
       <br>
-
-
-
-
 
     </div>
 
@@ -631,3 +711,55 @@
         </div>
       </div>
 -->
+
+
+
+<!-- 
+links info:
+  popover image -> https://mdbootstrap.com/snippets/jquery/ascensus/333171#js-tab-view 
+-->
+
+
+
+
+<div>
+    <?php
+    include("test_connect_db.php");
+    $link = connectDataBase();
+    $emaitza = mysqli_query($link, "select * from product");
+    ?>
+
+    <div class="container">
+      <h2>ALL THE PRODUCTS</h2>
+      <p>The .table-dark class adds a black background to the table:</p>
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th>Product ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Picture</th>
+
+          </tr>
+          <!-- <img src="../loginAzalpenak/img/inicio3.jpg" class="rounded float-start" alt="a" style="width: 33%; margin-left:20px"> -->
+          <?php
+          while ($erregistroa = mysqli_fetch_array($emaitza)) {
+            printf("<tr>
+                        <td>%s</td>
+                        <td>%s</td>
+                        <td>%.2f</td>
+                        <td>%s</td>
+                        <td><img src=%s width='50' height='50'><br></td>
+                    </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4]);
+          }
+          mysqli_free_result($emaitza);
+          mysqli_close($link);
+          ?>
+
+        </thead>
+      </table>
+    </div>
+
+
+  </div>
