@@ -16,34 +16,16 @@ class Customer(Person):
     def getUsername(self):
         return self.username
 
-    def getName(self):
-        return self.name
-
-    def getSurname(self):
-        return self.surname
-
-    def getPassword(self):
-        return self.password
-
     def getBirthday(self):
         return self.birthday
-
-    def getMail(self):
-        return self.mail
-
-    def getPhoneNumber(self):
-        return self.phone_Number
 
     """
     It doesnt make much sence to change the main user data (like: Username, Name, Surname, Birthday); so 
     we will only give the user the option to modify/change those that may vary over time.
     
         -> Fixed data: Username, Name, Surname, Birthday, Mail
-        -> Variable data: Password, phone_Number
+        -> Variable data: phone_Number
     """
-
-    def setPassword(self):
-        self.password = BasicMethodsToWorkWith.BasicsMethods.askstring("your NEW PASSWORD")
 
     def setPhone_Number(self):
         newPhoneNumber = Person.setPhoneNumber()

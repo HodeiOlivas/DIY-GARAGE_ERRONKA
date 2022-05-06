@@ -1,11 +1,8 @@
-#import csv
+import os
 import pickle
+import csv
 from Worker import Worker
 import BasicMethodsToWorkWith
-
-
-def createWorker():
-    worker = Worker()
 
 
 def saveWorker(obj, filename):
@@ -13,46 +10,49 @@ def saveWorker(obj, filename):
         pickle.dump(obj, outp, pickle.HIGHEST_PROTOCOL)
 
 
-def readWorkers():
-    """
-    with open("workerInfo.txt", 'r') as outp:  # Overwrites any existing file.
-        lines = outp.readlines()
-        print(lines)
-    """
-    with open("workerInfo.txt") as outp:
-        linesWorkers = outp.readline()
-        counter = 1
-        while linesWorkers:
-            print("Line {}: {}".format(counter, linesWorkers.strip()))
-            linesWorkers = outp.readline()
-            counter += 1
+def readWorkersFile():
+    if os.path.exists("workerInfo.pkl"):
+        inp = open("workerInfo.pkl", 'rb')
+        objectsWorker = []
+        cont = 1
+        while cont == 1:
+            try:
+                objectsWorker.append(pickle.load(inp))
+            except EOFError:
+                print()
+                cont = 0
+        for work in objectsWorker:
+            Worker.printWorker(work)
+        print("\t--------------------------------")
+        print("\tFounded " + str(len(objectsWorker)) + " workers. \n")
+    else:
+        print("No files founded with that name...")
 
 
-def saveWorkerListOnFile(workerList, filename):
-    with open(filename, 'ab') as outp:  # Overwrites any existing file.
-        pickle.dump(workerList, outp, pickle.HIGHEST_PROTOCOL)
+def deleteWorker():
+    if os.path.exists("workerInfo.pkl"):
+        inp = open("workerInfo.pkl", 'rb')
+        objectsWorker = []
+        cont = 1
+        while cont == 1:
+            try:
+                objectsWorker.append(pickle.load(inp))
+            except EOFError:
+                cont = 0
+        print()
+        for work in objectsWorker:
+            Worker.printWorker(work)
 
-
-def viewListWorkers(workerList):
-    for work in workerList:
-        Worker.printWorker(work)
-    print()
-
-
-def deleteWorker(workerList):
-    workerDeleteID = BasicMethodsToWorkWith.BasicsMethods.askinteger("the ID of the desired Worker")
-    for work in workerList:
-        if Worker.getWorkerID(work) == workerDeleteID:
-            workerList.remove(work)
-    print()
-
-
-def clearWorkersFile(filename):
-    open(filename, 'w').close()
-
-
-def saveWorkerListAfterChanges(work, filename):
-    with open(filename, 'ab') as outp:  # Overwrites any existing file.
-        pickle.dump(work, outp, pickle.HIGHEST_PROTOCOL)
+        print("\t--------------------------------")
+        workerDeleteId = BasicMethodsToWorkWith.BasicsMethods.askinteger("the ID of the desired Customer")
+        inp.close()
+        os.remove("workerInfo.pkl")
+        for work in objectsWorker:
+            if Worker.getWorkerID(work) != workerDeleteId:
+                saveWorker(work, "workerInfo.pkl")
+        readWorkersFile()
+        print()
+    else:
+        print("No files founded with that name...")
 
 

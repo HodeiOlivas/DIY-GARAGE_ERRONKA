@@ -1,3 +1,4 @@
+import os
 import pickle
 import csv
 from Reservation import Reservation
@@ -5,59 +6,56 @@ import BasicMethodsToWorkWith
 from datetime import datetime
 
 
-def createAReservation():
-    reservation = Reservation()
-
-
 def saveReservation(obj, filename):
     with open(filename, 'ab') as outp:  # Overwrites any existing file.
         pickle.dump(obj, outp, pickle.HIGHEST_PROTOCOL)
 
 
-# save_object(obj, 'reservationInfo.txt')
+def readReservationsFile():
+    if os.path.exists("reservationInfo.pkl"):
+        inp = open("reservationInfo.pkl", 'rb')
+        objectsRes = []
+        cont = 1
+        while cont == 1:
+            try:
+                objectsRes.append(pickle.load(inp))
+            except EOFError:
+                print()
+                cont = 0
+        for res in objectsRes:
+            Reservation.printReservation(res)
+        print("\t--------------------------------")
+        print("\tFounded " + str(len(objectsRes)) + " reservations. \n")
+    else:
+        print("No files founded with that name...")
 
 
-def readReservations():
-    """
-    with open("reservationInfo.txt", 'r') as outp:  # Overwrites any existing file.
-    lines = outp.readlines()
-    print(lines)
-    """
-    with open("reservationInfo.txt") as outp:
-        linesRes = outp.readline()
-        counter = 1
-        while linesRes:
-            print("Line {}: {}".format(counter, linesRes.strip()))
-            linesRes = outp.readline()
-            counter += 1
+def deleteReservation():
+    if os.path.exists("reservationInfo.pkl"):
+        inp = open("reservationInfo.pkl", 'rb')
+        objectsRes = []
+        cont = 1
+        while cont == 1:
+            try:
+                objectsRes.append(pickle.load(inp))
+            except EOFError:
+                cont = 0
+        print()
+        for res in objectsRes:
+            Reservation.printReservation(res)
+
+        print("\t--------------------------------")
+        resDeleteId = BasicMethodsToWorkWith.BasicsMethods.askinteger("the ID of the desired Reservation")
+        inp.close()
+        os.remove("reservationInfo.pkl")
+        for res in objectsRes:
+            if Reservation.getReservationID(res) != resDeleteId:
+                saveReservation(res, "reservationInfo.pkl")
+        readReservationsFile()
+        print()
+    else:
+        print("No files founded with that name...")
 
 
-def saveReservationListOnFile(resList, filename):
-    with open(filename, 'ab') as outp:  # Overwrites any existing file.
-        pickle.dump(resList, outp, pickle.HIGHEST_PROTOCOL)
 
 
-def viewListReservations(resList):
-    for res in resList:
-        Reservation.printReservation(res)
-    print()
-
-
-def deleteReservation(resList):
-    # resDeleteResId = BasicMethodsToWorkWith.BasicsMethods.askstring("the ID of the Reservation you want to delete ")
-    resDateUser = BasicMethodsToWorkWith.BasicsMethods.askdate("the DATE of the RESERVATION you want to DELETE ")
-    resDateToDelete = datetime.strptime(resDateUser, "%d-%m-%Y").date()
-
-    for res in resList:
-        if Reservation.getDate(res) == resDateToDelete:
-            resList.remove(res)
-    print()
-
-
-def clearReservationsFile(filename):
-    open(filename, 'w').close()
-
-
-def saveReservationListAfterChanges(res, filename):
-    with open(filename, 'ab') as outp:  # Overwrites any existing file.
-        pickle.dump(res, outp, pickle.HIGHEST_PROTOCOL)

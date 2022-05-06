@@ -1,11 +1,8 @@
+import os
 import pickle
 import csv
 from Customer import Customer
 import BasicMethodsToWorkWith
-
-
-def createCustomer():
-    customer = Customer()
 
 
 def saveCustomer(obj, filename):
@@ -15,40 +12,56 @@ def saveCustomer(obj, filename):
 
 # save_object(obj, 'customerInfo.txt')
 
-
-def readCustomers():
-    """
-    with open("customerInfo.txt", 'r') as outp:  # Overwrites any existing file.
-        lines = outp.readlines()
-        print(lines)
-    """
-    with open("customerInfo.txt") as outp:
-        linesCust = outp.readline()
-        counter = 1
-        while linesCust:
-            print("Line {}: {}".format(counter, linesCust.strip()))
-            linesCust = outp.readline()
-            counter += 1
-
-
-def saveCustomerListOnFile(custList, filename):
-    with open(filename, 'ab') as outp:  # Overwrites any existing file.
-        pickle.dump(custList, outp, pickle.HIGHEST_PROTOCOL)
-
-
-def viewListCustomers(custList):
-    for cust in custList:
-        Customer.printCustomer(cust)
-    print()
+def readCustomersFile():
+    if os.path.exists("reservationInfo.pkl"):
+        inp = open("customerInfo.pkl", 'rb')
+        objectsCust = []
+        cont = 1
+        while cont == 1:
+            try:
+                objectsCust.append(pickle.load(inp))
+            except EOFError:
+                print()
+                cont = 0
+        for cust in objectsCust:
+            Customer.printCustomer(cust)
+            # print(st.group)ç
+        print("\t--------------------------------")
+        print("\tFounded " + str(len(objectsCust)) + " customers. \n")
+    else:
+        print("No files founded with that name...")
 
 
-def deleteCustomer(custList):
-    custDeleteUsername = BasicMethodsToWorkWith.BasicsMethods.askstring("the USERNAME of the desired Customer")
 
-    for cust in custList:
-        if Customer.getUsername(cust) == custDeleteUsername:
-            custList.remove(cust)
-    print()
+def deleteCustomer():
+    if os.path.exists("customerInfo.pkl"):
+        inp = open("customerInfo.pkl", 'rb')
+        objectsCust = []
+        cont = 1
+        while cont == 1:
+            try:
+                objectsCust.append(pickle.load(inp))
+            except EOFError:
+                cont = 0
+        print()
+        for cust in objectsCust:
+            Customer.printCustomer(cust)
+
+        print("\t--------------------------------")
+        custDeleteUsername = BasicMethodsToWorkWith.BasicsMethods.askstring("the USERNAME of the desired Customer")
+        inp.close()
+        os.remove("customerInfo.pkl")
+        for cust in objectsCust:
+            if Customer.getUsername(cust) != custDeleteUsername:
+                saveCustomer(cust, "customerInfo.pkl")
+        readCustomersFile()
+        print()
+    else:
+        print("No files founded with that name...")
+
+
+
+
 
 
 """

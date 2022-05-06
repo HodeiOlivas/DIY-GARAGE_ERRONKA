@@ -172,7 +172,7 @@ class Reservation:
                 validStartHour = 0
 
     def printReservation(self):
-        print("\t\t-> " + str(self.idReservation) + ", " +
+        print("\t-> " + str(self.idReservation) + ", " +
               str(self.custUsername) + ", " +
               str(self.cabin) + ", " +
               str(self.date) + ", " +

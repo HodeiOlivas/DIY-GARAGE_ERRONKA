@@ -8,7 +8,7 @@ from datetime import datetime, time
 allOccupations = ["Mechanic", "Painter", "Inspector"]
 
 
-class Worker:
+class Worker(Person):
     def __init__(self):
         Person.__init__(self)
 
@@ -43,23 +43,8 @@ class Worker:
     def getWorkerID(self):
         return self.worker_ID
 
-    def getName(self):
-        return self.name
-
-    def getSurname(self):
-        return self.surname
-
-    def getPassword(self):
-        return self.password
-
     def getOccupation(self):
         return self.occupation
-
-    def getMail(self):
-        return self.mail
-
-    def getPhoneNum(self):
-        return self.phone_number
 
     def getSalary(self):
         return self.salary
