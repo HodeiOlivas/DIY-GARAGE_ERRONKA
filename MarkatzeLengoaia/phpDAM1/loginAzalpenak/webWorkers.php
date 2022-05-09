@@ -129,6 +129,20 @@
     <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
     <br><br>
 
+    <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
+      <h1>Anything else?</h1>
+      <p style="margin-left: 25px">Try to add, upadte or delete <strong>reservations</strong>! </p>
+
+      <div class="hero-image" style="text-align: right;">
+        <div class="hero-text">
+          <button onclick=location.href="insertNewProductForm.php">New</button>
+          <button onclick=location.href="index.php">Update</button>
+          <button onclick=location.href="deleteReservationForm.php">Delete</button>
+          <!-- <button onclick=location.href="webClients.php">Login now</button>     -->
+        </div>
+      </div>
+    </div>
+
 
     <hr id="reservations" /><br><br>
     <!--dirigir al apartado de las cabinas -->

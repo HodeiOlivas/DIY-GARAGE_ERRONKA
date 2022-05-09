@@ -175,69 +175,46 @@
     <div class="row">
       <div class="col-sm-4">
         <br><br><br><br>
-        <h3 style="color:darkred">Product 1</h3>
-        <p style="color:grey">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-        <p style="color:grey">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+        <h3 style="color:darkred">Reservations</h3>
+        <p style="color:grey">Rent one of our cabins to work yourself on your vehicle. In case <br>
+          you need help, you'll have full availability of any of our workers.
+        </p>
       </div>
       <div class="col-sm-4">
         <br><br><br><br>
-        <h3 style="color:darkred">Product 2</h3>
-        <p style="color:grey">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-        <p style="color:grey">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+        <h3 style="color:darkred">Purchases</h3>
+        <p style="color:grey">Buy any product from our catalog to make repairing <br>
+          your vehicle an easier task. There is no stock limit.
+        </p>
       </div>
       <div class="col-sm-4">
         <br><br><br><br>
-        <h3 style="color:darkred">Product 3</h3>
-        <p style="color:grey">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-        <p style="color:grey">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+        <h3 style="color:darkred">Cabins</h3>
+        <p style="color:grey">Choose the cabin that best suits the needs of your vehicle. <br>
+          All cabins include worker assistance.
+        </p>
       </div>
     </div>
+    
+    
 
-    <br><br>
-    <ul style="background-color:brown;">
-      <li><a class="active" href="#start Customers">Home</a></li>
-      <li><a href="#products info">Products</a></li>
-      <li><a href="#cabins info">Cabins</a></li>
-      <li><a href="#reservations interaction">Reservations</a></li>
-      <li><a href="#purchases interaction">Purchases</a></li>
-      <li><a href="#profile">Profile</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <br><br>
+      <ul style="background-color:brown;">
+        <li><a class="active" href="#start Customers">Home</a></li>
+        <li><a href="#products info">Products</a></li>
+        <li><a href="#cabins info">Cabins</a></li>
+        <li><a href="#reservations interaction">Reservations</a></li>
+        <li><a href="#purchases interaction">Purchases</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#contact">Contact</a></li>
 
-      <li style="float:right"><a class="active" href="#view profile">Profile</a></li>
-      <li style="float:right"><a href="#log out">Log out</a></li>
+        <li style="float:right"><a class="active" href="#view profile">Profile</a></li>
+        <li style="float:right"><a href="#log out">Log out</a></li>
 
-      <li><a href="#acabar">About us</a></li>
-    </ul>
+        <li><a href="#acabar">Abouaat us</a></li>
+      </ul>
 
-    <br><br><br><br>
-
-  </div>
-
-  <hr />
-  <br><br>
-
-
-
-  <div style="height:1000px;background-color:red;font-size:36px">
-    <ul style="font-size: 16px;">
-      <li><a class="active" href="#start Customers">Home</a></li>
-      <li><a href="#products info">Products</a></li>
-      <li><a href="#cabins info">Cabins</a></li>
-      <li><a href="#reservations interaction">Reservations</a></li>
-      <li><a href="#purchases interaction">Purchases</a></li>
-      <li><a href="#profile">Profile</a></li>
-      <li><a href="#contact">Contact</a></li>
-
-      <li style="float:right"><a class="active" href="#view profile">Profile</a></li>
-      <li style="float:right"><a href="#log out">Log out</a></li>
-
-      <li><a href="#acabar">About us</a></li>
-    </ul>
-    Scroll Up and Down this page to see the parallax scrolling effect.
-    This div is just here to enable scrolling.
-    Tip: Try to remove the background-attachment property to remove the scrolling effect.
-  </div>
-
+      <br><br><br><br>
 
 
   <br><br>
@@ -313,54 +290,21 @@
       </table>
 
       <hr />
-      <TABLE style="border: none;" cellpadding="30" cellspacing="pixels">
-        <Tr style="text-align: center;">
-          <th>Produact</th>
-          <th>Name</th>
-          <th>Picturgefee</th>
-        </Tr>
-        <?php
-
-        $emaitza4 = mysqli_query($link, "select * from product");
-        while ($erregistroa = mysqli_fetch_array($emaitza4)) {
-        ?>
-          <tr>
-            <td>
-              <div class="container">
-
-                <div class="card img-fluid" style="width:500px">
-                  <img class="card-img-top" src="<?php echo $erregistroa['Picture']; ?>" alt="Card image" style="width:100%;">
-                  <div class="card-img-overlay">
-                    <h4 class="card-title"><?php echo $erregistroa['Name']; ?></h4>
-                    <p class="card-text" style="text-align: left;">Some example text some example text. Some example text some example text. Some example text some example text. Some example text some example text.</p>
-                    <a href="#" class="btn btn-primary">See Profile</a>
-                  </div>
-                </div>
-              </div>
-            </td>
-          </tr>
-
-        <?php
-        }
-        mysqli_free_result($emaitza4);
-        //mysqli_close($link);
-        ?>
-      </table>
-
-
-      <TABLE class="table2" style="border: 1; " cellpadding="30" cellspacing="pixels">
-        <Tr style="text-align: center;">
+    </div> 
+      <!-- <TABLE class="table2" style="border: 1; " cellpadding="30" cellspacing="pixels"> -->
+      <TABLE cellpadding="30" cellspacing="pixels">
+        <!-- <Tr style="text-align: center;">
           <th>Product</th>
           <th>Name</th>
           <th>Picturgefee</th>
-        </Tr>
+        </Tr> -->
         <?php
 
         $emaitza4 = mysqli_query($link, "select * from product");
         while ($erregistroa = mysqli_fetch_array($emaitza4)) {
         ?>
           <div>
-            <td2 style="margin-left: -200px;">
+            <td>
               <div class="cardProduct">
                 <img class="card-img-top" src="<?php echo $erregistroa['Picture']; ?>" alt="Card image" style="width:100%; height:150px">
                 <h1><?php echo $erregistroa['Name']; ?></h1>
@@ -368,7 +312,59 @@
                 <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
                 <p><button>Add to Cart</button></p>
               </div>
-            </td2>
+            </td>
+          </div>
+        <?php
+        }
+        mysqli_free_result($emaitza4);
+        //mysqli_close($link);
+        ?>
+      </TABLE>
+  </div>
+
+    <TABLE cellpadding="30" cellspacing="pixels">
+        <!-- <Tr style="text-align: center;">
+          <th>Product</th>
+          <th>Name</th>
+          <th>Picturgefee</th>
+        </Tr> -->
+        <?php
+
+        $emaitza4 = mysqli_query($link, "select * from product");
+        while ($erregistroa = mysqli_fetch_array($emaitza4)) {
+        ?>
+          <div>
+            <td2>
+              <div class="cardProduct">
+                <img class="card-img-top" src="<?php echo $erregistroa['Picture']; ?>" alt="Card image" style="width:100%; height:150px">
+                <h1><?php echo $erregistroa['Name']; ?></h1>
+                <p class="priceProduct"><?php echo $erregistroa['Price']; ?></p>
+                <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+                <button onclick=location.href="insertPurchaseAdvanced.php">Add to Cart</button>
+                <?php
+                
+                printf("
+                  <a href='insertPurchaseAdvanced.php?prodNameIdentifier=%s'>
+                    <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img>
+                  </a>", $erregistroa['id_Product']
+                );
+                ?>
+                <a href='insertPurchaseAdvanced.php?productID=%s'>
+                  <p><button>Add to Cart</button></p>
+                  <!-- <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img> -->
+                </a>
+                <p><button>Add to Cart</button></p>
+                
+                <!-- <td>
+                          <a href='deleteAdvanced.php?purchaseIdentifier=%s'>
+                            <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img>
+                          </a>
+                          
+                      </td>
+                    </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[0]); -->
+
+              </div>
+            </td>
           </div>
         <?php
         }
@@ -377,10 +373,49 @@
         ?>
       </TABLE>
 
+    <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
+      <h1>Anything else?</h1>
+      <p style="margin-left: 25px">Try to add, upadte or delete <strong>reservations</strong>! </p>
+
+      <div class="hero-image" style="text-align: right;">
+        <div class="hero-text">
+          <button onclick=location.href="insertNewReservationForm.php">New</button>
+          <button onclick=location.href="index.php">Update</button>
+          <button onclick=location.href="deleteReservationForm.php">Delete</button>
+          <!-- <button onclick=location.href="webClients.php">Login now</button>     -->
+        </div>
+      </div>
     </div>
+  </div>
+  
+  <hr />
+  <br><br>
 
 
 
+  <!-- <div style="height:1000px;background-color:red;font-size:36px">
+    <ul style="font-size: 16px;">
+      <li><a class="active" href="#start Customers">Home</a></li>
+      <li><a href="#products info">Products</a></li>
+      <li><a href="#cabins info">Cabins</a></li>
+      <li><a href="#reservations interaction">Reservations</a></li>
+      <li><a href="#purchases interaction">Purchases</a></li>
+      <li><a href="#profile">Profile</a></li>
+      <li><a href="#contact">Contact</a></li>
+
+      <li style="float:right"><a class="active" href="#view profile">Profile</a></li>
+      <li style="float:right"><a href="#log out">Log out</a></li>
+
+      <li><a href="#acabar">About WWus</a></li>
+    </ul>
+    ScAroll Up and Down this page to see the parallax scrolling effect.
+    This div is just here to enable scrolling.
+    Tip: Try to remove the background-attachment property to remove the scrolling effect.
+  </div> -->
+
+
+
+  
 
 
   </div>
@@ -393,6 +428,7 @@
 
 
 
+  <div class="parallax"></div>
   <!-- </div> -->
   <br><br>
 
@@ -829,44 +865,3 @@ links info:
 
 
 
-<div>
-  <?php
-  //include("test_connect_db.php");
-  $link = connectDataBase();
-  $emaitza = mysqli_query($link, "select * from product");
-  ?>
-
-  <div class="container">
-    <h2>ALL THE PRODUCTS</h2>
-    <p>The .table-dark class adds a black background to the table:</p>
-    <table class="table table-dark">
-      <thead>
-        <tr>
-          <th>Product ID</th>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Description</th>
-          <th>Picture</th>
-
-        </tr>
-        <!-- <img src="../loginAzalpenak/img/inicio3.jpg" class="rounded float-start" alt="a" style="width: 33%; margin-left:20px"> -->
-        <?php
-        while ($erregistroa = mysqli_fetch_array($emaitza)) {
-          printf("<tr>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>%.2f</td>
-                        <td>%s</td>
-                        <td><img src=%s width='50' height='50'><br></td>
-                    </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4]);
-        }
-        mysqli_free_result($emaitza);
-        mysqli_close($link);
-        ?>
-
-      </thead>
-    </table>
-  </div>
-
-
-</div>
