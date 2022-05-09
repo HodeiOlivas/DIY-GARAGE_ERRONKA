@@ -141,11 +141,9 @@
 
 <body>
 
-
-
   <?php
   session_start();
-  // printf($_SESSION['usuario']);
+  //printf($_SESSION['usuario']);
   echo "Welcome, " . $_SESSION['usuario'];
   ?>
   <h1 id="start Customers"> Welcome to Customer's website. </h1>
@@ -195,102 +193,81 @@
         </p>
       </div>
     </div>
-    
-    
-
-      <br><br>
-      <ul style="background-color:brown;">
-        <li><a class="active" href="#start Customers">Home</a></li>
-        <li><a href="#products info">Products</a></li>
-        <li><a href="#cabins info">Cabins</a></li>
-        <li><a href="#reservations interaction">Reservations</a></li>
-        <li><a href="#purchases interaction">Purchases</a></li>
-        <li><a href="#profile">Profile</a></li>
-        <li><a href="#contact">Contact</a></li>
-
-        <li style="float:right"><a class="active" href="#view profile">Profile</a></li>
-        <li style="float:right"><a href="#log out">Log out</a></li>
-
-        <li><a href="#acabar">Abouaat us</a></li>
-      </ul>
-
-      <br><br><br><br>
 
 
-  <br><br>
-  <hr id="products info" /><br><br>
-  <!--dirigir al apartado de las cabinas -->
-  <!-- productos izquierda pruebas -->
-  <div>
-    <h3>Caaaatalog of Products</h3>
 
-    <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-    <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
-    <a href="#" class="btn btn-info" role="button">wfw</a>
-  </div>
+    <br><br>
+    <ul style="background-color:brown;">
+      <li><a class="active" href="#start Customers">Home</a></li>
+      <li><a href="#products info">Products</a></li>
+      <li><a href="#cabins info">Cabins</a></li>
+      <li><a href="#reservations interaction">Reservations</a></li>
+      <li><a href="#purchases interaction">Purchases</a></li>
+      <li><a href="#profile">Profile</a></li>
+      <li><a href="#contact">Contact</a></li>
 
-  <!-- productos izquierda pruebas -->
-  <div>
-    <?php
-    include("test_connect_db.php");
-    $link = connectDataBase();
-    $emaitza = mysqli_query($link, "select * from product");
-    ?>
+      <li style="float:right"><a class="active" href="#view profile">Profile</a></li>
+      <li style="float:right"><a href="#log out">Log out</a></li>
 
-    <div class="container">
-      <h2>ALL THE PRODUCTS</h2>
-      <p>The .table-dark class adds a black background to the table:</p>
-      <table class="table table-dark">
-        <thead>
-          <tr>
-            <th>Product ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Picture</th>
+      <li><a href="#acabar">Abouaat us</a></li>
+    </ul>
 
-          </tr>
-          <!-- <img src="../loginAzalpenak/img/inicio3.jpg" class="rounded float-start" alt="a" style="width: 33%; margin-left:20px"> -->
-          <?php
-          while ($erregistroa = mysqli_fetch_array($emaitza)) {
-            printf("<tr>
+    <br><br><br><br>
+
+
+    <br><br>
+    <hr id="products info" /><br><br>
+    <!--dirigir al apartado de las cabinas -->
+    <!-- productos izquierda pruebas -->
+    <div>
+      <h3>Caaaatalog of Products</h3>
+
+      <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
+      <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
+      <a href="#" class="btn btn-info" role="button">wfw</a>
+    </div>
+
+    <!-- productos izquierda pruebas -->
+    <div>
+      <?php
+      include("test_connect_db.php");
+      $link = connectDataBase();
+      $emaitza = mysqli_query($link, "select * from product");
+      ?>
+
+      <div class="container">
+        <h2>ALL THE PRODUCTS</h2>
+        <p>The .table-dark class adds a black background to the table:</p>
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th>Product ID</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Description</th>
+              <th>Picture</th>
+
+            </tr>
+
+            <?php
+            while ($erregistroa = mysqli_fetch_array($emaitza)) {
+              printf("<tr>
                         <td>%s</td>
                         <td>%s</td>
                         <td>%.2f</td>
                         <td>%s</td>
                         <td><img src=%s width='50' height='50'><br></td>
                     </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4]);
-          }
-          mysqli_free_result($emaitza);
-          //mysqli_close($link);
-          ?>
+            }
+            mysqli_free_result($emaitza);
+            //mysqli_close($link);
+            ?>
 
-        </thead>
-      </table>
+          </thead>
+        </table>
 
-      <TABLE style="border: none;" cellpadding="30" cellspacing="pixels">
-        <Tr style="text-align: center;">
-          <th>Product</th>
-          <th>Name</th>
-          <th>Picture</th>
-        </Tr>
-        <?php
-        $emaitza3 = mysqli_query($link, "select * from product");
-        while ($erregistroa = mysqli_fetch_array($emaitza3)) {
-          printf("<tr>
-                          <td><img src=%s width='250' height='250'><br></td>
-                          <td>%s</td>
-                          <td>%5d</td>
-                          <td>%s</td>
-                        </tr>", $erregistroa[4], $erregistroa[1], 2, $erregistroa[0]);
-        }
-        mysqli_free_result($emaitza3);
-        //mysqli_close($link);
-        ?>
-      </table>
-
-      <hr />
-    </div> 
+        <hr />
+      </div>
       <!-- <TABLE class="table2" style="border: 1; " cellpadding="30" cellspacing="pixels"> -->
       <TABLE cellpadding="30" cellspacing="pixels">
         <!-- <Tr style="text-align: center;">
@@ -305,7 +282,7 @@
         ?>
           <div>
             <td>
-              <div class="cardProduct">
+              <div class="cardProduct" style="display:flex">
                 <img class="card-img-top" src="<?php echo $erregistroa['Picture']; ?>" alt="Card image" style="width:100%; height:150px">
                 <h1><?php echo $erregistroa['Name']; ?></h1>
                 <p class="priceProduct"><?php echo $erregistroa['Price']; ?></p>
@@ -320,60 +297,47 @@
         //mysqli_close($link);
         ?>
       </TABLE>
-  </div>
+    </div>
 
     <TABLE cellpadding="30" cellspacing="pixels">
-        <!-- <Tr style="text-align: center;">
+      <!-- <Tr style="text-align: center;">
           <th>Product</th>
           <th>Name</th>
           <th>Picturgefee</th>
         </Tr> -->
-        <?php
+      <?php
 
-        $emaitza4 = mysqli_query($link, "select * from product");
-        while ($erregistroa = mysqli_fetch_array($emaitza4)) {
-        ?>
-          <div>
-            <td2>
-              <div class="cardProduct">
-                <img class="card-img-top" src="<?php echo $erregistroa['Picture']; ?>" alt="Card image" style="width:100%; height:150px">
-                <h1><?php echo $erregistroa['Name']; ?></h1>
-                <p class="priceProduct"><?php echo $erregistroa['Price']; ?></p>
-                <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
-                <button onclick=location.href="insertPurchaseAdvanced.php">Add to Cart</button>
-                <a href='insertPurchaseAdvanced.php?prodNameIdentifier=%s'>
-                <?php
-                
-                printf("
-                  <a href='insertPurchaseAdvanced.php?prodNameIdentifier=%s'>
-                  // <button onclick=location.href='insertPurchaseAdvanced.php'>Add to Cart</button>
-                    <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img>
-                  </a>", $erregistroa['id_Product']
-                );
-                ?>
-                <a href='insertPurchaseAdvanced.php?productID=%s'>
-                  <p><button>Add to Cart</button></p>
-                  <!-- <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img> -->
-                </a>
-                <p><button>Add to Cart</button></p>
-                
-                <!-- <td>
-                          <a href='deleteAdvanced.php?purchaseIdentifier=%s'>
-                            <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img>
-                          </a>
-                          
-                      </td>
-                    </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[0]); -->
-
-              </div>
+      $emaitza4 = mysqli_query($link, "select * from product");
+      while ($erregistroa = mysqli_fetch_array($emaitza4)) {
+      ?>
+        <br>
+        <div>
+          <td2>
+            <div class="cardProduct">
+              <img class="card-img-top" src="<?php echo $erregistroa['Picture']; ?>" alt="Card image" style="width:100%; height:150px">
+              <h1><?php echo $erregistroa['Name']; ?></h1>
+              <p class="priceProduct"><?php echo $erregistroa['Price']; ?></p>
+              <p><?php echo $erregistroa['Description']; ?></p>
+              <!-- <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p> -->
+              <?php
+              // <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img>
+              printf(
+                "
+                    <a href='insertPurchaseAdvanced.php?prodIdentifier=%s'>
+                    <button onclick=location.href='insertPurchaseAdvanced.php'>Add ato aaCart</button>
+                    </a>",
+                $erregistroa['id_Product']
+              );
+              ?>
+            </div>
             </td>
-          </div>
-        <?php
-        }
-        mysqli_free_result($emaitza4);
-        mysqli_close($link);
-        ?>
-      </TABLE>
+        </div>
+      <?php
+      }
+      mysqli_free_result($emaitza4);
+      mysqli_close($link);
+      ?>
+    </TABLE>
 
     <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
       <h1>Anything else?</h1>
@@ -389,7 +353,7 @@
       </div>
     </div>
   </div>
-  
+
   <hr />
   <br><br>
 
@@ -417,7 +381,7 @@
 
 
 
-  
+
 
 
   </div>
@@ -428,9 +392,24 @@
 
   </div>
 
+  <!-- <div class="parallax" style="background-image: url('img_Cabins/carPainting1.jpg'); width:100%; height: 75%; text-align:center"> -->
+  <div class="parallax" style="background-image: url('img_Cabins/cabinFondo2.jpg'); width:100%; height: 75%; text-align:center">
+    <div style="text-align: left;">
+      <h1 style="font-size:50px; color:greenyellow">DIY GARAGE</h1>
+      <h3 style="margin-left:25px; color:white">Check the cabins to know which one suits you! </h3><br>
+      <!-- <p style="margin-left:25px; color:white">Welcome to (Y)our garage!</p><br> -->
+
+    </div>
+
+  </div>
 
 
-  <div class="parallax"></div>
+
+
+  </div>
+
+
+
   <!-- </div> -->
   <br><br>
 
@@ -441,10 +420,12 @@
   <p style="text-align: right;"><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
   <br><br>
 
-
+  
   <br>
   <hr />
   <br>
+
+
 
 
   <div class="container">
@@ -510,68 +491,6 @@
   <hr />
   <br>
 
-  <h3 id="erabiltzaile guztiak">Sticky Navigation Bar Example</h3>
-
-  <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-  <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
-
-  <div>
-    <?php
-    //include("test_connect_db.php");
-    $link = connectDataBase();
-    $emaitza = mysqli_query($link, "select * from product");
-    ?>
-
-    <div class="container">
-      <h2>ALL THE PRODUCTS</h2>
-      <p>The .table-dark class adds a black background to the table:</p>
-      <table class="table table-dark">
-        <thead>
-          <tr>
-            <th>Product ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Picture</th>
-
-          </tr>
-          <!-- <img src="../loginAzalpenak/img/inicio3.jpg" class="rounded float-start" alt="a" style="width: 33%; margin-left:20px"> -->
-          <?php
-          while ($erregistroa = mysqli_fetch_array($emaitza)) {
-            printf("<tr>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>%.2f</td>
-                        <td>%s</td>
-                        <td><img src=%s width='50' height='50'><br></td>
-                    </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4]);
-          }
-          mysqli_free_result($emaitza);
-          mysqli_close($link);
-          ?>
-
-        </thead>
-      </table>
-    </div>
-
-
-  </div>
-
-
-
-
-
-
-  <br />
-
-  <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-  <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
-  <p>Image at the bottom (card-img-bottom):</p>
-
-
-
-  <hr />
-  <hr />
 
   <hr id="reservations interaction" /><br><br>
   <!--dirigir al apartado de las cabinas -->
@@ -863,7 +782,3 @@
 links info:
   popover image -> https://mdbootstrap.com/snippets/jquery/ascensus/333171#js-tab-view 
 -->
-
-
-
-
