@@ -341,10 +341,12 @@
                 <p class="priceProduct"><?php echo $erregistroa['Price']; ?></p>
                 <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
                 <button onclick=location.href="insertPurchaseAdvanced.php">Add to Cart</button>
+                <a href='insertPurchaseAdvanced.php?prodNameIdentifier=%s'>
                 <?php
                 
                 printf("
                   <a href='insertPurchaseAdvanced.php?prodNameIdentifier=%s'>
+                  // <button onclick=location.href='insertPurchaseAdvanced.php'>Add to Cart</button>
                     <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img>
                   </a>", $erregistroa['id_Product']
                 );
