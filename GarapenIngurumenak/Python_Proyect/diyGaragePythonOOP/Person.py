@@ -43,8 +43,9 @@ class Person:
         # self.password = input("Forgotten password? Enter a new one: ")
 
     def setPhoneNumber(self):
-        self.phone_Number = int(input("Have you changed your contact number? Enter the new one: "))
         # self.phone_Number = int(input("Have you changed your contact number? Enter the new one: "))
+        self.phone_Number = BasicMethodsToWorkWith.BasicsMethods.askinteger("your NEW PHONE NUMBER")
+
 
     def print(self):
         print(self.name, self.surname, self.password, self.mail, self.phone_Number)

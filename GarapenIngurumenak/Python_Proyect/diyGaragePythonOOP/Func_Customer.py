@@ -57,3 +57,31 @@ def deleteCustomer():
         print("No files founded with that name...")
 
 
+def updateCustomer():
+    if os.path.exists("customerInfo.pkl"):
+        inp = open("customerInfo.pkl", 'rb')
+        objectsCust = []
+        cont = 1
+        while cont == 1:
+            try:
+                objectsCust.append(pickle.load(inp))
+            except EOFError:
+                cont = 0
+        print()
+        for cust in objectsCust:
+            Customer.printCustomer(cust)
+        print("\t--------------------------------")
+        desCustUpdateUsername = BasicMethodsToWorkWith.BasicsMethods.askstring("the Username of the desired Customer")
+        inp.close()
+        os.remove("customerInfo.pkl")
+        for cust in objectsCust:
+            if Customer.getUsername(cust) != desCustUpdateUsername:
+                saveCustomer(cust, "customerInfo.pkl")
+            else:
+                Customer.setPhoneNumber(cust)
+                Customer.printCustomer(cust)
+                saveCustomer(cust, "customerInfo.pkl")
+        readCustomersFile()
+        print()
+    else:
+        print("No files founded with that name...")

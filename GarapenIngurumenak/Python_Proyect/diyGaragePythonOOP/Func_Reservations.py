@@ -57,5 +57,37 @@ def deleteReservation():
         print("No files founded with that name...")
 
 
-
+def updateReservation():
+    # STEPS:
+    # read all the reservations (read file), save them in a list, ask the user for a specific reservation ID,
+    # if exists, show the values of the attributes before modifying, the user enters the new value for the date,
+    # show values after modifying
+    # clean/remove the file with the reservations, save the list of reservations again on the file
+    if os.path.exists("reservationInfo.pkl"):
+        inp = open("reservationInfo.pkl", 'rb')
+        objectsRes = []
+        cont = 1
+        while cont == 1:
+            try:
+                objectsRes.append(pickle.load(inp))
+            except EOFError:
+                cont = 0
+        print()
+        for res in objectsRes:
+            Reservation.printReservation(res)
+        print("\t--------------------------------")
+        desiredResUpdateId = BasicMethodsToWorkWith.BasicsMethods.askinteger("the ID of the desired Reservation")
+        inp.close()
+        os.remove("reservationInfo.pkl")
+        for res in objectsRes:
+            if Reservation.getReservationID(res) != desiredResUpdateId:
+                saveReservation(res, "reservationInfo.pkl")
+            else:
+                Reservation.setDate(res)
+                Reservation.printReservation(res)
+                saveReservation(res, "reservationInfo.pkl")
+        readReservationsFile()
+        print()
+    else:
+        print("No files founded with that name...")
 

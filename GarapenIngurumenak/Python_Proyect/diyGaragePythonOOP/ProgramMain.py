@@ -16,11 +16,12 @@ from Worker import Worker
 
 def reservationsMenu():
     choiceReservation = 0
-    while not (choiceReservation == 4):
+    while not (choiceReservation == 5):
         print("\n\t1. Create a new reservation: ")
         print("\t2. Delete a reservation: ")
-        print("\t3. Read all the reservations' data: ")
-        print("\t4. Go Back ")
+        print("\t3. Update/modify a reservation: ")
+        print("\t4. Read all the reservations' data: ")
+        print("\t5. Go Back ")
         choiceReservation = int(input("\n\tWhat do you want to do about Reservations? "))
 
         if choiceReservation == 1:
@@ -35,20 +36,25 @@ def reservationsMenu():
             print("--------------------------------")
 
         elif choiceReservation == 3:
-            Func_Reservations.readReservationsFile()
+            Func_Reservations.updateReservation()
             print("--------------------------------")
 
         elif choiceReservation == 4:
+            Func_Reservations.readReservationsFile()
+            print("--------------------------------")
+
+        elif choiceReservation == 5:
             break;
 
 
 def customersMenu():
     choiceCustomer = 0
-    while not (choiceCustomer == 4):
+    while not (choiceCustomer == 5):
         print("\n\t1. Create a new customer: ")
         print("\t2. Delete a customer: ")
-        print("\t3. Read all the customers' data: ")  # print/view the content of the txt file
-        print("\t4. Go Back ")
+        print("\t3. Update/modify a customer's phone number: ")
+        print("\t4. Read all the customers' data: ")  # print/view the content of the txt file
+        print("\t5. Go Back ")
         choiceCustomer = int(input("\n\tWhat do you want to do about Customers? "))
 
         if choiceCustomer == 1:
@@ -63,20 +69,25 @@ def customersMenu():
             print("--------------------------------")
 
         elif choiceCustomer == 3:
-            Func_Customer.readCustomersFile()
+            Func_Customer.updateCustomer()
             print("--------------------------------")
 
         elif choiceCustomer == 4:
+            Func_Customer.readCustomersFile()
+            print("--------------------------------")
+
+        elif choiceCustomer == 5:
             break
 
 
 def workersMenu():
     choiceWorker = 0
-    while not (choiceWorker == 4):
+    while not (choiceWorker == 5):
         print("\n\t1. Create a new worker: ")
         print("\t2. Delete a worker: ")
-        print("\t3. Read all the workers' data: ")  # print/view the content of the txt file
-        print("\t4. Go Back ")
+        print("\t3. Update/modify a worker's occupation: ")
+        print("\t4. Read all the workers' data: ")  # print/view the content of the txt file
+        print("\t5. Go Back ")
         choiceWorker = int(input("\n\tWhat do you want to do about Workers? "))
 
         if choiceWorker == 1:
@@ -90,10 +101,14 @@ def workersMenu():
             print("--------------------------------")
 
         elif choiceWorker == 3:
-            Func_Worker.readWorkersFile()
+            Func_Worker.updateWorker()
             print("--------------------------------")
 
         elif choiceWorker == 4:
+            Func_Worker.readWorkersFile()
+            print("--------------------------------")
+
+        elif choiceWorker == 5:
             break
 
 

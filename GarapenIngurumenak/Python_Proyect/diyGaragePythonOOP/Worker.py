@@ -65,10 +65,26 @@ class Worker(Person):
 
     # setter methods
     def setSalary(self):
-        self.salary = BasicMethodsToWorkWith.BasicsMethods.askfloat("your new Salary: ")
+        validSalary = 1
+        while validSalary == 1:
+            salaryUser = BasicMethodsToWorkWith.BasicsMethods.askfloat("worker's SALARY")
+            if salaryUser > 1500:
+                print("The first salary cant be bigger than 1500.00 €. ")
+            else:
+                self.salary = salaryUser
+                validSalary = 0
 
     def setOccupation(self):
-        self.occupation = BasicMethodsToWorkWith.BasicsMethods.askstring("your new OCCUPATION: ")
+        validOccupation = 1
+        while validOccupation == 1:
+            occupationUser = BasicMethodsToWorkWith.BasicsMethods.askstring(
+                "your OCCUPATION: " + "\n\t\t" + str(allOccupations)).capitalize()
+            if occupationUser not in allOccupations:
+                print("No result found for the specified occupation. Try again! \n")
+            else:
+                self.occupation = occupationUser
+                validOccupation = 0
+        # self.occupation = BasicMethodsToWorkWith.BasicsMethods.askstring("your new OCCUPATION: ")
 
     def setStartTime(self):
         self.start_time = BasicMethodsToWorkWith.BasicsMethods.asktime("your new working START TIME ('hh:mm'): ")

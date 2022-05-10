@@ -56,3 +56,32 @@ def deleteWorker():
         print("No files founded with that name...")
 
 
+def updateWorker():
+    if os.path.exists("workerInfo.pkl"):
+        inp = open("workerInfo.pkl", 'rb')
+        objectsWorker = []
+        cont = 1
+        while cont == 1:
+            try:
+                objectsWorker.append(pickle.load(inp))
+            except EOFError:
+                cont = 0
+        print()
+        for work in objectsWorker:
+            Worker.printWorker(work)
+        print("\t--------------------------------")
+        desWorkerUpdateId = BasicMethodsToWorkWith.BasicsMethods.askinteger("the ID of the desired Worker")
+        inp.close()
+        os.remove("workerInfo.pkl")
+        for work in objectsWorker:
+            if Worker.getWorkerID(work) != desWorkerUpdateId:
+                saveWorker(work, "workerInfo.pkl")
+                print()
+            else:
+                Worker.setOccupation(work)
+                Worker.printWorker(work)
+                saveWorker(work, "workerInfo.pkl")
+        readWorkersFile()
+        print()
+    else:
+        print("No files founded with that name...")
