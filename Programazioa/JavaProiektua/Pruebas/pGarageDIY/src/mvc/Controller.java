@@ -76,7 +76,6 @@ public class Controller implements ActionListener {
         View.JButtonClean.addActionListener(listener);              //graphical reports -> limpiar contenido del textArea
         View.JButtonGoBack.addActionListener(listener);             //graphical report -> volcer al menú inicial
         View.JButtonViewGraph.addActionListener(listener);          //graphic reports -> view selected report
-        View.JButtonShowHideDetails.addActionListener(listener);    //graphic reports -> show/hide the animated gif
         
         View.JCheckBoxBestTwoCustomers.addActionListener(listener); //graphic reports -> best 2 customers (reservations)
         View.JCheckBoxSortAge.addActionListener(listener);          //graphic reports -> represent graphically the difference between underage and adult customers
@@ -121,7 +120,6 @@ public class Controller implements ActionListener {
                 View.JCheckBoxMonthlyOccupancy.setEnabled(false);
                 */
                 
-                View.JLabelDetailsGif.setVisible(false);
                 View.JFrameGraphicalReports.setVisible(true);
                 View.JFrameGraphicalReports.setTitle("Manage of Graphic Reports!");
                 //View.JFrameGraphicalReports.setSize(900, 606);  //600, 356
@@ -407,7 +405,6 @@ public class Controller implements ActionListener {
                 View.JCheckBoxBestTwoCustomers.setSelected(false);
                 View.JCheckBoxSortAge.setSelected(false);
                 View.JCheckBoxMonthlyOccupancy.setSelected(false);
-                View.JLabelDetailsGif.setVisible(false);
                 
                 //View.JLabelAnimatedGif.setVisible(false);
                 
@@ -422,20 +419,7 @@ public class Controller implements ActionListener {
                 */
                 break;
             
-            case "Show/Hide":
-                //View.JFrameGraphicalReports.setSize(900, 725);
-                if (JLabelDetailsGif.isVisible()) {
-                    JLabelDetailsGif.setVisible(false);
-                    View.JFrameGraphicalReports.setSize(900, 500);
-                } else {
-                    JLabelDetailsGif.setVisible(true);
-                    View.JFrameGraphicalReports.setSize(900, 725);
-                }
-                
-                break;
-            
             case "View Graphic":
-                View.JLabelDetailsGif.setVisible(false);
                                 
                 View.JTextAreaGraphics.setText("");
                 View.JTextAreaGraphics.setEditable(false);

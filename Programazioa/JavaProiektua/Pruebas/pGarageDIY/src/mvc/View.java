@@ -165,8 +165,6 @@ public class View extends javax.swing.JFrame {
         JCheckBoxBestTwoCustomers = new javax.swing.JCheckBox();
         JButtonViewGraph = new javax.swing.JButton();
         JCheckBoxViewGraphicOnTable = new javax.swing.JCheckBox();
-        JButtonShowHideDetails = new javax.swing.JButton();
-        JLabelDetailsGif = new javax.swing.JLabel();
         JDialogTextual = new javax.swing.JDialog();
         jScrollPane2 = new javax.swing.JScrollPane();
         JTableDataOnTable = new javax.swing.JTable();
@@ -425,11 +423,6 @@ public class View extends javax.swing.JFrame {
         JCheckBoxViewGraphicOnTable.setActionCommand("GraphicOnTable");
         JCheckBoxViewGraphicOnTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        JButtonShowHideDetails.setText("Show/Hide details");
-        JButtonShowHideDetails.setActionCommand("Show/Hide");
-
-        JLabelDetailsGif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/animated2.gif"))); // NOI18N
-
         javax.swing.GroupLayout JFrameGraphicalReportsLayout = new javax.swing.GroupLayout(JFrameGraphicalReports.getContentPane());
         JFrameGraphicalReports.getContentPane().setLayout(JFrameGraphicalReportsLayout);
         JFrameGraphicalReportsLayout.setHorizontalGroup(
@@ -449,7 +442,6 @@ public class View extends javax.swing.JFrame {
                         .addGap(18, 18, Short.MAX_VALUE)
                         .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(JButtonGoBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(JButtonShowHideDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
                                 .addComponent(JButtonViewGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -457,15 +449,14 @@ public class View extends javax.swing.JFrame {
                             .addComponent(JButtonStartGra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(78, 78, 78))
                     .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
-                        .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(JLabelDetailsGif)
-                            .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
-                                    .addComponent(JLabelGraphIntro)
-                                    .addGap(28, 28, 28)
-                                    .addComponent(JCheckBoxViewGraphicOnTable))
-                                .addComponent(JLabelGarageTitulo)))
+                        .addGap(126, 126, 126)
+                        .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
+                                .addComponent(JLabelGraphIntro)
+                                .addGap(28, 28, 28)
+                                .addComponent(JCheckBoxViewGraphicOnTable))
+                            .addComponent(JLabelGarageTitulo))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         JFrameGraphicalReportsLayout.setVerticalGroup(
@@ -485,8 +476,6 @@ public class View extends javax.swing.JFrame {
                         .addComponent(JButtonStartGra)
                         .addGap(18, 18, 18)
                         .addComponent(JButtonGoBack)
-                        .addGap(18, 18, 18)
-                        .addComponent(JButtonShowHideDetails)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(JButtonViewGraph)
@@ -498,9 +487,7 @@ public class View extends javax.swing.JFrame {
                     .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(JCheckBoxBestTwoCustomers)
                         .addComponent(JCheckBoxMonthlyOccupancy)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(JLabelDetailsGif)
-                .addGap(35, 35, 35))
+                .addContainerGap(306, Short.MAX_VALUE))
         );
 
         JTableDataOnTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -791,7 +778,6 @@ public class View extends javax.swing.JFrame {
     public static javax.swing.JButton JButtonSaveCatalog;
     public static javax.swing.JButton JButtonSaveEntireStaff;
     public static javax.swing.JButton JButtonSaveUsersFile;
-    public static javax.swing.JButton JButtonShowHideDetails;
     public static javax.swing.JButton JButtonStartGra;
     public static javax.swing.JButton JButtonValidateWorker;
     public static javax.swing.JButton JButtonViewGraph;
@@ -807,7 +793,6 @@ public class View extends javax.swing.JFrame {
     public static javax.swing.JFrame JFrameGraphicalReports;
     public static javax.swing.JFrame JFrameTextReports;
     public static javax.swing.JLabel JLabelChooseCustomer;
-    public static javax.swing.JLabel JLabelDetailsGif;
     public static javax.swing.JLabel JLabelGarageTitulo;
     public static javax.swing.JLabel JLabelGraphIntro;
     public static javax.swing.JLabel JLabelIntro;
