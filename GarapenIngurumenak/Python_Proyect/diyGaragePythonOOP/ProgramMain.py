@@ -114,11 +114,12 @@ def workersMenu():
 
 def productsMenu():
     choiceProduct = 0
-    while not (choiceProduct == 4):
+    while not (choiceProduct == 5):
         print("\n\t1. Create a new product: ")
         print("\t2. Delete a product: ")
-        print("\t3. Read all the products' data: ")  # print/view the content of the txt file
-        print("\t4. Go Back ")
+        print("\t3. Update/modify a product's price: ")
+        print("\t4. Read all the products' data: ")  # print/view the content of the txt file
+        print("\t5. Go Back ")
         choiceProduct = int(input("\n\tWhat do you want to do about Products? "))
 
         if choiceProduct == 1:
@@ -132,10 +133,14 @@ def productsMenu():
             print("--------------------------------")
 
         elif choiceProduct == 3:
-            Func_Product.readProductsFile()
+            Func_Product.updateProduct()
             print("--------------------------------")
 
         elif choiceProduct == 4:
+            Func_Product.readProductsFile()
+            print("--------------------------------")
+
+        elif choiceProduct == 5:
             break
 
 

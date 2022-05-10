@@ -44,7 +44,7 @@ def deleteProduct():
             Product.printProduct(prod)
 
         print("\t--------------------------------")
-        prodDeleteId = BasicMethodsToWorkWith.BasicsMethods.askstring("the ID of the desired Product")
+        prodDeleteId = BasicMethodsToWorkWith.BasicsMethods.askstring("the ID of the desired Product").upper()
         inp.close()
         os.remove("productInfo.pkl")
         for prod in objectsProd:
@@ -56,3 +56,31 @@ def deleteProduct():
         print("No files founded with that name...")
 
 
+def updateProduct():
+    if os.path.exists("productInfo.pkl"):
+        inp = open("productInfo.pkl", 'rb')
+        objectsProd = []
+        cont = 1
+        while cont == 1:
+            try:
+                objectsProd.append(pickle.load(inp))
+            except EOFError:
+                cont = 0
+        print()
+        for prod in objectsProd:
+            Product.printProduct(prod)
+        print("\t--------------------------------")
+        desiredProdUpdateId = BasicMethodsToWorkWith.BasicsMethods.askstring("the ID of the desired Product").upper()
+        inp.close()
+        os.remove("productInfo.pkl")
+        for prod in objectsProd:
+            if Product.getProductID(prod) != desiredProdUpdateId:
+                saveProduct(prod, "productInfo.pkl")
+            else:
+                Product.setPrice(prod)
+                Product.printProduct(prod)
+                saveProduct(prod, "productInfo.pkl")
+        readProductsFile()
+        print()
+    else:
+        print("No files founded with that name...")

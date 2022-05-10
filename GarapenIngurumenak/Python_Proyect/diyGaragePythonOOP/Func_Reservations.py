@@ -58,11 +58,6 @@ def deleteReservation():
 
 
 def updateReservation():
-    # STEPS:
-    # read all the reservations (read file), save them in a list, ask the user for a specific reservation ID,
-    # if exists, show the values of the attributes before modifying, the user enters the new value for the date,
-    # show values after modifying
-    # clean/remove the file with the reservations, save the list of reservations again on the file
     if os.path.exists("reservationInfo.pkl"):
         inp = open("reservationInfo.pkl", 'rb')
         objectsRes = []
