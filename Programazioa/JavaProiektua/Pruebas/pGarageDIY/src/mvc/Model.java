@@ -24,6 +24,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 import mvc.View.*;
 import myClasses.*;
 import forGraphics.*;
@@ -782,13 +783,18 @@ public class Model {
 
         //bars of TOTAL PAID
         g0.setColor(Color.blue);
-        g0.fillRect(335, 775 - c1totalPaid, 20, c1totalPaid);  //(x, y, anchura, valor deseado del usuario)
-        g0.drawLine(200, 775 - (c1NumReservations * 10), 335, 775 - c1totalPaid);
+        int prueba1 = c1totalPaid * 550 / c1totalPaid;
+        int prueba2 = (300 * c2totalPaid) / c1totalPaid;
+        //g0.fillRect(335, (775 - c1totalPaid) * 550, 20, c1totalPaid);  //(x, y, anchura, valor deseado del usuario)
+        g0.fillRect(335, 775 - 300, 20, 300);  //(x, y, anchura, valor deseado del usuario)
+        g0.drawLine(200, 775 - (c1NumReservations * 10), 335, 775 - 300);
         //g0.drawLine(200, 775 - (c1NumReservations * 30), 335, 775 - c1totalPaid);
-
+        
         g0.setColor(Color.red);
-        g0.fillRect(365, 775 - c2totalPaid, 20, c2totalPaid);
-
+        g0.fillRect(365, 775 - prueba2, 20, prueba2);
+        //g0.fillRect(365, 775 - c2totalPaid, 20, c2totalPaid);
+        
+        
         //bars of BOOKING TIME
         int firstTopLimitBookingTime = 775 - (c1BookingTime * 20);
         int secondTopLimitBookingTime = 775 - (c2BookingTime * 20);
@@ -803,7 +809,8 @@ public class Model {
         } else {
             g0.setColor(Color.blue);
             g0.fillRect(510, 775 - (c1BookingTime * 20), 20, c1BookingTime * 20);
-            g0.drawLine(355, 775 - c1totalPaid, 510, 775 - (c1BookingTime * 20));
+            g0.drawLine(355, 775 - 300, 510, 775 - (c1BookingTime * 20));
+            //g0.drawLine(355, 775 - c1totalPaid, 510, 775 - (c1BookingTime * 20));
         }
 
         if (secondTopLimitBookingTime < 500) {  //second customer
@@ -1244,6 +1251,7 @@ public class Model {
             System.out.println(e.getMessage());
         }
     }
+    
     
 }
 

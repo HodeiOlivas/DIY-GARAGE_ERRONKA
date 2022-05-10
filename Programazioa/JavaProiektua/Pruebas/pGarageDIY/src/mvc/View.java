@@ -851,7 +851,7 @@ public class View extends javax.swing.JFrame {
             //JFrameTextReports.getContentPane().setBackground(new Color(64,93,97));
             //JFrameTextReports.getContentPane().setBackground(new Color(149,3,14));
             
-            imagen = new ImageIcon(getClass().getResource("/images/fondoF1_1.jpg")).getImage();
+            //imagen = new ImageIcon(getClass().getResource("/images/fondoF1_1.jpg")).getImage();
             //imagen = new ImageIcon(getClass().getResource("/images/animated3.gif")).getImage();
             
             g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
