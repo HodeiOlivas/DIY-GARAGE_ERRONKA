@@ -20,16 +20,14 @@
 
         session_start();
         $username00 = $_SESSION['usuario'];
-
-        $username = $_POST["username"];
-        $product = $_POST["product_Id"];
+        $product = $_POST["productChoices"];
         //$date = date("Y-m-d");  //echo "Today is " . date("Y-m-d") . "<br>";
-
-        $date00 = $_POST["dateOfInsert"];
+        
+        $date00 = $_POST["dateOfNewPurchase"];
         $date00 = str_replace('/', '-', $date00);
         $date11 = date("Y-m-d", strtotime($date00));
 
-        $quantity = $_POST["amount"];
+        $quantity = $_POST["amountUnits"];
 
         $link = connectDataBase();
         $emaitza = mysqli_query($link, "insert into purchase (cust_Username, prod_ID, Date, Amount) values('$username00','$product', '$date11', '$quantity')");

@@ -19,8 +19,6 @@
         include("test_connect_db.php");
         session_start();
         $username00 = $_SESSION['usuario'];
-        $username = $_POST["username"];
-        $cabin = $_POST["cabin_id"];    //written on a text input
         $cabin00 = $_POST["cabinChoices"];  //selected on a dropdown menu options
         
         

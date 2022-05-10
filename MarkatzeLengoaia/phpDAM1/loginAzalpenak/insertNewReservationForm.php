@@ -9,79 +9,63 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> -->
-    <title>New Purchase Page</title>
+    <title>New Reservation</title>
 
-
+    <style>
+        #main {
+            /* width: 200px;
+            height: 200px; 
+            border: 1px solid #c3c3c3; */
+            width: 100%;
+            height: 80%;
+            border: 0px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        #main div {
+            width: 50px;
+            height: 750px;
+            /* height: 200px; */
+        }
+    </style>
 </head>
 
 <body>
-
-
+    <?php
+    include("test_connect_db.php");
+    session_start();
+    $currentUser = $_SESSION['usuario'];
+    $link = connectDataBase();
+    $kontsulta1 = mysqli_query($link, "select * from cabin");
+    $kontsulta2 = mysqli_query($link, "select * from reservation where cust_Username = '$currentUser'");
+    ?>
+    
     <!-- style='width:600px;float:right;margin-top:50px; margin-right:300px' -->
     <div style='width:600px;margin-top:50px; margin-right:300px; margin-left:50px'>
-        <!-- style='margin:auto;width:600px;margin-top:50px;' -->
-        <p>usar el mismo estilo que Delete Purchase</p>
-        <h1>Add a new Reservation:</h1>
+        <h1>ADD A NEW RESERVATION:</h1>
         <!--<form action="insertNewReservation.php" method="POST"> -->
         <form action="insertNewReservation.php" method="POST">
             <table>
                 <tr>
-                    <td>Customer's username:</td>
-                    <td>
-                        <input name="username" type="text" size='4'><br>
-                    </td>
+                    <td>Customer: </td>
+                    <td><?php echo $currentUser?></td>
                     <!-- <td>Password:<input name="password" type="password" size='8'></td> -->
                 </tr>
                 <tr>
-                    <td>Cabin: [C1, C2, C3, C4]</td>
-                    <td><input name="cabin_id" type="text"><br></td>
-                </tr>
-                <td>
                     <!-- https://stackoverflow.com/questions/47634469/how-to-populate-dropdown-menu-from-sql-table-in-php -->
-                    <form>
-                        <select name="cabinChoices" class="custom-select mb-3">
-                            <option selected>...</option>
-                            <option value="C1">C1</option>
-                            <option value="C2">C2</option>
-                            <option value="C3">C3</option>
-                            <option value="C4">C4</option>
-                        </select>
-                    </form>
-                </td>
-                <tr>
+                    <td>Cabin: </td>
                     <td>
                         <form>
-                            <select name="selectCabin" class="custom-select mb-3">
-                                <option selected>...</option> 
-                                <?php
-                                include("test_connect_db.php");
-                                $link = connectDataBase();
-                                $sql = mysqli_query($link, "select distinct Cabin_ID from cabin order by 1 asc");
-                                ?>
-
-                                <!-- <option select name='ccc' value="<?php echo $row['Cabin_ID']; ?>"><?php echo $row['Cabin_ID']; ?></option> -->
-                                
-                                <?php
-                                while ($row = mysqli_fetch_array($sql)) {
-                                        ?>
-                                        
-                                        <option value="<?php echo $row['Cabin_ID']; ?>"><?php echo $row['Cabin_ID']; ?></option>
-                                        <?php
-                                        
-
-                                    }
-                                ?>
-                                
-
-                                
-
-                                
+                            <select name="cabinChoices" class="custom-select mb-3">
+                                <option selected>...</option>
+                                <option value="C1">C1</option>
+                                <option value="C2">C2</option>
+                                <option value="C3">C3</option>
+                                <option value="C4">C4</option>
                             </select>
-
                         </form>
                     </td>
                 </tr>
-
                 <tr>
                     <td>Purchase's Date:</td>
                     <td><input id="datepicker" type="date" name="reservationDate" placeholder="specify date" class="formAlign" style="display: table-cell;" /></td>
@@ -109,67 +93,117 @@
 
     <br>
     <hr />
+    <br>
+    <?php 
+        // $kontsulta1 = mysqli_query($link, "select * from cabin");
+        // $kontsulta2 = mysqli_query($link, "select * from reservation where cust_Username = '$currentUser'");
+    ?>
+    <div id="main">
+        
+        <div>
+            <table style="text-align:center; margin-left:50px; " BORDER=1 CELLSPACING=10 CELLPADDING=10>
+                <thead style="vertical-align:left">
+                    <tr style="text-align:center">
+                        <th>Cabin ID</th>
+                        <th>Assistant</th>
+                        <th>Size</th>
+                        <th>Color</th>
+                        <th>Price/Hour</th>
+                        <th>Description</th>
+                    </tr>
 
-    <div style='width:600px;float:right;margin-top:25px; margin-right:300px'>
-        <!-- style='margin:auto;width:600px;margin-top:50px;' -->
-        <p>dwdq</p>
-        <h1>Delete a purchase</h1>
-        <!--<form action="insertNewPurchase.php" method="POST"> -->
-        <form action="deletePurchase.php" method="POST">
-            <table>
-                <tr>
-                    <td>Your username:</td>
-                    <td><input name="username" type="text" size='4'><br></td>
-                </tr>
-                <tr>
-                    <td>Date Original:</td>
-                    <td><input name="datePurchase" type="text" size='4'><br></td>
-                </tr>
-                <tr>
-                    <td>Purchase's Date:</td>
-                    <td><input id="datepicker" type="date" name="purchaseDate" placeholder="specify date" class="formAlign" style="display: table-cell;" /></td>
-                </tr>
-                <tr>
-                    <td>Purchase's Code:</td>
-                    <td><input name="date" type="number" size="4"><br></td>
-                </tr>
-                <tr>
-                    <td>
-                        <br>
-                        <input name="send" type="submit" value="DELETE">
-                    </td>
-                    <td>
-                        <br>
-                        <input type="reset" value="CLEAR">
-                    </td>
-                    <td>
-                        <br>
-                        <button onclick=location.href="webErabiltzaileak.php">GO BACK</button>
-                    </td>
-                </tr>
-                <!-- echo "Today is " . date("Y-m-d") . "<br>"; -->
+                    <?php
+                    while ($erregistroa = mysqli_fetch_array($kontsulta1)) {
+                        printf("<tr >
+                                    <td>%s</td>
+                                    <td>%d</td>
+                                    <td>%.2f</td>
+                                    <td>%s</td>
+                                    <td>%.2f</td>
+                                    <td>%s</td>
+                                </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5]);
+                    }
+                    mysqli_free_result($kontsulta1);
+                    //mysqli_close($link);
+                    ?>
+
+                </thead>
             </table>
-        </form>
+        </div>
+        
+        <div>
+            <table style="text-align:center; margin-left:900px" BORDER=1 CELLSPACING=10 CELLPADDING=10>
+                <thead style="vertical-align:left">
+                    <tr style="text-align:center">
+                        <th>Reservation ID</th>
+                        <th>Username</th>
+                        <th>Cabin</th>
+                        <th>Date</th>
+                        <th>Starting Hour</th>
+                        <th>Ending Hour</th>
+                        <th>Amount Hours</th>
+                        <th>Total Price</th>
+                    </tr>
+
+                    <?php
+                    while ($erregistroa = mysqli_fetch_array($kontsulta2)) {
+                        printf("<tr >
+                                    <td>%d</td>
+                                    <td>%s</td>
+                                    <td>%s</td>
+                                    <td>%s</td>
+                                    <td>%s</td>
+                                    <td>%s</td>
+                                    <td>%d</td>
+                                    <td>%.2f</td>
+                                </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[6], $erregistroa[7]);
+                    }
+                    mysqli_free_result($kontsulta2);
+                    //mysqli_close($link);
+                    ?>
+
+                </thead>
+            </table>
+        </div>
     </div>
+    
+
+
+    
+    
+
+    
 
     <!--style='margin:auto;width:600px;margin-top:100px;' -->
     <!-- style='width:600px;float:left; padding:10%'-->
-    <br><br><br><br><br><br><br><br>
+    <br><br>
 
 
-    <div style="margin:0;width:100%;">
+    <!-- <div style="margin:0;width:100%;">
         <br><br><br><br><br><br><br><br>
+    </div> -->
+
+
+
+
+    <br>
+    <br>
+
+    <div id="main">
+        <div style="background-color:coral;">A</div>
+        <div style="background-color:lightblue;">B</div>
+        <div style="background-color:khaki;">C</div>
+        <div style="background-color:pink;">D</div>
+        <div style="background-color:lightgrey;">E</div>
+        <div style="background-color:lightgreen;">F</div>
+        <div style="background-color:lightgrey;">E</div>
+        <div style="background-color:lightgreen;">F</div>
+        <div style="background-color:lightgrey;">E</div>
+        <div style="background-color:lightgreen;">F</div>
     </div>
 
-
-
-
-    <br>
-    <br>
-
-
-
 </body>
+<br><br>
 
 </html>
 

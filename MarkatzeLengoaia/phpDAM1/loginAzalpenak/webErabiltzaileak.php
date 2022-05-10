@@ -269,7 +269,7 @@
         <hr />
       </div>
       <!-- <TABLE class="table2" style="border: 1; " cellpadding="30" cellspacing="pixels"> -->
-      <TABLE cellpadding="30" cellspacing="pixels">
+      <TABLE class="table2" cellpadding="30" cellspacing="pixels">
         <!-- <Tr style="text-align: center;">
           <th>Product</th>
           <th>Name</th>
@@ -299,7 +299,9 @@
       </TABLE>
     </div>
 
-    <TABLE cellpadding="30" cellspacing="pixels">
+    <TABLE class="" cellpadding="30" cellspacing="pixels" style="
+      display: flex;
+      flex-flow: row wrap;">
       <!-- <Tr style="text-align: center;">
           <th>Product</th>
           <th>Name</th>
@@ -312,7 +314,7 @@
       ?>
         <br>
         <div>
-          <td2>
+          <td2 class="flex-table row" role="rowgroup">
             <div class="cardProduct">
               <img class="card-img-top" src="<?php echo $erregistroa['Picture']; ?>" alt="Card image" style="width:100%; height:150px">
               <h1><?php echo $erregistroa['Name']; ?></h1>
@@ -520,6 +522,7 @@
 
     <div class="container">
       <!--style="float:left -->
+      <br>
       <h2>Your Reservations</h2>
       <p>The .table-dark class adds a black background to the table:</p>
       <table class="table table-dark" style="text-align:center">
@@ -546,7 +549,13 @@
                         <td>%s</td>
                         <td>%d</td>
                         <td>%.2f</td>
-                      </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[6], $erregistroa[7]);
+                        <td>
+                          <a href='deleteAdvancedReservation.php?reservationIdentifier=%s'>
+                            <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img>
+                          </a>
+                          
+                        </td>
+                      </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[6], $erregistroa[7], $erregistroa[0]);
           }
           mysqli_free_result($emaitza);
           mysqli_close($link);
@@ -561,16 +570,20 @@
 
         <div class="hero-image" style="text-align: right;">
           <div class="hero-text">
+            <a href='insertNewReservationForm.php'>
+              <img src='../loginAzalpenak/img/add1.png' width='40px' height='30px' align='center'></img>
+            </a>
+            <a href='insertNewReservationForm.php'>
+              <img src='../loginAzalpenak/img/addList.png' width='40px' height='30px' align='center'></img>
+            </a>
             <button onclick=location.href="insertNewReservationForm.php">New</button>
-            <button onclick=location.href="index.php">Update</button>
-            <button onclick=location.href="deleteReservationForm.php">Delete</button>
-            <!-- <button onclick=location.href="webClients.php">Login now</button>     -->
+            <button onclick=location.href="insertNewReservationForm.php">Update</button>
+            <!-- <button onclick=location.href="deleteReservationForm.php">Delete</button> -->
           </div>
         </div>
       </div>
 
       <br>
-
     </div>
 
 
@@ -631,15 +644,16 @@
                       </td>
                     </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[0]);
           }
+          // printf("<button onclick=location.href='insertNewPurchaseForm.php'>New</button>");
           mysqli_free_result($emaitza);
           mysqli_close($link);
 
           ?>
-
+          
         </thead>
       </table>
-
-      < <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
+      
+      <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
         <h1>Anything else?</h1>
         <p style="margin-left: 25px">Try to add, upadte or delete pruchases! </p>
 
@@ -652,9 +666,8 @@
               <img src='../loginAzalpenak/img/addList.png' width='40px' height='30px' align='center'></img>
             </a>
             <button onclick=location.href="insertNewPurchaseForm.php">New</button>
-            <button onclick=location.href="index.php">Update</button>
-            <button onclick=location.href="deletePurchaseForm.php">Delete</button>
-            <!-- <button onclick=location.href="webClients.php">Login now</button>     -->
+            <button onclick=location.href="insertNewPurchaseForm.php">Update</button>
+            <!-- <button onclick=location.href="deletePurchaseForm.php">Delete</button> -->
           </div>
         </div>
     </div>
