@@ -181,10 +181,12 @@
       -ms-transform: translate(-50%, -50%);
     }
 
-    table, th, td {
-  border:1px solid black;
-  border-collapse: collapse;
-}
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
   </style>
 </head>
 
@@ -484,7 +486,7 @@
 
   </div>
 
-  
+
 
 
 
@@ -505,27 +507,26 @@
 
 
   <?php
-    //include("test_connect_db.php");
-    $currentUser = $_SESSION['usuario'];
-    $link = connectDataBase();
-    $emaitza = mysqli_query($link, "select * from cabin");
+  //include("test_connect_db.php");
+  $currentUser = $_SESSION['usuario'];
+  $link = connectDataBase();
+  $emaitza = mysqli_query($link, "select * from cabin");
 
-    ?>
+  ?>
   <table class="table table-dark" style="text-align:center; width:auto;">
-        <thead style="vertical-align:left">
-          <tr style="text-align:center">
-            <th>Cabin ID</th>
-            <th>Size</th>
-            <th>Color</th>
-            <th>Price Hour</th>
-            <th>Description</th>
-            <th>Display Info</th>
-          </tr>
+    <thead style="vertical-align:left">
+      <tr style="text-align:center">
+        <th>Cabin ID</th>
+        <th>Size</th>
+        <th>Color</th>
+        <th>Price Hour</th>
+        <th>Description</th>
+        <th>Display Info</th>
+      </tr>
 
-          <?php
-          while ($erregistroa = mysqli_fetch_array($emaitza)) {
-            
-            printf("<tr>
+      <?php
+      while ($erregistroa = mysqli_fetch_array($emaitza)) {
+        printf("<tr>
                         <td>%s</td>
                         <td>%.2f</td>
                         <td>%s</td>
@@ -535,15 +536,15 @@
                           <button onclick='on()' style='color:brown'>Turn on overlay effect</button>
                         </td>
                       </tr>", $erregistroa[0], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[5]);
-          }
-          mysqli_free_result($emaitza);
-          mysqli_close($link);
-          ?>
+      }
+      mysqli_free_result($emaitza);
+      mysqli_close($link);
+      ?>
 
-        </thead>
-      </table>
+    </thead>
+  </table>
 
-      
+
   <div id="overlay" onclick="off()">
     <div id="text">Oaaverlay Text</div>
   </div>
