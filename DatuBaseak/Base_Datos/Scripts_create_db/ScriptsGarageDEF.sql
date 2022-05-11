@@ -74,6 +74,9 @@ INSERT INTO reservation (cust_Username, id_cabin, Date,
 Starting_Hour, Ending_Hour, Amount_Hours, Total_Price) 
 VALUES ("user11", "C0", "2022-03-30", "9:00", "11:00", HOUR (timediff(Ending_Hour, Starting_Hour)), 15.40);
 
+INSERT INTO reservation (cust_Username, id_cabin, Date, 
+Starting_Hour, Ending_Hour, Amount_Hours, Total_Price) 
+VALUES ("user11", "C0", "2022-03-30", "9:45", "11:10", MINUTE (timediff(Ending_Hour, Starting_Hour)) / 60, 15.40);
 
 -- ################################################
 

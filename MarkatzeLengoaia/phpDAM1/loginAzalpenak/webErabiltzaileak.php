@@ -132,6 +132,59 @@
       text-align: left;
       padding: 0px;
     }
+
+    .progress-container {
+      width: 100%;
+      height: 8px;
+      background: #ccc;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: brown;
+      /* background: #04AA6D; */
+      width: 0%;
+    }
+
+    .header2 {
+      position: fixed;
+      top: 0;
+      z-index: 1;
+      width: 100%;
+      background-color: #f1f1f1;
+    }
+
+    #overlay {
+      position: fixed;
+      display: none;
+      width: 40%;
+      height: 40%;
+      /* width: 100%;
+      height: 100%; */
+      top: 0;
+      left: 25%;
+      /* left: 0; */
+      right: 0;
+      bottom: 50;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    #text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 50px;
+      color: white;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+    }
+
+    table, th, td {
+  border:1px solid black;
+  border-collapse: collapse;
+}
   </style>
 </head>
 
@@ -141,12 +194,38 @@
 
 <body>
 
+  <div class="header2">
+    <h2>HALAB GARAGE! </h2>
+    <?php
+    session_start();
+    echo "Welcome, " . $_SESSION['usuario'];
+    ?>
+    <div class="progress-container">
+      <div class="progress-bar" id="myBar"></div>
+    </div>
+  </div>
+
+  <script>
+    // When the user scrolls the page, execute myFunction 
+    window.onscroll = function() {
+      myFunction()
+    };
+
+    function myFunction() {
+      var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrolled = (winScroll / height) * 100;
+      document.getElementById("myBar").style.width = scrolled + "%";
+    }
+  </script>
+
   <?php
-  session_start();
-  //printf($_SESSION['usuario']);
+  //session_start();
+  printf($_SESSION['usuario']);
   echo "Welcome, " . $_SESSION['usuario'];
   ?>
   <h1 id="start Customers"> Welcome to Customer's website. </h1>
+
   <!-- <h1 style="margin-left: 80px;"> Welcome to Customer's website. </h1> -->
 
   <div class="header">
@@ -207,7 +286,7 @@
       <li><a href="#contact">Contact</a></li>
 
       <li style="float:right"><a class="active" href="#view profile">Profile</a></li>
-      <li style="float:right"><a href="#log out">Log out</a></li>
+      <li style="float:right"><a href="sessioak.php">Log out</a></li>
 
       <li><a href="#acabar">Abouaat us</a></li>
     </ul>
@@ -405,6 +484,8 @@
 
   </div>
 
+  
+
 
 
 
@@ -422,7 +503,81 @@
   <p style="text-align: right;"><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
   <br><br>
 
-  
+
+  <?php
+    //include("test_connect_db.php");
+    $currentUser = $_SESSION['usuario'];
+    $link = connectDataBase();
+    $emaitza = mysqli_query($link, "select * from cabin");
+
+    ?>
+  <table class="table table-dark" style="text-align:center; width:auto;">
+        <thead style="vertical-align:left">
+          <tr style="text-align:center">
+            <th>Cabin ID</th>
+            <th>Size</th>
+            <th>Color</th>
+            <th>Price Hour</th>
+            <th>Description</th>
+            <th>Display Info</th>
+          </tr>
+
+          <?php
+          while ($erregistroa = mysqli_fetch_array($emaitza)) {
+            
+            printf("<tr>
+                        <td>%s</td>
+                        <td>%.2f</td>
+                        <td>%s</td>
+                        <td>%.2f</td>
+                        <td style='text-align:left;width:auto'>%s</td>
+                        <td>
+                          <button onclick='on()' style='color:brown'>Turn on overlay effect</button>
+                        </td>
+                      </tr>", $erregistroa[0], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[5]);
+          }
+          mysqli_free_result($emaitza);
+          mysqli_close($link);
+          ?>
+
+        </thead>
+      </table>
+
+      
+  <div id="overlay" onclick="off()">
+    <div id="text">Oaaverlay Text</div>
+  </div>
+
+  <div style="padding:20px">
+    <h2>Overlay with Text</h2>
+    <table>
+      <tr>
+        <td>
+          <button onclick="on()">Turn on overlay effect</button>
+        </td>
+        <td>
+          <button onclick="on()">Turn on overlay effect</button>
+        </td>
+        <td>
+          <button onclick="on()">Turn on overlay effect</button>
+        </td>
+        <td>
+          <button onclick="on()">Turn on overlay effect</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    function on() {
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    function off() {
+      document.getElementById("overlay").style.display = "none";
+    }
+  </script>
+
   <br>
   <hr />
   <br>
@@ -463,30 +618,7 @@
 
   <br>
   <hr /><br><br>
-  <!--dirigir al apartado de las cabinas -->
-  <h3 style="text-align: left;">RESERVATIONS</h3>
-  <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-  <p>
-    <strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.<a href="#reservations interaction" class="btn btn-info" role="button" style="float:right">Manage reservations</a>
-  </p>
-  <a href="#reservations interaction" class="btn btn-info" role="button">Manage reservations</a>
-  <br><br>
 
-
-  <br>
-  <hr />
-  <br>
-
-
-
-  <!--dirigir al apartado de las cabinas -->
-  <h3 style="text-align: right;">Purchases</h3>
-  <p style="text-align: right;">The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-  <p style="text-align: right;"><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.
-    <a href="#purchases interaction" class="btn btn-info" role="button" style="float:left">Manage purchases</a>
-  </p>
-  <a href="#purchases interaction" class="btn btn-info" role="button" style="float:right">Manage purchases</a>
-  <br><br>
 
 
   <br>
@@ -649,10 +781,10 @@
           mysqli_close($link);
 
           ?>
-          
+
         </thead>
       </table>
-      
+
       <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
         <h1>Anything else?</h1>
         <p style="margin-left: 25px">Try to add, upadte or delete pruchases! </p>
@@ -670,31 +802,31 @@
             <!-- <button onclick=location.href="deletePurchaseForm.php">Delete</button> -->
           </div>
         </div>
-    </div>
+      </div>
 
-    <br>
-    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Continue managing</button>
-    <div id="demo" class="collapse">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      <br>
+      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Continue managing</button>
+      <div id="demo" class="collapse">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
-      <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
-        <h1>Anything else?</h1>
-        <p style="margin-left: 25px">Try to add, upadte or delete pruchases! </p>
+        <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
+          <h1>Anything else?</h1>
+          <p style="margin-left: 25px">Try to add, upadte or delete pruchases! </p>
 
-        <div class="hero-image" style="text-align: right;">
-          <div class="hero-text">
-            <button onclick=location.href="insertNewPurchaseForm.php">New</button>
-            <button onclick=location.href="sessioakWorkers.php">Update</button>
-            <button onclick=location.href="loginClientes.php">Delete</button>
-            <!-- <button onclick=location.href="webClients.php">Login now</button>     -->
+          <div class="hero-image" style="text-align: right;">
+            <div class="hero-text">
+              <button onclick=location.href="insertNewPurchaseForm.php">New</button>
+              <button onclick=location.href="sessioakWorkers.php">Update</button>
+              <button onclick=location.href="loginClientes.php">Delete</button>
+              <!-- <button onclick=location.href="webClients.php">Login now</button>     -->
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-  </div>
+    </div>
 
 
   </div>

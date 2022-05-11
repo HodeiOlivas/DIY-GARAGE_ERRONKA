@@ -467,25 +467,25 @@ public class View extends javax.swing.JFrame {
                                         .addComponent(JCheckBoxMonthlyOccupancy, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(JCheckBoxSortAge)))
-                                .addGap(18, 18, 18)
-                                .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(JButtonStartGra, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
-                                        .addComponent(JButtonViewGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                                .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JFrameGraphicalReportsLayout.createSequentialGroup()
+                                        .addComponent(JButtonViewGraph, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(18, 18, 18)
                                         .addComponent(JButtonClean, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(JButtonGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JFrameGraphicalReportsLayout.createSequentialGroup()
+                                    .addComponent(JButtonStartGra, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
                                         .addComponent(JRadioButtonFirst)
-                                        .addGap(18, 18, 18)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(JRadioButtonSecond)
                                         .addGap(18, 18, 18)
                                         .addComponent(JRadioButtonBestTwoCustomersFull)))))
-                        .addContainerGap(78, Short.MAX_VALUE))
+                        .addContainerGap(39, Short.MAX_VALUE))
                     .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
                         .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(JLabelGarageTitulo)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         JFrameGraphicalReportsLayout.setVerticalGroup(
@@ -500,17 +500,17 @@ public class View extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JFrameGraphicalReportsLayout.createSequentialGroup()
+                .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
                         .addComponent(JButtonStartGra)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(JButtonGoBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(12, 12, 12)
                         .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(JButtonClean)
                             .addComponent(JButtonViewGraph)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(7, 7, 7)
                 .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(JCheckBoxSortAge)
@@ -520,7 +520,7 @@ public class View extends javax.swing.JFrame {
                     .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(JCheckBoxBestTwoCustomers)
                         .addComponent(JCheckBoxMonthlyOccupancy)))
-                .addContainerGap(306, Short.MAX_VALUE))
+                .addContainerGap(305, Short.MAX_VALUE))
         );
 
         JTableDataOnTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -873,7 +873,7 @@ public class View extends javax.swing.JFrame {
             //JFrameTextReports.getContentPane().setBackground(new Color(64,93,97));
             //JFrameTextReports.getContentPane().setBackground(new Color(149,3,14));
             
-            //imagen = new ImageIcon(getClass().getResource("/images/fondoF1_1.jpg")).getImage();
+            imagen = new ImageIcon(getClass().getResource("/images/fondoF1_1.jpg")).getImage();
             //imagen = new ImageIcon(getClass().getResource("/images/animated3.gif")).getImage();
             
             g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
