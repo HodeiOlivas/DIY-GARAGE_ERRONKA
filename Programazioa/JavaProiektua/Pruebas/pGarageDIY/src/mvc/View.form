@@ -461,13 +461,6 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="JLabelGarageTitulo" min="-2" max="-2" attributes="0"/>
-                              <Component id="jSeparator3" min="-2" pref="510" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="JLabelGraphIntro" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -490,23 +483,27 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="JButtonViewGraph" min="-2" pref="103" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="JButtonClean" min="-2" pref="103" max="-2" attributes="0"/>
-                                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                                  <Component id="JRadioButtonBestTwoCustomersFull" min="-2" max="-2" attributes="0"/>
-                                                  <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="JRadioButtonFirst" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <Component id="JRadioButtonSecond" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="JButtonClean" min="-2" pref="103" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="JButtonGoBack" min="-2" pref="224" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="JRadioButtonFirst" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="JRadioButtonSecond" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="JRadioButtonBestTwoCustomersFull" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
                           <EmptySpace pref="78" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="JLabelGarageTitulo" min="-2" max="-2" attributes="0"/>
+                              <Component id="jSeparator3" min="-2" pref="510" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -525,8 +522,8 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jSeparator3" min="-2" pref="27" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Component id="JButtonStartGra" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="JButtonGoBack" min="-2" max="-2" attributes="0"/>
@@ -535,18 +532,17 @@
                               <Component id="JButtonClean" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="JButtonViewGraph" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="JRadioButtonFirst" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="JRadioButtonSecond" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="JRadioButtonBestTwoCustomersFull" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" min="-2" pref="170" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="JCheckBoxSortAge" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="JCheckBoxSortAge" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JRadioButtonFirst" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JRadioButtonSecond" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JRadioButtonBestTwoCustomersFull" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="JCheckBoxBestTwoCustomers" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="JCheckBoxMonthlyOccupancy" alignment="3" min="-2" max="-2" attributes="0"/>
