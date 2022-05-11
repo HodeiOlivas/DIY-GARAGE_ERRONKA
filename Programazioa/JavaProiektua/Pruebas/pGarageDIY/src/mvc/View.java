@@ -88,6 +88,12 @@ public class View extends javax.swing.JFrame {
         JCheckBoxViewGraphicOnTable.setEnabled(false);
         
         
+        View.JRadioButtonFirst.setVisible(false);                   View.JRadioButtonFirst.setEnabled(false); 
+        View.JRadioButtonSecond.setVisible(false);                  View.JRadioButtonSecond.setEnabled(false);
+        View.JRadioButtonBestTwoCustomersFull.setVisible(false);     View.JRadioButtonBestTwoCustomersFull.setEnabled(false);
+        
+        
+        
         
         
         
@@ -165,6 +171,9 @@ public class View extends javax.swing.JFrame {
         JCheckBoxBestTwoCustomers = new javax.swing.JCheckBox();
         JButtonViewGraph = new javax.swing.JButton();
         JCheckBoxViewGraphicOnTable = new javax.swing.JCheckBox();
+        JRadioButtonFirst = new javax.swing.JRadioButton();
+        JRadioButtonSecond = new javax.swing.JRadioButton();
+        JRadioButtonBestTwoCustomersFull = new javax.swing.JRadioButton();
         JDialogTextual = new javax.swing.JDialog();
         jScrollPane2 = new javax.swing.JScrollPane();
         JTableDataOnTable = new javax.swing.JTable();
@@ -175,6 +184,7 @@ public class View extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         JTableGraphicInfo = new javax.swing.JTable();
         JButtonReturnToGraphic = new javax.swing.JButton();
+        ButtonGroupBestCustomers = new javax.swing.ButtonGroup();
         JLabelTitulo = new javax.swing.JLabel();
         JLabelIntro = new javax.swing.JLabel();
         JButtonGoTxostenak = new javax.swing.JButton();
@@ -423,6 +433,18 @@ public class View extends javax.swing.JFrame {
         JCheckBoxViewGraphicOnTable.setActionCommand("GraphicOnTable");
         JCheckBoxViewGraphicOnTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        ButtonGroupBestCustomers.add(JRadioButtonFirst);
+        JRadioButtonFirst.setText("First");
+        JRadioButtonFirst.setActionCommand("First Cust RB");
+
+        ButtonGroupBestCustomers.add(JRadioButtonSecond);
+        JRadioButtonSecond.setText("Second");
+        JRadioButtonSecond.setActionCommand("Second Cust RB");
+
+        ButtonGroupBestCustomers.add(JRadioButtonBestTwoCustomersFull);
+        JRadioButtonBestTwoCustomersFull.setText("View all");
+        JRadioButtonBestTwoCustomersFull.setActionCommand("All Cust RB");
+
         javax.swing.GroupLayout JFrameGraphicalReportsLayout = new javax.swing.GroupLayout(JFrameGraphicalReports.getContentPane());
         JFrameGraphicalReports.getContentPane().setLayout(JFrameGraphicalReportsLayout);
         JFrameGraphicalReportsLayout.setHorizontalGroup(
@@ -431,33 +453,41 @@ public class View extends javax.swing.JFrame {
                 .addGap(64, 64, 64)
                 .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
-                        .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
-                                .addComponent(JCheckBoxBestTwoCustomers, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(JCheckBoxMonthlyOccupancy, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(JCheckBoxSortAge)))
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(JButtonGoBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
-                                .addComponent(JButtonViewGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(JButtonClean, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(JButtonStartGra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(78, 78, 78))
-                    .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
-                        .addGap(126, 126, 126)
                         .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JLabelGarageTitulo)
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
+                        .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
                                 .addComponent(JLabelGraphIntro)
-                                .addGap(28, 28, 28)
+                                .addGap(18, 18, 18)
                                 .addComponent(JCheckBoxViewGraphicOnTable))
-                            .addComponent(JLabelGarageTitulo))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
+                                .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
+                                        .addComponent(JCheckBoxBestTwoCustomers, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(JCheckBoxMonthlyOccupancy, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(JCheckBoxSortAge)))
+                                .addGap(18, 18, 18)
+                                .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(JButtonStartGra, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
+                                        .addComponent(JButtonViewGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(JButtonClean, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(JRadioButtonBestTwoCustomersFull)
+                                                .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
+                                                    .addComponent(JRadioButtonFirst)
+                                                    .addGap(17, 17, 17)))
+                                            .addComponent(JRadioButtonSecond)))
+                                    .addComponent(JButtonGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(78, Short.MAX_VALUE))))
         );
         JFrameGraphicalReportsLayout.setVerticalGroup(
             JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -471,15 +501,21 @@ public class View extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(JFrameGraphicalReportsLayout.createSequentialGroup()
                         .addComponent(JButtonStartGra)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(JButtonGoBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JButtonViewGraph)
-                            .addComponent(JButtonClean)))
+                            .addComponent(JButtonClean)
+                            .addComponent(JButtonViewGraph))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JRadioButtonFirst)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JRadioButtonSecond)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JRadioButtonBestTwoCustomersFull))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(JFrameGraphicalReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -760,6 +796,7 @@ public class View extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.ButtonGroup ButtonGroupBestCustomers;
     public static javax.swing.ButtonGroup ButtonGroupGraphReports;
     public static java.awt.Checkbox CheckboxViewOnTable;
     public static java.awt.Choice ChoiceCustomer;
@@ -806,6 +843,9 @@ public class View extends javax.swing.JFrame {
     public static javax.swing.JLabel JLabelWorkerPassword;
     public static javax.swing.JLabel JLabelWorkerSurname;
     public static javax.swing.JPasswordField JPasswordFieldPasswordUser;
+    public static javax.swing.JRadioButton JRadioButtonBestTwoCustomersFull;
+    public static javax.swing.JRadioButton JRadioButtonFirst;
+    public static javax.swing.JRadioButton JRadioButtonSecond;
     public static javax.swing.JSpinner JSpinnerCustomerId;
     javax.swing.JTable JTableDataOnTable;
     public static javax.swing.JTable JTableGraphicInfo;

@@ -83,14 +83,17 @@ public class Controller implements ActionListener {
         
         View.JCheckBoxViewGraphicOnTable.addActionListener(listener);   //graphic reports -> show on a table the data of the report
         View.JButtonReturnToGraphic.addActionListener(listener);        //graphic reports -> button to close the table's dialog and return to Graphic section
-        
-
+                
+        View.JRadioButtonFirst.addActionListener(listener);                 //graphic reports -> radio button to show FIRST BEST CUSTOMER's data
+        View.JRadioButtonSecond.addActionListener(listener);                //graphic reports -> radio button to show SECOND BEST CUSTOMER's data
+        View.JRadioButtonBestTwoCustomersFull.addActionListener(listener);  //graphic reports -> radio button to show the data of the TWO BEST CUSTOMER
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String actionCommand = e.getActionCommand();
         //listenerrak entzun dezakeen eragiketa bakoitzeko. Konponenteek 'actionCommad' propietatea daukate
+                
         switch (actionCommand) {
             case "Visit Website":
                 Model.visitWebpage();
@@ -434,6 +437,9 @@ public class Controller implements ActionListener {
                 
                 
                 if (JCheckBoxBestTwoCustomers.isSelected()) {
+                    View.JRadioButtonFirst.setVisible(true);                   View.JRadioButtonFirst.setEnabled(true); 
+                    View.JRadioButtonSecond.setVisible(true);                  View.JRadioButtonSecond.setEnabled(true);
+                    View.JRadioButtonBestTwoCustomersFull.setVisible(true);     View.JRadioButtonBestTwoCustomersFull.setEnabled(true);
                     
                     if (View.JCheckBoxViewGraphicOnTable.isSelected()) {
                         //JDialogGraphicReports
@@ -445,7 +451,7 @@ public class Controller implements ActionListener {
                         //view.JTableDataOnTable.setModel(new OccupationTableModel(Model.reservationsOfEachMonth()));
                         
                     } else {
-                        Model.drawBest2original();
+                        Model.drawBest2TwoCustomersFrame();
                         for (int i = 0; i < Model.bestCustomers().size(); ++i) {
                             View.JTextAreaGraphics.setText(View.JTextAreaGraphics.getText() + Model.bestCustomers().get(i).toStringExtended());  
                         }
@@ -522,8 +528,48 @@ public class Controller implements ActionListener {
                 JButtonClean.setEnabled(true);
                 break;
             
+            case "First Cust.":
+                if (JCheckBoxBestTwoCustomers.isSelected()) {
+                    Model.drawTheFirstBestCustomer();
+                }
+                
+                break;
+            
+            case "Second Cust.":
+                if (JCheckBoxBestTwoCustomers.isSelected()) {
+                    Model.drawTheSecondBestCustomer();
+                }
+                break;
+            
+            case "All Cust RB":
+                if (JCheckBoxBestTwoCustomers.isSelected()) {
+                    Model.drawBestTwoCustomersFull();
+                }
+                break;
+            
+            /*
+            if (e.getActionCommand().equals("First Cust RB")) {
+                Model.drawTheFirstBestCustomer();
+                System.out.println("The selected radio button is: " + 
+                         View.ButtonGroupBestCustomers.getSelection().getActionCommand());
+            } else if (e.getActionCommand().equals("Second Cust RB")) {
+                Model.drawTheSecondBestCustomer();
+                System.out.println("The selected radio button is: " + 
+                        View.ButtonGroupBestCustomers.getSelection().getActionCommand());
+            }    
+            */
+            case "First Cust RB":
+                Model.drawTheFirstBestCustomer();
+                break;
+            
+            case "Second Cust RB":
+                Model.drawTheSecondBestCustomer();
+                break;
             
             case "Clean":   //txosten grafikoak -> vaciar el contenido del text area
+                View.JRadioButtonFirst.setVisible(false);                   View.JRadioButtonFirst.setEnabled(false); 
+                View.JRadioButtonSecond.setVisible(false);                  View.JRadioButtonSecond.setEnabled(false);
+                View.JRadioButtonBestTwoCustomersFull.setVisible(false);     View.JRadioButtonBestTwoCustomersFull.setEnabled(false);
                 
                 View.JTextAreaGraphics.setText("");
                 JButtonViewGraph.setEnabled(true);
@@ -554,7 +600,7 @@ public class Controller implements ActionListener {
                 //Model.clearGraphicFrame();
                 View.JFrameGraphicalReports.setSize(900, 906);
                 
-                Model.drawBest2original();
+                Model.drawBest2TwoCustomersFrame();
                 
                 break;
             

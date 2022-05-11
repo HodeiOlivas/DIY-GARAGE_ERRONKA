@@ -28,10 +28,14 @@ import java.util.logging.Logger;
 import mvc.View.*;
 import myClasses.*;
 import forGraphics.*;
+import java.awt.GridLayout;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 
 //import myClasses.*;
 /**
@@ -706,7 +710,7 @@ public class Model {
         
     }
     
-    public static void drawBest2original() {
+    public static void drawBest2TwoCustomersFrame() {
         
         String explanationStr = "NOTE: \n"
                 + "This report gets the data of the 2 customers who have spent the most money (Total Paid) in reservations! ";
@@ -737,10 +741,10 @@ public class Model {
         g0.drawString(explanationStr, 130, 845);
         
         //draw an square to show the report's explanation inside
-        //g0.drawRect(75, 830, 725, 20);
         g0.drawRect(100, 830, 675, 20);
-
-        //calculate values for the graphic
+        
+    /*
+        //calculate VALUES for the graphic
         //number of reservations
         int c1NumReservations = Model.bestCustomers().get(0).getNumReservations();
         int c2NumReservations = Model.bestCustomers().get(1).getNumReservations();
@@ -760,7 +764,7 @@ public class Model {
         System.out.println("first :" + c1NumReservations);
         System.out.println("second :" + c2NumReservations);
 
-        //-------------------------------------
+        //---------------draw the graphic----------------------  
         //bars of NUMBER OF RESERVATIONS
         int firstTopLimitNumRes = 775 - (c1NumReservations * 10);
         int secondTopLimitNumRes = 775 - (c2NumReservations * 10);
@@ -779,7 +783,6 @@ public class Model {
             g0.setColor(Color.BLACK);
             g0.drawLine(100, 775, 180, firstTopLimitNumRes);
             g0.drawLine(180, firstTopLimitNumRes, 200, firstTopLimitNumRes);
-            
         }
 
         if (secondTopLimitNumRes < 500) {   //second customer
@@ -802,7 +805,6 @@ public class Model {
         g0.setColor(Color.BLACK);
         g0.drawLine(200, 775 - (c1NumReservations * 10), 335, 775 - 300);
         g0.drawLine(335, 775 - 300, 355, 775 - 300);
-        //g0.drawLine(200, 775 - (c1NumReservations * 30), 335, 775 - c1totalPaid);
         
         g0.setColor(Color.PINK);
         g0.fillRect(365, 775 - test0, 20, test0);
@@ -830,8 +832,6 @@ public class Model {
             g0.setColor(Color.BLACK);
             g0.drawLine(355, 775 - 300, 510, 775 - (c1BookingTime * 20));
             g0.drawLine(510, 775 - (c1BookingTime * 20), 530, 775 - (c1BookingTime * 20));
-            
-            //g0.drawLine(355, 775 - c1totalPaid, 510, 775 - (c1BookingTime * 20));
         }
 
         if (secondTopLimitBookingTime < 500) {  //second customer
@@ -863,7 +863,6 @@ public class Model {
         } else {
             g0.setColor(Color.LIGHT_GRAY);
             g0.fillRect(680, 775 - 250, 20, 250);
-
         }
 
         if (secondTopLimitBestReservation > 500) {
@@ -881,86 +880,351 @@ public class Model {
             g0.drawLine(120, 775 - (c2BookingTime * 20), 710, 775 - 250);
             g0.drawLine(540, 775 - (c2BookingTime * 20), 560, 775 - (c2BookingTime * 20));
         }
-
-
         //-------------------------------------
+        System.out.println("First graphic report: Best two customers (reservations) ");
+    */
+        
+    }
+    
+    public static void drawTheFirstBestCustomer() {
+        Graphics g4 = View.JFrameGraphicalReports.getGraphics();
+        g4.clearRect(103, 475, 680, 300);
+        
+        //number of reservations
+        int c1NumReservations = Model.bestCustomers().get(0).getNumReservations();
 
-        /*
+        //total paid
+        int c1totalPaid = (int) Model.bestCustomers().get(0).getTotalPaid();
+        int c2totalPaid = (int) Model.bestCustomers().get(1).getTotalPaid();
+
+        //booking time
+        int c1BookingTime = Model.bestCustomers().get(0).getBookingTime();
+
+        //top reservation
+        int c1topReservation = (int) Model.bestCustomers().get(0).getTopReservationPrice();
+        
+        int firstTopLimitNumRes = 775 - (c1NumReservations * 10);
+
+        System.out.println(firstTopLimitNumRes);
+
         //bars of NUMBER OF RESERVATIONS
-        if (c1NumReservations > c2NumReservations) {
+        if (firstTopLimitNumRes < 500) {    //first customer
+            g4.setColor(Color.BLACK);    
+            g4.fillRect(180, 775 - 250, 20, 250);
 
-            g0.setColor(Color.blue);    //first customer
-            g0.fillRect(180, 775 - (c1NumReservations * 30), 20, c1NumReservations * 30);
+        } else {
+            g4.setColor(Color.LIGHT_GRAY);
+            //g0.drawRect(180, 725 - (c1NumReservations * 10), 20, c1NumReservations * 10);
+            g4.fillRect(180, 775 - (c1NumReservations * 10), 20, c1NumReservations * 10);
+            g4.setColor(Color.BLACK);
+            g4.drawLine(100, 775, 180, firstTopLimitNumRes);
+            g4.drawLine(180, firstTopLimitNumRes, 200, firstTopLimitNumRes);
+        }
+        
+        //bars of TOTAL PAID
+        g4.setColor(Color.LIGHT_GRAY);
+        int test0 = (300 * c2totalPaid) / c1totalPaid;
+        //g0.fillRect(335, (775 - c1totalPaid) * 550, 20, c1totalPaid);  //(x, y, anchura, valor deseado del usuario)
+        g4.setColor(Color.LIGHT_GRAY);
+        g4.fillRect(335, 775 - 300, 20, 300);  //(x, y, anchura, valor deseado del usuario)
+        g4.setColor(Color.BLACK);
+        g4.drawLine(200, 775 - (c1NumReservations * 10), 335, 775 - 300);
+        g4.drawLine(335, 775 - 300, 355, 775 - 300);
+        
+        int firstTopLimitBookingTime = 775 - (c1BookingTime * 20);
+        
+        System.out.println(firstTopLimitBookingTime);
 
-            g0.setColor(Color.red);    //second customer
-            g0.fillRect(210, 775 - (c2NumReservations * 30), 20, c2NumReservations * 30);
+        if (firstTopLimitBookingTime < 500) {   //first customer
+            g4.setColor(Color.LIGHT_GRAY);
+            g4.fillRect(510, 775 - 250, 20, 250);
+            g4.drawLine(355, 775 - (c1NumReservations * 10), 335, 775 - 300);
 
+        } else {
+            g4.setColor(Color.LIGHT_GRAY);
+            g4.fillRect(510, 775 - (c1BookingTime * 20), 20, c1BookingTime * 20);
+            g4.setColor(Color.BLACK);
+            g4.drawLine(355, 775 - 300, 510, 775 - (c1BookingTime * 20));
+            g4.drawLine(510, 775 - (c1BookingTime * 20), 530, 775 - (c1BookingTime * 20));
+            
+            //g0.drawLine(355, 775 - c1totalPaid, 510, 775 - (c1BookingTime * 20));
+        }
+        
+        //bars of TOP RESERVATION
+        int firstTopLimitBestReservation = 775 - c1topReservation;
 
-        } else if (c1NumReservations < c2NumReservations) {
-            g0.setColor(Color.blue);    //first customer
-            g0.fillRect(180, 775 - (c1NumReservations * 30), 20, c1NumReservations * 30);
-            g0.drawLine(100, 775, 180, 775 - (c1NumReservations * 30));
+        System.out.println(firstTopLimitBestReservation);
 
-            g0.setColor(Color.red);    //second customer
-            g0.fillRect(210, 775 - (c2NumReservations * 30), 20, c2NumReservations * 30);
+        if (firstTopLimitBookingTime > 500) {   //first customer
+            g4.setColor(Color.LIGHT_GRAY);
+            g4.fillRect(680, 775 - c1topReservation, 20, c1topReservation);
+            g4.setColor(Color.BLACK);
+            g4.drawLine(530, 775 - (c1BookingTime * 20), 680, 775 - c1topReservation);
+            g4.drawLine(680, 775 - c1topReservation, 700, 775 - c1topReservation);
+            g4.drawLine(700, 775 - c1topReservation, 775, 775);
+
+        } else {
+            g4.setColor(Color.LIGHT_GRAY);
+            g4.fillRect(680, 775 - 250, 20, 250);
+
+        }        
+        
+    }
+    
+    
+    public static void drawTheSecondBestCustomer() {
+        Graphics g5 = View.JFrameGraphicalReports.getGraphics();
+        g5.clearRect(103, 475, 680, 300);
+        
+        //number of reservations
+        int c2NumReservations = Model.bestCustomers().get(1).getNumReservations();
+
+        //total paid
+        int c1totalPaid = (int) Model.bestCustomers().get(0).getTotalPaid();
+        int c2totalPaid = (int) Model.bestCustomers().get(1).getTotalPaid();
+
+        //booking time
+        int c2BookingTime = Model.bestCustomers().get(1).getBookingTime();
+
+        //top reservation
+        int c2topReservation = (int) Model.bestCustomers().get(1).getTopReservationPrice();
+        
+        //-------------------------------------
+        //bars of NUMBER OF RESERVATIONS
+        int secondTopLimitNumRes = 775 - (c2NumReservations * 10);
+
+        System.out.println(secondTopLimitNumRes);
+        
+        if (secondTopLimitNumRes < 500) {   //second customer
+            g5.setColor(Color.PINK);
+            g5.fillRect(210, 775 - 250, 20, 250);
+        } else {
+            g5.setColor(Color.PINK);
+            g5.fillRect(210, 775 - (c2NumReservations * 10), 20, c2NumReservations * 10);
+            g5.setColor(Color.RED);
+            g5.drawLine(100, 775, 210, 775 - (c2NumReservations * 10));
+            g5.drawLine(210, 775 - (c2NumReservations * 10), 230, 775 - (c2NumReservations * 10));
         }
 
         //bars of TOTAL PAID
-        g0.setColor(Color.blue);
-        g0.fillRect(335, 775 - c1totalPaid, 20, c1totalPaid);  //(x, y, anchura, valor deseado del usuario)
-        g0.drawLine(200, 775 - (c1NumReservations * 30), 335, 775 - c1totalPaid);
-
-        //g0.fillRect(175, 775-90, 20, 90);  //(x, y, anchura, precio)
-
-        g0.setColor(Color.red);
-        g0.fillRect(365, 775 - c2totalPaid, 20, c2totalPaid);
-
-
+        int test0 = (300 * c2totalPaid) / c1totalPaid;
+        g5.setColor(Color.PINK);
+        g5.fillRect(365, 775 - test0, 20, test0);
+        g5.setColor(Color.RED);
+        g5.drawLine(230, 775 - (c2NumReservations * 10), 365, 775 - test0);
+        g5.drawLine(365, 775 - test0, 385, 775 - test0);
+        //g0.fillRect(365, 775 - c2totalPaid, 20, c2totalPaid);
+        
+        
         //bars of BOOKING TIME
-        if (c1BookingTime > c2BookingTime) {
-            g0.setColor(Color.blue);
-            g0.fillRect(510, 775 - (c1BookingTime * 30), 20, c1BookingTime * 30);
-
-            g0.setColor(Color.red);
-            g0.fillRect(540, 775 - (c2BookingTime * 30), 20, c2BookingTime * 30);
-
-        } else if (c1BookingTime < c2BookingTime) {
-            g0.setColor(Color.blue);
-            g0.fillRect(510, 775 - (c1BookingTime * 30), 20, c1BookingTime * 30);
-            g0.drawLine(355, 775 - c1totalPaid, 510, 775 - (c1BookingTime * 30));
-
-            g0.setColor(Color.red);
-            g0.fillRect(540, 775 - (c2BookingTime * 30), 20, c2BookingTime * 30);
+        int secondTopLimitBookingTime = 775 - (c2BookingTime * 20);
+        
+        System.out.println(secondTopLimitBookingTime);
+        
+        if (secondTopLimitBookingTime < 500) {  //second customer
+            g5.setColor(Color.PINK);
+            g5.fillRect(540, 775 - 250, 20, 250);
+        } else {
+            g5.setColor(Color.PINK);
+            g5.fillRect(540, 775 - (c2BookingTime * 20), 20, c2BookingTime * 20);
+            g5.setColor(Color.RED);
+            g5.drawLine(385, 775 - test0, 540, 775 - (c2BookingTime * 20));
+            g5.drawLine(540, 775 - (c2BookingTime * 20), 560, 775 - (c2BookingTime * 20));
         }
-
 
         //bars of TOP RESERVATION
-        if (c1topReservation > c2topReservation) {
+        int secondTopLimitBestReservation = 775 - c2topReservation;
+        
+        System.out.println(secondTopLimitBestReservation);
+        
+        if (secondTopLimitBestReservation > 500) {
+            g5.setColor(Color.PINK);    //second customer
+            g5.fillRect(710, 775 - c2topReservation, 20, c2topReservation);
+            g5.setColor(Color.RED);
+            g5.drawLine(560, 775 - (c2BookingTime * 20), 710, 775 - c2topReservation);
+            g5.drawLine(710, 775 - c2topReservation, 730, 775 - c2topReservation);
+            g5.drawLine(730, 775 - c2topReservation, 775, 775);
 
-            g0.setColor(Color.blue);    //first customer
-            g0.fillRect(680, 775 - c1topReservation, 20, c1topReservation);
-            g0.drawLine(530, 775 - (c1BookingTime * 30), 680, 775 - c1topReservation);
-
-            g0.setColor(Color.red);    //second customer
-            g0.fillRect(710, 775 - c2topReservation, 20, c2topReservation);
-
-
-        } else if (c1topReservation < c2topReservation) {
-            g0.setColor(Color.blue);    //first customer
-            g0.fillRect(680, 775 - c1topReservation, 20, c1topReservation);
-            //g0.drawLine(530, 775 - (c1BookingTime * 30), 680, 775 - c1topReservation);
-
-            g0.setColor(Color.red);    //second customer
-            g0.fillRect(710, 775 - c2topReservation, 20, c2topReservation);
+        } else {
+            g5.setColor(Color.PINK);    //second customer
+            g5.fillRect(710, 775 - 250, 20, 250);
+            g5.setColor(Color.RED);
+            g5.drawLine(120, 775 - (c2BookingTime * 20), 710, 775 - 250);
+            g5.drawLine(540, 775 - (c2BookingTime * 20), 560, 775 - (c2BookingTime * 20));
         }
-        */
+    }
+    
+    public static void drawBestTwoCustomersFull() {
+        
+        String explanationStr = "NOTE: \n"
+                + "This report gets the data of the 2 customers who have spent the most money (Total Paid) in reservations! ";
+             
+        Graphics g0 = View.JFrameGraphicalReports.getGraphics();
+        g0.clearRect(110, 475, 660, 300);
+        g0.drawLine(100, 775, 100, View.JFrameGraphicalReports.getHeight() / 2);
+        g0.drawLine(100, 775, 775, 775);    //g0.drawLine(100, 825, 825, 825);
+        //g0.drawLine(100, 775, 100, 425);
+        //g0.drawLine(100, 425, 775, 425);
+        //g0.drawLine(775, 425, 775, 775);
+        
 
-        //System.out.println(c1totalPaid);
-        System.out.println("First graphic report: Best two customers (reservations) ");
+        g0.drawString("Num. Reservations", 150, View.JFrameGraphicalReports.getHeight() / 2);
+        g0.drawString("Total Money Paid", 315, View.JFrameGraphicalReports.getHeight() / 2);
+        g0.drawString("Booking time", 490, View.JFrameGraphicalReports.getHeight() / 2);    //g0.drawString("Booking time", 550, 500);
+        g0.drawString("Top Reservation", 650, View.JFrameGraphicalReports.getHeight() / 2); //g0.drawString("Top Reservation", 700, 500);
 
-            
-            
-            
+        g0.drawString("First cust.: ", 310, 800);   //g0.drawString("First cust.: " + Model.biggestTotalPricesReservations().get(2), 125, 800);
+        g0.setColor(Color.GRAY);
+        g0.drawString(Model.bestCustomers().get(0).getUsernameCustomer(), 370, 800);
+        g0.setColor(Color.black);
+
+        g0.drawString("Second cust.: ", 460, 800);  //g0.drawString("Second cust.: ", 300, 800);
+        g0.setColor(Color.red);
+        g0.drawString(Model.bestCustomers().get(1).getUsernameCustomer(), 550, 800);    //g0.drawString(Model.bestCustomers().get(1).getUsernameCustomer(), 210, 820);    
+
+        g0.setColor(Color.black);
+        g0.drawString(explanationStr, 130, 845);
+        
+        //draw an square to show the report's explanation inside
+        g0.drawRect(100, 830, 675, 20);
+        
+        //calculate VALUES for the graphic
+        //number of reservations
+        int c1NumReservations = Model.bestCustomers().get(0).getNumReservations();
+        int c2NumReservations = Model.bestCustomers().get(1).getNumReservations();
+
+        //total paid
+        int c1totalPaid = (int) Model.bestCustomers().get(0).getTotalPaid();
+        int c2totalPaid = (int) Model.bestCustomers().get(1).getTotalPaid();
+
+        //booking time
+        int c1BookingTime = Model.bestCustomers().get(0).getBookingTime();
+        int c2BookingTime = Model.bestCustomers().get(1).getBookingTime();
+
+        //top reservation
+        int c1topReservation = (int) Model.bestCustomers().get(0).getTopReservationPrice();
+        int c2topReservation = (int) Model.bestCustomers().get(1).getTopReservationPrice();
+
+        System.out.println("first :" + c1NumReservations);
+        System.out.println("second :" + c2NumReservations);
+
+        //---------------draw the graphic----------------------  
+        //bars of NUMBER OF RESERVATIONS
+        int firstTopLimitNumRes = 775 - (c1NumReservations * 10);
+        int secondTopLimitNumRes = 775 - (c2NumReservations * 10);
+
+        System.out.println(firstTopLimitNumRes);
+        System.out.println(secondTopLimitNumRes);
+
+        if (firstTopLimitNumRes < 500) {    //first customer
+            g0.setColor(Color.BLACK);    
+            g0.fillRect(180, 775 - 250, 20, 250);
+
+        } else {
+            g0.setColor(Color.LIGHT_GRAY);
+            //g0.drawRect(180, 725 - (c1NumReservations * 10), 20, c1NumReservations * 10);
+            g0.fillRect(180, 775 - (c1NumReservations * 10), 20, c1NumReservations * 10);
+            g0.setColor(Color.BLACK);
+            g0.drawLine(100, 775, 180, firstTopLimitNumRes);
+            g0.drawLine(180, firstTopLimitNumRes, 200, firstTopLimitNumRes);
+        }
+
+        if (secondTopLimitNumRes < 500) {   //second customer
+            g0.setColor(Color.PINK);
+            g0.fillRect(210, 775 - 250, 20, 250);
+        } else {
+            g0.setColor(Color.PINK);
+            g0.fillRect(210, 775 - (c2NumReservations * 10), 20, c2NumReservations * 10);
+            g0.setColor(Color.RED);
+            g0.drawLine(100, 775, 210, 775 - (c2NumReservations * 10));
+            g0.drawLine(210, 775 - (c2NumReservations * 10), 230, 775 - (c2NumReservations * 10));
+        }
+
+        //bars of TOTAL PAID
+        g0.setColor(Color.LIGHT_GRAY);
+        int test0 = (300 * c2totalPaid) / c1totalPaid;
+        //g0.fillRect(335, (775 - c1totalPaid) * 550, 20, c1totalPaid);  //(x, y, anchura, valor deseado del usuario)
+        g0.setColor(Color.LIGHT_GRAY);
+        g0.fillRect(335, 775 - 300, 20, 300);  //(x, y, anchura, valor deseado del usuario)
+        g0.setColor(Color.BLACK);
+        g0.drawLine(200, 775 - (c1NumReservations * 10), 335, 775 - 300);
+        g0.drawLine(335, 775 - 300, 355, 775 - 300);
+        
+        g0.setColor(Color.PINK);
+        g0.fillRect(365, 775 - test0, 20, test0);
+        g0.setColor(Color.RED);
+        g0.drawLine(230, 775 - (c2NumReservations * 10), 365, 775 - test0);
+        g0.drawLine(365, 775 - test0, 385, 775 - test0);
+        //g0.fillRect(365, 775 - c2totalPaid, 20, c2totalPaid);
+        
+        
+        //bars of BOOKING TIME
+        int firstTopLimitBookingTime = 775 - (c1BookingTime * 20);
+        int secondTopLimitBookingTime = 775 - (c2BookingTime * 20);
+        
+        System.out.println(firstTopLimitBookingTime);
+        System.out.println(secondTopLimitBookingTime);
+
+        if (firstTopLimitBookingTime < 500) {   //first customer
+            g0.setColor(Color.LIGHT_GRAY);
+            g0.fillRect(510, 775 - 250, 20, 250);
+            g0.drawLine(355, 775 - (c1NumReservations * 10), 335, 775 - 300);
+
+        } else {
+            g0.setColor(Color.LIGHT_GRAY);
+            g0.fillRect(510, 775 - (c1BookingTime * 20), 20, c1BookingTime * 20);
+            g0.setColor(Color.BLACK);
+            g0.drawLine(355, 775 - 300, 510, 775 - (c1BookingTime * 20));
+            g0.drawLine(510, 775 - (c1BookingTime * 20), 530, 775 - (c1BookingTime * 20));
+        }
+
+        if (secondTopLimitBookingTime < 500) {  //second customer
+            g0.setColor(Color.PINK);
+            g0.fillRect(540, 775 - 250, 20, 250);
+        } else {
+            g0.setColor(Color.PINK);
+            g0.fillRect(540, 775 - (c2BookingTime * 20), 20, c2BookingTime * 20);
+            g0.setColor(Color.RED);
+            g0.drawLine(385, 775 - test0, 540, 775 - (c2BookingTime * 20));
+            g0.drawLine(540, 775 - (c2BookingTime * 20), 560, 775 - (c2BookingTime * 20));
+        }
+
+        //bars of TOP RESERVATION
+        int firstTopLimitBestReservation = 775 - c1topReservation;
+        int secondTopLimitBestReservation = 775 - c2topReservation;
+
+        System.out.println(firstTopLimitBestReservation);
+        System.out.println(secondTopLimitBestReservation);
+
+        if (firstTopLimitBookingTime > 500) {   //first customer
+            g0.setColor(Color.LIGHT_GRAY);
+            g0.fillRect(680, 775 - c1topReservation, 20, c1topReservation);
+            g0.setColor(Color.BLACK);
+            g0.drawLine(530, 775 - (c1BookingTime * 20), 680, 775 - c1topReservation);
+            g0.drawLine(680, 775 - c1topReservation, 700, 775 - c1topReservation);
+            g0.drawLine(700, 775 - c1topReservation, 775, 775);
+
+        } else {
+            g0.setColor(Color.LIGHT_GRAY);
+            g0.fillRect(680, 775 - 250, 20, 250);
+        }
+
+        if (secondTopLimitBestReservation > 500) {
+            g0.setColor(Color.PINK);    //second customer
+            g0.fillRect(710, 775 - c2topReservation, 20, c2topReservation);
+            g0.setColor(Color.RED);
+            g0.drawLine(560, 775 - (c2BookingTime * 20), 710, 775 - c2topReservation);
+            g0.drawLine(710, 775 - c2topReservation, 730, 775 - c2topReservation);
+            g0.drawLine(730, 775 - c2topReservation, 775, 775);
+
+        } else {
+            g0.setColor(Color.PINK);    //second customer
+            g0.fillRect(710, 775 - 250, 20, 250);
+            g0.setColor(Color.RED);
+            g0.drawLine(120, 775 - (c2BookingTime * 20), 710, 775 - 250);
+            g0.drawLine(540, 775 - (c2BookingTime * 20), 560, 775 - (c2BookingTime * 20));
+        }
+        
     }
     
     
