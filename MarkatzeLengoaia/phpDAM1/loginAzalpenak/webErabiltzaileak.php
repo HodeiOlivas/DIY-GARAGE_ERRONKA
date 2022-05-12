@@ -117,6 +117,8 @@
     }
 
     .table2 {
+      margin-left: auto;
+      margin-right: auto;
       margin-left: 0px;
       border-collapse: collapse;
       border-spacing: 0;
@@ -151,8 +153,9 @@
     .header2 {
       position: fixed;
       top: 0;
+      /* top: 85%; */
       z-index: 1;
-      width: 100%;
+      width: 97%;
       background-color: #f1f1f1;
     }
 
@@ -197,16 +200,17 @@
 
 
 <body>
-
+  <?php
+  session_start();
+  echo "Welcome, " . $_SESSION['usuario'];
+  ?>
   <div class="header2">
-    <h2>HALAB GARAGE! </h2>
-    <?php
-    session_start();
-    echo "Welcome, " . $_SESSION['usuario'];
-    ?>
+    <h2><br>You're in HALAB GARAGE! </h2>
+    <?php echo "Welcome, " . $_SESSION['usuario']; ?>
     <div class="progress-container">
       <div class="progress-bar" id="myBar"></div>
     </div>
+    <br>
   </div>
 
   <script>
@@ -228,15 +232,12 @@
   printf($_SESSION['usuario']);
   echo "Welcome, " . $_SESSION['usuario'];
   ?>
-  <h1 id="start Customers"> Welcome to Customer's website. </h1>
-
-  <!-- <h1 style="margin-left: 80px;"> Welcome to Customer's website. </h1> -->
-
+  <br><br><br><br><br><br>
+  <!-- <h1 id="start Customers"> Welcome to Customer's website. </h1>
   <div class="header">
     <h2>CUSTOMER</h2>
     <p>Scroll down to see the sticky effect.</p>
-
-  </div>
+  </div> -->
 
   <!-- inicio3.jpg -->
   <div class="parallax" style="background-image: url('img/inicio3.jpg'); width:100%; height: 50%; text-align:center">
@@ -250,7 +251,7 @@
   </div>
 
   <div style="height:auto;background-color:white;font-size:16px;">
-    Scroll Up and Down this page to see the parallax scrolling effect.
+    Scrolwwwwl Up and Down this page to see the parallax scrolling effect.
     This div is just here to enable scrolling.
     Tip: Try to remove the background-attachment property to remove the scrolling effect.
     <div class="row">
@@ -279,25 +280,27 @@
 
 
 
-    <br><br>
-    <ul style="background-color:brown;">
-      <li><a class="active" href="#start Customers">Home</a></li>
+    <br><br><br><br>
+    <ul style="background-color:brown; top:15%">
+      <li><a class="active" href="#start Customers">Haome</a></li>
       <li><a href="#products info">Products</a></li>
-      <li><a href="#cabins info">Cabins</a></li>
+      <li><a href="#cabinStartParallax">Cabins</a></li>
       <li><a href="#reservations interaction">Reservations</a></li>
       <li><a href="#purchases interaction">Purchases</a></li>
       <li><a href="#profile">Profile</a></li>
       <li><a href="#contact">Contact</a></li>
-      
+      <li><a href="#acabar">Abouaat us</a></li>
+
+
 
       <li style="float:right"><a class="active" href="#view profile">Profile</a></li>
       <li style="float:right"><a href="sessioak.php">Log out</a></li>
-      <li style="float:right"><a href="#">Your Cart</a></li>
+      <li style="float:right"><a href="shoppingCart.php">Your Cart</a></li>
 
-      <li><a href="#acabar">Abouaat us</a></li>
+
     </ul>
 
-    
+
 
     <br><br><br><br>
 
@@ -355,7 +358,6 @@
 
         <hr />
       </div>
-      <!-- <TABLE class="table2" style="border: 1; " cellpadding="30" cellspacing="pixels"> -->
       <div class="d-flex flex-wrap" style="table-layout:auto; align-items:center; text-align:justify; margin:100px">
 
         <?php
@@ -365,30 +367,27 @@
         ?>
           <div class="w-25 mx-53" role="rowgroup">
             <td2>
+
               <div class="card" style="width: 400px;">
                 <img class="card-img-top" src="<?php echo $erregistroa['Picture']; ?>" alt="Card image" style="width:100%; height:160px">
-                <h1><?php echo $erregistroa['Name']; ?></h1>
-                <p class="priceProduct" style="text-align:center"><?php echo $erregistroa['Price']; ?></p>
-                <?php
-                printf(
-                  "
+                <div class="card-body">
+                  <h4><?php echo $erregistroa['Name']; ?></h4>
+                  <p class="priceProduct" style="text-align:center"><?php echo $erregistroa['Price']; ?></p>
+                  <?php
+                  printf(
+                    "
                     <a href='insertPurchaseAdvanced.php?prodIdentifier=%s'>
-                    <button class='buttonProd' onclick=location.href='insertPurchaseAdvanced.php'>Add ato aaCart</button>
+                    <button class='buttonProd' onclick=location.href='insertPurchaseAdvanced.php';>Add ato aaCart</button>
                     </a>",
-                  $erregistroa['id_Product']
-                );
-                ?>
-                <!-- <meta http-equiv="refresh" content="0;url=customers.php">  -->
+                    $erregistroa['id_Product']
+                  );
+                  ?>
+                </div>
                 <p>asdfw</p>
               </div>
-
               <br>
             </td2>
-
             <br>
-
-            <!-- </td> -->
-            <!-- </td> -->
           </div>
         <?php
         }
@@ -399,47 +398,16 @@
       </div>
     </div>
 
-    <br><br><br><br><br><br><br><br><br><br><br><br>
-    <hr />
+    <br><br><br><br><br><br>
+    <hr / id="cabinStartParallax">
     <br>
 
 
-    <div class="d-flex flex-wrap">
-
-      <?php
-
-      $emaitza4 = mysqli_query($link, "select * from product");
-      while ($erregistroa = mysqli_fetch_array($emaitza4)) {
-      ?>
-        <br>
-        <div class="w-25 mx-3" role="rowgroup">
-          <div class="cardProduc">
-            <img class="card-img-top" src="<?php echo $erregistroa['Picture']; ?>" alt="Card image" style="width:300px; height:150px">
-            <h1><?php echo $erregistroa['Name']; ?></h1>
-            <p class="priceProduct"><?php echo $erregistroa['Price']; ?></p>
-            <p><?php echo $erregistroa['Description']; ?></p>
-            <!-- <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p> -->
-            <?php
-            // <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img>
-            printf(
-              "
-                    <a href='insertPurchaseAdvanced.php?prodIdentifier=%s'>
-                    <button onclick=location.href='insertPurchaseAdvanced.php'>Add ato aaaaaCart</button>
-                    </a>",
-              $erregistroa['id_Product']
-            );
-            ?>
-          </div>
-        </div>
-
-    </div>
-  <?php
-      }
-      mysqli_free_result($emaitza4);
-      mysqli_close($link);
-  ?>
 
   </div>
+
+
+
 
 
 
@@ -482,6 +450,8 @@
 
   </div>
 
+
+
   <!-- <div class="parallax" style="background-image: url('img_Cabins/carPainting1.jpg'); width:100%; height: 75%; text-align:center"> -->
   <div class="parallax" style="background-image: url('img_Cabins/cabinFondo2.jpg'); width:100%; height: 75%; text-align:center">
     <div style="text-align: left;">
@@ -520,7 +490,7 @@
   $emaitza = mysqli_query($link, "select * from cabin");
 
   ?>
-  <table class="table table-dark" style="text-align:center; width:auto;">
+  <table class="table table-dark" style="text-align:center; width:auto; margin-left:auto; margin-right:auto">
     <thead style="vertical-align:left">
       <tr style="text-align:center">
         <th>Cabin ID</th>
@@ -559,7 +529,7 @@
 
   <div style="padding:20px">
     <h2>Overlay with Text</h2>
-    <table>
+    <table style="margin-left:auto">
       <tr>
         <td>
           <button onclick="on()">Turn on overlay effect</button>
@@ -677,6 +647,7 @@
             <th>Ending Hour</th>
             <th>Amount Hours</th>
             <th>Total Price</th>
+            <th>Manage</th>
           </tr>
 
           <?php

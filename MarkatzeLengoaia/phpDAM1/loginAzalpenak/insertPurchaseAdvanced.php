@@ -36,10 +36,11 @@
 				window.alert('The specified product has been added to the cart like a new .');
     			
     		</script>");
+
 	// window . location . href = 'webErabiltzaileak.php';
 
 	?>
-	<div class="">
+	<!-- <div class="">
 		<h1>ADD A NEW RESERVATION:</h1>
 	</div>
 	<table class="table table-dark" style="text-align:center; font-size:12px">
@@ -51,35 +52,35 @@
 				<th>&nbsp;Date&nbsp;</th>
 				<th>&nbsp;Amount&nbsp;</th>
 				<th>&nbsp;Final Cost&nbsp;</th>
-			</Tr>
-			<?php
-			while ($erregistroa = mysqli_fetch_array($kontsulta)) {
-				printf("<tr>
-                        <td>%d</td>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>%d</td>
-                        <td>%.2f</td>
-						<td>
-                          <a href='deleteAdvancedPurchaseCart.php?purchaseCartIdentifier=%d'>
-                            <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img>
-                          </a>
-                          
-                        </td>
-                    </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[0]);
-			}
-			mysqli_free_result($kontsulta);
-			?>
-		</thead>
-	</table>
-
-	
-	<!-- <a href="webErabiltzaileak.php">Go back</a> -->
-	<a href="webErabiltzaileak.php">Back to Customer's page</a>
-	
+			</Tr> -->
 	<?php
-	//header("Location: webErabiltzaileak.php");
+	// while ($erregistroa = mysqli_fetch_array($kontsulta)) {
+	// 	printf("<tr>
+	//             <td>%d</td>
+	//             <td>%s</td>
+	//             <td>%s</td>
+	//             <td>%s</td>
+	//             <td>%d</td>
+	//             <td>%.2f</td>
+	// 			<td>
+	//               <a href='deleteAdvancedPurchaseCart.php?purchaseCartIdentifier=%d'>
+	//                 <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img>
+	//               </a>
+
+	//             </td>
+	//         </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[0]);
+	// }
+	// mysqli_free_result($kontsulta);
+	?>
+	<!-- </thead>
+	</table> -->
+
+
+	<!-- <a href="webErabiltzaileak.php">Go back</a> -->
+	<!-- <a href="webErabiltzaileak.php">Back to Customer's page</a> -->
+
+	<?php
+	header("Location: webErabiltzaileak.php");
 	?>
 
 </body>

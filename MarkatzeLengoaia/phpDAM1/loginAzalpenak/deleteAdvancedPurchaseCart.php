@@ -26,6 +26,7 @@
     <!-- <a href="webErabiltzaileak.php">Go back</a> -->
 
     <?php
+    header("Location: shoppingCart.php");
     //header("Location: webErabiltzaileak.php");
     ?>
 

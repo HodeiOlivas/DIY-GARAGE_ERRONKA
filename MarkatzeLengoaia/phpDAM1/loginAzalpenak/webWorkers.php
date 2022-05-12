@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name=q"viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -59,7 +59,36 @@
             text-align: center;
         }
 
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            background-color: mediumslateblue;
+            color: black;
+        }
 
+        /* td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        } */
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        .basicButton {
+            width: 20px;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -85,6 +114,12 @@
 </div>
 
 <body>
+    <?php
+    session_start();
+    include("test_connect_db.php");
+    $currentUser = $_SESSION['usuario'];
+
+    ?>
     <br id="start workers">
     <h1> Welcome to Workers's website. </h1>
     <!-- <h1 style="margin-left: 80px;"> Welcome to Customer's website. </h1> -->
@@ -116,10 +151,46 @@
     <br><br>
     <hr id="cabins info" /><br><br>
     <!--dirigir al apartado de las cabinas -->
-    <h3>Cabins' Information</h3>
+
     <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
     <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
     <br><br>
+    <?php
+    //include("test_connect_db.php");
+    //$currentUser = $_SESSION['usuario'];
+    $link = connectDataBase();
+    $emaitza = mysqli_query($link, "select * from cabin");
+
+    ?>
+    <h2>CABIN'S INFORMATION</h2>
+    <p>The .table-dark class adds a black background to the table:</p>
+    <table class="table table-dark" style="text-align:center; width:80%; margin-left:auto; margin-right:auto;">
+        <thead style="vertical-align:left">
+            <tr style="text-align:center">
+                <th>Cabin ID</th>
+                <th>Size</th>
+                <th>Color</th>
+                <th>Price Hour</th>
+                <th>Description</th>
+            </tr>
+
+            <?php
+            while ($erregistroa = mysqli_fetch_array($emaitza)) {
+
+                printf("<tr>
+                        <td>%s</td>
+                        <td>%.2f</td>
+                        <td>%s</td>
+                        <td>%.2f</td>
+                        <td style='text-align:left;width:auto;'>%s</td>
+                      </tr>", $erregistroa[0], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5]);
+            }
+            mysqli_free_result($emaitza);
+            mysqli_close($link);
+            ?>
+
+        </thead>
+    </table>
 
 
     <hr id="products info" /><br><br>
@@ -128,19 +199,57 @@
     <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
     <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
     <br><br>
+    <?php
+    //include("test_connect_db.php");
+    $link = connectDataBase();
+    $emaitza = mysqli_query($link, "select * from product");
+    ?>
 
-    <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
-      <h1>Anything else?</h1>
-      <p style="margin-left: 25px">Try to add, upadte or delete <strong>reservations</strong>! </p>
 
-      <div class="hero-image" style="text-align: right;">
-        <div class="hero-text">
-          <button onclick=location.href="insertNewProductForm.php">New</button>
-          <button onclick=location.href="index.php">Update</button>
-          <button onclick=location.href="deleteReservationForm.php">Delete</button>
-          <!-- <button onclick=location.href="webClients.php">Login now</button>     -->
+    <h2>ALL THE PRODUCTS</h2>
+    <p>The .table-dark class adds a black background to the table:</p>
+    <table class="table table-dark" style="text-align:center; width:80%; margin-left:auto; margin-right:auto;">
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Picture</th>
+                <th>Manage</th>
+            </tr>
+        </thead>
+        <?php
+        while ($erregistroa = mysqli_fetch_array($emaitza)) {
+            printf("<tr>
+                        <td style='vertical-align:middle'>%s</td>
+                        <td style='vertical-align:middle'>%s</td>
+                        <td style='vertical-align:middle'>%.2f</td>
+                        <td style='text-align:left;vertical-align:middle;'>%s</td>
+                        <td style='vertical-align:middle'><img src=%s width='200' height='90'><br></td>
+                        <td style='vertical-align:middle'>
+                          <a href='deleteProduct.php?productDeleteIdentifier=%s'>
+                            <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img>
+                          </a>
+                          
+                        </td>
+                    </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa['id_Product']);
+        }
+        mysqli_free_result($emaitza);
+        //mysqli_close($link);
+        ?>
+
+        <!-- </thead> -->
+    </table>
+
+    <div class="jumbotron text-left" style="text-align:center; width: 80%; margin-bottom:0; color:black; margin-left:auto; margin-right:auto;">
+        <h1 style="text-align:center">Anything else?</h1>
+        <p style="text-align:center">Try to add a new <strong>product</strong> to the Catalog of the garage! </p>
+        <div class="hero-image" style="text-align: center;">
+            <div class="hero-text">
+                <button onclick=location.href="insertNewProductForm.php" style="width: 20%;">New</button>
+            </div>
         </div>
-      </div>
     </div>
 
 
@@ -150,6 +259,48 @@
     <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
     <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
     <br><br>
+    <?php
+    //include("test_connect_db.php");
+    $link = connectDataBase();
+    $emaitza = mysqli_query($link, "select * from reservation");
+    ?>
+
+
+    <h2>ALL THE RESERVATIONS</h2>
+    <p>The .table-dark class adds a black background to the table:</p>
+    <table class="table table-dark" style="text-align:center; width:80%; margin-left:auto; margin-right:auto;">
+        <thead>
+            <tr>
+                <th>Reservation ID</th>
+                <th>Username</th>
+                <th>Cabin</th>
+                <th>Date</th>
+                <th>Starting Hour</th>
+                <th>Ending Hour</th>
+                <th>Amount Hours</th>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+        <?php
+        while ($erregistroa = mysqli_fetch_array($emaitza)) {
+            printf("<tr>
+                        <td>%d</td>
+                        <td>%s</td>
+                        <td>%s</td>
+                        <td>%s</td>
+                        <td>%s</td>
+                        <td>%s</td>
+                        <td>%.2f</td>
+                        <td>%.2f</td>
+                    </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[6], $erregistroa[7]);
+        }
+        mysqli_free_result($emaitza);
+        //mysqli_close($link);
+        ?>
+
+        <!-- </thead> -->
+    </table>
+
 
 
     <hr id="purchases" /><br><br>
@@ -158,6 +309,48 @@
     <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
     <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
     <br><br>
+    <?php
+    //include("test_connect_db.php");
+    $link = connectDataBase();
+    $emaitza = mysqli_query($link, "select * from purchase");
+    ?>
+    <h2>ALL CURRENT PURCHASES</h2>
+    <p>The .table-dark class adds a black background to the table:</p>
+    <table class="table table-dark" style="text-align:center; width:80%; margin-left:auto; margin-right:auto;">
+        <thead>
+            <tr>
+                <th>Purchase ID</th>
+                <th>Username</th>
+                <th>Product Code</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Final Cost</th>
+            </tr>
+
+            <?php
+            while ($erregistroa = mysqli_fetch_array($emaitza)) {
+                printf(
+                    "<tr>
+                <td>%d</td>
+                      <td>%s</td>
+                      <td>%s</td>
+                      <td>%s</td>
+                      <td>%d</td>
+                      <td>%.2f</td>
+              </tr>",
+                    $erregistroa[0],
+                    $erregistroa[1],
+                    $erregistroa[2],
+                    $erregistroa[3],
+                    $erregistroa[4],
+                    $erregistroa[5]
+                );
+            }
+            mysqli_free_result($emaitza);
+            //mysqli_close($link);
+            ?>
+        </thead>
+    </table>
 
 
     <hr id="registered customers" /><br><br>
@@ -166,28 +359,28 @@
     <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
     <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
     <br><br>
-    <div>
-        <?php
-        include("test_connect_db.php");
-        $link = connectDataBase();
-        $emaitza = mysqli_query($link, "select * from customer");
-        ?>
-        <div class="container">
-            <table class=" table table-dark">
-                <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>Name</th>
-                        <th>Surname</th>
-                        <th>Password</th>
-                        <th>Birthday</th>
-                        <th>Mail</th>
-                        <th>Phone_Number</th>
-                    </tr>
+    <?php
+    //include("test_connect_db.php");
+    $link = connectDataBase();
+    $emaitza = mysqli_query($link, "select * from customer");
+    ?>
+    <h2>REGISTERED CUSTOMERS</h2>
+    <p>The .table-dark class adds a black background to the table:</p>
+    <table class="table table-dark" style="text-align:center; width:80%; margin-left:auto; margin-right:auto;">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Password</th>
+                <th>Birthday</th>
+                <th>Mail</th>
+                <th>Phone_Number</th>
+            </tr>
 
-                    <?php
-                    while ($erregistroa = mysqli_fetch_array($emaitza)) {
-                        printf("<tr>
+            <?php
+            while ($erregistroa = mysqli_fetch_array($emaitza)) {
+                printf("<tr>
                 <td>%s</td>
                 <td>%s</td>
                 <td>%s</td>
@@ -196,14 +389,12 @@
                 <td>%s</td>
                 <td>%d</td>
               </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[6]);
-                    }
-                    mysqli_free_result($emaitza);
-                    mysqli_close($link);
-                    ?>
-                </thead>
-            </table>
-        </div>
-    </div>
+            }
+            mysqli_free_result($emaitza);
+            //mysqli_close($link);
+            ?>
+        </thead>
+    </table>
 
 
     <hr id="workers" /><br><br>
@@ -212,11 +403,65 @@
     <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
     <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
     <br><br>
+    <?php
+    //include("test_connect_db.php");
+    $link = connectDataBase();
+    $emaitza = mysqli_query($link, "select * from worker");
+    ?>
+    <h2>COMPANY'S STAFF</h2>
+    <p>The .table-dark class adds a black background to the table:</p>
+    <table class="table table-dark" style="text-align:center; width:80%; margin-left:auto; margin-right:auto;">
+        <thead>
+            <tr>
+                <th>Worker ID</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Password</th>
+                <th>Occupation</th>
+                <th>Mail</th>
+                <th>Contact</th>
+                <th>Salary</th>
+                <th>Start Time</th>
+                <th>Finish Time</th>
+            </tr>
+
+            <?php
+            while ($erregistroa = mysqli_fetch_array($emaitza)) {
+                printf(
+                    "<tr>
+                        <td>%d</td>
+                        <td>%s</td>
+                        <td>%s</td>
+                        <td>%s</td>
+                        <td>%s</td>
+                        <td>%s</td>
+                        <td>%d</td>
+                        <td>%.2f</td>
+                        <td>%s</td>
+                        <td>%s</td>
+                    </tr>",
+                    $erregistroa['Worker_ID'],
+                    $erregistroa['Name'],
+                    $erregistroa['Surname'],
+                    $erregistroa['Password'],
+                    $erregistroa['Occupation'],
+                    $erregistroa['Mail'],
+                    $erregistroa['Phone_Number'],
+                    $erregistroa['Salary'],
+                    $erregistroa['Start_time'],
+                    $erregistroa['Finish_time']
+                );
+            }
+            mysqli_free_result($emaitza);
+            //mysqli_close($link);
+            ?>
+        </thead>
+    </table>
 
 
     <hr id="admin" /><br><br>
     <!--dirigir al apartado de las cabinas -->
-    <h3>Administrator</h3>
+    <h3>About Us</h3>
     <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
     <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
     <br><br>
@@ -226,80 +471,25 @@
 
 
 
-    <div>
-        <?php
-        //include("test_connect_db.php");
-        $link = connectDataBase();
-        $emaitza = mysqli_query($link, "select * from customer");
-        ?>
-        <div class="container">
-            <h2>Registered users</h2>
-            <p>The .table-dark class adds a black background to the table:</p>
-            <table class="table table-dark">
-                <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>Name</th>
-                        <th>Surname</th>
-                        <th>Password</th>
-                        <th>Birthday</th>
-                        <th>Mail</th>
-                        <th>Phone_Number</th>
-
-                    </tr>
-
-                    <?php
-                    while ($erregistroa = mysqli_fetch_array($emaitza)) {
-                        printf("<tr>
-                <td>%s</td>
-                <td>%s</td>
-                <td>%s</td>
-                <td>%s</td>
-                <td>%s</td>
-                <td>%s</td>
-                <td>%d</td>
-              </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[6]);
-                    }
-                    mysqli_free_result($emaitza);
-                    mysqli_close($link);
-                    ?>
-
-                </thead>
-            </table>
-        </div>
-
-        <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-
-    </div>
-    <br />
+    <br>
 
 
 
-    <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-    <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefixa.</p>
+
 
 
 
 
     <p>Image at the bottom (card-img-bottom):</p>
-    <div >
-        <br><br><br>
-        <br><br><br>
+    <div class="" style="text-align:center">
+        <button style="width: 20%;" onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
         <br>
-        <br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br>
-        </br>
-        <br><br><br>
-        <br><br><br>
-        <br>
-        <br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br>
+    </div>
+    <div>
+        <br><br><br><br>
         <p id="acabar">The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
     </div>
+
 
 
 
