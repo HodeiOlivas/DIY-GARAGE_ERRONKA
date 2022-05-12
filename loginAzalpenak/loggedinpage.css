@@ -1,0 +1,230 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.primary-bg {
+  background-color: #3b4754;
+}
+
+.primary-colour {
+  color: #3b4754;
+}
+
+.grey {
+  color: #aaaaaa;
+}
+
+.fs-11 {
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.fs-13 {
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav-link:hover {
+  background-color: rgba(196, 196, 196, 0.25);
+  border-radius: 5px;
+}
+
+.profile-hover:hover {
+  background-color: rgba(196, 196, 196, 0.25);
+  border-radius: 5px;
+}
+
+.exp {
+  width: 52px;
+  height: 52px;
+  background-color: #e8eaec;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 11px;
+  border-radius: 51%;
+  box-sizing: border-box;
+}
+
+/* .logoutButton {
+  color: #f04141;
+} */
+
+.cream-bg {
+  background-color: #e2e2e2;
+}
+
+#mainPageImage {
+  opacity: 0.4;
+}
+/* IMAGE ON LOGGED IN PAGE */
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.image-text-primary {
+  position: absolute;
+  top: 75px;
+  left: 100px;
+  font-weight: 600;
+}
+.image-text-secondary {
+  position: absolute;
+  top: 120px;
+  left: 100px;
+  font-weight: 600;
+}
+
+.image-middle-right {
+  position: absolute;
+  top: 120px;
+  right: 5px;
+}
+
+.image-nav {
+  position: absolute;
+  top: 200px;
+  left: 5px;
+}
+
+.image-profile {
+  position: absolute;
+  top: 185px;
+  right: -280px;
+}
+
+.CTA-button {
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+.LoginGreen {
+  color: #458781;
+}
+
+.cart {
+  overflow: hidden;
+  padding: 10px 3px;
+  background: yellow;
+}
+
+.circle {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+
+  position: absolute;
+  top: 240px;
+  right: 30.5%;
+  animation: spinLogo 1s linear 1;
+}
+
+@keyframes spinLogo {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+#mainPageImage {
+  opacity: 0.25;
+}
+
+.colour-secondary{
+  color: #CDCDCD;
+}
+
+.secondary-button{
+  background-color: #606E7D;
+  width: 254px;
+}
+.secondary-button:hover{
+  background-color: #545f6a;
+}
+
+.secondary-button-outline {
+  border: 2px solid #606E7D;
+  width: 254px;
+}
+.secondary-button-outline:hover{
+  background-color: #606E7D;
+}
+
+.table td {
+  border-top: 0px;
+}
+.table th{
+  border-top: 0px;
+}
+
+.table {
+  width: 65%;
+}
+
+.table-blue{
+  background-color: #5A748E;
+  color: white;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  display: none;
+}
+
+/* -------------------------------------------------------- */
+#test h1, h4, button {
+  text-align: center;
+  animation: fadein 3s;
+  -moz-animation: fadein 3s; /* Firefox */
+  -webkit-animation: fadein 3s; /* Safari and Chrome */
+  -o-animation: fadein 3s; /* Opera */
+}
+@keyframes fadein {
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-moz-keyframes fadein { /* Firefox */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-o-keyframes fadein { /* Opera */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity: 1;
+  }
+}
