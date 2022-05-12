@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="STYLESHEET" TYPE="TEXT/CSS" HREF="style_php.CSS">
-	<title>Your Cart</title>
+	<title>Manage Your Cart</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -39,6 +39,9 @@
 	// window . location . href = 'webErabiltzaileak.php';
 
 	?>
+	<div class="">
+		<h1>ADD A NEW RESERVATION:</h1>
+	</div>
 	<table class="table table-dark" style="text-align:center; font-size:12px">
 		<thead style="vertical-align:left">
 			<Tr style="text-align:center; font-size:12px">
@@ -58,18 +61,25 @@
                         <td>%s</td>
                         <td>%d</td>
                         <td>%.2f</td>
-                    </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5]);
+						<td>
+                          <a href='deleteAdvancedPurchaseCart.php?purchaseCartIdentifier=%d'>
+                            <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img>
+                          </a>
+                          
+                        </td>
+                    </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[0]);
 			}
 			mysqli_free_result($kontsulta);
 			?>
 		</thead>
 	</table>
 
-
+	
 	<!-- <a href="webErabiltzaileak.php">Go back</a> -->
 	<a href="webErabiltzaileak.php">Back to Customer's page</a>
+	
 	<?php
-	// header("Location: webErabiltzaileak.php");
+	//header("Location: webErabiltzaileak.php");
 	?>
 
 </body>

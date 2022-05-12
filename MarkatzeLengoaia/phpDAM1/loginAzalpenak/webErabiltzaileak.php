@@ -88,8 +88,8 @@
     .cardProduct {
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       max-width: 300px;
-      /* margin: auto; */
-      padding-left: 10px 25px;
+      margin: 0;
+      /* padding-left: 10px 25px; */
       text-align: center;
       font-family: arial;
     }
@@ -99,14 +99,15 @@
       font-size: 22px;
     }
 
-    .cardProduct button {
+
+    .buttonProd {
       border: none;
       outline: 0;
       padding: 12px;
       color: white;
       background-color: #000;
-      text-align: center;
       cursor: pointer;
+      text-align: center;
       width: 100%;
       font-size: 18px;
     }
@@ -129,8 +130,9 @@
     }
 
     .td2 {
+      border: 1px solid black;
       text-align: left;
-      padding: 0px;
+      padding: 5px;
     }
 
     .progress-container {
@@ -142,7 +144,7 @@
     .progress-bar {
       height: 8px;
       background: brown;
-      /* background: #04AA6D; */
+
       width: 0%;
     }
 
@@ -247,7 +249,7 @@
     </div>
   </div>
 
-  <div style="height:auto;background-color:white;font-size:16px">
+  <div style="height:auto;background-color:white;font-size:16px;">
     Scroll Up and Down this page to see the parallax scrolling effect.
     This div is just here to enable scrolling.
     Tip: Try to remove the background-attachment property to remove the scrolling effect.
@@ -286,12 +288,16 @@
       <li><a href="#purchases interaction">Purchases</a></li>
       <li><a href="#profile">Profile</a></li>
       <li><a href="#contact">Contact</a></li>
+      
 
       <li style="float:right"><a class="active" href="#view profile">Profile</a></li>
       <li style="float:right"><a href="sessioak.php">Log out</a></li>
+      <li style="float:right"><a href="#">Your Cart</a></li>
 
       <li><a href="#acabar">Abouaat us</a></li>
     </ul>
+
+    
 
     <br><br><br><br>
 
@@ -319,7 +325,7 @@
       <div class="container">
         <h2>ALL THE PRODUCTS</h2>
         <p>The .table-dark class adds a black background to the table:</p>
-        <table class="table table-dark">
+        <table class="table table-dark" style="text-align:center; width:auto;">
           <thead>
             <tr>
               <th>Product ID</th>
@@ -336,8 +342,8 @@
                         <td>%s</td>
                         <td>%s</td>
                         <td>%.2f</td>
-                        <td>%s</td>
-                        <td><img src=%s width='50' height='50'><br></td>
+                        <td style='text-align:left'>%s</td>
+                        <td><img src=%s width='200' height='120'><br></td>
                     </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4]);
             }
             mysqli_free_result($emaitza);
@@ -350,97 +356,98 @@
         <hr />
       </div>
       <!-- <TABLE class="table2" style="border: 1; " cellpadding="30" cellspacing="pixels"> -->
-      <TABLE class="table2" cellpadding="30" cellspacing="pixels">
-        <!-- <Tr style="text-align: center;">
-          <th>Product</th>
-          <th>Name</th>
-          <th>Picturgefee</th>
-        </Tr> -->
+      <div class="d-flex flex-wrap" style="table-layout:auto; align-items:center; text-align:justify; margin:100px">
+
         <?php
 
         $emaitza4 = mysqli_query($link, "select * from product");
         while ($erregistroa = mysqli_fetch_array($emaitza4)) {
         ?>
-          <div>
-            <td>
-              <div class="cardProduct" style="display:flex">
-                <img class="card-img-top" src="<?php echo $erregistroa['Picture']; ?>" alt="Card image" style="width:100%; height:150px">
+          <div class="w-25 mx-53" role="rowgroup">
+            <td2>
+              <div class="card" style="width: 400px;">
+                <img class="card-img-top" src="<?php echo $erregistroa['Picture']; ?>" alt="Card image" style="width:100%; height:160px">
                 <h1><?php echo $erregistroa['Name']; ?></h1>
-                <p class="priceProduct"><?php echo $erregistroa['Price']; ?></p>
-                <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
-                <p><button>Add to Cart</button></p>
+                <p class="priceProduct" style="text-align:center"><?php echo $erregistroa['Price']; ?></p>
+                <?php
+                printf(
+                  "
+                    <a href='insertPurchaseAdvanced.php?prodIdentifier=%s'>
+                    <button class='buttonProd' onclick=location.href='insertPurchaseAdvanced.php'>Add ato aaCart</button>
+                    </a>",
+                  $erregistroa['id_Product']
+                );
+                ?>
+                <!-- <meta http-equiv="refresh" content="0;url=customers.php">  -->
+                <p>asdfw</p>
               </div>
-            </td>
+
+              <br>
+            </td2>
+
+            <br>
+
+            <!-- </td> -->
+            <!-- </td> -->
           </div>
         <?php
         }
         mysqli_free_result($emaitza4);
         //mysqli_close($link);
         ?>
-      </TABLE>
+
+      </div>
     </div>
 
-    <TABLE class="" cellpadding="30" cellspacing="pixels" style="
-      display: flex;
-      flex-flow: row wrap;">
-      <!-- <Tr style="text-align: center;">
-          <th>Product</th>
-          <th>Name</th>
-          <th>Picturgefee</th>
-        </Tr> -->
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <hr />
+    <br>
+
+
+    <div class="d-flex flex-wrap">
+
       <?php
 
       $emaitza4 = mysqli_query($link, "select * from product");
       while ($erregistroa = mysqli_fetch_array($emaitza4)) {
       ?>
         <br>
-        <div>
-          <td2 class="flex-table row" role="rowgroup">
-            <div class="cardProduct">
-              <img class="card-img-top" src="<?php echo $erregistroa['Picture']; ?>" alt="Card image" style="width:100%; height:150px">
-              <h1><?php echo $erregistroa['Name']; ?></h1>
-              <p class="priceProduct"><?php echo $erregistroa['Price']; ?></p>
-              <p><?php echo $erregistroa['Description']; ?></p>
-              <!-- <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p> -->
-              <?php
-              // <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img>
-              printf(
-                "
+        <div class="w-25 mx-3" role="rowgroup">
+          <div class="cardProduc">
+            <img class="card-img-top" src="<?php echo $erregistroa['Picture']; ?>" alt="Card image" style="width:300px; height:150px">
+            <h1><?php echo $erregistroa['Name']; ?></h1>
+            <p class="priceProduct"><?php echo $erregistroa['Price']; ?></p>
+            <p><?php echo $erregistroa['Description']; ?></p>
+            <!-- <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p> -->
+            <?php
+            // <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img>
+            printf(
+              "
                     <a href='insertPurchaseAdvanced.php?prodIdentifier=%s'>
-                    <button onclick=location.href='insertPurchaseAdvanced.php'>Add ato aaCart</button>
+                    <button onclick=location.href='insertPurchaseAdvanced.php'>Add ato aaaaaCart</button>
                     </a>",
-                $erregistroa['id_Product']
-              );
-              ?>
-            </div>
-            </td>
+              $erregistroa['id_Product']
+            );
+            ?>
+          </div>
         </div>
-      <?php
+
+    </div>
+  <?php
       }
       mysqli_free_result($emaitza4);
       mysqli_close($link);
-      ?>
-    </TABLE>
+  ?>
 
-    <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
-      <h1>Anything else?</h1>
-      <p style="margin-left: 25px">Try to add, upadte or delete <strong>reservations</strong>! </p>
-
-      <div class="hero-image" style="text-align: right;">
-        <div class="hero-text">
-          <button onclick=location.href="insertNewReservationForm.php">New</button>
-          <button onclick=location.href="index.php">Update</button>
-          <button onclick=location.href="deleteReservationForm.php">Delete</button>
-          <!-- <button onclick=location.href="webClients.php">Login now</button>     -->
-        </div>
-      </div>
-    </div>
   </div>
+
+
+
 
   <hr />
   <br><br>
 
-
+  <!-- ################################################ -->
 
   <!-- <div style="height:1000px;background-color:red;font-size:36px">
     <ul style="font-size: 16px;">
@@ -526,6 +533,7 @@
 
       <?php
       while ($erregistroa = mysqli_fetch_array($emaitza)) {
+
         printf("<tr>
                         <td>%s</td>
                         <td>%.2f</td>

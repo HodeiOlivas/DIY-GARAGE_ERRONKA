@@ -53,7 +53,9 @@ public class Model {
         //String url = "jdbc:sqlite:" + DB;
         //String url = "jdbc:mariadb://localhost:3307/dbpruebagarage";
         //String url = "jdbc:mariadb://localhost:3307/dbPrueba";
-        String url = "jdbc:mysql://localhost:3306/db_pruebagarage1";
+        
+        //String url = "jdbc:mysql://localhost:3306/db_pruebagarage1";
+        String url = "jdbc:mysql://192.168.72.183:3306/db_diy_garage";
         //String url = "jdbc:sqlite:" + DB;
 
         Connection conn = null;
@@ -63,7 +65,8 @@ public class Model {
         "");
          */
         try {
-            conn = DriverManager.getConnection(url, "root", "");
+            //conn = DriverManager.getConnection(url, "root", "");
+            conn = DriverManager.getConnection(url, "Halab", "Halabtaldeagara");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -72,13 +75,15 @@ public class Model {
 
     private static Connection connect2() {
         // SQLite connection string
+        
         String url = "jdbc:mysql://localhost:3306/db_pruebagarage1";
-        //String url = "jdbc:sqlite:" + DB;
+        //String url = "jdbc:mysql://192.168.72.183:3306/db_diy_garage";
 
         Connection conn = null;
         try {
-            //conn = DriverManager.getConnection(url);
+            
             conn = DriverManager.getConnection(url, "root", "");
+            //conn = DriverManager.getConnection(url, "Halab", "Halabtaldeagara");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
