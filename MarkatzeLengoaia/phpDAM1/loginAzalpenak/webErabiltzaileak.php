@@ -155,7 +155,7 @@
       top: 0;
       /* top: 85%; */
       z-index: 1;
-      width: 97%;
+      width: 98%;
       background-color: #f1f1f1;
     }
 
@@ -240,7 +240,7 @@
   </div> -->
 
   <!-- inicio3.jpg -->
-  <div class="parallax" style="background-image: url('img/inicio3.jpg'); width:100%; height: 50%; text-align:center">
+  <div class="parallax" style="background-image: url('img/inicio3.jpg'); width:105%; height: 50%; text-align:center">
     <div style="text-align: left;">
       <h1 style="font-size:50px; color:greenyellow">DIY GARAGE</h1>
 
