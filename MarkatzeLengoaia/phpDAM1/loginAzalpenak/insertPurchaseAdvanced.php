@@ -80,7 +80,8 @@
 	<!-- <a href="webErabiltzaileak.php">Back to Customer's page</a> -->
 
 	<?php
-	header("Location: webErabiltzaileak.php");
+	header("Location: sil1.php");
+	//header("Location: webErabiltzaileak.php");
 	?>
 
 </body>

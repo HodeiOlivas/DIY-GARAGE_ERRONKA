@@ -46,13 +46,9 @@
         }
 
         .parallax {
-            /* The image used */
             /* background-image: url("img/encabezadoTaller3.jpg"); */
             background-image: url("img/fondoF1_1.jpg");
-
-            /* Full height */
             height: 100%;
-
             /* Create the parallax scrolling effect */
             background-attachment: fixed;
             background-position: center;
@@ -112,6 +108,17 @@
             text-align: center;
             font-family: arial;
             background-color: green;
+        }
+
+        #rcorners2 {
+            border-radius: 25px;
+            border: 2px solid #73AD21;
+            padding: 20px;
+            width: 100%;
+            height: auto;
+            background: rgb(223, 228, 237);
+
+            /* height: 150px;   */
         }
     </style>
 </head>
@@ -176,7 +183,7 @@
                             <div class="navbar-nav">
                                 <a class="nav-link text-white text-uppercase fs-13 px-3" href="#products info">Products</a>
                                 <a class="nav-link text-white text-uppercase fs-13 px-3" href="#cabins info">Cabins</a>
-                                <a class="nav-link text-white text-uppercase fs-13 px-3" href="#reservations interaction">Reservations</a>
+                                <a class="nav-link text-white text-uppercase fs-13 px-3" href="#reservations info">Reservations</a>
                                 <a class="nav-link text-white text-uppercase fs-13 px-3" href="#purchases interaction">Purchases</a>
                                 <a class="nav-link text-white text-uppercase fs-13 px-3" href="#contact">Contact</a>
                             </div>
@@ -245,8 +252,11 @@
 
     <div class="container mt-5 pt-5 p-5">
         <hr / style="width:100%">
-        <h4 class="font-weight-bold text-left mb-4">Your Reservations</h4>
+        <h4 class="font-weight-bold text-left mb-4">Your Reservaations</h4>
         <table class="table table-blue rounded-lg" style="width:100%;text-align:center;margin-left:auto; margin-right:50%;">
+            <colgroup>
+                <col span="2" style="background-color:red">
+            </colgroup>
             <thead style="vertical-align:left" class="">
                 <tr style="text-align:center">
                     <th style='vertical-align:middle'>Reservation ID</th>
@@ -349,10 +359,13 @@
                 <li><a href="#purchases interaction">Purchases</a></li>
                 <li><a href="#profile">Profile</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#acabar">About us</a></li>
+
                 <li style="float:right"><a class="active" href="#view profile">Profile</a></li>
                 <li style="float:right"><a href="#">Log out</a></li>
+                <li style="float:right"><a href="shoppingCart.php">Your Cart</a></li>
 
-                <li><a href="#acabar">About us</a></li>
+
             </ul>
             <br>
 
@@ -403,7 +416,7 @@
                                 printf(
                                     "
                                             <a href='insertPurchaseAdvanced.php?prodIdentifier=%s'>
-                                            <button class='buttonProd' onclick=location.href='insertPurchaseAdvanced.php';>Add ato aaCart</button>
+                                            <button class='buttonProd' onclick=location.href='sil1.php';>Add ato aaCart</button>
                                             </a>",
                                     $erregistroa['id_Product']
                                 );
@@ -424,7 +437,7 @@
 
     <hr id="cabins info" /><br><br> <!-- beginning of CABINS INFORMATION -->
     <div style="height:800px;background-color:white;font-size:16px">
-        <div class="parallax" style="background-image: url('img/inicio3.jpg'); width:100%; height: 60%; text-align:center">
+        <div class="parallax" style="background-image: url('img_Cabins/cabinFondo2.jpg'); width:100%; height: 70%; text-align:center">
             <div style="text-align: left;">
                 <h1 style="font-size:50px; color:greenyellow">DIY2 GARAGE</h1>
                 <p style="margin-left:25px; color:white">Welcom2 to (Y)our garage!</p><br>
@@ -505,11 +518,11 @@
                         <div id="accordion">
                             <div class="card" style=" width:260px;margin:auto; margin-left:150px;">
                                 <div class="card-header" style="height:50px;">
-                                    <a class="card-link" data-toggle="collapse" href="#<?php echo $erregistroa['Cabin_ID'];?>">
+                                    <a class="card-link" data-toggle="collapse" href="#<?php echo $erregistroa['Cabin_ID']; ?>">
                                         <p style="text-align:center;"><?php echo $erregistroa['Cabin_ID']; ?></p>
                                     </a>
                                 </div>
-                                <div id="<?php echo $erregistroa['Cabin_ID'];?>" class="collapse" data-parent="#accordion">
+                                <div id="<?php echo $erregistroa['Cabin_ID']; ?>" class="collapse" data-parent="#accordion">
                                     <div class="card-body">
                                         Size: <?php echo $erregistroa['Size']; ?> m.<br>
                                         Color: <?php echo $erregistroa['Color']; ?><br>
@@ -586,118 +599,35 @@
             <div class="clearfix"></div>
 
         </div>
-
-        <br>
-        <hr /><br><br>
-        <!--dirigir al apartado de las cabinas -->
-        <h3 style="text-align: left;">RESERVATIONS</h3>
-        <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-        <p>
-            <strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.<a href="#reservations interaction" class="btn btn-info" role="button" style="float:right">Manage reservations</a>
-        </p>
-        <a href="#reservations interaction" class="btn btn-info" role="button">Manage reservations</a>
-        <br><br>
+    </div>
 
 
-        <br>
-        <hr />
-        <br>
-
-
-
-        <!--dirigir al apartado de las cabinas -->
-        <h3 style="text-align: right;">Purchases</h3>
-        <p style="text-align: right;">The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-        <p style="text-align: right;"><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.
-            <a href="#purchases interaction" class="btn btn-info" role="button" style="float:left">Manage purchases</a>
-        </p>
-        <a href="#purchases interaction" class="btn btn-info" role="button" style="float:right">Manage purchases</a>
-        <br><br>
-
-
-        <br>
-        <hr />
-        <br>
-
-        <h3 id="erabiltzaile guztiak">Sticky Navigation Bar Example</h3>
-
-        <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-        <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
-
-        <div>
-            <?php
-            // include("test_connect_db.php");
-            $link = connectDataBase();
-            $emaitza = mysqli_query($link, "select * from customer");
-            ?>
-
-            <div class="container">
-                <h2>Registered users</h2>
-                <p>The .table-dark class adds a black background to the table:</p>
-                <table class="table table-dark">
-                    <thead>
-                        <tr>
-                            <th>Username</th>
-                            <th>Name</th>
-                            <th>Surname</th>
-                            <th>Password</th>
-                            <th>Birthday</th>
-                            <th>Mail</th>
-                            <th>Phone_Number</th>
-
-                        </tr>
-
-                        <?php
-                        while ($erregistroa = mysqli_fetch_array($emaitza)) {
-                            printf("<tr>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>%d</td>
-                    </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[6]);
-                        }
-                        mysqli_free_result($emaitza);
-                        mysqli_close($link);
-                        ?>
-
-                    </thead>
-                </table>
+    <hr id="reservations info" /><br><br> <!-- beginning of CABINS INFORMATION -->
+    <div style="height:800px;background-color:#3b4754;font-size:16px">
+        <div class="parallax" style="background-image: url('img/rentFondo2.jpg'); width:100%; height: 60%; text-align:center">
+            <div style="text-align: left;">
+                <h1 style="font-size:50px; color:greenyellow; font:bold"><strong>DIY2 GARAGE</strong></h1>
+                <p style="margin-left:25px; color:white">Reservation's Section!</p><br>
             </div>
-
-
         </div>
 
-        <br />
-
-        <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-        <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
-        <p>Image at the bottom (card-img-bottom):</p>
-
-
-
-        <hr />
-        <hr />
-
-        <hr id="reservations interaction" /><br><br>
-        <!--dirigir al apartado de las cabinas -->
-        <h3 style="text-align: center;">RESERVATION HISTORY</h3>
-        <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-        <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
-        <br><br>
-
-        <!-- motorImageProducts.jpg -->
-        <div class="parallax" style="background-image: url('img/fondoF1_2.jpg'); width:100%; height: 100%; text-align:center"></div>
-
-        <div style="height:1000px;background-color:red;font-size:36px">
-            Scrollqqqq Up and Down this page to see the parallax scrolling effect.
-            This div is just here to enable scrolling.
-            Tip: Try to remove the background-attachment property to remove the scrolling effect.
+        <br>
+        <div id="rcorners2">
+            <h4 style="text-align:left; margin-left:50px; margin-top:10px;">Procedure for booking a cabin:</h4>
+            <p style="text-align:left; margin-left:50px;">In order to make a reservation, you only need to have an <b>user account</b>. Once your account is
+                created, you'll be able to make cabin reservations through a simple form. In this, you will be asked for basic data such as these:</p>
+            <div style="margin-top:0px;margin-left:110px; font-size:14px;">
+                <ul2>
+                    <li>Username</li><br>
+                    <li>Cabin</li><br>
+                    <li>Date</li><br>
+                    <li>Start time</li><br>
+                    <li>End time</li><br>
+                </ul2>
+            </div>
+            <p style="text-align:left; margin-left:50px;"><br>Note: despite being a Do It Yourself garage, when you make a reservation, you have the
+                availability of any of our workers if necessary.</p>
         </div>
-
-        <div class="parallax"></div>
 
         <div>
             <?php
@@ -707,28 +637,34 @@
             $emaitza = mysqli_query($link, "select * from reservation where cust_Username='$currentUser'");
 
             ?>
+            <!--style="float:left -->
 
-            <div class="container">
-                <!--style="float:left -->
-                <h2>Your Reservations</h2>
-                <p>The .table-dark class adds a black background to the table:</p>
-                <table class="table table-dark" style="text-align:center">
-                    <thead style="vertical-align:left">
-                        <tr style="text-align:center">
-                            <th>Reservation ID</th>
-                            <th>Username</th>
-                            <th>Cabin</th>
-                            <th>Date</th>
-                            <th>Starting Hour</th>
-                            <th>Ending Hour</th>
-                            <th>Amount Hours</th>
-                            <th>Total Price</th>
-                        </tr>
+            <br>
+            <h2>Your Reservations</h2>
+            <h4 class="font-weight-bold text-left mb-4" style="color:white;">Cabin's information:</h4>
+            <p>The .table-dark class adds a black background to the table:</p>
 
-                        <?php
-                        while ($erregistroa = mysqli_fetch_array($emaitza)) {
-                            printf("<tr >
-                        <td>%d</td>
+            <!-- <table class="table table-blue rounded-lg tableMove" style="width:80%;text-align:center;margin-left:auto; margin-right:50%;"> -->
+            <table class="table table-blue rounded-lg tableMove" style="text-align:center;margin-left:auto; margin-right:50%;">
+                <colgroup>
+                    <col span="1" style="background-color:greenyellow">
+                </colgroup>
+                <thead style="vertical-align:left" class="">
+                    <tr style="text-align:center">
+                        <th style="color:black;">Reservation ID</th>
+                        <th>Username</th>
+                        <th>Cabin</th>
+                        <th>Date</th>
+                        <th>Starting Hour</th>
+                        <th>Ending Hour</th>
+                        <th>Amount Hours</th>
+                        <th>Total Price</th>
+                        <th>Manage</th>
+                    </tr>
+                    <?php
+                    while ($erregistroa = mysqli_fetch_array($emaitza)) {
+                        printf("<tr >
+                        <td style='color:black;'>%d</td>
                         <td>%s</td>
                         <td>%s</td>
                         <td>%s</td>
@@ -736,46 +672,75 @@
                         <td>%s</td>
                         <td>%d</td>
                         <td>%.2f</td>
-                      </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[6], $erregistroa[7]);
-                        }
-                        mysqli_free_result($emaitza);
-                        mysqli_close($link);
-                        ?>
+                        <td>
+                          <a href='deleteAdvancedReservation.php?reservationIdentifier=%s'>
+                            <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img>
+                          </a>
+                          
+                        </td>
+                      </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[6], $erregistroa[7], $erregistroa[0]);
+                    }
+                    mysqli_free_result($emaitza);
+                    mysqli_close($link);
+                    ?>
+                </thead>
+            </table>
 
-                    </thead>
-                </table>
+            <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
+                <h1>Anything else?</h1>
+                <p style="margin-left: 25px">Try to add, upadte or delete <strong>reservations</strong>! </p>
 
-                <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
-                    <h1>Anything else?</h1>
-                    <p style="margin-left: 25px">Try to add, upadte or delete <strong>reservations</strong>! </p>
-
-                    <div class="hero-image" style="text-align: right;">
-                        <div class="hero-text">
-                            <button onclick=location.href="insertNewReservationForm.php">New</button>
-                            <button onclick=location.href="index.php">Update</button>
-                            <button onclick=location.href="deleteReservationForm.php">Delete</button>
-                            <!-- <button onclick=location.href="webClients.php">Login now</button>     -->
-                        </div>
+                <div class="hero-image" style="text-align: right;">
+                    <div class="hero-text">
+                        <button onclick=location.href="insertNewReservationForm.php">New</button>
+                        <button onclick=location.href="index.php">Update</button>
+                        <button onclick=location.href="deleteReservationForm.php">Delete</button>
+                        <!-- <button onclick=location.href="webClients.php">Login now</button>     -->
                     </div>
                 </div>
-
-                <br>
-
-
-
-
-
             </div>
+            <!-- <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
+                <h1>Anything else?</h1>
+                <p style="margin-left: 25px">Try to add, upadte or delete <strong>reservations</strong>! </p>
+
+                <div class="hero-image" style="text-align: right;">
+                    <div class="hero-text">
+                        <a href='insertNewReservationForm.php'>
+                            <img src='../loginAzalpenak/img/add1.png' width='40px' height='30px' align='center'></img>
+                        </a>
+                        <a href='insertNewReservationForm.php'>
+                            <img src='../loginAzalpenak/img/addList.png' width='40px' height='30px' align='center'></img>
+                        </a>
+                        <button onclick=location.href="insertNewReservationForm.php">New</button>
+                        <button onclick=location.href="insertNewReservationForm.php">Update</button>
+                    </div>
+                </div>
+            </div> -->
 
 
+            <br>
         </div>
-
-        <!-- $usuario=$_POST["usuario"]; -->
-
 
 
 
         <hr id="purchases interaction" /><br><br>
+        <div class="parallax" style="background-image: url('img/purchaseFondo1.jpeg'); width:100%; height: 60%; text-align:center">
+            <div style="text-align: left;">
+                <h1 style="font-size:50px; color:greenyellow; font:bold"><strong>DIY2 GARAGE</strong></h1>
+                <p style="margin-left:25px; color:white">Reservation's Section!</p><br>
+            </div>
+        </div>
+
+        <br>
+        <div id="rcorners2">
+            <h4 style="text-align:left; margin-left:50px; margin-top:10px;">Procedure for making a purchase:</h4>
+            <p style="text-align:left; margin-left:50px;">In order to make a purchase, there is an only rule. This rule consists on not
+                buying more than one product on each purchase.
+        </div>
+        <br>
+
+
+
         <!--dirigir al apartado de las cabinas -->
         <h3 style="text-align: center;">PURCHASE HISTORY</h3>
         <p>Lets see in real time all <strong>Purchases</strong> you have done in our garage.</p>
@@ -794,9 +759,13 @@
             <div class="container">
                 <h2>Your Purchases</h2>
                 <p>The .table-dark class adds a black background to the table:</p>
-                <table class=" table table-dark" style="text-align:center">
-                    <thead style="vertical-align:left">
+                <table class="table table-blue rounded-lg tableMove" style="text-align:center;margin-left:auto; margin-right:50%;">
+                    <colgroup>
+                        <col span="1" style="background-color:greenyellow">
+                    </colgroup>
+                    <thead style="vertical-align:left" class="">
                         <tr style="text-align:center">
+                            <th style="color:black;">Reservation ID</th>
                             <th>Purchase ID</th>
                             <th>Username</th>
                             <th>Product Code</th>
@@ -833,8 +802,8 @@
                     </thead>
                 </table>
 
-                < <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
-                    <h1>Anything else?</h1>
+                <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
+                    <h1>Anything ealse?</h1>
                     <p style="margin-left: 25px">Try to add, upadte or delete pruchases! </p>
 
                     <div class="hero-image" style="text-align: right;">
@@ -851,125 +820,125 @@
                             <!-- <button onclick=location.href="webClients.php">Login now</button>     -->
                         </div>
                     </div>
+                </div>
+
+                <br>
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Continue managing</button>
+                <div id="demo" class="collapse">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+                    <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
+                        <h1>Anything else?</h1>
+                        <p style="margin-left: 25px">Try to add, upadte or delete pruchases! </p>
+
+                        <div class="hero-image" style="text-align: right;">
+                            <div class="hero-text">
+                                <button onclick=location.href="insertNewPurchaseForm.php">New</button>
+                                <button onclick=location.href="sessioakWorkers.php">Update</button>
+                                <button onclick=location.href="loginClientes.php">Delete</button>
+                                <!-- <button onclick=location.href="webClients.php">Login now</button>     -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
+
+        </div>
+
+
+
+        <br>
+        <hr />
+        <br><br><br><br>
+
+        <div>
+            <div class="container">
+                <h2>Accordion Example</h2>
+                <p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                                Collapsible Group Item #1
+                            </a>
+                        </div>
+                        <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div>
+            <br><br><br>
+            <br><br><br>
             <br>
-            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Continue managing</button>
-            <div id="demo" class="collapse">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            <br><br><br>
+            <br><br><br><br><br>
+            <br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br>
+            </br>
+            <br><br><br>
+            <br><br><br>
+            <br>
+            <br><br><br>
+            <br><br><br><br><br>
+            <br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br>
 
-                <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
-                    <h1>Anything else?</h1>
-                    <p style="margin-left: 25px">Try to add, upadte or delete pruchases! </p>
-
-                    <div class="hero-image" style="text-align: right;">
-                        <div class="hero-text">
-                            <button onclick=location.href="insertNewPurchaseForm.php">New</button>
-                            <button onclick=location.href="sessioakWorkers.php">Update</button>
-                            <button onclick=location.href="loginClientes.php">Delete</button>
-                            <!-- <button onclick=location.href="webClients.php">Login now</button>     -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <hr id="profile" /><br><br>
+            <p id="acabar">The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
+            <!--dirigir al apartado de las cabinas -->
+            <h3 style="text-align: left;">Profile Info</h3>
+            <p style="text-align: left;">The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
+            <p style="text-align: left;"><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
+            <br><br>
         </div>
 
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+        <script src="script.js"></script>
 
-    </div>
-
-
-
-    <br>
-    <hr />
-    <br><br><br><br>
-
-    <div>
-        <div class="container">
-            <h2>Accordion Example</h2>
-            <p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>
-            <div id="accordion">
-                <div class="card">
-                    <div class="card-header">
-                        <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                            Collapsible Group Item #1
-                        </a>
-                    </div>
-                    <div id="collapseOne" class="collapse show" data-parent="#accordion">
-                        <div class="card-body">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-
-
-    <div>
-        <br><br><br>
-        <br><br><br>
-        <br>
-        <br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br>
-        </br>
-        <br><br><br>
-        <br><br><br>
-        <br>
-        <br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br>
-
-        <hr id="profile" /><br><br>
-        <p id="acabar">The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-        <!--dirigir al apartado de las cabinas -->
-        <h3 style="text-align: left;">Profile Info</h3>
-        <p style="text-align: left;">The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-        <p style="text-align: left;"><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
-        <br><br>
-    </div>
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            $('[data-toggle="popover"]').popover({
-                //trigger: 'focus',
-                trigger: 'hover',
-                html: true,
-                content: function() {
-                    return '<img class="img-fluid" src="' + $(this).data('img') + '" />';
-                },
-                title: 'Toolbox'
-            })
-        });
-    </script>
-    <script>
-        function openCity(evt, cityName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
+        <script>
+            $(document).ready(function() {
+                $('[data-toggle="popover"]').popover({
+                    //trigger: 'focus',
+                    trigger: 'hover',
+                    html: true,
+                    content: function() {
+                        return '<img class="img-fluid" src="' + $(this).data('img') + '" />';
+                    },
+                    title: 'Toolbox'
+                })
+            });
+        </script>
+        <script>
+            function openCity(evt, cityName) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+                document.getElementById(cityName).style.display = "block";
+                evt.currentTarget.className += " active";
             }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(cityName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-    </script>
+        </script>
 
 
 </body>

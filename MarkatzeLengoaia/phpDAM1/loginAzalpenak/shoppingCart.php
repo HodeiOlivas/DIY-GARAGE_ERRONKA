@@ -84,9 +84,8 @@
         </thead>
     </table>
 
-
-    <!-- <a href="webErabiltzaileak.php">Go back</a> -->
-    <a href="webErabiltzaileak.php" style="margin-left:250px;">Back to Customer's page</a>
+    <!-- <a href="webErabiltzaileak.php" style="margin-left:250px;">Back to Customer's page</a> -->
+    <a href="sil1.php" style="margin-left:250px;">Back to Customer's page</a>
 
     <?php
     //header("Location: webErabiltzaileak.php");

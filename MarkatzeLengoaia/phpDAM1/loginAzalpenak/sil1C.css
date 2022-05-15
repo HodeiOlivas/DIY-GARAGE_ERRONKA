@@ -69,6 +69,7 @@
 #mainPageImage {
   opacity: 0.4;
 }
+
 /* IMAGE ON LOGGED IN PAGE */
 .container {
   position: relative;
@@ -84,6 +85,7 @@
   left: 100px;
   font-weight: 600;
 }
+
 .image-text-secondary {
   position: absolute;
   top: 120px;
@@ -153,15 +155,16 @@ hr {
   opacity: 0.25;
 }
 
-.colour-secondary{
+.colour-secondary {
   color: #CDCDCD;
 }
 
-.secondary-button{
+.secondary-button {
   background-color: #606E7D;
   width: 254px;
 }
-.secondary-button:hover{
+
+.secondary-button:hover {
   background-color: #545f6a;
 }
 
@@ -170,14 +173,16 @@ hr {
   border: 2px solid #2b4158;
   width: 254px;
 }
-.secondary-button-outline:hover{
+
+.secondary-button-outline:hover {
   background-color: #606E7D;
 }
 
 .table td {
   border-top: 0px;
 }
-.table th{
+
+.table th {
   border-top: 0px;
 }
 
@@ -186,7 +191,7 @@ hr {
   width: 100%;
 }
 
-.table-blue{
+.table-blue {
   background-color: #5A748E;
   color: white;
 }
@@ -200,49 +205,69 @@ hr {
 
 h5 {
   animation: fadein 3s;
-  -moz-animation: fadein 3s; /* Firefox */
-  -webkit-animation: fadein 3s; /* Safari and Chrome */
-  -o-animation: fadein 3s; /* Opera */
+  -moz-animation: fadein 3s;
+  /* Firefox */
+  -webkit-animation: fadein 3s;
+  /* Safari and Chrome */
+  -o-animation: fadein 3s;
+  /* Opera */
 }
 
 /* -------------------------------------------------------- */
 #test h1, h4, button {
   text-align: center;
   animation: fadein 3s;
-  -moz-animation: fadein 3s; /* Firefox */
-  -webkit-animation: fadein 3s; /* Safari and Chrome */
-  -o-animation: fadein 3s; /* Opera */
+  -moz-animation: fadein 3s;
+  /* Firefox */
+  -webkit-animation: fadein 3s;
+  /* Safari and Chrome */
+  -o-animation: fadein 3s;
+  /* Opera */
 }
+
 @keyframes fadein {
   from {
-      opacity:0;
+    opacity: 0;
   }
+
   to {
-      opacity:1;
+    opacity: 1;
   }
 }
-@-moz-keyframes fadein { /* Firefox */
+
+@-moz-keyframes fadein {
+
+  /* Firefox */
   from {
-      opacity:0;
+    opacity: 0;
   }
+
   to {
-      opacity:1;
+    opacity: 1;
   }
 }
-@-webkit-keyframes fadein { /* Safari and Chrome */
+
+@-webkit-keyframes fadein {
+
+  /* Safari and Chrome */
   from {
-      opacity:0;
+    opacity: 0;
   }
+
   to {
-      opacity:1;
+    opacity: 1;
   }
 }
-@-o-keyframes fadein { /* Opera */
+
+@-o-keyframes fadein {
+
+  /* Opera */
   from {
-      opacity:0;
+    opacity: 0;
   }
+
   to {
-      opacity: 1;
+    opacity: 1;
   }
 }
 
@@ -350,3 +375,60 @@ h5 {
   clear: both;
   display: table;
 }
+
+.ul2 {
+  list-style-type: none;
+  margin-top: 0px;
+  ;
+  overflow: hidden;
+}
+
+#rcorners2 {
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
+  width: 200px;
+  height: 150px;
+  background: #73AD21;
+}
+
+#rcorners1 {
+  border-radius: 25px;
+  background: #73AD21;
+  padding: 20px;
+  width: 200px;
+  height: auto;
+  /* height: 150px; */
+}
+
+
+.parallaxRounded {
+  background-image: url("img/fondoF1_1.jpg");
+  height: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 25px;
+}
+
+/*-------------------------------------*/
+
+.tableMove {
+  /* width: 200px; */
+  width: 100%;
+  height: auto;
+
+  transition: width 5s;
+  border-radius: 25px;
+}
+
+.tableMove:hover {
+  width: 50%;
+  height: 100%;
+  background: brown;
+}
+
+/*-------------------------------------*/
