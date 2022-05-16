@@ -22,8 +22,8 @@ def readReservationsFile():
             except EOFError:
                 print()
                 cont = 0
-        for res in objectsRes:
-            Reservation.printReservation(res)
+        for res1 in objectsRes:
+            Reservation.printReservation(res1)
         print("\t--------------------------------")
         print("\tFounded " + str(len(objectsRes)) + " reservations. \n")
     else:

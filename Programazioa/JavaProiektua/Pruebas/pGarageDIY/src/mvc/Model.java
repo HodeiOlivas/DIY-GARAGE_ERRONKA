@@ -89,7 +89,8 @@ public class Model {
         }
         return conn;
     }
-
+    
+    /*
     public String underAgeCustomersString() {
         String sql = "SELECT * FROM customer ORDER BY customer.Birthday desc";  //añadir: limit X
         ArrayList<Customer> underageCustomers = new ArrayList<>();
@@ -141,6 +142,7 @@ public class Model {
 
         return underageCustomers.toString();
     }
+    */
 
     public static ArrayList<Customer> underAgeCustomers() {
         String sql = "SELECT * FROM customer ORDER BY customer.Birthday desc";  //añadir: limit X
@@ -1546,7 +1548,7 @@ public class Model {
     
     public static void visitWebpage() {
         //url of the website we want to connect to
-        String webUrl = "http://localhost/phpDAM1/loginAzalpenak/index2.php";
+        String webUrl = "http://localhost/phpDAM1/loginAzalpenak/indexFinal.php";
         try {
             java.awt.Desktop.getDesktop().browse(java.net.URI.create(webUrl));
         }

@@ -1,8 +1,14 @@
 
+Code:  	12
+Name:  	grg
+Price:  	54.8
+Description:  	fqwfqw
+--------------------------------------------------x--------------------------------------------------
 Code:  	CM11
-Name:  	Carrocería Metal
+Name:  	Metal bodywork
+
 Price:  	74.1
-Description:  	CCAM
+Description:  	Bodywork with metallic finish.
 --------------------------------------------------x--------------------------------------------------
 Code:  	EP06
 Name:  	Exhaust Pipe
@@ -13,4 +19,19 @@ Code:  	FS90
 Name:  	Front Spoiler
 Price:  	260.0
 Description:  	Front spoiler for racing cars.
+--------------------------------------------------x--------------------------------------------------
+Code:  	PW06
+Name:  	Paintwork
+Price:  	85.0
+Description:  	Pinting work according to what customers request
+--------------------------------------------------x--------------------------------------------------
+Code:  	SP32
+Name:  	Spark Plug
+Price:  	15.99
+Description:  	High security spark plugs
+--------------------------------------------------x--------------------------------------------------
+Code:  	WW65
+Name:  	Wiper Washer
+Price:  	65.2
+Description:  	Storm resistant wipers
 --------------------------------------------------x--------------------------------------------------

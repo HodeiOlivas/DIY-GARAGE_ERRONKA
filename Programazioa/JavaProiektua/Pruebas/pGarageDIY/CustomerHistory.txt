@@ -15,7 +15,12 @@ Birthday: 2015-04-04,	Phone: 123789456,
 Mail: customer.third@garage.diy
 --------------------------------------------------x--------------------------------------------------
 Username: user44,	Password: pwd4,
-Name: Lorena,	Surname: Perez,
-Birthday: 2000-07-11,	Phone: 111222333,
-Mail: Perez.Lorena@garage.diy
+Name: Andy,	Surname: Smith,
+Birthday: 2003-05-10,	Phone: 134679852,
+Mail: Smith.Andy@garage.diy
+--------------------------------------------------x--------------------------------------------------
+Username: user55,	Password: pwd1,
+Name: Lucas,	Surname: Navarro,
+Birthday: 1995-10-07,	Phone: 111555222,
+Mail: navarro.lucas@garage.diy
 --------------------------------------------------x--------------------------------------------------

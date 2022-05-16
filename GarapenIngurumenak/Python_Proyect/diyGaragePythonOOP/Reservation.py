@@ -2,7 +2,6 @@ import BasicMethodsToWorkWith
 from datetime import datetime, date
 import datetime
 
-
 allCabins = ["C0", "C1", "C2", "C3", "C4"]
 allCabinsPrice = [25.63, 45.10, 30, 95.60, 71.80]
 map(float, allCabinsPrice)
@@ -171,16 +170,32 @@ class Reservation:
                 self.start_time = resStartUser
                 validStartHour = 0
 
+    """def printReservation(self):
+        print("reservation id." + str(self.getReservationID()))"""
+
     def printReservation(self):
-        print("\t-> " + str(self.idReservation) + ", " +
+        print("\t-> " + str(self.getReservationID()) + ", " +
               str(self.custUsername) + ", " +
               str(self.cabin) + ", " +
               str(self.date) + ", " +
-              str(self.getStartingHour()) + ", " +
+              str(self.start_time) + ", " +
+              str(self.getFinishHour()) + ", " +
+              str(self.amountHours) + ", " +
+              str(self.totalPrice) + "€"
+              )
+
+    """
+        def printReservation(self):
+        print("\t-> " + str(self.getReservationID()) + ", " +
+              str(self.custUsername) + ", " +
+              str(self.cabin) + ", " +
+              str(self.date) + ", " +
+              str(self.start_time) + ", " +
               str(self.getFinishHour()) + ", " +
               str(self.amountHours) + ", " +
               str(self.totalPrice)
               )
+    """
 
     def viewReservation(self):
         return str("\nReservation ID: ") + str(self.idReservation) + ", " + str(

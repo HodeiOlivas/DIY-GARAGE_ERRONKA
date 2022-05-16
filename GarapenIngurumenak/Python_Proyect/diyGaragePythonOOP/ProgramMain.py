@@ -40,6 +40,7 @@ def reservationsMenu():
             print("--------------------------------")
 
         elif choiceReservation == 4:
+            # Func_Reservations.readReservationsFile()
             Func_Reservations.readReservationsFile()
             print("--------------------------------")
 
@@ -156,6 +157,7 @@ while not (choiceStart == -1):
 
     if choiceStart == 1:
         reservationsMenu()
+        print("a")
 
     elif choiceStart == 2:
         customersMenu()
