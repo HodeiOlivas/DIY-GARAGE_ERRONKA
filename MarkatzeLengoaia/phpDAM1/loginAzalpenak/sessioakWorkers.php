@@ -38,7 +38,7 @@
         if ($_GET["incorrecto"] == "si") {
     ?>
             <p style="color:#F00">
-                <b>Datuak txarto sartu dituzu.</b>
+                <b>Datsdasduak txarto sartu dituzu.</b>
             </p>
             <img src="stop.jpg">
     <?php
@@ -52,7 +52,7 @@
 
     ?>
             <p style="color:#F00">
-                <b>Datuak txarto sartu dituzu.</b>
+                <b>Datudwdwak txarto sartu dituzu.</b>
             </p>
             <img src="validar.jpg">
 

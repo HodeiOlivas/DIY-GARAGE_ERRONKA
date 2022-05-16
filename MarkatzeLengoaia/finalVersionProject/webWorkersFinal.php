@@ -4,20 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name=q"viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <title>Worker's Website</title>
+
+    <link rel="stylesheet" href="sil1C.css">
+
+    <!-- Google font Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+
+    <title>Customer's Website</title>
 
     <style>
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
         body {
             font-size: 16px;
             height: 100%;
-            padding: 10px 25px;
+            /* padding: 10px 25px; */
+            /* background-color: white; */
+            /* 8B0000 */
+            /* 991F36 */
             /* margin-left: 12px; */
+            padding: 10px 25px;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        .parallax {
+            /* background-image: url("img/encabezadoTaller3.jpg"); */
+            background-image: url("img/fondoF1_1.jpg");
+            height: 100%;
+            /* Create the parallax scrolling effect */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         ul {
@@ -25,7 +61,8 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #333;
+            background-color: #256;
+            /*#333*/
             position: -webkit-sticky;
             /* Safari */
             position: sticky;
@@ -45,19 +82,43 @@
         }
 
         li a:hover {
-            background-color: #111;
+            background-color: white;
+            /* background-color: lightgrey; */
+            /*#111*/
         }
 
         .active {
-            background-color: #4CAF50;
+            background-color: slategray;
+            /*#4CAF50*/
         }
 
-        h1 {
-            padding: 10px 25px;
-        }
+        /* h1 {
+      padding: 10px 25px;
+    } */
 
         h2 {
             text-align: center;
+        }
+
+        .cardProduct {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: 0;
+            /* padding-left: 10px 25px; */
+            text-align: center;
+            font-family: arial;
+            background-color: green;
+        }
+
+        #rcorners2 {
+            border-radius: 25px;
+            border: 2px solid #73AD21;
+            padding: 20px;
+            width: 100%;
+            height: auto;
+            background: rgb(223, 228, 237);
+
+            /* height: 150px;   */
         }
 
         th {
@@ -66,96 +127,96 @@
             background-color: mediumslateblue;
             color: black;
         }
-
-        /* td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        } */
-
-        .navbar a {
-            float: left;
-            display: block;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-        }
-
-        p {
-            text-align: center;
-        }
-
-        .basicButton {
-            width: 20px;
-            text-align: center;
-        }
     </style>
 </head>
 
-<div class="container" style="text-align:left">
-    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
-    <div id="demo" class="collapse">
-        <p>Image at the top (card-img-top):</p>
-        <div class="card" style="width:400px">
-            <img class="card-img-top" src="../loginAzalpenak/img/encabezadoTaller1.jpg" alt="Card image" style="width:100%">
-            <div class="card-body">
-                <h4 class="card-title">John Doe</h4>
-                <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                <a href="#start workers" class="btn btn-primary">Home</a>
+<!-- <body class="specificBody"> -->
+
+
+
+<body class="primary-bg" style="font-size: 16px; width:100%; height: 100%; padding: 10px 25px;">
+    <!-- Display current logged in user -->
+
+    <?php session_start();
+    ?>
+    <!-- image -->
+    <div class="container">
+        <img src="img/garagebg2.jpg" alt="" id="mainPageImage">
+        <p class="image-text-primary h3 fw-bold">
+
+        </p>
+        <p class="image-text-secondary h1">Welcome worker, To (Y)our DIY garage!</p>
+        <!-- logo in middle -->
+        <div class="circle cream-bg">
+            <h4 class="mt-3">
+                <i class="bi bi-tools primary-colour"></i>
+            </h4>
+        </div>
+        <!-- !logo in middle -->
+
+        <!-- navbar -->
+        <div class="row image-nav">
+            <div class="col">
+                <!-- start nav -->
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse ml-5" id="navbarNavAltMarkup">
+                            <div class="navbar-nav">
+                                <a class="nav-link text-white text-uppercase fs-13 px-3" href="#productsAll">Products</a>
+                                <a class="nav-link text-white text-uppercase fs-13 px-3" href="#cabinsAll">Cabins</a>
+                                <a class="nav-link text-white text-uppercase fs-13 px-3" href="#reservationsAll">Reservations</a>
+                                <a class="nav-link text-white text-uppercase fs-13 px-3" href="#purchasesAll">Purchases</a>
+                                <a class="nav-link text-white text-uppercase fs-13 px-3" href="#customersAll">Customers</a>
+                                <a class="nav-link text-white text-uppercase fs-13 px-3" href="#workersAll">Staff</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- !navbar -->
+
+
+    </div>
+
+
+    <hr class="cream-bg m-0">
+
+
+    <!-- table reservations -->
+    <div class="px-5 mx-5">
+        <?php
+        include("test_connect_db.php");
+        $currentUser = $_SESSION['usuario'];
+        $link = connectDataBase();
+        $emaitza = mysqli_query($link, "select * from reservation where cust_Username='$currentUser'");
+
+        ?>
+
+        <div class="d-flex w-100">
+            <div class="col text-right mt-5">
+                <h1><a href="webWorkersFinal.php">
+                        <button class="btn btn-warning px-4 py-2 rounded-lg CTA-button text-white shadow">
+                            Ask a question <i class="bi bi-telephone"></i>
+                        </button>
+                    </a></h1>
+            </div>
+        </div>
+
+        <div class="row mt-4" id="test">
+            <div class="col-6 pl-4 ">
+                <h1 class="text-left text-white font-weight-bold">Repair any problems you might have at <span class="text-success">The HALAB Garage</span>.</h1>
+                <h4 class="colour-secondary font-weight-bold text-left">Lets have a quick look.</h4>
             </div>
         </div>
     </div>
-    <!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            <img src="../loginAzalpenak/img/encabezadoTaller1.jpg" width="50%"> -->
-
-</div>
-</div>
-
-<body>
-    <?php
-    session_start();
-    include("test_connect_db.php");
-    $currentUser = $_SESSION['usuario'];
-
-    ?>
-    <br id="start workers">
-    <h1> Welcome to Workers's website. </h1>
-    <!-- <h1 style="margin-left: 80px;"> Welcome to Customer's website. </h1> -->
-
-    <div class="header">
-        <h2>WORKER</h2>
-        <p>Scroll down to see the sticky effect.</p>
-    </div>
 
 
 
-    <ul>
-        <li><a class="active" href="#start workers">Home</a></li>
-        <li><a href="#cabins info">Cabins</a></li>
-        <li><a href="#products info">Products</a></li>
-        <li><a href="#reservations">Reservations</a></li>
-        <li><a href="#purchases">Purchases</a></li>
-        <li><a href="#registered customers">Customers</a></li>
-        <li><a href="#workers">Workers</a></li>
-        <li style="text-align:right"><a href="#..">Statistics</a></li>
-        <li style="text-align:right"><a href="#...">About us</a></li>
-        <li>
-
-        </li>
-    </ul>
 
 
-
-    <br><br>
-    <hr id="cabins info" /><br><br>
-    <!--dirigir al apartado de las cabinas -->
-
-    <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-    <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
-    <br><br>
+    <br>
+    <hr id="cabinsAll" /><br><br> <!-- beginning of CABINS INFORMATION -->
     <?php
     //include("test_connect_db.php");
     //$currentUser = $_SESSION['usuario'];
@@ -163,8 +224,8 @@
     $emaitza = mysqli_query($link, "select * from cabin");
 
     ?>
-    <h2>CABIN'S INFORMATION</h2>
-    <p>The .table-dark class adds a black background to the table:</p>
+    <h2 style="color:white;">CABIN'S INFORMATION</h2>
+    <br>
     <table class="table table-dark" style="text-align:center; width:80%; margin-left:auto; margin-right:auto;">
         <thead style="vertical-align:left">
             <tr style="text-align:center">
@@ -192,23 +253,22 @@
 
         </thead>
     </table>
+    <br>
+    <div class="" style="text-align:center">
+        <button class="rounded-lg" style="width: 20%;" onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+        <br><br>
+    </div>
 
 
-    <hr id="products info" /><br><br>
-    <!--dirigir al apartado de las cabinas -->
-    <h3>Catalog of Products</h3>
-    <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-    <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
-    <br><br>
+
+    <hr id="productsAll" /><br><br> <!-- beginning of CABINS INFORMATION -->
     <?php
     //include("test_connect_db.php");
     $link = connectDataBase();
     $emaitza = mysqli_query($link, "select * from product");
     ?>
-
-
-    <h2>ALL THE PRODUCTS</h2>
-    <p>The .table-dark class adds a black background to the table:</p>
+    <h2 style="color:white;">ALL THE PRODUCTS</h2>
+    <br>
     <table class="table table-dark" style="text-align:center; width:80%; margin-left:auto; margin-right:auto;">
         <thead>
             <tr>
@@ -252,23 +312,19 @@
             </div>
         </div>
     </div>
+    <br>
 
 
-    <hr id="reservations" /><br><br>
+
+    <hr id="reservationsAll" /><br><br>
     <!--dirigir al apartado de las cabinas -->
-    <h3>All reservations</h3>
-    <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-    <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
+    <h2 style="color:white;">ALL THE RESERVATIONS</h2>
     <br><br>
     <?php
     //include("test_connect_db.php");
     $link = connectDataBase();
     $emaitza = mysqli_query($link, "select * from reservation");
     ?>
-
-
-    <h2>ALL THE RESERVATIONS</h2>
-    <p>The .table-dark class adds a black background to the table:</p>
     <table class="table table-dark" style="text-align:center; width:80%; margin-left:auto; margin-right:auto;">
         <thead>
             <tr>
@@ -301,22 +357,22 @@
 
         <!-- </thead> -->
     </table>
+    <br>
+    <div class="" style="text-align:center">
+        <button class="rounded-lg" style="width: 20%;" onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+        <br><br>
+    </div>
 
 
-
-    <hr id="purchases" /><br><br>
+    <hr id="purchasesAll" /><br><br>
     <!--dirigir al apartado de las cabinas -->
-    <h3>Shopping history</h3>
-    <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-    <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
+    <h2 style="color:white;">ALL CURRENT PURCHASES</h2>
     <br><br>
     <?php
     //include("test_connect_db.php");
     $link = connectDataBase();
     $emaitza = mysqli_query($link, "select * from purchase");
     ?>
-    <h2>ALL CURRENT PURCHASES</h2>
-    <p>The .table-dark class adds a black background to the table:</p>
     <table class="table table-dark" style="text-align:center; width:80%; margin-left:auto; margin-right:auto;">
         <thead>
             <tr>
@@ -352,21 +408,23 @@
             ?>
         </thead>
     </table>
+    <br>
+    <div class="" style="text-align:center">
+        <button class="rounded-lg" style="width: 20%;" onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+        <br><br>
+    </div>
 
 
-    <hr id="registered customers" /><br><br>
+
+    <hr id="customersAll" /><br><br>
     <!--dirigir al apartado de las cabinas -->
-    <h3>Registered customers</h3>
-    <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-    <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
+    <h2 style="color:white;">REGISTERED CUSTOMERS</h2>
     <br><br>
     <?php
     //include("test_connect_db.php");
     $link = connectDataBase();
     $emaitza = mysqli_query($link, "select * from customer");
     ?>
-    <h2>REGISTERED CUSTOMERS</h2>
-    <p>The .table-dark class adds a black background to the table:</p>
     <table class="table table-dark" style="text-align:center; width:80%; margin-left:auto; margin-right:auto;">
         <thead>
             <tr>
@@ -396,21 +454,22 @@
             ?>
         </thead>
     </table>
+    <br>
+    <div class="" style="text-align:center">
+        <button class="rounded-lg" style="width: 20%;" onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+        <br><br>
+    </div>
 
 
-    <hr id="workers" /><br><br>
+
+    <hr id="workersAll" /><br>
     <!--dirigir al apartado de las cabinas -->
-    <h3>Garage's staff</h3>
-    <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-    <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
+    <h2 style="color:white;">COMPANY'S STAFF</h2>
     <br><br>
     <?php
-    //include("test_connect_db.php");
     $link = connectDataBase();
     $emaitza = mysqli_query($link, "select * from worker");
     ?>
-    <h2>COMPANY'S STAFF</h2>
-    <p>The .table-dark class adds a black background to the table:</p>
     <table class="table table-dark" style="text-align:center; width:80%; margin-left:auto; margin-right:auto;">
         <thead>
             <tr>
@@ -459,48 +518,94 @@
         </thead>
     </table>
 
-
-    <hr id="admin" /><br><br>
-    <!--dirigir al apartado de las cabinas -->
-    <h3>About Us</h3>
-    <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-    <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
-    <br><br>
-
-
-    <hr />
-
-
-
     <br>
-
-
-
-
-
-
-
-
-    <p>Image at the bottom (card-img-bottom):</p>
     <div class="" style="text-align:center">
-        <button style="width: 20%;" onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-        <br>
+        <button class="rounded-lg" style="width: 20%;" onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+        <br><br>
     </div>
+
+
+
     <div>
         <br><br><br><br>
+        <hr id="profile info" /><br><br>
         <p id="acabar">The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
+        <!--dirigir al apartado de las cabinas -->
+        <h3 style="text-align: left;">Profile Info</h3>
+        <p style="text-align: left;">The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
+        <p style="text-align: left;"><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
+        <br><br>
     </div>
 
 
-
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
 
     <script>
-        function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
+        $(document).ready(function() {
+            $('[data-toggle="popover"]').popover({
+                //trigger: 'focus',
+                trigger: 'hover',
+                html: true,
+                content: function() {
+                    return '<img class="img-fluid" src="' + $(this).data('img') + '" />';
+                },
+                title: 'Toolbox'
+            })
+        });
+    </script>
+    <script>
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
         }
     </script>
+
 
 </body>
 
 </html>
+
+<script>
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+
+
+
+<!-- 
+  jquery add edit delete - https://www.javatpoint.com/add-edit-delete-table-row-in-jquery
+ -->
+
+
+<!-- 
+  <div class="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          Dropdown button
+        </button>
+        <div class="jumbotron text-left" style="width: 100%; margin-bottom:0; color:black">
+          <h1>Anything else?</h1>
+          <p style="margin-left: 25px">Try to add, upadte or delete pruchases! </p>
+          <div class="hero-image" style="text-align: right;">
+            <div class="hero-text">
+              <button onclick=location.href="insertNewPurchaseForm.php">New</button>
+              <button onclick=location.href="sessioakWorkers.php">Update</button>
+              <button onclick=location.href="loginClientes.php">Delete</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+-->
