@@ -92,6 +92,9 @@
             /*#4CAF50*/
         }
 
+        /* h1 {
+      padding: 10px 25px;
+    } */
 
         h2 {
             text-align: center;
@@ -134,9 +137,10 @@
         <img src="img/garagebg2.jpg" alt="" id="mainPageImage">
         <p class="image-text-primary h3 fw-bold">
             <?php
-            echo "Welcome, to the DIY Halab Garage! ";
+            echo "Welcome, " . $_SESSION['usuario'];
             ?>
         </p>
+        <p class="image-text-secondary h1">To (Y)our DIY garage!</p>
         <!-- logo in middle -->
         <div class="circle cream-bg">
             <h4 class="mt-3">
@@ -144,6 +148,29 @@
             </h4>
         </div>
         <!-- !logo in middle -->
+
+
+
+        <!-- profile -->
+        <div class="image-profile">
+            <div class="d-inline-flex justify-content-end profile-hover p-2 ">
+                <div class="exp">
+                    <h2><i class="bi bi-person-fill grey"></i></h2>
+                </div>
+                <div class="d-flex flex-column justify-content-center pl-1">
+                    <p class="text-white uppercase text-start m-0 uppercase fw-bold d-inline-flex ml-1">
+                        <?php
+                        // echo  $_SESSION['usuario'];
+                        ?>
+                        <a href="#profile info" style="color:white;"><?php echo  $_SESSION['usuario']; ?></a>
+                    </p>
+                    <small class="fs-11">
+                        <a href="../finalVersion/sessionsCustomersFinal.php" class="text-danger ml-1">LOG OUT</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+        <!-- !profile -->
 
 
         <!-- navbar -->
@@ -157,8 +184,8 @@
                                 <a class="nav-link text-white text-uppercase fs-13 px-3" href="#products info">Products</a>
                                 <a class="nav-link text-white text-uppercase fs-13 px-3" href="#cabins info">Cabins</a>
                                 <a class="nav-link text-white text-uppercase fs-13 px-3" href="#reservations info">Reservations</a>
-                                <a class="nav-link text-white text-uppercase fs-13 px-3" href="#purchases interaction">Purchases</a>
-                                <a class="nav-link text-white text-uppercase fs-13 px-3" href="#contact info">Contact</a>
+                                <a class="nav-link text-white text-uppercase fs-13 px-3" href="#purchases info">Purchases</a>
+                                <a class="nav-link text-white text-uppercase fs-13 px-3" href="#profile info">Contact</a>
                             </div>
                         </div>
                     </div>
@@ -183,19 +210,7 @@
         $emaitza = mysqli_query($link, "select * from reservation where cust_Username='$currentUser'");
 
         ?>
-        <!-- working part -->
-        <!-- <div class="row px-3">
-      <div class="col-6 ">
-        <h1>test</h1>
-      </div>
-      <div class="col-6 text-right mt-5 pr-5">
-        <h1><a href="contact.php">
-            <button class="btn btn-warning px-4 py-2 rounded-lg CTA-button text-white ">
-              Ask a question <i class="bi bi-telephone"></i>
-            </button>
-          </a></h1>
-      </div>
-    </div> -->
+
         <div class="d-flex w-100">
             <div class="col text-right mt-5">
                 <h1><a href="contact.php">
@@ -212,29 +227,77 @@
                 <h4 class="colour-secondary font-weight-bold text-left">Lets have a quick look.</h4>
 
                 <div class="d-flex mt-5">
-                    <button class="btn secondary-button-outline text-white px-5 py-2 mr-5" onclick=location.href="sessionsCustomersFinal.php" style="width:auto;">
-                        <h6 class="font-weight-bold m-0">Log in as Customer</h6>
+                    <button class="btn secondary-button-outline text-white px-5 py-2 mr-5" onclick="location.href='#products info'">
+                        <h6 class="font-weight-bold m-0">See our products</h6>
                     </button>
-                    <button class="btn secondary-button-outline text-white px-5 py-2 mr-5" onclick=location.href="sessionsWorkersFinal.php" style="width:auto;">
-                        <h6 class="font-weight-bold m-0">Log in as Worker</h6>
+                    <button class="btn secondary-button-outline text-white px-5 py-2 mr-5" onclick="location.href='#cabins info'">
+                        <h6 class="font-weight-bold m-0">Our cabins</h6>
+                    </button>
+                    <button class="btn secondary-button text-white px-5 py-2 shadow" onclick="location.href='shoppingCart.php'">
+                        <h6 class="font-weight-bold m-0">Your Cart</h6>
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="container mt-5 pt-5 p-5">
+        <hr / style="width:100%">
+        <h4 class="font-weight-bold text-left mb-4">Your Reservations</h4>
+        <table class="table table-blue rounded-lg" style="width:100%;text-align:center;margin-left:auto; margin-right:50%;">
+            <colgroup>
+                <col span="2" style="background-color:red">
+            </colgroup>
+            <thead style="vertical-align:left" class="">
+                <tr style="text-align:center">
+                    <th style='vertical-align:middle'>Reservation ID</th>
+                    <th style='vertical-align:middle'>Username</th>
+                    <th style='vertical-align:middle'>Cabin</th>
+                    <th style='vertical-align:middle'>Date</th>
+                    <th style='vertical-align:middle'>Starting Hour</th>
+                    <th style='vertical-align:middle'>Ending Hour</th>
+                    <th style='vertical-align:middle'>Amount Hours</th>
+                    <th style='vertical-align:middle'>Total Price</th>
+                </tr>
+
+                <?php
+                while ($erregistroa = mysqli_fetch_array($emaitza)) {
+                    printf("<tr>
+                        <td style='vertical-align:middle'>%d</td>
+                        <td style='vertical-align:middle'>%s</td>
+                        <td style='vertical-align:middle'>%s</td>
+                        <td style='vertical-align:middle'>%s</td>
+                        <td style='vertical-align:middle'>%s</td>
+                        <td style='vertical-align:middle'>%s</td>
+                        <td style='vertical-align:middle'>%.2f</td>
+                        <td style='vertical-align:middle'>%.2f</td>
+                    </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[6], $erregistroa[7]);
+                }
+                mysqli_free_result($emaitza);
+                //mysqli_close($link);
+                ?>
+
+            </thead>
+        </table>
+        <div class="table text-right" style="width:100%">
+            <a href="#reservations interaction">
+                <button style="width: 30%;" class="btn btn-warning  ml-5 text-white">All Reservations</button>
+            </a>
+        </div>
+    </div>
 
 
 
-
-    <div class="p-5">
+    <!-- <div class="p-5">
         <details>
             <summary>Image name</summary>
             <div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex soluta rem necessitatibus ratione nisi exercitationem, atque non autem earum, impedit sed id, eius nihil laboriosam maxime? Alias obcaecati fugiat inventore!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex soluta rem necessitatibus ratione nisi exercitationem,
+                    atque non autem earum, impedit sed id, eius nihil laboriosam maxime? Alias obcaecati fugiat inventore!</p>
             </div>
         </details>
-    </div>
+    </div> -->
+    <hr />
     <br>
 
 
@@ -250,29 +313,24 @@
     </div>
 
     <div style="height:auto;background-color:white;font-size:16px">
-        Scroll Up and Down this page to see the parallax scrolling effect.
-        This div is just here to enable scrolling.
-        Tip: Try to remove the background-attachment property to remove the scrolling effect.
+        <br><br>
         <div class="row">
             <div class="col-sm-4">
-                <br><br><br><br>
                 <h3 style="color:darkred; text-align:center;">Reservations</h3>
                 <p style="color:grey; text-align:center;">Rent one of our cabins to work yourself on your vehicle. In case <br>
                     you need help, you'll have full availability of any of our workers.
                 </p>
             </div>
             <div class="col-sm-4">
-                <br><br><br><br>
                 <h3 style="color:darkred; text-align:center;">Purchases</h3>
                 <p style="color:grey; text-align:center;">Buy any product from our catalog to make repairing <br>
                     your vehicle an easier task. There is no stock limit.
                 </p>
             </div>
             <div class="col-sm-4">
-                <br><br><br><br>
                 <h3 style="color:darkred; text-align:center;">Cabins</h3>
                 <p style="color:grey; text-align:center;">Choose the cabin that best suits the needs of your vehicle. <br>
-                    All cabins include worker assistance.
+                    Each cabin includes worker assistance/help if necessary.
                 </p>
             </div>
         </div>
@@ -281,7 +339,19 @@
         <!-- <div style="height:1000px;background-color:red;font-size:36px;"> -->
         <!-- <div style="height:800px;background-color:#3b4754;"> -->
         <div style="height:auto;background-color:#3b4754;">
+            <ul style="background-color:brown;">
+                <li><a class="active" href="#start Customers">Home1</a></li>
+                <li><a href="#products info">Products</a></li>
+                <li><a href="#cabins info">Cabins</a></li>
+                <li><a href="#reservations info">Reservations</a></li>
+                <li><a href="#purchases info">Purchases</a></li>
+                <li><a href="#profile info">Profile</a></li>
 
+                <li style="float:right"><a class="active" href="#view profile">Profile</a></li>
+                <li style="float:right"><a href="shoppingCart.php">Your Cart</a></li>
+
+
+            </ul>
             <br>
 
             <div>
@@ -322,16 +392,24 @@
             ?>
                 <div class="w-25 mx-53" role="rowgroup">
                     <td2>
-                        <div class="card" style="width: 400px; height:350px;">
+                        <div class="card" style="width: 400px; height:400px;">
                             <img class="card-img-top" src="<?php echo $erregistroa['Picture']; ?>" alt="Card image" style="width:100%; height:160px">
                             <div class="card-body;">
                                 <h4><?php echo $erregistroa['Name']; ?></h4>
                                 <p class="priceProduct" style="text-align:center"><?php echo $erregistroa['Price']; ?></p>
+                                <?php
+                                printf(
+                                    "
+                                            <a href='insertPurchaseAdvanced.php?prodIdentifier=%s'>
+                                            <button class='buttonProd' onclick=location.href='webCustomersFinal.php';>Add ato aaCart</button>
+                                            </a>",
+                                    $erregistroa['id_Product']
+                                );
+                                ?>
+                                <br><br><br>
                                 <p style="text-align:justify; margin-left:10px; margin-right:10px;"><?php echo $erregistroa['Description']; ?></p>
-
                             </div>
                         </div>
-
                     </td2>
                     <br>
                 </div>
@@ -341,14 +419,6 @@
             //mysqli_close($link);
             ?>
         </div>
-
-        <div class="" style="text-align:center">
-            <!-- div to Return TOP -->
-            <button class="btn btn-warning px-4 py-2 rounded-lg CTA-button text-white shadow" onclick="topFunction()" id="myBtn" title="Go to top">Return Top</button>
-            <button style="width: 20%;" onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-            <br><br>
-        </div>
-
     </div>
 
     <hr id="cabins info" /><br><br> <!-- beginning of CABINS INFORMATION -->
@@ -356,7 +426,7 @@
         <div class="parallax" style="background-image: url('img_Cabins/cabinFondo2.jpg'); width:100%; height: 70%; text-align:center">
             <div style="text-align: left;">
                 <h1 style="font-size:50px; color:greenyellow">DIY2 GARAGE</h1>
-                <p style="margin-left:25px; color:white">Cabin's Section! </p><br>
+                <p style="margin-left:25px; color:white">Cabin's Section!</p><br>
             </div>
         </div>
         <div class="row">
@@ -371,12 +441,7 @@
                             <td2>
                                 <h3 style="color:darkred; text-align:left;"><?php echo $erregistroa['Cabin_ID']; ?></h3>
                                 <p style="color:grey; text-align:left;"><?php echo $erregistroa['Description']; ?></p>
-                                <!-- <p style="color:grey; text-align:justify;">Buy any product from our catalog to make repairing <br>
-                                    your vehicle an easier task. There is no stock limit.
-                                </p> -->
                             </td2>
-
-                            <br>
                         </div>
                     <?php
                     }
@@ -385,11 +450,8 @@
                     ?>
 
                 </div>
-
             </div>
         </div>
-        <!-- yeet -->
-        <br><br>
     </div>
     <br>
 
@@ -401,6 +463,9 @@
     <br><br>
 
     <br>
+
+
+    <!-- <div class="col-sm-4"> -->
 
     </div>
     <div>
@@ -440,41 +505,12 @@
             </div>
         </div>
 
-
-        <!-- <div id="accordion">
-            <div class="card">
-                <div class="card-header">
-                    <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                        C1
-                    </a>
-                </div>
-                <div id="collapseOne" class="collapse show" data-parent="#accordion">
-                    <div class="card-body">
-
-                        Ver información sobre las cabinas que tiene el garage.
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-                        Catalog of products
-                    </a>
-                </div>
-                <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                    <div class="card-body">
-                        Ver información sobre los productos que hay en el catálogo de productos.
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
     </div>
     <br><br><br><br>
     <div class="" style="text-align:center">
         <!-- div to Return TOP -->
         <button class="btn btn-warning px-4 py-2 rounded-lg CTA-button text-white shadow" onclick="topFunction()" id="myBtn" title="Go to top">Return Top</button>
-        <button style="width: 20%;" onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+        <button class="rounded-lg" style="width: 20%;" onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
         <br><br>
     </div>
 
@@ -517,22 +553,77 @@
             <!--style="float:left -->
 
             <br>
-            <h4 class="font-weight-bold text-left mb-4" style="color:white;">Reservation's information:</h4>
+            <h2>Your Reservations</h2>
+            <h4 class="font-weight-bold text-left mb-4" style="color:white;">Your reservations:</h4>
             <p>The .table-dark class adds a black background to the table:</p>
+
+            <!-- <table class="table table-blue rounded-lg tableMove" style="width:80%;text-align:center;margin-left:auto; margin-right:50%;"> -->
+            <table class="table table-blue rounded-lg tableMove" style="text-align:center;margin-left:auto; margin-right:50%;">
+                <colgroup>
+                    <col span="1" style="background-color:greenyellow">
+                </colgroup>
+                <thead style="vertical-align:left" class="">
+                    <tr style="text-align:center">
+                        <th style="color:black;">Reservation ID</th>
+                        <th>Username</th>
+                        <th>Cabin</th>
+                        <th>Date</th>
+                        <th>Starting Hour</th>
+                        <th>Ending Hour</th>
+                        <th>Amount Hours</th>
+                        <th>Total Price</th>
+                        <th>Manage</th>
+                    </tr>
+                    <?php
+                    while ($erregistroa = mysqli_fetch_array($emaitza)) {
+                        printf("<tr >
+                        <td style='color:black;'>%d</td>
+                        <td>%s</td>
+                        <td>%s</td>
+                        <td>%s</td>
+                        <td>%s</td>
+                        <td>%s</td>
+                        <td>%d</td>
+                        <td>%.2f</td>
+                        <td>
+                          <a href='deleteAdvancedReservation.php?reservationIdentifier=%s'>
+                            <img src='../finalVersion/img/deleteImage.png' width='75px' height='23px' align='center'></img>
+                          </a>
+                          
+                        </td>
+                      </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[6], $erregistroa[7], $erregistroa[0]);
+                    }
+                    mysqli_free_result($emaitza);
+                    mysqli_close($link);
+                    ?>
+                </thead>
+            </table>
+
+            <div class="jumbotron text-left" style="width: 50%; margin-bottom:0; color:black">
+                <h1>Anything else?</h1>
+                <p>Try to add new <strong>reservations</strong>! </p>
+
+                <div class="hero-image" style="text-align: right;">
+                    <div class="hero-text">
+                        <button onclick=location.href="newReservationFinalForm.php" style="width:15%;">New</button>
+                    </div>
+                </div>
+            </div>
+
 
             <br>
         </div>
-        <br><br><br><br>
+        <br><br>
         <div class="" style="text-align:center">
             <!-- div to Return TOP -->
             <button class="btn btn-warning px-4 py-2 rounded-lg CTA-button text-white shadow" onclick="topFunction()" id="myBtn" title="Go to top">Return Top</button>
-            <button style="width: 20%;" onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+            <button class="rounded-lg" style="width: 20%;" onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
             <br><br>
         </div>
 
 
 
-        <hr id="purchases interaction" /><br><br>
+        <hr id="purchases info" /><br><br>
         <div class="parallax" style="background-image: url('img/purchaseFondo1.jpeg'); width:100%; height: 60%; text-align:center">
             <div style="text-align: left;">
                 <h1 style="font-size:50px; color:greenyellow; font:bold"><strong>DIY2 GARAGE</strong></h1>
@@ -551,68 +642,145 @@
 
 
         <!--dirigir al apartado de las cabinas -->
+        <br>
         <h3 style="text-align: center;">PURCHASE HISTORY</h3>
         <p>Lets see in real time all <strong>Purchases</strong> you have done in our garage.</p>
         <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
-        <br><br><br><br>
-        <div class="" style="text-align:center">
-            <!-- div to Return TOP -->
-            <button class="btn btn-warning px-4 py-2 rounded-lg CTA-button text-white shadow" onclick="topFunction()" id="myBtn" title="Go to top">Return Top</button>
-            <button style="width: 20%;" onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-            <br><br>
-        </div>
-
-
-
-
-
-        <br>
-        <hr />
-        <br><br><br><br>
+        <br><br>
 
         <div>
-            <hr / id="contact info">
-            <h3 style="text-align: center;">Contact</h3>
-            <p>Lets see in real time all <strong>Purchases</strong> you have done in our garage.</p>
-            <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
-            <br><br>
+            <?php
+            //include("test_connect_db.php");
+            $currentUser = $_SESSION['usuario'];
+            $link = connectDataBase();
+            $emaitza = mysqli_query($link, "select * from purchase where cust_Username='$currentUser'");
 
-            <div class="container">
-                <h2>Accordion Example</h2>
-                <p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>
-                <div id="accordion">
-                    <div class="card">
-                        <div class="card-header">
-                            <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                                Collapsible Group Item #1
-                            </a>
-                        </div>
-                        <div id="collapseOne" class="collapse show" data-parent="#accordion">
-                            <div class="card-body">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </div>
+            ?>
+
+            <div style="width: 100%;">
+                <h2>Your Purchases</h2>
+                <p>The .table-dark class adds a black background to the table:</p>
+                <table class="table table-blue rounded-lg tableMove" style="text-align:center;margin-left:auto; margin-right:50%;">
+                    <colgroup>
+                        <col span="1" style="background-color:greenyellow">
+                    </colgroup>
+                    <thead style="vertical-align:left" class="">
+                        <tr style="text-align:center">
+                            <th style="color:black;">Purchase ID</th>
+                            <th>Username</th>
+                            <th>Product Code</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Final Cost</th>
+                            <!-- <th>Manage</th>  -->
+                        </tr>
+
+                        <?php
+                        while ($erregistroa = mysqli_fetch_array($emaitza)) {
+                            printf("<tr >
+                      <td style='color:black;'>%d</td>
+                      <td>%s</td>
+                      <td>%s</td>
+                      <td>%s</td>
+                      <td>%d</td>
+                      <td>%.2f</td>
+                    </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5]);
+                        }
+                        mysqli_free_result($emaitza);
+                        //mysqli_close($link);
+                    //     printf("<tr >
+                    //   <td style='color:black;'>%d</td>
+                    //   <td>%s</td>
+                    //   <td>%s</td>
+                    //   <td>%s</td>
+                    //   <td>%d</td>
+                    //   <td>%.2f</td>
+                    //   <td>
+                    //       <a href='deleteAdvanced.php?purchaseIdentifier=%s'>
+                    //         <img src='../finalVersion/img/deleteImage.png' width='75px' height='23px' align='center'></img>
+                    //       </a>
+                          
+                    //   </td>
+                    // </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[0]);
+
+                        ?>
+
+                    </thead>
+                </table>
+
+                <div class="jumbotron text-left" style="width: 50%; margin-bottom:0; color:black">
+                    <h1>Anything ealse?</h1>
+                    <p>Try to <strong>add </strong>new purchases or <strong>delete</strong> the unwanted ones. </p>
+
+                    <div class="hero-image" style="text-align: right;">
+                        <div class="hero-text">
+                            <button onclick=location.href="newPurchaseFinalForm.php" style="width:15%;">Manage</button>
                         </div>
                     </div>
                 </div>
 
+                <br>
+            </div>
+
+            <br><br>
+            <div class="" style="text-align:center">
+                <!-- div to Return TOP -->
+                <button class="btn btn-warning px-4 py-2 rounded-lg CTA-button text-white shadow" onclick="topFunction()" id="myBtn" title="Go to top">Return Top</button>
+                <button class="rounded-lg" style="width: 20%;" onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+                <br><br>
             </div>
         </div>
+        <br>
+
+
+        <hr / id="profile info">
+
 
 
 
         <div>
-            <br><br><br><br><br><br><br><br>
-
-            <hr id="profile" /><br><br>
-            <p id="acabar">The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
+            <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
             <!--dirigir al apartado de las cabinas -->
             <h3 style="text-align: left;">Profile Info</h3>
             <p style="text-align: left;">The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
             <p style="text-align: left;"><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
             <br><br>
+            <?php
+            $currentUser = $_SESSION['usuario'];
+            $link = connectDataBase();
+            $emaitza = mysqli_query($link, "select * from customer where Username='$currentUser'");
+            ?>
+            <?php
+            while ($erregistroa = mysqli_fetch_array($emaitza)) {
+            ?>
+                <div class="card" style="width:400px">
+                    <img class="card-img-top" src="../finalVersion/img/encabezadoTaller1.jpg" alt="Card image" style="width:100%">
+                    <div class="card-body">
+                        <h4 class="card-title"><?php echo  $_SESSION['usuario']; ?></h4>
+                        <p class="card-text">Name: <?php echo  $erregistroa['Name']; ?> &nbsp;&nbsp;&nbsp;&nbsp;Surname: <?php echo  $erregistroa['Surname']; ?></p>
+                        <p class="card-text">Birthday: <?php echo  $erregistroa['Birthday']; ?></p>
+                        <p class="card-text">Phone Number: <?php echo  $erregistroa['Phone_Number']; ?></p>
+                        <p class="card-text">Mail: <?php echo  $erregistroa['Mail']; ?></p>
+                        <a href="webCustomersFinal.php" class="btn btn-primary">Home</a>
+                    </div>
+                </div>
+
+            <?php
+            }
+            mysqli_free_result($emaitza);
+            //mysqli_close($link);
+            ?>
+            <br><br><br><br>
+            <div class="" style="text-align:center">
+                <!-- div to Return TOP -->
+                <button class="btn btn-warning px-4 py-2 rounded-lg CTA-button text-white shadow" onclick="topFunction()" id="myBtn" title="Go to top">Return Top</button>
+                <button class="rounded-lg" style="width: 20%;" onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+                <br><br>
+            </div>
+            <br><br><br><br>
+
         </div>
+
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
@@ -651,6 +819,7 @@
 </body>
 
 </html>
+
 <script>
     function topFunction() {
         document.body.scrollTop = 0;

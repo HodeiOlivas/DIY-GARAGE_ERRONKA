@@ -98,7 +98,7 @@
                         <td>%.2f</td>
 						<td style='background-color:crimson'>
                           <a href='deleteAdvancedPurchaseCart.php?purchaseCartIdentifier=%d'>
-                            <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img>
+                            <img src='../finalVersion/img/deleteImage.png' width='75px' height='23px' align='center'></img>
                           </a>
                           
                         </td>

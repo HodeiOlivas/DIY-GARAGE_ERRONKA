@@ -17,7 +17,7 @@
         $price = $_POST['priceProd'];
         $description = $_POST['descriptionProd'];
         
-        $serbitzarikoHelbidea = '../loginAzalpenak/img'; 							# Karpeta sortu "Argazkiak", honen barruan beste bat "DB". 
+        $serbitzarikoHelbidea = '../finalVersion/img'; 							# Karpeta sortu "Argazkiak", honen barruan beste bat "DB". 
         $helbideTemporala = 	$_FILES['picture']['tmp_name']; 				# Argazkiaren helbidea:
         $argazkiIzena = 		$_FILES['picture']['name']; 					# Argazki izena:
         $bukaeraHelbidea = 		$serbitzarikoHelbidea.'/'.$argazkiIzena; 	# Bukaerako helbidearen helbidea gorde. 

@@ -19,7 +19,7 @@
 		// echo "<script type='text/javascript' href='webErabiltzaileak.php'>alert('$messageAfterDeletePurchase');</script>";
 
 		echo ("<script LANGUAGE='JavaScript'>
-				window.alert('he specified purchase has been successfully deleted.');
+				window.alert('The specified purchase has been successfully deleted.');
     			window.location.href='webCustomersFinal.php';
     		</script>");
 		

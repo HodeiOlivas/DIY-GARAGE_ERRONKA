@@ -44,6 +44,7 @@
             height: 750px;
             /* height: 200px; */
         }
+
     </style>
 </head>
 
@@ -139,7 +140,7 @@
                         <th>Final Cost</th>
                         <th>Manage</th> <!-- Column to manage each record (in this case, the purchases) -->
                         <!-- <img src='deleteImage.png' id='argazkia' height=200px></img> -->
-                        <!-- <img src='../loginAzalpenak/img/deleteImage.png' id='argazkia'></img> -->
+                        <!-- <img src='../finalVersion/img/deleteImage.png' id='argazkia'></img> -->
                     </tr>
 
                     <?php
@@ -153,7 +154,7 @@
                       <td>%.2f</td>
                       <td>
                           <a href='deleteAdvanced.php?purchaseIdentifier=%s'>
-                            <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img>
+                            <img src='../finalVersion/img/deleteImage.png' width='75px' height='23px' align='center'></img>
                           </a>
                           
                       </td>

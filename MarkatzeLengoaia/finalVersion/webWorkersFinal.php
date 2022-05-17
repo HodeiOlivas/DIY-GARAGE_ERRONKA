@@ -290,7 +290,7 @@
                         <td style='vertical-align:middle'><img src=%s width='200' height='90'><br></td>
                         <td style='vertical-align:middle'>
                           <a href='deleteProduct.php?productDeleteIdentifier=%s'>
-                            <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img>
+                            <img src='../finalVersion/img/deleteImage.png' width='75px' height='23px' align='center'></img>
                           </a>
                           
                         </td>

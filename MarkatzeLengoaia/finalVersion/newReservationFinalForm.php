@@ -174,7 +174,7 @@
                         <td>%.2f</td>
                         <td>
                           <a href='deleteAdvancedReservation.php?reservationIdentifier=%s'>
-                            <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img>
+                            <img src='../finalVersion/img/deleteImage.png' width='75px' height='23px' align='center'></img>
                           </a>
                           
                         </td>

@@ -328,7 +328,7 @@ Tip: Try to remove the background-attachment property to remove the scrolling ef
             <th>Final Cost</th>
             <th>Manage</th> <!-- Column to manage each record (in this case, the purchases) -->
             <!-- <img src='deleteImage.png' id='argazkia' height=200px></img> -->
-            <!-- <img src='../loginAzalpenak/img/deleteImage.png' id='argazkia'></img> -->
+            <!-- <img src='../finalVersion/img/deleteImage.png' id='argazkia'></img> -->
           </tr>
 
           <?php
@@ -342,7 +342,7 @@ Tip: Try to remove the background-attachment property to remove the scrolling ef
                       <td>%.2f</td>
                       <td>
                           <a href='deleteAdvanced.php?purchaseIdentifier=%s'>
-                            <img src='../loginAzalpenak/img/deleteImage.png' width='75px' height='23px' align='center'></img>
+                            <img src='../finalVersion/img/deleteImage.png' width='75px' height='23px' align='center'></img>
                           </a>
                           
                       </td>
@@ -369,10 +369,10 @@ Tip: Try to remove the background-attachment property to remove the scrolling ef
         <div class="hero-image" style="text-align: right;">
           <div class="hero-text">
             <a href='insertNewPurchaseForm.php'>
-              <img src='../loginAzalpenak/img/add1.png' width='40px' height='30px' align='center'></img>
+              <img src='../finalVersion/img/add1.png' width='40px' height='30px' align='center'></img>
             </a>
             <a href='insertNewPurchaseForm.php'>
-              <img src='../loginAzalpenak/img/addList.png' width='40px' height='30px' align='center'></img>
+              <img src='../finalVersion/img/addList.png' width='40px' height='30px' align='center'></img>
             </a>
             <button onclick=location.href="insertNewPurchaseForm.php">New</button>
             <button onclick=location.href="index.php">Update</button>

@@ -230,17 +230,13 @@ GROUP BY cust_Username ORDER by Date desc limit 3;
 
 
 
-/*
-// while (selectCabin) {
-		while ($erregistroa = mysqli_fetch_array($sql)) {
-			echo "<option value='" . $row['Cabin_ID'] . "'>" . $row['Cabin_ID'] . "</option>";
-
-		?>
-			<option value="<?php echo $erregistroa['Cabin_ID']; ?>"><?php echo $erregistroa['Cabin_ID']; ?></option>
-		<?php
-			// close while loop   
-		}
-		
-		?>
-*/
+-- trigger which saves purchases on a table before deleting them
+name trigger: save_Purchase_History
+table: purchase
+tiempo: before
+event: delete
+INSERT INTO
+purchasehistory(id_Purchase, cust_Username,prod_ID, Date, Amount, Final_Cost)
+VALUES
+(OLD.id_Purchase, OLD.cust_Username, OLD.prod_ID, OLD.Date, OLD.Amount, OLD.Final_Cost)
 
