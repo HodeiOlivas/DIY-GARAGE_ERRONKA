@@ -1,0 +1,438 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  opacity: unset;
+}
+
+/* th {
+  border: 1px solid black;
+  border-collapse: collapse;
+  background-color: mediumslateblue;
+  color: black;
+} */
+
+
+.primary-bg {
+  background-color: #3b4754;
+  /* background-color: white; */
+}
+
+.primary-colour {
+  color: #3b4754;
+}
+
+.grey {
+  color: #aaaaaa;
+}
+
+.fs-11 {
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.fs-13 {
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav-link:hover {
+  background-color: rgba(196, 196, 196, 0.25);
+  border-radius: 5px;
+}
+
+.profile-hover:hover {
+  background-color: rgba(196, 196, 196, 0.25);
+  border-radius: 5px;
+}
+
+.exp {
+  width: 52px;
+  height: 52px;
+  background-color: #e8eaec;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 11px;
+  border-radius: 51%;
+  box-sizing: border-box;
+}
+
+/* .logoutButton {
+  color: #f04141;
+} */
+
+.cream-bg {
+  background-color: #e2e2e2;
+}
+
+#mainPageImage {
+  opacity: 0.4;
+}
+
+/* IMAGE ON LOGGED IN PAGE */
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.image-text-primary {
+  position: absolute;
+  top: 75px;
+  left: 100px;
+  /* font-weight: 600; */
+  font-weight: 600;
+}
+
+.image-text-secondary {
+  position: absolute;
+  top: 120px;
+  left: 100px;
+  font-weight: 600;
+}
+
+.image-middle-right {
+  position: absolute;
+  top: 120px;
+  right: 5px;
+}
+
+.image-nav {
+  position: absolute;
+  top: 200px;
+  left: 5px;
+}
+
+.image-profile {
+  position: absolute;
+  top: 185px;
+  right: -280px;
+}
+
+.CTA-button {
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+.LoginGreen {
+  color: #458781;
+}
+
+.cart {
+  overflow: hidden;
+  padding: 10px 3px;
+  background: yellow;
+}
+
+.circle {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+
+  position: absolute;
+  top: 240px;
+  right: 30.5%;
+  animation: spinLogo 1s linear 1;
+}
+
+@keyframes spinLogo {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+  /* border: 1px solid red; */
+}
+
+#mainPageImage {
+  opacity: 0.25;
+}
+
+.colour-secondary {
+  color: #CDCDCD;
+}
+
+.secondary-button {
+  background-color: #606E7D;
+  width: 254px;
+}
+
+.secondary-button:hover {
+  background-color: #545f6a;
+}
+
+.secondary-button-outline {
+  /* border: 2px solid #606E7D; */
+  border: 2px solid #2b4158;
+  width: 254px;
+}
+
+.secondary-button-outline:hover {
+  background-color: #606E7D;
+}
+
+.table td {
+  border-top: 0px;
+}
+
+.table th {
+  border-top: 0px;
+}
+
+.table {
+  /* width: 65%; */
+  width: 100%;
+}
+
+.table-blue {
+  background-color: #5A748E;
+  color: white;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  display: none;
+}
+
+h5 {
+  animation: fadein 3s;
+  -moz-animation: fadein 3s;
+  /* Firefox */
+  -webkit-animation: fadein 3s;
+  /* Safari and Chrome */
+  -o-animation: fadein 3s;
+  /* Opera */
+}
+
+/* -------------------------------------------------------- */
+#test h1, h4, button {
+  text-align: center;
+  animation: fadein 3s;
+  -moz-animation: fadein 3s;
+  /* Firefox */
+  -webkit-animation: fadein 3s;
+  /* Safari and Chrome */
+  -o-animation: fadein 3s;
+  /* Opera */
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadein {
+
+  /* Firefox */
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadein {
+
+  /* Safari and Chrome */
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadein {
+
+  /* Opera */
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* ------------------------------------------ */
+.header2 {
+  position: fixed;
+  top: 0;
+  /* top: 85%; */
+  z-index: 1;
+  width: 98%;
+  background-color: #f1f1f1;
+}
+
+.cardProduct {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: 0;
+  /* padding-left: 10px 25px; */
+  text-align: center;
+  font-family: arial;
+  background-color: rgb(129, 164, 219);
+}
+
+
+.card {
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: 0;
+  text-align: center;
+  font-family: arial; */
+  /* background-color: rgb(208, 223, 247); */
+  background-color: rgb(223, 228, 237);
+}
+
+.priceProduct {
+  color: grey;
+  font-size: 22px;
+}
+
+
+.buttonProd {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+}
+
+.cardProduct button:hover {
+  opacity: 0.7;
+}
+
+
+.tab {
+  float: left;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  width: 30%;
+  height: 300px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: green;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 0px 12px;
+  border: 1px solid #ccc;
+  width: 70%;
+  border-left: none;
+  height: 300px;
+  display: none;
+  text-align: right;
+}
+
+/* Clear floats after the tab */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.ul2 {
+  list-style-type: none;
+  margin-top: 0px;
+  ;
+  overflow: hidden;
+}
+
+#rcorners2 {
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
+  width: 200px;
+  height: 150px;
+  background: #73AD21;
+}
+
+#rcorners1 {
+  border-radius: 25px;
+  background: #73AD21;
+  padding: 20px;
+  width: 200px;
+  height: auto;
+  /* height: 150px; */
+}
+
+
+.parallaxRounded {
+  background-image: url("img/fondoF1_1.jpg");
+  height: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 25px;
+}
+
+/*-------------------------------------*/
+
+.tableMove {
+  /* width: 200px; */
+  width: 100%;
+  height: auto;
+
+  transition: width 5s;
+  border-radius: 25px;
+}
+
+.tableMove:hover {
+  width: 50%;
+  height: 100%;
+  background: brown;
+}
+
+/*-------------------------------------*/
