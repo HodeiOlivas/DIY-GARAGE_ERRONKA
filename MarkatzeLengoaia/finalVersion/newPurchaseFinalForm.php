@@ -39,12 +39,23 @@
             flex-wrap: wrap;
         }
 
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            /* background-color: mediumslateblue; */
+            background-color: greenyellow;
+            color: black;
+        }
+
+        td {
+            color:white;
+        }
+
         #main div {
             width: 50px;
             height: 750px;
             /* height: 200px; */
         }
-
     </style>
 </head>
 
@@ -55,8 +66,8 @@
     $currentUser = $_SESSION['usuario'];
     $todaysDate = date("Y-m-d");
     $link = connectDataBase();
-    $kontsulta1 = mysqli_query($link, "select * from cabin");
-    $kontsulta2 = mysqli_query($link, "select * from reservation where cust_Username = '$currentUser'");
+    // $kontsulta1 = mysqli_query($link, "select * from cabin");
+    // $kontsulta2 = mysqli_query($link, "select * from reservation where cust_Username = '$currentUser'");
     ?>
 
     <!-- style='width:600px;float:right;margin-top:50px; margin-right:300px' -->
@@ -64,8 +75,8 @@
 
         <div class="d-flex justify-content-between align-items-center">
             <div>
-                <h1 class="font-weight-bold text-white m-0 tracking">Add a new reservation:</h1>
-                <p class="font-weight-bold gray-light h5 tracking">Fill out your info to make a reservation</p>
+                <h1 class="font-weight-bold text-white m-0 tracking">Add a new purchase:</h1>
+                <p class="font-weight-bold gray-light h5 tracking">Fill out your info to make a purchase</p>
             </div>
             <div>
                 <a href="webCustomersFinal.php">
@@ -86,6 +97,7 @@
                     <label for="currentUser" class="text-uppercase font-weight-bold gray-light tracking fs-6">Product</label>
                     <select name="productChoices" class="custom-select form-bg-blue text-white mb-3">
                         <option selected>...</option>
+                        <option value="CM11">CM11 - Metal Bodywork</option>
                         <option value="EP06">EP06 - Exhaust Pipe</option>
                         <option value="FS90">FS90 - Front Spoiler</option>
                         <option value="MB11">MB11 - Metalic Bodywork</option>
@@ -99,11 +111,11 @@
             <div class="form-row w-50">
                 <div class="col form-group">
                     <label for="datepicker" class="text-uppercase font-weight-bold gray-light tracking fs-6">purchase date</label>
-                    <input id="datepicker" type="date" name="dateOfNewPurchase" placeholder="specify date" class="formAlign custom-select-date" />
+                    <input id="datepicker" type="date" name="dateOfNewPurchase" placeholder="specify date" class="formAlign custom-select-date" required/>
                 </div>
                 <div class="col form-group">
                     <label for="currentUser" class="text-uppercase font-weight-bold gray-light tracking fs-6">Amount</label>
-                    <input name="amountUnits" type="number" class="custom-select-date">
+                    <input name="amountUnits" type="number" class="custom-select-date" required>
                 </div>
             </div>
             <!-- buttons -->
@@ -193,7 +205,7 @@
                 <?php
                 while ($erregistroa = mysqli_fetch_array($emaitza)) {
                     printf("<tr>
-                        <td style='vertical-align:middle'>%s</td>
+                        <td style='vertical-align:middle;color:black;'>%s</td>
                         <td style='vertical-align:middle'>%s</td>
                         <td style='vertical-align:middle'>%.2f</td>
                         <td style='text-align:left;vertical-align:middle;width:500px;'>%s</td>

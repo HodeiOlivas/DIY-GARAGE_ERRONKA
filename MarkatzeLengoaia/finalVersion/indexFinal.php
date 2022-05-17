@@ -203,11 +203,18 @@
     </div> -->
         <div class="d-flex w-100">
             <div class="col text-right mt-5">
-                <h1><a href="contact.php">
-                        <button class="btn btn-warning px-4 py-2 rounded-lg CTA-button text-white shadow">
-                            Ask a question <i class="bi bi-telephone"></i>
-                        </button>
-                    </a></h1>
+
+                <h1>
+                    <button class="btn btn-warning px-4 py-2 rounded-lg CTA-button text-white shadow" style="width:210px;" onclick=location.href="sessionsCustomersFinal.php" style="width:auto;">
+                        <h6 class="font-weight-bold m-0">Log in as Customer</h6>
+                    </button>
+                
+
+                    <button class="btn btn-warning px-4 py-2 rounded-lg CTA-button text-white shadow" style="width:210px;" onclick=location.href="sessionsWorkersFinal.php" style="width:auto;">
+                        <h6 class="font-weight-bold m-0">Log in as Worker</h6>
+                    </button>
+                </h1>
+
             </div>
         </div>
 
@@ -217,12 +224,19 @@
                 <h4 class="colour-secondary font-weight-bold text-left">Lets have a quick look.</h4>
 
                 <div class="d-flex mt-5">
-                    <button class="btn secondary-button-outline text-white px-5 py-2 mr-5" onclick=location.href="sessionsCustomersFinal.php" style="width:auto;">
+                    <!-- <button class="btn secondary-button-outline text-white px-5 py-2 mr-5" onclick=location.href="sessionsCustomersFinal.php" style="width:auto;">
                         <h6 class="font-weight-bold m-0">Log in as Customer</h6>
                     </button>
                     <button class="btn secondary-button-outline text-white px-5 py-2 mr-5" onclick=location.href="sessionsWorkersFinal.php" style="width:auto;">
                         <h6 class="font-weight-bold m-0">Log in as Worker</h6>
-                    </button>
+                    </button> -->
+                    <h1>
+                        <a href="contact.php">
+                            <button class="btn btn-danger px-4 py-2 rounded-lg CTA-button text-white shadow" style="width:210px;">
+                                Ask a question <i class="bi bi-telephone"></i>
+                            </button>
+                        </a>
+                    </h1>
                 </div>
             </div>
         </div>
@@ -302,7 +316,7 @@
             </div>
 
 
-            
+
             <div style=" margin:100px;">
                 <!-- div CATALOG OF PRODUCTS -->
                 <hr id="products info" class="new4" style="width:96%;"><br><br>
@@ -316,7 +330,7 @@
                     <p style="color:white;text-align:justify;text-justify: inter-word;">When you're logged in, you will be able to add a product to your
                         cart clicking the button of the cards. The catalog is renewed every week with at least one new product of the best quality. Thats
                         why we are that high up in the auto repair market.</p>
-                        <br>
+                    <br>
                     <hr>
                 </div>
             </div>
@@ -407,7 +421,6 @@
     <!-- <h3>Cabins' Information</h3> -->
     <h4 class="font-weight-bold text-left mb-4" style="color:white;">Cabin's information:</h4>
     <p class="font-weight text-left mb-4" style="color:white;">The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-    <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
     <br><br>
 
     <br>
@@ -415,7 +428,6 @@
     </div>
     <div>
         <h2>Our Services</h2>
-        <p>The <strong>HALAB Garage</strong> allows you to repair every problem you have on your vehicle. Lets have a quick look. </p>
         <div class="row">
             <!-- <div class="col-sm-4"> -->
             <div class="col">
@@ -524,11 +536,6 @@
             //$emaitza = mysqli_query($link, "select * from reservation where cust_Username='$currentUser'");
 
             ?>
-            <!--style="float:left -->
-
-            <br>
-            <h4 class="font-weight-bold text-left mb-4" style="color:white;">Reservation's information:</h4>
-            <p>The .table-dark class adds a black background to the table:</p>
 
             <br>
         </div>
@@ -556,15 +563,7 @@
             <p style="text-align:left; margin-left:50px;">In order to make a purchase, there is an only rule. This rule consists on not
                 buying more than one product on each purchase.
         </div>
-        <br>
-
-
-
-        <!--dirigir al apartado de las cabinas -->
-        <h3 style="text-align: center;">PURCHASE HISTORY</h3>
-        <p>Lets see in real time all <strong>Purchases</strong> you have done in our garage.</p>
-        <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
-        <br><br><br><br>
+        <br><br>
         <div class="" style="text-align:center">
             <!-- div to Return TOP -->
             <button class="btn btn-warning px-4 py-2 rounded-lg CTA-button text-white shadow" onclick="topFunction()" id="myBtn" title="Go to top">Return Top</button>
@@ -611,18 +610,7 @@
         </div>
 
 
-
-        <div>
-            <br><br><br><br><br><br><br><br>
-
-            <hr id="profile" /><br><br>
-            <p id="acabar">The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-            <!--dirigir al apartado de las cabinas -->
-            <h3 style="text-align: left;">Profile Info</h3>
-            <p style="text-align: left;">The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-            <p style="text-align: left;"><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
-            <br><br>
-        </div>
+        <br><br><br><br><br><br><br><br>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>

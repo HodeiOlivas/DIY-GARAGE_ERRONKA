@@ -195,9 +195,9 @@
 
         <div class="d-flex w-100">
             <div class="col text-right mt-5">
-                <h1><a href="webWorkersFinal.php">
+                <h1><a href="indexFinal.php">
                         <button class="btn btn-warning px-4 py-2 rounded-lg CTA-button text-white shadow">
-                            Ask a question <i class="bi bi-telephone"></i>
+                            Return to main page <i class="bi bi-telephone"></i>
                         </button>
                     </a></h1>
             </div>

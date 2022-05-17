@@ -39,6 +39,18 @@
             flex-wrap: wrap;
         }
 
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            /* background-color: mediumslateblue; */
+            background-color: greenyellow;
+            color: black;
+        }
+
+        td {
+            color: white;
+        }
+
         #main div {
             width: 50px;
             height: 750px;
@@ -82,7 +94,7 @@
                 </div>
                 <div class="col form-group">
                     <label for="currentUser" class="text-uppercase font-weight-bold gray-light tracking fs-6">Cabin</label>
-                    <select name="cabinChoices" class="custom-select form-bg-blue text-white mb-3">
+                    <select name="cabinChoices" class="custom-select form-bg-blue text-white mb-3" required>
                         <option selected>...</option>
                         <option value="C1">C1</option>
                         <option value="C2">C2</option>
@@ -96,7 +108,7 @@
             <div class="form-row w-50">
                 <div class="col form-group">
                     <label for="datepicker" class="text-uppercase font-weight-bold gray-light tracking fs-6">purchase date</label>
-                    <input id="datepicker" type="date" name="reservationDate" placeholder="specify date" class="formAlign custom-select-date" />
+                    <input id="datepicker" type="date" name="reservationDate" placeholder="specify date" class="formAlign custom-select-date" required />
                 </div>
                 <div class="col form-group">
                     <label for="currentUser" class="text-uppercase font-weight-bold gray-light tracking fs-6">Amount of hours (auto)</label>
@@ -107,14 +119,14 @@
             <div class="form-row w-50 mt-3">
                 <div class="col form-group">
                     <label for="start_hour" class="text-uppercase font-weight-bold gray-light tracking fs-6">Start hour</label>
-                    <input name="start_hour" type="time" class="custom-select-date">
+                    <input name="start_hour" type="time" class="custom-select-date" required>
                 </div>
             </div>
             <!-- end hours -->
             <div class="form-row w-50 mt-1">
                 <div class="col form-group">
                     <label for="end_hour" class="text-uppercase font-weight-bold gray-light tracking fs-6">Ending hour</label>
-                    <input name="end_hour" type="time" class="custom-select-date">
+                    <input name="end_hour" type="time" class="custom-select-date" required>
                     <small class="form-text gray-light font-weight-bold tracking">Click on the clock icon to select a time!</small>
 
                 </div>
@@ -142,7 +154,6 @@
             <br>
             <hr />
             <h4 class="font-weight-bold text-left mb-4" style="color:white;">Your reservations:</h4>
-            <p>Here you can check all the reservations you've done so far.</p>
 
             <!-- <table class="table table-blue rounded-lg tableMove" style="width:80%;text-align:center;margin-left:auto; margin-right:50%;"> -->
             <table class="table table-blue rounded-lg tableMove" style="text-align:center;margin-left:auto; margin-right:50%;">
@@ -185,7 +196,6 @@
                     ?>
                 </thead>
             </table>
-            <br>
         </div>
     </div>
 

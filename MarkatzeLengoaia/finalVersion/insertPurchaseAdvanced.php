@@ -18,13 +18,22 @@
 	<?php
 	include("test_connect_db.php");
 	session_start();
+	$link = connectDataBase();
 	$prodID = $_GET["prodIdentifier"];
+	echo $prodID;
 	$currentUser = $_SESSION['usuario'];
 	$todaysDate = date("Y-m-d");
 	$defaultAmount = 1;
 
-	$link = connectDataBase();
-	$emaitza = mysqli_query($link, "insert into purchase (cust_Username, prod_ID, Date, Amount) values ('$currentUser', '$prodID', '$todaysDate', '$defaultAmount')");
+	//CET THE PRICE OF THE SELECTED PRODUCT
+	$price = mysqli_query($link, "SELECT Price FROM product WHERE id_Product = '$prodID'");
+	$price_Prod = mysqli_fetch_assoc($price);
+	$final_Cost = ((float)$price_Prod['Price']);
+
+
+	// $link = connectDataBase();
+	$emaitza = mysqli_query($link, "insert into purchase (cust_Username, prod_ID, Date, Amount, Final_Cost) 
+		values ('$currentUser', '$prodID', '$todaysDate', '$defaultAmount', '$final_Cost')");
 	$kontsulta = mysqli_query($link, "select * from purchase where Date = '$todaysDate'");
 
 	// $kontsultDelete = mysqli_query($link,"select * from purchase");
@@ -40,7 +49,7 @@
 	// window . location . href = 'webErabiltzaileak.php';
 
 	?>
-	
+
 
 	<?php
 	header("Location: webCustomersFinal.php");

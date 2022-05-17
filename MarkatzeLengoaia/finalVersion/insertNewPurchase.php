@@ -10,27 +10,35 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <title>New Purchase</title>
 
-    
+
 </head>
 
 <body style='margin:auto;width:600px;margin-top:100px;'>
     <div>
         <?php
         include("test_connect_db.php");
-
         session_start();
+        $link = connectDataBase();
         $username00 = $_SESSION['usuario'];
         $product = $_POST["productChoices"];
         //$date = date("Y-m-d");  //echo "Today is " . date("Y-m-d") . "<br>";
-        
+
         $date00 = $_POST["dateOfNewPurchase"];
         $date00 = str_replace('/', '-', $date00);
         $date11 = date("Y-m-d", strtotime($date00));
 
         $quantity = $_POST["amountUnits"];
 
+
+        //CET THE PRICE OF THE SELECTED PRODUCT
+        $price = mysqli_query($link, "SELECT Price FROM product WHERE id_Product = '$product'");
+        $price_Prod = mysqli_fetch_assoc($price);
+        $final_Cost = ((float)$price_Prod['Price'] * (float)$quantity);
+
+
         $link = connectDataBase();
-        $emaitza = mysqli_query($link, "insert into purchase (cust_Username, prod_ID, Date, Amount) values('$username00','$product', '$date11', '$quantity')");
+        $emaitza = mysqli_query($link, "insert into purchase (cust_Username, prod_ID, Date, Amount, Final_Cost) 
+            values('$username00','$product', '$date11', '$quantity', '$final_Cost')");
 
         $kontsulta = mysqli_query($link, "select * from purchase where cust_Username = '$username00'");
         ?>

@@ -28,7 +28,8 @@
         th {
             border: 1px solid black;
             border-collapse: collapse;
-            background-color: mediumslateblue;
+            /* background-color: mediumslateblue; */
+            background-color:greenyellow;
             color: black;
         }
 
@@ -85,7 +86,7 @@
                 <th>&nbsp;Date&nbsp;</th>
                 <th>&nbsp;Amount&nbsp;</th>
                 <th>&nbsp;Final Cost&nbsp;</th>
-                <th>&nbsp;Cancel&nbsp;</th>
+                <th style='background-color:crimson;color:white;'>&nbsp;Cancel&nbsp;</th>
             </Tr>
             <?php
             while ($erregistroa = mysqli_fetch_array($kontsulta)) {
@@ -109,7 +110,7 @@
         </thead>
     </table>
 
-    
+
     <div>
         <a href="webCustomersFinal.php" style="margin-left:280px;">
             <button class="btn btn-warning text-white">Atzera</button>

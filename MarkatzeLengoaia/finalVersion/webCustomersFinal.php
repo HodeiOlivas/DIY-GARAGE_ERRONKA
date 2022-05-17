@@ -120,6 +120,15 @@
 
             /* height: 150px;   */
         }
+
+        hr.new4 {
+            border: 1px solid red;
+        }
+
+        /* th{
+            background-color: greenyellow;
+            color:black;
+        } */
     </style>
 </head>
 
@@ -202,7 +211,7 @@
 
 
     <!-- table reservations -->
-    <div class="px-5 mx-5">
+    <div class="px-5 mx-5" style="width:100%;">
         <?php
         include("test_connect_db.php");
         $currentUser = $_SESSION['usuario'];
@@ -228,7 +237,7 @@
 
                 <div class="d-flex mt-5">
                     <button class="btn secondary-button-outline text-white px-5 py-2 mr-5" onclick="location.href='#products info'">
-                        <h6 class="font-weight-bold m-0">See our products</h6>
+                        <h6 class="font-weight-bold m-0">Our products</h6>
                     </button>
                     <button class="btn secondary-button-outline text-white px-5 py-2 mr-5" onclick="location.href='#cabins info'">
                         <h6 class="font-weight-bold m-0">Our cabins</h6>
@@ -279,11 +288,11 @@
 
             </thead>
         </table>
-        <div class="table text-right" style="width:100%">
+        <!-- <div class="table text-right" style="width:100%">
             <a href="#reservations interaction">
                 <button style="width: 30%;" class="btn btn-warning  ml-5 text-white">All Reservations</button>
             </a>
-        </div>
+        </div> -->
     </div>
 
 
@@ -340,7 +349,7 @@
         <!-- <div style="height:800px;background-color:#3b4754;"> -->
         <div style="height:auto;background-color:#3b4754;">
             <ul style="background-color:brown;">
-                <li><a class="active" href="#start Customers">Home1</a></li>
+                <li><a class="active" href="#mainPageImage">Home1</a></li>
                 <li><a href="#products info">Products</a></li>
                 <li><a href="#cabins info">Cabins</a></li>
                 <li><a href="#reservations info">Reservations</a></li>
@@ -370,15 +379,22 @@
             </div>
 
 
-            <div>
+            <div style=" margin:100px;">
                 <!-- div CATALOG OF PRODUCTS -->
-                <hr id="products info" /><br><br>
-                <h3>Ca2atalog of Products</h3>
-
-                <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-                <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
-                wqdw
-                wfw
+                <hr id="products info" class="new4" style="width:96%;"><br><br>
+                <!-- <h3>Ca22atalog of Products</h3> -->
+                <h4 class="font-weight-bold text-left mb-4 margin:100px;" style="color:white;">PRODUCT CATALOG:</h4>
+                <div style="margin:0px;max-width: 96%; word-wrap:unset; word-break: break-all;">
+                    <p style="color:white;">Check the whole product catalog to find the one that best suits your vehicle's needs. The catalog is renewed
+                        every week with at least one new product of the best quality. Thats why we're so high up in the auto repair market. Right now, we
+                        are working on the option of giving discounts to customers who, when buying a product to carry out a repair, deliver the old or
+                        damaged component / piece. </p>
+                    <p style="color:white;text-align:justify;text-justify: inter-word;">When you're logged in, you will be able to add a product to your
+                        cart clicking the button of the cards. The catalog is renewed every week with at least one new product of the best quality. Thats
+                        why we are that high up in the auto repair market.</p>
+                    <br>
+                    <hr>
+                </div>
             </div>
 
         </div> <!-- div which has the sticky navbar on top -->
@@ -553,12 +569,14 @@
             <!--style="float:left -->
 
             <br>
-            <h2>Your Reservations</h2>
-            <h4 class="font-weight-bold text-left mb-4" style="color:white;">Your reservations:</h4>
-            <p>The .table-dark class adds a black background to the table:</p>
+            <br>
+            <h2 class="font-weight text-center mb-4" style="color:white;">Your Reservataions</h2>
+            <br>
 
             <!-- <table class="table table-blue rounded-lg tableMove" style="width:80%;text-align:center;margin-left:auto; margin-right:50%;"> -->
-            <table class="table table-blue rounded-lg tableMove" style="text-align:center;margin-left:auto; margin-right:50%;">
+            <!-- <table class="table table-blue rounded-lg tableMove" style="text-align:center;margin-left:auto; margin-right:50%;"> -->
+            <table class="table table-blue rounded tableMove" style="text-align:center;margin-left:auto; margin-right:50%;">
+
                 <colgroup>
                     <col span="1" style="background-color:greenyellow">
                 </colgroup>
@@ -572,7 +590,7 @@
                         <th>Ending Hour</th>
                         <th>Amount Hours (h)</th>
                         <th>Total Price (€)</th>
-                        <th>Manage</th>
+                        <!-- <th>Manage</th> -->
                     </tr>
                     <?php
                     while ($erregistroa = mysqli_fetch_array($emaitza)) {
@@ -585,13 +603,23 @@
                         <td>%s</td>
                         <td>%.1f</td>
                         <td>%.2f</td>
-                        <td>
-                          <a href='deleteAdvancedReservation.php?reservationIdentifier=%s'>
-                            <img src='../finalVersion/img/deleteImage.png' width='75px' height='23px' align='center'></img>
-                          </a>
-                          
-                        </td>
                       </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[6], $erregistroa[7], $erregistroa[0]);
+                        //     printf("<tr >
+                        //     <td style='color:black;'>%d</td>
+                        //     <td>%s</td>
+                        //     <td>%s</td>
+                        //     <td>%s</td>
+                        //     <td>%s</td>
+                        //     <td>%s</td>
+                        //     <td>%.1f</td>
+                        //     <td>%.2f</td>
+                        //     <td>
+                        //       <a href='deleteAdvancedReservation.php?reservationIdentifier=%s'>
+                        //         <img src='../finalVersion/img/deleteImage.png' width='75px' height='23px' align='center'></img>
+                        //       </a>
+
+                        //     </td>
+                        //   </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[6], $erregistroa[7], $erregistroa[0]);
                     }
                     mysqli_free_result($emaitza);
                     mysqli_close($link);
@@ -601,11 +629,11 @@
 
             <div class="jumbotron text-left" style="width: 50%; margin-bottom:0; color:black">
                 <h1>Anything else?</h1>
-                <p>Try to add new <strong>reservations</strong>! </p>
+                <p>Try to <strong>add</strong> new reservations or <strong>delete</strong> the unwanted ones.</p>
 
                 <div class="hero-image" style="text-align: right;">
                     <div class="hero-text">
-                        <button onclick=location.href="newReservationFinalForm.php" style="width:15%;">New</button>
+                        <button onclick=location.href="newReservationFinalForm.php" style="width:15%;">Manage</button>
                     </div>
                 </div>
             </div>
@@ -642,10 +670,6 @@
 
 
         <!--dirigir al apartado de las cabinas -->
-        <br>
-        <h3 style="text-align: center;">PURCHASE HISTORY</h3>
-        <p>Lets see in real time all <strong>Purchases</strong> you have done in our garage.</p>
-        <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
         <br><br>
 
         <div>
@@ -658,8 +682,8 @@
             ?>
 
             <div style="width: 100%;">
-                <h2>Your Purchases</h2>
-                <p>The .table-dark class adds a black background to the table:</p>
+                <h2 class="font-weight text-center mb-4" style="color:white;">Your Purchases</h2>
+                <br>
                 <table class="table table-blue rounded-lg tableMove" style="text-align:center;margin-left:auto; margin-right:50%;">
                     <colgroup>
                         <col span="1" style="background-color:greenyellow">
@@ -688,20 +712,20 @@
                         }
                         mysqli_free_result($emaitza);
                         //mysqli_close($link);
-                    //     printf("<tr >
-                    //   <td style='color:black;'>%d</td>
-                    //   <td>%s</td>
-                    //   <td>%s</td>
-                    //   <td>%s</td>
-                    //   <td>%d</td>
-                    //   <td>%.2f</td>
-                    //   <td>
-                    //       <a href='deleteAdvanced.php?purchaseIdentifier=%s'>
-                    //         <img src='../finalVersion/img/deleteImage.png' width='75px' height='23px' align='center'></img>
-                    //       </a>
-                          
-                    //   </td>
-                    // </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[0]);
+                        //     printf("<tr >
+                        //   <td style='color:black;'>%d</td>
+                        //   <td>%s</td>
+                        //   <td>%s</td>
+                        //   <td>%s</td>
+                        //   <td>%d</td>
+                        //   <td>%.2f</td>
+                        //   <td>
+                        //       <a href='deleteAdvanced.php?purchaseIdentifier=%s'>
+                        //         <img src='../finalVersion/img/deleteImage.png' width='75px' height='23px' align='center'></img>
+                        //       </a>
+
+                        //   </td>
+                        // </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[0]);
 
                         ?>
 
@@ -709,7 +733,7 @@
                 </table>
 
                 <div class="jumbotron text-left" style="width: 50%; margin-bottom:0; color:black">
-                    <h1>Anything ealse?</h1>
+                    <h1>Anything else?</h1>
                     <p>Try to <strong>add </strong>new purchases or <strong>delete</strong> the unwanted ones. </p>
 
                     <div class="hero-image" style="text-align: right;">
