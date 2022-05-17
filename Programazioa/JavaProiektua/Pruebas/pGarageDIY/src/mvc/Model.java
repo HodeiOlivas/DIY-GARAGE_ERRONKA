@@ -27,7 +27,6 @@ import java.util.logging.Logger;
 
 import mvc.View.*;
 import myClasses.*;
-import forGraphics.*;
 import java.awt.GridLayout;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -492,7 +491,7 @@ public class Model {
         */
         String sql = "select DISTINCT(id_cabin) as Cabin,"
                 + "count(case when Ending_Hour <= '13:00:00' then 1 else null end) as cantMorning,"
-                + "count(case when Starting_Hour >= '15:00:00' then 1 else null end) as cantAfternoon "
+                + "count(case when Starting_Hour >= '14:00:00' then 1 else null end) as cantAfternoon "
                 + "FROM reservation group by id_cabin;";
 
         ArrayList<String> morningReservations = new ArrayList<>();
@@ -1548,7 +1547,7 @@ public class Model {
     
     public static void visitWebpage() {
         //url of the website we want to connect to
-        String webUrl = "http://localhost/phpDAM1/loginAzalpenak/indexFinal.php";
+        String webUrl = "http://localhost/phpDAM1/finalVersion/indexFinal.php";
         try {
             java.awt.Desktop.getDesktop().browse(java.net.URI.create(webUrl));
         }

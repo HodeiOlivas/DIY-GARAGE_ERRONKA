@@ -99,8 +99,8 @@
                     <input id="datepicker" type="date" name="reservationDate" placeholder="specify date" class="formAlign custom-select-date" />
                 </div>
                 <div class="col form-group">
-                    <label for="currentUser" class="text-uppercase font-weight-bold gray-light tracking fs-6">Amount of hours</label>
-                    <input name="amount" type="number" class="custom-select-date">
+                    <label for="currentUser" class="text-uppercase font-weight-bold gray-light tracking fs-6">Amount of hours (auto)</label>
+                    <input name="amount" type="number" class="custom-select-date" placeholder="automatic" disabled>
                 </div>
             </div>
             <!-- start hours -->
@@ -170,7 +170,7 @@
                         <td>%s</td>
                         <td>%s</td>
                         <td>%s</td>
-                        <td>%d</td>
+                        <td>%.2f</td>
                         <td>%.2f</td>
                         <td>
                           <a href='deleteAdvancedReservation.php?reservationIdentifier=%s'>

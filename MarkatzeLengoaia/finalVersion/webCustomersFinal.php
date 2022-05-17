@@ -570,8 +570,8 @@
                         <th>Date</th>
                         <th>Starting Hour</th>
                         <th>Ending Hour</th>
-                        <th>Amount Hours</th>
-                        <th>Total Price</th>
+                        <th>Amount Hours (h)</th>
+                        <th>Total Price (€)</th>
                         <th>Manage</th>
                     </tr>
                     <?php
@@ -583,7 +583,7 @@
                         <td>%s</td>
                         <td>%s</td>
                         <td>%s</td>
-                        <td>%d</td>
+                        <td>%.1f</td>
                         <td>%.2f</td>
                         <td>
                           <a href='deleteAdvancedReservation.php?reservationIdentifier=%s'>

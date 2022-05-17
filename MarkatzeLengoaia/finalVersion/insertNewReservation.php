@@ -19,38 +19,57 @@
         <?php
         include("test_connect_db.php");
         session_start();
+        $link = connectDataBase();
         $username00 = $_SESSION['usuario'];
         $cabin00 = $_POST["cabinChoices"];  //selected on a dropdown menu options
-
-
-
-        // $cabina11 = $_POST["selectCabin1"]; //dropdown menu with sql sentence
-        //$cabina11 = $_POST["selectCabin"]; //dropdown menu with sql sentence
-
-        // $selected = $_POST['selectCabin'];
-        // if(isset($_POST["send"])) {
-        //     if (!empty($_POST['selectCabin'])) {
-        //         $selected = $_POST['selectCabin'];
-        //         echo 'You have chosen: ' . $selected;
-        //     } else {
-        //         echo 'Please select.';
-        //     }
-        // }
-
 
         $date0 = $_POST["reservationDate"];
         $date0 = str_replace('/', '-', $date0);
         $date1 = date("Y-m-d", strtotime($date0));
 
-        $amount_Hours = $_POST["amount"];
+        // $amount_Hours = $_POST["amount"];
         $startHour = $_POST["start_hour"];
         $endHour = $_POST["end_hour"];
 
+
+        //CALCULATE AMOUNT OF HOURS
+        $starting_hourFINAL = $_POST["start_hour"];
+        $ending_hourFINAL = $_POST["end_hour"];
+
+        $time1 = explode(':', $starting_hourFINAL);  //starting hour
+        $time1_h = (int)$time1[0];
+        $time1_m = (int)$time1[1];
+
+        $time2 = explode(':', $ending_hourFINAL);    //ending hour
+        $time2_h = (int)$time2[0];
+        $time2_m = (int)$time2[1];
+
+        $time1_m_hour = $time1_m / 60;
+        $time2_m_hour = $time2_m / 60;
+
+        $Starting_hour = $time1_h + $time1_m_hour;
+        $Ending_hour = $time2_h + $time2_m_hour;
+
+        $amount_hoursFinal = $Ending_hour - $Starting_hour; //calculate the exact amount of hours (double)
+
+
+        //CALCULATE TOTAL PRICE
+        $price = mysqli_query($link, "SELECT Price_Hour FROM cabin WHERE Cabin_ID = '$cabin00'");
+        $price_hour_cabin = mysqli_fetch_assoc($price);
+        $total_priceFINAL = ((float)$price_hour_cabin['Price_Hour'] * (float)$amount_hoursFinal);
+
+
+
         //$date = date("Y-m-d");  //echo "Today is " . date("Y-m-d") . "<br>";
 
-        $link = connectDataBase();
-        $emaitza = mysqli_query($link, "insert into reservation (cust_Username, id_cabin, Date, Starting_Hour, Ending_Hour, Amount_Hours) 
-                                                values('$username00', '$cabin00', '$date1', '$startHour', '$endHour', '$amount_Hours')");
+        // $link = connectDataBase();
+        // $emaitza = mysqli_query($link, "insert into reservation (cust_Username, id_cabin, Date, Starting_Hour, Ending_Hour, Amount_Hours) 
+        //                                         values('$username00', '$cabin00', '$date1', '$startHour', '$endHour', '$amount_Hours')");
+
+        
+        $emaitza = mysqli_query($link, "insert into reservation (cust_Username, id_cabin, Date, Starting_Hour, Ending_Hour, Amount_Hours, Total_Price) 
+        values('$username00', '$cabin00', '$date1', '$starting_hourFINAL', '$ending_hourFINAL', '$amount_hoursFinal', '$total_priceFINAL')");
+
 
         $kontsulta = mysqli_query($link, "select * from reservation where cust_Username = '$username00'");
         ?>
@@ -77,7 +96,7 @@
                                 <td>%s</td>
                                 <td>%s</td>
                                 <td>%s</td>
-                                <td>%d</td>
+                                <td>%.2f</td>
                                 <td>%.2f</td>
                             </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa[5], $erregistroa[6], $erregistroa[7]);
                 }
