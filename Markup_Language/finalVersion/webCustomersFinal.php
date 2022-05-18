@@ -220,7 +220,7 @@
 
         ?>
 
-        <div class="d-flex w-100">
+        <!-- <div class="d-flex w-100">
             <div class="col text-right mt-5">
                 <h1><a href="contact.php">
                         <button class="btn btn-warning px-4 py-2 rounded-lg CTA-button text-white shadow">
@@ -228,7 +228,7 @@
                         </button>
                     </a></h1>
             </div>
-        </div>
+        </div> -->
 
         <div class="row mt-4" id="test">
             <div class="col-6 pl-4 ">
@@ -778,7 +778,7 @@
             while ($erregistroa = mysqli_fetch_array($emaitza)) {
             ?>
                 <div class="card" style="width:400px">
-                    <img class="card-img-top" src="../finalVersion/img/encabezadoTaller1.jpg" alt="Card image" style="width:100%">
+                    <img class="card-img-top" src="../finalVersion/img/img_avatar1.png" alt="Card image" style="width:100%">
                     <div class="card-body">
                         <h4 class="card-title"><?php echo  $_SESSION['usuario']; ?></h4>
                         <p class="card-text">Name: <?php echo  $erregistroa['Name']; ?> &nbsp;&nbsp;&nbsp;&nbsp;Surname: <?php echo  $erregistroa['Surname']; ?></p>
