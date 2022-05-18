@@ -1,0 +1,6 @@
+Write and execute the following sentence on the server's database (on "SQL" section):
+
+	- SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+
+Una vez ejecutada la sentencia, volver a seleccionar el informe deseado. Es recomendable cerrar la aplicación completa y volver 
+a ejecutarla.
