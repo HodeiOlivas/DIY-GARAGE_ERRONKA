@@ -43,8 +43,8 @@ public class MonthOccupation {
     public String toString() {
         
         return "\n\tMonth: " + this.getMonth() + 
-                "\n\tOccupation: " + this.getAmountOfReservationsMonth() + 
-                "\n\tTotal Earned: " + this.getTotalEarnedPerMonth() + 
+                "\n\tOccupations: " + this.getAmountOfReservationsMonth() + 
+                "\n\tTotal Earned: " + this.getTotalEarnedPerMonth() + " € " + 
                 //"\n -------------------------------------------------- xx ---------------------------------------------------";
                 "\n\n--------------------------------------------------xx---------------------------------------------------" + "\n\n";
     }

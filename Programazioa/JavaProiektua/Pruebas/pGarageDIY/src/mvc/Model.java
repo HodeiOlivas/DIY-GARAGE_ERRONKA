@@ -48,21 +48,12 @@ public class Model {
 
     private Connection connect() throws SQLException {
 
-        // SQLite connection string
-        //String url = "jdbc:sqlite:" + DB;
-        //String url = "jdbc:mariadb://localhost:3307/dbpruebagarage";
-        //String url = "jdbc:mariadb://localhost:3307/dbPrueba";
-        
+        //String url = "jdbc:mysql://192.168.72.183:3306/db_diy_garage";
         //String url = "jdbc:mysql://localhost:3306/db_pruebagarage1";
-        String url = "jdbc:mysql://192.168.72.183:3306/db_diy_garage";
-        //String url = "jdbc:sqlite:" + DB;
+        String url = "jdbc:mysql://192.168.72.183:3306/db_pruebagarage1";   //connection to the database on the server
 
         Connection conn = null;
-        /*Connection conn = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/dbpruebagarage", 
-        "root", 
-        "");
-         */
+        //Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpruebagarage", "root", "");
         try {
             //conn = DriverManager.getConnection(url, "root", "");
             conn = DriverManager.getConnection(url, "Halab", "Halabtaldeagara");
@@ -75,14 +66,14 @@ public class Model {
     private static Connection connect2() {
         // SQLite connection string
         
-        String url = "jdbc:mysql://localhost:3306/db_pruebagarage1";
-        //String url = "jdbc:mysql://192.168.72.183:3306/db_diy_garage";
+        //String url = "jdbc:mysql://localhost:3306/db_pruebagarage1";
+        String url = "jdbc:mysql://192.168.72.183:3306/db_pruebagarage1";   //connection to the database on the server
 
         Connection conn = null;
         try {
             
-            conn = DriverManager.getConnection(url, "root", "");
-            //conn = DriverManager.getConnection(url, "Halab", "Halabtaldeagara");
+            //conn = DriverManager.getConnection(url, "root", "");
+            conn = DriverManager.getConnection(url, "Halab", "Halabtaldeagara");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -685,6 +676,18 @@ public class Model {
 "		WHERE reservation.cust_Username = customer.Username and \n" +
 "		reservation.Date < cast((now()) as date) \n" +
 "		GROUP BY cust_Username ORDER by Days_Passed desc limit 3;";
+        
+        /*
+        String sql = "SELECT \n" +
+"		reservation.id_Reservation as Reservation_Code, \n" +
+"		MAX(reservation.Date) as Last_Reservation, \n" +
+"		customer.Username as UsernameCust, customer.Name as NameCust, customer.Surname as SurnameCust, \n" +
+"               DATEDIFF(now(), MAX(reservation.Date)) as Days_Passed \n" +
+"		FROM reservation, customer\n" +
+"		WHERE reservation.cust_Username = customer.Username and \n" +
+"		reservation.Date < cast((now()) as date) \n" +
+"		GROUP BY cust_Username ORDER by Days_Passed desc limit 3;";
+        */
         
         try (Connection conn = connect2();
                 Statement stmt = conn.createStatement();
@@ -1346,7 +1349,8 @@ public class Model {
     
     public static ArrayList<MonthOccupation> reservationsOfEachMonth() {
         
-        String sql = "select MONTHNAME(Date) as Month, count(Date) as Occupation, sum(Total_Price) as 'Earned per month' from reservation GROUP BY Month ORDER BY Month(Date) asc;";
+        //String sql = "select MONTHNAME(Date) as Month, count(Date) as Occupation, sum(Total_Price) as 'Earned per month' from reservation GROUP BY Month ORDER BY Month(Date) asc;";
+        String sql = "select MONTHNAME(Date) as Month, count(Date) as Occupation, sum(Total_Price) as 'Earned per month' from reservation GROUP BY Month ORDER BY Month asc;";
         
         //String sql2 = "select MONTHNAME(STR_TO_DATE(Month(Date),'%m')) as Month, count(Date) as 'Occupation', sum(Total_Price) as 'Earned per month' from reservation group by Month(Date)";
         //String sql3 = "select MONTHNAME(STR_TO_DATE(Month(Date),'%m')) as Month, count(Date) as Amount from reservation group by Month(Date)";        

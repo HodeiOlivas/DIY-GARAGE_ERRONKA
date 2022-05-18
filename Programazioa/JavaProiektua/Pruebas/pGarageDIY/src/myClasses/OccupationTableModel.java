@@ -14,7 +14,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class OccupationTableModel extends AbstractTableModel {
     
-    private final String[] columnsName = {"Month", "Occupation (res.)", "Earned per month (€)"};
+    private final String[] columnsName = {"Month", "Occupations (res.)", "Earned per month (€)"};
     private ArrayList<MonthOccupation> monthsWithReservations = new ArrayList<>();
     
     

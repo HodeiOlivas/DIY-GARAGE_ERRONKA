@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="style_php.css">
+    <!-- <link rel="stylesheet" type="text/css" href="style_php.css"> -->
     <title>Insert New Product</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <link rel="stylesheet" href="newreservationform.css">
 
 </head>
 
@@ -38,8 +40,8 @@
                         <input class="col-sm-4" type="text" id="description" name="descriptionProd"></br>
                     </div>
                     <div class="form-group mt-3">
-                        <input type="file" id="Argazk" name="Argazk"/></br>
-                        <input type="submit" id="Botoia" value="Bidali" />
+                        <input type="file" id="Argazk" name="Argazk" value="Choose a picture" /></br>
+                        <input type="submit" id="Botoia" value="Save"/>
                         <br>
                     </div>
                 </form>

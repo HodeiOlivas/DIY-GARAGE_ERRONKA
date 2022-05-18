@@ -208,7 +208,7 @@
                     <button class="btn btn-warning px-4 py-2 rounded-lg CTA-button text-white shadow" style="width:210px;" onclick=location.href="sessionsCustomersFinal.php" style="width:auto;">
                         <h6 class="font-weight-bold m-0">Log in as Customer</h6>
                     </button>
-                
+
 
                     <button class="btn btn-warning px-4 py-2 rounded-lg CTA-button text-white shadow" style="width:210px;" onclick=location.href="sessionsWorkersFinal.php" style="width:auto;">
                         <h6 class="font-weight-bold m-0">Log in as Worker</h6>
@@ -231,11 +231,14 @@
                         <h6 class="font-weight-bold m-0">Log in as Worker</h6>
                     </button> -->
                     <h1>
-                        <a href="contact.php">
-                            <button class="btn btn-danger px-4 py-2 rounded-lg CTA-button text-white shadow" style="width:210px;">
-                                Ask a question <i class="bi bi-telephone"></i>
-                            </button>
-                        </a>
+                        <button class="btn btn-info px-4 py-2 rounded-lg CTA-button text-white shadow" style="width:210px;" onclick="location.href='#contact info'">
+                            <!-- contact info -->
+                            Ask a question <i class="bi bi-telephone"></i>
+                        </button>
+
+                        <button class="btn btn-success px-4 py-2 rounded-lg CTA-button text-white shadow" style="width:210px;" onclick=location.href="signup.php" style="width:auto;">
+                            <h6 class="font-weight-bold m-0">Sign in</h6>
+                        </button>
                     </h1>
                 </div>
             </div>
@@ -276,8 +279,7 @@
                 <p style="color:grey; text-align:center;">Rent one of our cabins to work yourself on your vehicle. In case <br>
                     you need help, you'll have full availability of any of our workers.
                 </p>
-                <!-- <hr class="new4"> -->
-                <hr / class="new4" style="margin-left: 20px;">
+                <!-- <hr / class="new4" style="margin-left: 20px;"> -->
             </div>
             <div class="col-sm-4">
                 <br><br><br>
@@ -285,8 +287,7 @@
                 <p style="color:grey; text-align:center;">Buy any product from our catalog to make repairing <br>
                     your vehicle an easier task. There is no stock limit.
                 </p>
-                <!-- <hr class="new4"> -->
-                <hr / class="new4" style="margin-left: 20px;">
+                <!-- <hr / class="new4" style="margin-left: 20px;"> -->
             </div>
             <div class="col-sm-4">
                 <br><br><br>
@@ -294,30 +295,35 @@
                 <p style="color:grey; text-align:center;">Choose the cabin that best suits the needs of your vehicle. <br>
                     All cabins include worker assistance.
                 </p>
-                <!-- <hr class="new4"> -->
-                <hr / class="new4" style="margin-left: 20px;margin-right: 20px;">
+                <!-- <hr / class="new4" style="margin-left: 20px;margin-right: 20px;"> -->
             </div>
         </div>
-        <!-- yeet -->
+
         <br><br>
-        <!-- <div style="height:1000px;background-color:red;font-size:36px;"> -->
-        <!-- <div style="height:800px;background-color:#3b4754;"> -->
+
         <div style="height:auto;background-color:#3b4754;">
 
             <br>
 
-            <div>
-                <!-- div ABOUT US -->
-                <br>
+            <div style="margin:100px;">
+                <hr id="products info" class="new4" style="width:96%;"><br><br>
                 <h3>ABOUT US:</h3>
-
-                <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-                <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
+                <br>
+                <div style="margin:0px;max-width: 96%; word-wrap:break-word; word-break: break-all;">
+                    <p style="color:white;">Do you feel that your vehicle needs some repairs? <br>We open the doors of our garage,
+                        where you will find everything you need to fix your vehicle. Garage trained to fix any problem. All the material
+                        and the help of our best specialists here, in the Halabs garage.
+                        Our garage is divided into different cabins which you can rent whenever you want. You can bring the necessary
+                        materials from home, but… do you lack material? Take a look at our store. If you need help, you'll always have an
+                        experienced worker who can help you with any problem with your vehicle.</p>
+                    <hr>
+                </div>
+                <br>
             </div>
 
 
 
-            <div style=" margin:100px;">
+            <div style="margin:100px;">
                 <!-- div CATALOG OF PRODUCTS -->
                 <hr id="products info" class="new4" style="width:96%;"><br><br>
                 <!-- <h3>Ca22atalog of Products</h3> -->
@@ -578,6 +584,69 @@
         <br>
         <hr />
         <br><br><br><br>
+
+        <div>
+            <hr / id="contact info">
+            <!-- <div class="parallax" style="background-image: url('img/support.jpg'); width:100%; height: 500px; text-align:center"> -->
+            <div class="parallax" style="background-image: url('img/contactFondo2.webp'); width:100%; height: 500px; text-align:center">
+                <div style="text-align: left;">
+                    <h1 style="font-size:50px; color:greenyellow; font:bold"><strong>DIY2 GARAGE</strong></h1>
+                    <p style="margin-left:25px; color:white">Contact</p><br>
+                </div>
+            </div>
+
+            <br>
+            <div id="rcorners2" style="width: 500px; margin-left:35%;">
+                <div style="margin-top:0px;">
+
+                    <h1>Contact us! </h1>
+                    <form method='POST' action='mailto:halabgroupgarage@gmail.com'>
+                        <div class="form-group">
+                            <label for="nombre">Name</label>
+                            <input type="text" class="form-control" name='nombre' id="nombre" placeholder="name..." style="width:200px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" name='email' id="email" placeholder="email...">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleTextarea">Mensaje</label>
+                            <textarea class="form-control" name='mensaje' id="mensaje" placeholder="what do you want to tell us? " rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" required> I accept the Privacy Policy
+                        </div>
+                        <button class="btn btn-primary" type="submit">Send</button>
+                    </form>
+
+                </div>
+                <br>
+                <div class="mapouter" style="text-align:center;">
+                    <div style="border: black 5px solid;" class="gmap_canvas"><iframe width="100%" height="471" id="gmap_canvas" src="https://maps.google.com/maps?q=eibar&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.croquetasricas.com">croquetas</a><br>
+                        <style>
+                            .mapouter {
+                                position: relative;
+                                text-align: right;
+                                height: 471px;
+                                width: 100%;
+                            }
+                        </style>
+                        <style>
+                            .gmap_canvas {
+                                overflow: hidden;
+                                background: none !important;
+                                height: 471px;
+                                width: 100%;
+                            }
+                        </style>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+
+
+
+        </div>
 
         <div>
             <hr / id="contact info">

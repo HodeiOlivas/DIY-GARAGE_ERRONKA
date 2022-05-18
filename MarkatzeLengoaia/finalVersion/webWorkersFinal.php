@@ -196,8 +196,8 @@
         <div class="d-flex w-100">
             <div class="col text-right mt-5">
                 <h1><a href="indexFinal.php">
-                        <button class="btn btn-warning px-4 py-2 rounded-lg CTA-button text-white shadow">
-                            Return to main page <i class="bi bi-telephone"></i>
+                        <button class="btn btn-danger px-4 py-2 rounded-lg CTA-button text-white shadow" style="margin-right:100px;">
+                            Close session <!-- <i class="bi bi-telephone"></i> -->
                         </button>
                     </a></h1>
             </div>
@@ -291,8 +291,7 @@
                         <td style='vertical-align:middle'>
                           <a href='deleteProduct.php?productDeleteIdentifier=%s'>
                             <img src='../finalVersion/img/deleteImage.png' width='75px' height='23px' align='center'></img>
-                          </a>
-                          
+                          </a>                          
                         </td>
                     </tr>", $erregistroa[0], $erregistroa[1], $erregistroa[2], $erregistroa[3], $erregistroa[4], $erregistroa['id_Product']);
         }
