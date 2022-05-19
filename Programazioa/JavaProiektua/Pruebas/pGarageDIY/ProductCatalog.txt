@@ -1,0 +1,31 @@
+
+Code:  	EP06
+Name:  	Exhaust Pipe
+Price:  	60.75
+Description:  	Silent exhaust pipe
+--------------------------------------------------x--------------------------------------------------
+Code:  	FS90
+Name:  	Front Spoiler
+Price:  	260.0
+Description:  	Front spoiler for racing cars.
+--------------------------------------------------x--------------------------------------------------
+Code:  	MB11
+Name:  	Metal Bodywork
+Price:  	74.1
+Description:  	Metalic chassis to reinforce the vehicle
+--------------------------------------------------x--------------------------------------------------
+Code:  	PC32
+Name:  	Painting Cans
+Price:  	60.23
+Description:  	Cans of paint to improve and renew the appearance of the vehicle.
+--------------------------------------------------x--------------------------------------------------
+Code:  	SP14
+Name:  	Spark Plug Pack
+Price:  	27.55
+Description:  	Pack of 6 spark plug for emergency replacement
+--------------------------------------------------x--------------------------------------------------
+Code:  	TS90
+Name:  	Tire Set
+Price:  	350.0
+Description:  	Durable tire set for racing cars (x4)
+--------------------------------------------------x--------------------------------------------------

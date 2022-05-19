@@ -329,7 +329,8 @@ public class Model {
         PrintWriter outputStream = null;
         
         try {
-            outputStream = new PrintWriter(new FileWriter("../pGarageDIY/CustomerHistory.txt"));
+            //outputStream = new PrintWriter(new FileWriter("../pGarageDIY/CustomerHistory.txt"));
+            outputStream = new PrintWriter(new FileWriter("./CustomerHistory.txt"));
             outputStream.print(contentAllCustomers);
         } catch (IOException ex) {
             Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
@@ -372,7 +373,8 @@ public class Model {
         PrintWriter outputStream = null;
         
         try {
-            outputStream = new PrintWriter(new FileWriter("../pGarageDIY/ProductCatalog.txt"));
+            //outputStream = new PrintWriter(new FileWriter("../pGarageDIY/ProductCatalog.txt"));
+            outputStream = new PrintWriter(new FileWriter("./ProductCatalog.txt"));
             outputStream.print(contentAllProducts);
         } catch (IOException ex) {
             Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
@@ -415,7 +417,9 @@ public class Model {
         PrintWriter outputStream = null;
         
         try {
-            outputStream = new PrintWriter(new FileWriter("../pGarageDIY/GarageStaff.txt"));
+            //outputStream = new PrintWriter(new FileWriter("../pGarageDIY/GarageStaff.txt"));
+            outputStream = new PrintWriter(new FileWriter("./GarageStaff.txt"));
+            
             outputStream.print(contentAllWorkers);
         } catch (IOException ex) {
             Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
@@ -457,7 +461,8 @@ public class Model {
         PrintWriter outputStream = null;
         
         try {
-            outputStream = new PrintWriter(new FileWriter("../pGarageDIY/CabinStructure.txt"));
+            //outputStream = new PrintWriter(new FileWriter("../pGarageDIY/CabinStructure.txt"));
+            outputStream = new PrintWriter(new FileWriter("./CabinStructure.txt"));
             outputStream.print(contentAllCabins);
         } catch (IOException ex) {
             Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
@@ -1551,7 +1556,8 @@ public class Model {
     
     public static void visitWebpage() {
         //url of the website we want to connect to
-        String webUrl = "http://localhost/phpDAM1/finalVersion/indexFinal.php";
+        //String webUrl = "http://192.168.72.183/phpDAM1/finalVersion/indexFinal.php";
+        String webUrl = "http://192.168.72.183/";
         try {
             java.awt.Desktop.getDesktop().browse(java.net.URI.create(webUrl));
         }
