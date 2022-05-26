@@ -157,7 +157,6 @@ while not (choiceStart == -1):
 
     if choiceStart == 1:
         reservationsMenu()
-        print("a")
 
     elif choiceStart == 2:
         customersMenu()
